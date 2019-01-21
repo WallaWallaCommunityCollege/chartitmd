@@ -4,13 +4,20 @@
     "description": "Medical charting",
     "type": "project",
     "require": {
-        "roave/security-advisories": "dev-master",
+        "ext-PDO": ">=1.0.0",
+        "ext-pdo_mysql": "*",
+        "ext-SPL": "*",
         "slim/slim": "^3.12"
     },
     "require-dev": {
         "behat/behat": "3.5.*",
         "phpspec/phpspec": "5.1.*",
         "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "CIM\\": "src/"
+        }
     },
     "authors": [
         {
