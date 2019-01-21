@@ -1,0 +1,29 @@
+{
+    "name": "chartitmd/chartitmd",
+    "license": "proprietary",
+    "description": "Medical charting",
+    "type": "project",
+    "require": {
+        "roave/security-advisories": "dev-master",
+        "slim/slim": "^3.12"
+    },
+    "require-dev": {
+        "behat/behat": "3.5.*",
+        "phpspec/phpspec": "5.1.*",
+        "roave/security-advisories": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Alec Aichele",
+            "email": "aichelealec@gmail.com"
+        },
+        {
+            "name": "Dragonrun1",
+            "email": "Dragonrun1@gmail.com"
+        },
+        {
+            "name": "James Wood",
+            "email": "Jamesewood@gmail.com"
+        }
+    ]
+}
