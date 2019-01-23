@@ -1,0 +1,10 @@
+suites:
+    cim_suite:
+        namespace: ChartItMD
+        psr4_prefix:
+        spec_path: tests/specs
+        spec_prefix: Spec
+        src_path: src
+extensions:
+    PhpSpec\NyanFormattersExtension\Extension: ~
+formatter.name: nyan.cat
