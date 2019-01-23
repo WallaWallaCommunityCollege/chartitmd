@@ -3,22 +3,6 @@
     "license": "proprietary",
     "description": "Medical charting",
     "type": "project",
-    "require": {
-        "ext-PDO": ">=1.0.0",
-        "ext-pdo_mysql": "*",
-        "ext-SPL": "*",
-        "slim/slim": "^3.12"
-    },
-    "require-dev": {
-        "behat/behat": "3.5.*",
-        "phpspec/phpspec": "5.1.*",
-        "roave/security-advisories": "dev-master"
-    },
-    "autoload": {
-        "psr-4": {
-            "CIM\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Alec Aichele",
@@ -32,5 +16,46 @@
             "name": "James Wood",
             "email": "Jamesewood@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "files": [
+            "vendor/prewk/result/helpers.php",
+            "vendor/prewk/option/helpers.php"
+        ],
+        "psr-4": {
+            "ChartItMD\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Spec\\": "tests/specs/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "require": {
+        "doctrine/orm": "^2.6",
+        "ext-mbstring": "*",
+        "ext-PDO": ">=1.0.0",
+        "ext-pdo_mysql": "*",
+        "ext-SPL": "*",
+        "monolog/monolog": "1.24.*",
+        "php": ">=7.2,<7.4",
+        "prewk/option": "^2.0",
+        "slim/slim": "^3.12",
+        "slim/php-view": "^2.2"
+    },
+    "require-dev": {
+        "behat/behat": "^3.5",
+        "behat/mink-extension": "^2.3",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-zombie-driver": "^1.4",
+        "leanphp/phpspec-code-coverage": ">=4.2 <5.0.0",
+        "phpspec/nyan-formatters": ">=2.0.0 <3.0.0",
+        "phpspec/phpspec": ">=4.0 <5.0.0",
+        "phpunit/php-code-coverage": ">=5.0 <6.0.0",
+        "roave/security-advisories": "dev-master"
+    }
 }
