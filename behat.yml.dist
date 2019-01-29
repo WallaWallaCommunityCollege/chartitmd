@@ -1,0 +1,89 @@
+default:
+    autoload:
+        '': "%paths.base%/tests/features/bootstrap"
+    formatters:
+        pretty: true
+    gherkin:
+        filters:
+            tags: ~@wip
+    suites:
+        administrator:
+            contexts:
+                - AdministratorContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/administrator"
+            filters:
+                role: administrator
+        default:
+            contexts:
+                - FeatureContext
+            paths:
+                features: tests/features/
+                bootstrap: tests/features/bootstrap
+            filters:
+                role:
+                    - ~administrator
+                    - ~doctor
+                    - ~instructor
+                    - ~manager
+                    - ~nurse
+                    - ~student
+                    - ~supervisor
+                    - ~user
+        doctor:
+            contexts:
+                - DoctorContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/doctor"
+            filters:
+                role: doctor
+        instructor:
+            contexts:
+                - InstructorContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/instructor"
+            filters:
+                role: instructor
+        manager:
+            contexts:
+                - ManagerContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/manager"
+            filters:
+                role: manager
+        nurse:
+            contexts:
+                - NurseContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/nurse"
+            filters:
+                role: nurse
+        student:
+            contexts:
+                - StudentContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/student"
+            filters:
+                role: student
+        supervisor:
+            contexts:
+                - SupervisorContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/supervisor"
+            filters:
+                role: supervisor
+        user:
+            contexts:
+                - UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            paths:
+                - "%paths.base%/tests/features/user"
+            filters:
+                role: user
