@@ -1,6 +1,7 @@
 .idea/
 junk*.*
 test*.*
+ssh/
 # Created by .ignore support plugin (hsz.mobi)
 ### Composer template
 composer.phar
