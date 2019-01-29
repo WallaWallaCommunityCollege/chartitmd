@@ -102,7 +102,11 @@ Change to the directory you are going to use for the project then clone from
 the server.
 
 ```bash
+# If you haven't already made the directory do next line.
+mkdir c:/repos/chartitmd/
+# Switch to it.
 cd c:/repos/chartitmd/
+# clone (checkout) project from git.
 git clone cim:/srv/git/chartitmd.git
 # Expected sample output:
 # Cloning into 'chartitmd'...
