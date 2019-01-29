@@ -14,12 +14,12 @@ A list of actors (users) of the system.
   teaching role.
   * Doctor - Does medical work for patients and issue instructions used by
   other medical workers in providing medical care.
-  * Application Developer - Creates the application and defines initial
+  * App Developer - Creates the application and defines initial
   permissions, roles, and users.
-  * Application Administrator - Manages the permissions, roles, and users in a
+  * App Administrator - Manages the permissions, roles, and users in a
   software application.
-  * Application Manager - Manages other users and their roles. Can only add or
+  * App Manager - Manages other users and their roles. Can only add or
   remove existing roles that are created by the application administrator.
-  * Application User - Anyone using the application. They are assign roles to
+  * App User - Anyone using the application. They are assign roles to
   be able to interact with the application in different ways based on the
   permissions assign to their roles.

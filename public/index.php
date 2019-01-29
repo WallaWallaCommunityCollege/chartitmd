@@ -8,16 +8,26 @@ if ('cli-server' === PHP_SAPI) {
         return false;
     }
 }
-require __DIR__ . '/../vendor/autoload.php';
+$root_path = str_replace('\\', '/', dirname(__DIR__));
+/** @noinspection PhpIncludeInspection */
+require $root_path . '/bootstrap.php';
 session_start();
 // Instantiate the app
-$settings = require __DIR__ . '/../config/settings.php';
-$app = new \Slim\App($settings);
+$settings = require $root_path . '/config/settings.php';
+try {
+    $app = new \Slim\App($settings);
+} catch (Exception $e) {
+    print $e->getTraceAsString();
+}
 // Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
+require $root_path . '/src/dependencies.php';
 // Register middleware
-require __DIR__ . '/../src/middleware.php';
+require $root_path . '/src/middleware.php';
 // Register routes
-require __DIR__ . '/../src/routes.php';
+require $root_path . '/src/routes.php';
 // Run app
-$app->run();
+try {
+    $app->run();
+} catch (Exception $e) {
+    print $e->getTraceAsString();
+}
