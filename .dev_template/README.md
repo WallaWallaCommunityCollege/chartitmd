@@ -31,9 +31,9 @@ You should have received a set of files in a .ssh/ directory like this:
 The first two files `config` and `cim_rsa` need to be copied into your personal
 .ssh directory using the following commands in the git bash window from above.
 
-```text
-cp {path/to/unzipped/files}/.ssh/config ~/.ssh/
-cp {path/to/unzipped/files}/.ssh/cim_rsa ~/.ssh/
+```bash
+cp <path/to/unzipped/files>/.ssh/config ~/.ssh/
+cp <path/to/unzipped/files>/.ssh/cim_rsa ~/.ssh/
 ```
 
 You can optionally copy the `cim_rsa.pub` there as well. Next the permissions
@@ -47,8 +47,8 @@ chmod 0600 ~/.ssh/*
 
 Now its time to test SSH to make sure it has been config correctly.
 
-```text
-ssh {username}@cim
+```bash
+ssh <username>@cim
 
 # Expected sample output:
 # Last login: Mon Jan 21 02:03:18 2019 from xxx.xxx.xxx.xxx
@@ -59,11 +59,11 @@ ssh {username}@cim
 # \____|_| |_|\__,_|_|   \__| |___|\__| |_|  |_|____/
 #
 #Have a lot of fun...
-#  {username}@www.chartitmd.com:~>
+#  <username>@www.chartitmd.com:~>
 ```
 
 Your user name from above should have been already given to you. If login
-doesn't seem to work try `ssh -v {username}@cim` and sent the output to
+doesn't seem to work try `ssh -v <username>@cim` and sent the output to
 Mike C. for additional help and troubleshooting. Enter `exit` to leave ssh.
 
 ## Git project checkout
@@ -120,6 +120,65 @@ git clone cim:/srv/git/chartitmd.git
 You should now see a new chartitmd/ directory inside the already existing one.
 Just `cd chartitmd` to have a look at the project layout. You can now start up
 your IDE or other editor to start working with it.
+
+
+## Server Side Staging Website Setup
+
+This is an optional step but most developers like to be able to do some testing
+server side as well as in their local git. We'll be adding a `public_html`
+directory and setting up a new git in it to be used as an additional remote
+push target.
+
+Start up git bash again if you closed it before and once more ssh into the
+server.
+
+```bash
+ssh <username>@cim
+```
+
+Next you need to make the `public_html` directory and init a new git repo in it.
+
+```bash
+md public_html
+cd public_html
+git init
+# Expected output
+#Initialized empty Git repository in /home/<username>/public_html/.git/
+```
+
+Next you need to copy the git post receive hook script so when you do pushes to
+it the change are available automatically. After copying it the permissions
+have to be updated as well.
+
+```bash
+cp <path/to/unzipped/files>/hooks/post-receive .git/hooks/
+chmod +x .git/hooks/post-receive
+```
+
+You can now `exit` out of the server but don't close the bash window yet it
+will be needed to add the new server side git repo as a remote so you can push
+to it from your local copy.
+
+```bash
+git remote add staging ssh://<username>@www.chartitmd.com/~/public_html/
+```
+
+Now to push the local master to it.
+
+```bash
+git push staging master
+```
+
+You should now be able to use a web browser and go to
+
+`www.chartitmd.com/~<username>`
+
+and see the main project index. Make sure you include the `~` before the
+username.
+
+You can now do a commit to your local git and just push it to you're own
+staging area and look at the output or use it for testing client side code
+interactively.
 
 ## Suggestions
 

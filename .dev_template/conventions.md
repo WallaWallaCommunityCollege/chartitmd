@@ -2,7 +2,7 @@
 
 I'll going to establish some conventions we should be using everywhere. When
 there's a part of a directory path or a file name that are variable put them
-inside of a set of "{}". For example
+inside of a set of "<>". For example
 
 c:/{my/download/path}/setup.zip
 
@@ -18,11 +18,11 @@ things simpler. If a path or file name has a space in it like "My Docs" do as
 shown and put double quotes around it but make sure you do it around the
 whole path.
 
-"c:/{path with space}/more/path/"
+"c:/<path with space>/more/path/"
 
 NOT
 
-c:/"{path with space}"/more/path/
+c:/"<path with space>"/more/path/
 
 ## Comments and Output
 
