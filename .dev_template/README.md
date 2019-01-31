@@ -148,11 +148,13 @@ git init
 
 Next you need to copy the git post receive hook script so when you do pushes to
 it the change are available automatically. After copying it the permissions
-have to be updated as well.
+have to be updated as well. By default git won't let the push do the update so
+that config setting needs changed as well.
 
 ```bash
 cp <path/to/unzipped/files>/hooks/post-receive .git/hooks/
 chmod +x .git/hooks/post-receive
+git config receive.denyCurrentBranch updateInstead
 ```
 
 You can now `exit` out of the server but don't close the bash window yet it
