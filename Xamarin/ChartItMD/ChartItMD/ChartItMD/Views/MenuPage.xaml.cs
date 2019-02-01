@@ -18,7 +18,15 @@ namespace ChartItMD.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+               
+                
+                new HomeMenuItem {Id = MenuItemType.OpenPatient, Title="Open Chart"},
+                new HomeMenuItem {Id = MenuItemType.PatientProfile, Title="Patient Profile"},
+                new HomeMenuItem {Id = MenuItemType.Orders, Title="Orders"},
+                new HomeMenuItem {Id = MenuItemType.Medications, Title="Medications"},                
+                new HomeMenuItem {Id = MenuItemType.LabReports, Title="Lab Reports"},
+                new HomeMenuItem {Id = MenuItemType.DrNotes, Title="Physician's Notes"},
+                new HomeMenuItem {Id = MenuItemType.NuresNotes, Title="Nure's Notes"},
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" }
             };
 

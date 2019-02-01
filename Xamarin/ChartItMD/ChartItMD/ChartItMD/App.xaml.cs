@@ -13,8 +13,8 @@ namespace ChartItMD
         {
             InitializeComponent();
 
-
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

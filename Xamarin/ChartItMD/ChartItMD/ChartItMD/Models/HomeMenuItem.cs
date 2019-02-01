@@ -6,7 +6,15 @@ namespace ChartItMD.Models
 {
     public enum MenuItemType
     {
-        Browse,
+        OpenPatient,
+        PatientProfile,
+        Orders,
+        Medications,
+        LabReports,
+        Admission,
+        DrNotes,
+        NuresNotes,
+        ConsentForms,
         About
     }
     public class HomeMenuItem
