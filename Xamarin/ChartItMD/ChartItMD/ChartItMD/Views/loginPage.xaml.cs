@@ -16,9 +16,11 @@ namespace ChartItMD.Views
     {
         public LoginModel loginModel;
         
+
         public LoginPage()
         {
             InitializeComponent();
+            
             loginModel = new LoginModel();
             MessagingCenter.Subscribe<LoginModel,string>(this, "LoginAlert",(sender,username) =>
             {
@@ -34,6 +36,7 @@ namespace ChartItMD.Views
                 loginModel.SubmitCommand.Execute(null);
             };
         }
+        
 
     }
 }

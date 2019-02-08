@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ChartItMD.Views;
+using ChartItMD.Models;
 
 namespace ChartItMD.ViewModels
 {
@@ -13,6 +14,7 @@ namespace ChartItMD.ViewModels
     {
         public string username;
         public string password;
+        public string error;
 
         public string Username {
             get
@@ -28,6 +30,16 @@ namespace ChartItMD.ViewModels
             set {
                 password = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("Password"));
+            }
+        }
+        public string Error
+        {
+            get { return error; }
+            set
+            {
+                error = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Error"));
+                MessagingCenter.Send(this, "LoginAlert","bad login");
             }
         }
 
@@ -47,10 +59,8 @@ namespace ChartItMD.ViewModels
             {
                 MessagingCenter.Send(this, "LoginAlert", Username);
             }
-            if (username == "jwood")
-            {
-                Application.Current.MainPage = new MainPage();
-            }
+            DBConnection.DBlogin(username, password);
+
 
         }
 

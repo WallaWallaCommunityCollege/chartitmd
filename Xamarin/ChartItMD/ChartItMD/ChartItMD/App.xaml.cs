@@ -8,7 +8,8 @@ namespace ChartItMD
 {
     public partial class App : Application
     {
-
+        public static string HOSTNAME = "https://www.chartitmd.com/";
+        public static string LASTERROR = "";
         public App()
         {
             InitializeComponent();
