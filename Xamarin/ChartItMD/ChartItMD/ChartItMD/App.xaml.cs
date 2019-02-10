@@ -2,19 +2,25 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ChartItMD.Views;
+using ChartMD.Models;
+using ChartItMD.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ChartItMD
 {
     public partial class App : Application
     {
-
+        public static string HOSTNAME = "https://www.chartitmd.com/";
+        public static string LASTERROR = "";
+        public static Patient CURRENTPATIENT;
+        public static PatientIDData CURRENTPATIENTIDDATA;
         public App()
         {
             InitializeComponent();
 
-
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
+            //MainPage = new MainPage();
+            DBConnection.LoadPatient("1");
         }
 
         protected override void OnStart()
@@ -29,6 +35,7 @@ namespace ChartItMD
 
         protected override void OnResume()
         {
+            MainPage = new LoginPage();
             // Handle when your app resumes
         }
     }

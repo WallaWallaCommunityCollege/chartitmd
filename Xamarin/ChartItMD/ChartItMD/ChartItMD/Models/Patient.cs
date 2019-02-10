@@ -8,18 +8,18 @@ namespace ChartMD.Models
     {
         public Patient()
         {
-            this.PatientId = 0;
-            this.FirstName = "James";
-            this.LastName = "wood";
-            this.Gender = "male";
-            this.DateOfBirth = DateTime.Now;
+            
 
         }
-        public Int64 PatientId { get; set; }
+        public string PatientId { get; set; }
         public string FirstName
         {
             get; set;
         }
+        public string patient_id { get; set; }
+        public string patient_firstname { get; set; }
+        public string patient_lastname { get; set; }
+        public string patient_dob { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }

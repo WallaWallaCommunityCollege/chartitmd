@@ -21,7 +21,7 @@ namespace ChartItMD.ViewModels
             set { SetProperty(ref isBusy, value); }
         }
 
-        string title = string.Empty;
+        string title = "ChartITMD";
         public string Title
         {
             get { return title; }
