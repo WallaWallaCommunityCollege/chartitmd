@@ -6,14 +6,14 @@
   <ContentPage.Content>
       <StackLayout VerticalOptions="StartAndExpand">
 
-            <Entry x:Name="errorLabel" Text="_"/>
+           
             <Label Text="Username " />          
             <Entry x:Name="usernameEntry" Text="{Binding Username}"/>
           
             <Label Text="Password "/>
             <Entry x:Name="passwordEntry" Text="{Binding Password}" IsPassword="True"/>
           
-            <Button Text="Login" Command="{Binding SubmitLogin}"/>
+            <Button x:Name="loginButton" Text="Login" Command="{Binding SubmitLogin}"/>
             
         </StackLayout>
   </ContentPage.Content>

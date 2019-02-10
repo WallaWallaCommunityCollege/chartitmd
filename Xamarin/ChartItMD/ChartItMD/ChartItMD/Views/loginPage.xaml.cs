@@ -35,7 +35,13 @@ namespace ChartItMD.Views
             {
                 loginModel.SubmitCommand.Execute(null);
             };
+            loginButton.Clicked += (object sender, EventArgs e) => 
+            {
+                loginModel.SubmitCommand.Execute(null);
+            };
+            
         }
+        
         
 
     }

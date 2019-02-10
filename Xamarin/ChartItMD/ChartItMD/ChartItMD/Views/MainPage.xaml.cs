@@ -1,4 +1,5 @@
 ﻿using ChartItMD.Models;
+using ChartItMD.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,13 +12,16 @@ namespace ChartItMD.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        PatientIDBarViewModel patientIDBarViewModel;
         public MainPage()
         {
-            InitializeComponent();
+            
 
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.About, (NavigationPage)Detail);
+            this.BindingContext = patientIDBarViewModel;
+            InitializeComponent();
         }
 
         public async Task NavigateFromMenu(int id)

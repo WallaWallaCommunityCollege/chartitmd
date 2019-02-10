@@ -6,12 +6,23 @@
                   Title="ChartItMD">
 
     <MasterDetailPage.Master>
-        
+
         <views:MenuPage Title="ChartItMD" />
         
-        
-        
+
+
+
     </MasterDetailPage.Master>
+    <MasterDetailPage.ToolbarItems>
+        <ToolbarItem Text="Binding patientName"/>
+        <ToolbarItem Text="{Binding patientDOB}"/>
+        <ToolbarItem Text="{Binding patientAge}"/>
+        <ToolbarItem Text="{Binding patientGender}"/>
+        <ToolbarItem Text="{Binding patientID}"/>
+
+
+
+    </MasterDetailPage.ToolbarItems>
 
     <MasterDetailPage.Detail>
         <NavigationPage>
