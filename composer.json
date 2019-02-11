@@ -56,6 +56,7 @@
     },
     "require-dev": {
         "behat/behat": "^3.5",
+        "dragonrun1/git-change-log-creator": "dev-master",
         "guzzlehttp/guzzle": "~6.0",
         "leanphp/phpspec-code-coverage": ">=4.2 <5.0.0",
         "phpspec/nyan-formatters": ">=2.0.0 <3.0.0",
