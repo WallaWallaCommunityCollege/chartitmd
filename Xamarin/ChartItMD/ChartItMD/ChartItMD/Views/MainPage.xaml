@@ -14,11 +14,11 @@
 
     </MasterDetailPage.Master>
     <MasterDetailPage.ToolbarItems>
-        <ToolbarItem Text="Binding patientName"/>
-        <ToolbarItem Text="{Binding patientDOB}"/>
-        <ToolbarItem Text="{Binding patientAge}"/>
-        <ToolbarItem Text="{Binding patientGender}"/>
-        <ToolbarItem Text="{Binding patientID}"/>
+        <ToolbarItem Text="{Binding PatientName}"/>
+        <ToolbarItem Text="{Binding PatientDOB}"/>
+        <ToolbarItem Text="{Binding PatientAge}"/>
+        <ToolbarItem Text="{Binding PatientGender}"/>
+        <ToolbarItem Text="{Binding PatientID}"/>
 
 
 
