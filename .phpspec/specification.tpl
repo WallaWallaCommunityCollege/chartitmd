@@ -20,18 +20,15 @@ use Prophecy\Argument;
 /**
 * Class %name%
 *
-* @mixin \%subject%
+* @mixin %subject_class%
 *
 * @method void during($method, array $params)
 * @method void shouldBe($value)
-* @method void shouldContain($value)
 * @method void shouldNotEqual($value)
 * @method void shouldReturn($result)
 */
-class %name% extends ObjectBehavior
-{
-public function it_is_initializable(): void
-{
-$this->shouldHaveType('%subject%');
+class %name% extends ObjectBehavior {
+public function it_is_initializable(): void {
+$this->shouldHaveType('%subject_class%::class');
 }
 }

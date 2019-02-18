@@ -17,8 +17,7 @@ namespace %namespace%;
 /**
 * Class %name%
 */
-class %name%
-{
+class %name% {
 // Put code here!
 }
 
