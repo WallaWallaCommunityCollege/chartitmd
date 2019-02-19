@@ -26,13 +26,15 @@
             "ChartItMD\\": [
                 "bin/",
                 "src/"
-            ],
-            "Tests\\Contexts\\": "tests/features/bootstrap/"
+            ]
         }
     },
     "autoload-dev": {
         "psr-0": {
             "Spec\\": "tests/specs/"
+        },
+        "psr-4": {
+            "Tests\\Contexts\\": "tests/features/bootstrap/"
         }
     },
     "config": {
@@ -41,13 +43,16 @@
     },
     "require": {
         "php": ">=7.2,<7.4",
+        "ext-apcu": "*",
         "ext-PDO": ">=1.0.0",
         "ext-SPL": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
         "doctrine/orm": "^2.6",
         "dragonrun1/file_path_normalizer": "^2.1",
+        "josegonzalez/dotenv": "^3.2",
         "monolog/monolog": "1.24.*",
+        "php-di/slim-bridge": "^2.0",
         "potievdev/slim-rbac": "^1.0",
         "prewk/option": "^2.0",
         "slim/php-view": "^2.2",
@@ -56,7 +61,7 @@
     },
     "require-dev": {
         "behat/behat": "^3.5",
-        "dragonrun1/git-change-log-creator": "dev-master",
+        "dragonrun1/git-change-log-creator": "^1.0",
         "guzzlehttp/guzzle": "~6.0",
         "leanphp/phpspec-code-coverage": ">=4.2 <5.0.0",
         "phpspec/nyan-formatters": ">=2.0.0 <3.0.0",
