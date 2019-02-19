@@ -2727,16 +2727,16 @@
         },
         {
             "name": "dragonrun1/git-change-log-creator",
-            "version": "1.0",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dragonrun1/git-change-log-creator.git",
-                "reference": "9bf681bd3c0b388a9b96ae30b9e77634e81a1dc0"
+                "reference": "3ec789585b69c4dba3826212e15eb328f2669cf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dragonrun1/git-change-log-creator/zipball/9bf681bd3c0b388a9b96ae30b9e77634e81a1dc0",
-                "reference": "9bf681bd3c0b388a9b96ae30b9e77634e81a1dc0",
+                "url": "https://api.github.com/repos/Dragonrun1/git-change-log-creator/zipball/3ec789585b69c4dba3826212e15eb328f2669cf1",
+                "reference": "3ec789585b69c4dba3826212e15eb328f2669cf1",
                 "shasum": ""
             },
             "require": {
@@ -2768,7 +2768,7 @@
             ],
             "description": "Used to create an updated change log file from Git log",
             "homepage": "https://github.com/Dragonrun1/git-change-log-creator",
-            "time": "2019-02-11T04:36:46+00:00"
+            "time": "2019-02-19T02:23:18+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
