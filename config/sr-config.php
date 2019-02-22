@@ -1,10 +1,16 @@
 <?php
 declare(strict_types=1);
 /**
- * Created by PhpStorm.
- * User: Dragonaire
- * Date: 2019-02-21
- * Time: 7:33 PM
+ * Contains helper for slim-rbac cli tool.
+ *
+ * PHP version 7.0+
+ *
+ * LICENSE:
+ * This file is part of ChartItMD.
+ * Copyright (C) 2019 ChartItMD Development Group
+ *
+ * @author    Michael Cummings <mgcummings@yahoo.com>
+ * @copyright 2019 ChartItMD Development Group
+ * @license   Proprietary
  */
-require_once __DIR__ . '/cli-config.php';
-return $entityManager;
+return require __DIR__ . '/entity_manager.php';
