@@ -16,17 +16,13 @@ $root_path = str_replace('\\', '/', dirname(__DIR__));
 require $root_path . '/bootstrap.php';
 
 use ChartItMD\ChartItMD;
-use josegonzalez\Dotenv\Loader;
 
-// Load the environmental variables from .env in the root directory.
-$env = (new Loader([dirname(__DIR__) . '/.env']))->parse();
-$env->toEnv()
-    ->putenv();
 session_start();
 try {
     $app = new ChartItMD();
 } catch (Exception $e) {
     print $e->getTraceAsString();
+    exit(1);
 }
 // Set up dependencies
 //require $root_path . '/src/dependencies.php';
@@ -39,4 +35,5 @@ try {
     $app->run();
 } catch (Exception $e) {
     print $e->getTraceAsString();
+    exit(2);
 }
