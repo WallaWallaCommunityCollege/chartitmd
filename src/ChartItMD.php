@@ -31,6 +31,7 @@ class ChartItMD extends App {
      */
     protected function configureContainer(ContainerBuilder $builder): void {
         $builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
+        $builder->addDefinitions(dirname(__DIR__) . '/config/dot_env.php');
         $builder->addDefinitions(dirname(__DIR__) . '/config/pdo.php');
         $builder->addDefinitions(dirname(__DIR__) . '/config/doctrine.php');
     }
