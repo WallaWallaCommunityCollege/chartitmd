@@ -5,8 +5,11 @@ Auto-generated from Git log.
 
 ## Table of Contents
 
+ * [master](#master)
  * [0.0.1](#0.0.1)
 
+## [master](../../tree/master)
+ * [cf64e821bd](../../commit/cf64e821bde15624c90f151a316a51ed1265cc4c) 2019-02-19T02:37:45+00:00 (Dragonrun1) - Updated to fixed version of GitChangeLogCreator. Added new bin/updateChangeLog.php file. Added CHANGELOG.md file.
 ## [0.0.1](../../tree/0.0.1)
  * [c383f98860](../../commit/c383f9886001a860eb16de92a55c9d9e03eb8e62) 2019-02-19T00:11:03+00:00 (Dragonrun1) - Switch from using Slim/App directly to new ChartItMD wrapper class. Updated index.php to have new env loader stuff. Misc other minor changes.
  * [5497cf3f7f](../../commit/5497cf3f7f268de7f2566467060fa0e5c6f6cc70) 2019-02-19T00:05:52+00:00 (Dragonrun1) - Updated composer.json and lock to reflect all the other check to packages etc.
