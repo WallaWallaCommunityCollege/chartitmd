@@ -51,15 +51,22 @@ class ChartItMDSpec extends ObjectBehavior {
              ->get('ChartItMD.srcDir')
              ->shouldEndWith('chartitmd/src/');
     }
+    public function it_should_have_correct_pdo_connection_collation_connection_set(): void {
+        $this->getContainer()
+             ->get(Connection::class)
+             ->query('SELECT @@COLLATION_CONNECTION')
+             ->fetchColumn()
+             ->shouldReturn('utf8mb4_unicode_520_ci');
+    }
     public function it_should_have_correct_pdo_connection_sql_modes(): void {
         $this->getContainer()
              ->get(Connection::class)
-             ->query('SELECT @@sql_mode as sql_mode')
+             ->query('SELECT @@SQL_MODE')
              ->fetchColumn()
              ->shouldContain('ANSI');
         $this->getContainer()
              ->get(Connection::class)
-             ->query('SELECT @@sql_mode as sql_mode')
+             ->query('SELECT @@SQL_MODE')
              ->fetchColumn()
              ->shouldContain('TRADITIONAL');
     }
@@ -82,5 +89,10 @@ class ChartItMDSpec extends ObjectBehavior {
         $this->getContainer()
              ->get('ChartItMD.Pdo.Parameters.database')
              ->shouldReturn('chartitmd');
+    }
+    public function it_should_return_configured_pdo_connection(): void {
+        $this->getContainer()
+             ->get(Connection::class)
+             ->shouldReturnAnInstanceOf(Connection::class);
     }
 }
