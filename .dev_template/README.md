@@ -1,6 +1,6 @@
 # README_developer.md
 
-## Git setup for windows
+## Git Setup For Windows
 
 Download the exe from https://git-scm.com/downloads
 Make sure to get 64bit version if your computer is 64bit.
@@ -14,7 +14,7 @@ we'll be using it in the next couple steps.
 See [conventions](conventions.md) for file and path name conventions used in
 in the follows sections.
 
-## SSH setup
+## SSH Setup
 
 All git connections will use ssh for security so it must be setup as well
 before you can access anything through git.
@@ -66,11 +66,11 @@ Your user name from above should have been already given to you. If login
 doesn't seem to work try `ssh -v <username>@cim` and sent the output to
 Mike C. for additional help and troubleshooting. Enter `exit` to leave ssh.
 
-## Git project checkout
+## Git Project Checkout
 
 The follow steps should give you a working checkout for the project.
 
-### Where to put things
+### Where To Put Things
 
 First think you need to decide is where you are going to put your checkout of
 the project. Some thing to consider are that paths with spaces in them don't
@@ -96,7 +96,16 @@ I suggest using something like this even if the chartitmd project is going to
 be the only project there for now. I'll be using this path structure in the
 following examples.
 
-### Initial checkout (clone)
+### Git User Setup
+
+You will need to setup your information in `git` to use it. Instead of trying
+to explain here myself how to do it I'll refer you to the instructions from the
+git website. They now even include setting up using Notepad++ for your commit
+messages which can be very useful when doing commits from the command line.
+
+https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+
+### Initial Checkout (Cloning)
 
 Change to the directory you are going to use for the project then clone from
 the server.
@@ -121,6 +130,65 @@ You should now see a new chartitmd/ directory inside the already existing one.
 Just `cd chartitmd` to have a look at the project layout. You can now start up
 your IDE or other editor to start working with it.
 
+## Package (Library) Manager
+
+The main package manager in PHP is Composer and is required by ChartItMD.
+Directions for installing Composer can be found at:
+
+https://getcomposer.org/doc/00-intro.md
+
+Note that `composer` is already setup on the ChartItMD server and in your path.
+You can confirm it's setup for you there in a ssh connection by running:
+
+```bash
+composer --version
+# Expected sample output:
+# Composer version 1.8.3 2019-01-30 08:31:33
+```
+
+## Setup Composer And Command Line Tools
+
+Once you have confirmed your `composer` setup it is time add all the required
+packages so things can be run in the local or remote instance like tests and
+have the ChartItMD instance work correctly. The easiest way to do this is to
+open up a terminal (git-bash) to the root of the project then run the
+following:
+
+```bash
+composer up
+# Expected sample output:
+# Loading composer repositories with package information
+#  Updating dependencies (including require-dev)
+# ... Lots of important (boring) info about packages being installed ...
+# Writing lock file
+# Generating optimized autoload files
+```
+
+Once `composer` is done you'll need to setup some environment variables with your
+database user info etc. Start by copying the example file in the root of the
+project:
+
+```bash
+cp .env.example .env
+```
+
+Use the comments you will find in the new `.env` file to make any changes
+needed to allow access to the database etc.
+
+### Checking Database Connection
+
+Now that you have added the required environment variable values in `.env` it
+is possible to use the doctrine console tool to check some things out. From the
+project root directory try the following:
+
+```bash
+./vendor/bin/doctrine dbal:run-sql "select table_name from information_schema.tables where table_schema = 'chartitmd'"
+# Expected sample output:
+# Long list of PHP array output containing table names of the selected database
+```
+
+Make sure the `table_schema` value matches your database name. If the table
+names seem to match the correct database your connection should now be working.
 
 ## Server Side Staging Website Setup
 
@@ -157,6 +225,9 @@ chmod +x .git/hooks/post-receive
 git config receive.denyCurrentBranch updateInstead
 ```
 
+You should now perform the same instructions for setting up `composer` and the
+database that was given above and check that the connection works. 
+
 You can now `exit` out of the server but don't close the bash window yet it
 will be needed to add the new server side git repo as a remote so you can push
 to it from your local copy.
@@ -178,9 +249,9 @@ You should now be able to use a web browser and go to
 and see the main project index. Make sure you include the `~` before the
 username.
 
-You can now do a commit to your local git and just push it to you're own
+You can now do a commit to your local git and just push it to your own
 staging area and look at the output or use it for testing client side code
-interactively.
+interactively etc.
 
 ## Suggestions
 
