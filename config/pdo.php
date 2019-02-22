@@ -16,6 +16,7 @@ declare(strict_types=1);
  */
 
 use ChartItMD\Pdo\Connection;
+use josegonzalez\Dotenv\Loader;
 use Psr\Container\ContainerInterface;
 use function DI\env;
 use function DI\string;
@@ -28,6 +29,11 @@ SET NAMES '{ChartItMD.Pdo.Parameters.characterSet}' COLLATE '{ChartItMD.Pdo.Para
 SET COLLATION_CONNECTION = '{ChartItMD.Pdo.Parameters.characterCollate}';
 SET DEFAULT_STORAGE_ENGINE = '{ChartItMD.Pdo.Parameters.engine}';
 SQL;
+/**
+ * Settings for the shared PDO instance and SQL.
+ *
+ * @var array $pdo
+ */
 $pdo = [
     'ChartItMD.Pdo.Parameters.characterCollate' => 'utf8mb4_unicode_520_ci',
     'ChartItMD.Pdo.Parameters.characterSet' => 'utf8mb4',
@@ -41,6 +47,8 @@ $pdo = [
     'ChartItMD.Pdo.Parameters.username' => env('PDO_USERNAME', 'CIMUser'),
     'ChartItMD.Pdo.Parameters.password' => env('PDO_PASSWORD', 'secret'),
     Connection::class => function (ContainerInterface $dic): Connection {
+        // Ensure required environment variables are available.
+        $dic->get(Loader::class);
         $params = [
             $dic->get('ChartItMD.Pdo.Parameters.dsn'),
             $dic->get('ChartItMD.Pdo.Parameters.username'),
