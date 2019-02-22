@@ -65,9 +65,9 @@
         "behat/mink": "^1.7",
         "dragonrun1/git-change-log-creator": "^1.0",
         "guzzlehttp/guzzle": "~6.0",
-        "leanphp/phpspec-code-coverage": ">=4.2 <5.0.0",
-        "phpspec/nyan-formatters": ">=2.0.0 <3.0.0",
-        "phpspec/phpspec": ">=4.0 <5.0.0",
+        "dragonrun1/phpspec-code-coverage": "dev-master",
+        "phpspec/nyan-formatters": "dev-master",
+        "phpspec/phpspec": "^5.1.0",
         "phpunit/php-code-coverage": ">=5.0 <6.0.0",
         "roave/security-advisories": "dev-master"
     }
