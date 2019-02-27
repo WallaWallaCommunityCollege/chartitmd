@@ -43,10 +43,10 @@
     },
     "require": {
         "php": ">=7.2,<7.4",
-        "ext-gmp": "*",
         "ext-PDO": ">=1.0.0",
         "ext-SPL": "*",
         "ext-apcu": "*",
+        "ext-gmp": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
         "doctrine/orm": "^2.6",
