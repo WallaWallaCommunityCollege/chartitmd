@@ -30,9 +30,9 @@ class ChartItMD extends App {
      * @throws \LogicException
      */
     protected function configureContainer(ContainerBuilder $builder): void {
-        $builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
-        $builder->addDefinitions(dirname(__DIR__) . '/config/dot_env.php');
-        $builder->addDefinitions(dirname(__DIR__) . '/config/pdo.php');
-        $builder->addDefinitions(dirname(__DIR__) . '/config/doctrine.php');
+        $builder->addDefinitions(dirname(__DIR__) . '/config/config.php')
+                ->addDefinitions(dirname(__DIR__) . '/config/dot_env.php')
+                ->addDefinitions(dirname(__DIR__) . '/config/pdo.php')
+                ->addDefinitions(dirname(__DIR__) . '/config/doctrine.php');
     }
 }
