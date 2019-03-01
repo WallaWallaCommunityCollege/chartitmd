@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Login</title>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<form action="test.php" class="loginStyle">
+    <!-- Username and password are visible in URL when submitted -->
+    <div id="user">
+        <label>Username:</label>
+        <input align="right" id="userName" name="username" type="text"></input>
+    </div>
+    <br>
+    <div>
+        <label>Password:</label>
+        <input align="right" id="passWord" name="password" type="password"></input>
+    </div>
+    <br>
+    <input type="submit" value="Login"></input>
+</form>
+
+<label class="alert" id="errorMessage"></label>
+<script src="wpFunctions.js"></script>
+</body>
+</html>
