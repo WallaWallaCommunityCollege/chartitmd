@@ -1,0 +1,63 @@
+
+Author: James Wood
+Date:   Fri Mar 1 14:58:33 2019 -0800
+
+    Added DBConnection.php a simple page to hold the PDO object.
+
+    Added Database_error.php a simple error page if the DB connection does not work.
+
+    Added a Navbar that show links on the left side of the page to all of the pages in the chart.
+
+    Added a Patient.php class that allows us to pass a Patient object around. need way more work.!
+
+    Added a patientIDBar that is at the top of each page and show the users info.
+
+    Added a simple index test page to test the layout of the nav bar and the patient IDbar
+
+
+Author: James Wood
+Date:   Sat Feb 16 23:28:21 2019 -0800
+
+    I added a index that serves as a template for each of the pages. it
+    inclues and patient IDbar and a nave bar. I have also added an animated
+    nave bar that may prove to be useless but maybe we could make it into a
+    context senstive menu bar on the right?
+
+    I added a Db connection file that need to be edit to make the page work.
+	I tis currently set to my local host and must be edited
+
+    I made an Icon for the app // page
+
+    I added a patient class  we need to use this not just data each time the
+    page loads.
+
+
+Author: James Wood
+Date:   Sun Feb 10 11:03:38 2019 -0800
+
+    fixed login added patientidbar and the php to make it work. something is wrong with the databindings but the values get pulled.
+
+
+Author: James Wood
+Date:   Fri Feb 8 13:03:27 2019 -0800
+
+    wired up the login page. error msg needs fixed, added the php for the login scripts
+
+
+Author: James Wood
+Date:   Fri Feb 1 15:31:20 2019 -0800
+
+    added simple loginpage that take as user name and password and sees if they are in the db 
+	they getlogin otherwise an error promps them to retry
+
+
+Author: James Wood
+Date:   Thu Jan 31 17:40:19 2019 -0800
+
+    I added a simple Loginpage with a login modelview
+
+
+Author: James Wood
+Date:   Wed Jan 30 18:42:36 2019 -0800
+
+    added classes and set up navbar.::
