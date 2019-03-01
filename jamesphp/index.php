@@ -11,11 +11,10 @@ require_once 'DBConnection.php';
 <body>
 
 
-
 <div class="row">
     <div class="col-2 menu">
         <ul>
-           <li>Open Patient</li>
+            <li>Open Patient</li>
             <li>Patient Profile</li>
             <li>Orders</li>
             <li>Medications</li>
@@ -29,13 +28,12 @@ require_once 'DBConnection.php';
     </div>
     <div class="col-5">
         <div class="header">
-            <div style="display:inline-block;"><?php include 'PatientIDBar.php';?></div>
+            <div style="display:inline-block;"><?php include 'PatientIDBar.php'; ?></div>
         </div>
     </div>
 
 
     <div class="col-9">
-
 
 
     </div>
