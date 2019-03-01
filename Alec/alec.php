@@ -11,8 +11,9 @@ $statement->closeCursor();
 //if no results show, return
 if ($statement->rowCount() == 0) {
     $error = 'No results were found';//Optional
-    include();
-    exit();
+    echo $error;
+    //include('Webpage.html');
+    //exit();
 } else {
     //run a loop to print data
     //Foreach loop will be in html
