@@ -14,7 +14,7 @@ declare(strict_types=1);
  * @license   Proprietary
  */
 
-namespace ChartItMD\Models\Types;
+namespace ChartItMD\Model\Type;
 
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;

@@ -13,8 +13,8 @@ declare(strict_types=1);
  * @copyright 2019 ChartItMD Development Group
  * @license   Proprietary
  */
+$entityManager = require __DIR__ . '/entity_manager.php';
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
-$entityManager = require __DIR__ . '/entity_manager.php';
 return ConsoleRunner::createHelperSet($entityManager);
