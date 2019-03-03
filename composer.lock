@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "660f956a38f3feaf4d7d170b858fa12d",
+    "content-hash": "db0cb5b3e7c5c64d750f1a756a903c91",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1342,16 +1342,16 @@
         },
         {
             "name": "php-di/php-di",
-            "version": "6.0.5",
+            "version": "6.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "5e8b809960d5c3bfa096a90da9a78650e80b1f0e"
+                "reference": "f16f27b7bc0876c7e76f568e0733d59997c8ec9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/5e8b809960d5c3bfa096a90da9a78650e80b1f0e",
-                "reference": "5e8b809960d5c3bfa096a90da9a78650e80b1f0e",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/f16f27b7bc0876c7e76f568e0733d59997c8ec9c",
+                "reference": "f16f27b7bc0876c7e76f568e0733d59997c8ec9c",
                 "shasum": ""
             },
             "require": {
@@ -1401,7 +1401,7 @@
                 "ioc",
                 "psr11"
             ],
-            "time": "2018-09-17T15:34:44+00:00"
+            "time": "2019-02-28T14:45:49+00:00"
         },
         {
             "name": "php-di/phpdoc-reader",
@@ -1525,62 +1525,6 @@
                 "dependency injection"
             ],
             "time": "2018-01-21T07:42:36+00:00"
-        },
-        {
-            "name": "potievdev/slim-rbac",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/potievdev/slim-rbac.git",
-                "reference": "e3ef1f08a67257df7c5c6e24c98e1c90df552f42"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/potievdev/slim-rbac/zipball/e3ef1f08a67257df7c5c6e24c98e1c90df552f42",
-                "reference": "e3ef1f08a67257df7c5c6e24c98e1c90df552f42",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "^2.5",
-                "php": ">=5.4.0",
-                "psr/http-message": "^1.0",
-                "robmorgan/phinx": "^0.9.1"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.3"
-            },
-            "bin": [
-                "bin/slim-rbac"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Potievdev\\SlimRbac\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Abdulmalik Abdulpotiev",
-                    "email": "potievdev@gmail.com",
-                    "homepage": "http://potievdev.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Role Based Access Control middleware for Slim 3",
-            "homepage": "https://github.com/potievdev/slim-rbac",
-            "keywords": [
-                "Authentication",
-                "authorization",
-                "middleware",
-                "potievdev",
-                "rbac",
-                "slim"
-            ],
-            "time": "2017-12-23T17:12:05+00:00"
         },
         {
             "name": "prewk/option",
@@ -1815,77 +1759,6 @@
             "time": "2018-11-20T15:27:04+00:00"
         },
         {
-            "name": "robmorgan/phinx",
-            "version": "0.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakephp/phinx.git",
-                "reference": "e1698319ad55157c233b658c08f7a10617e797ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/phinx/zipball/e1698319ad55157c233b658c08f7a10617e797ca",
-                "reference": "e1698319ad55157c233b658c08f7a10617e797ca",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4",
-                "symfony/config": "^2.8|^3.0|^4.0",
-                "symfony/console": "^2.8|^3.0|^4.0",
-                "symfony/yaml": "^2.8|^3.0|^4.0"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "^3.0",
-                "phpunit/phpunit": "^4.8.35|^5.7|^6.5"
-            },
-            "bin": [
-                "bin/phinx"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Phinx\\": "src/Phinx"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Woody Gilk",
-                    "email": "woody.gilk@gmail.com",
-                    "homepage": "http://shadowhand.me",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Rob Morgan",
-                    "email": "robbym@gmail.com",
-                    "homepage": "https://robmorgan.id.au",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "CakePHP Community",
-                    "homepage": "https://github.com/cakephp/phinx/graphs/contributors"
-                }
-            ],
-            "description": "Phinx makes it ridiculously easy to manage the database migrations for your PHP app.",
-            "homepage": "https://phinx.org",
-            "keywords": [
-                "database",
-                "database migrations",
-                "db",
-                "migrations",
-                "phinx"
-            ],
-            "time": "2017-12-23T06:48:51+00:00"
-        },
-        {
             "name": "slim/php-view",
             "version": "2.2.0",
             "source": {
@@ -2004,69 +1877,6 @@
                 "router"
             ],
             "time": "2019-01-15T13:21:25+00:00"
-        },
-        {
-            "name": "symfony/config",
-            "version": "v4.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/config.git",
-                "reference": "25a2e7abe0d97e70282537292e3df45cf6da7b98"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/25a2e7abe0d97e70282537292e3df45cf6da7b98",
-                "reference": "25a2e7abe0d97e70282537292e3df45cf6da7b98",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3",
-                "symfony/filesystem": "~3.4|~4.0",
-                "symfony/polyfill-ctype": "~1.8"
-            },
-            "conflict": {
-                "symfony/finder": "<3.4"
-            },
-            "require-dev": {
-                "symfony/dependency-injection": "~3.4|~4.0",
-                "symfony/event-dispatcher": "~3.4|~4.0",
-                "symfony/finder": "~3.4|~4.0",
-                "symfony/yaml": "~3.4|~4.0"
-            },
-            "suggest": {
-                "symfony/yaml": "To use the yaml reference dumper"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Config\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Config Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-01-30T11:44:30+00:00"
         },
         {
             "name": "symfony/console",
@@ -2207,56 +2017,6 @@
                 "standards"
             ],
             "time": "2018-12-05T08:06:11+00:00"
-        },
-        {
-            "name": "symfony/filesystem",
-            "version": "v4.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/filesystem.git",
-                "reference": "7c16ebc2629827d4ec915a52ac809768d060a4ee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/7c16ebc2629827d4ec915a52ac809768d060a4ee",
-                "reference": "7c16ebc2629827d4ec915a52ac809768d060a4ee",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3",
-                "symfony/polyfill-ctype": "~1.8"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Filesystem\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Filesystem Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-01-16T20:35:37+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3714,12 +3474,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "614a9db1df6be4349544311096f8d48ca067ccbb"
+                "reference": "4e04718428742618a4bf24dafca45b8645c9320d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/614a9db1df6be4349544311096f8d48ca067ccbb",
-                "reference": "614a9db1df6be4349544311096f8d48ca067ccbb",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4e04718428742618a4bf24dafca45b8645c9320d",
+                "reference": "4e04718428742618a4bf24dafca45b8645c9320d",
                 "shasum": ""
             },
             "conflict": {
@@ -3754,91 +3514,8 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/acquia_connector": ">=1,<1.16",
-                "drupal/autologout": ">=4,<4.5",
-                "drupal/backup_migrate": ">=3,<3.4",
-                "drupal/bealestreet": ">=1,<1.2",
-                "drupal/bible": ">=1,<1.7",
-                "drupal/bing_autosuggest_api": ">=1,<1.1",
-                "drupal/bootstrap": ">=3,<3.14",
-                "drupal/brilliant_gallery": ">=1,<1.10",
-                "drupal/ckeditor_uploadimage": ">=1,<1.5",
-                "drupal/cleantalk": ">=2,<2.7",
-                "drupal/cloud": ">=1,<1.7",
-                "drupal/commerce": ">=2,<2.9",
-                "drupal/commerce_custom_order_status": ">=1,<1.1",
-                "drupal/commerce_klarna_checkout": ">=1,<1.5",
-                "drupal/config_perms": ">=1,<1.1|>=2,<2.2",
-                "drupal/config_update": ">=1,<1.5",
                 "drupal/core": ">=7,<7.62|>=8,<8.5.11|>=8.6,<8.6.10",
-                "drupal/datereminder": ">=1,<1.15",
-                "drupal/decoupled_router": ">=1,<1.2",
-                "drupal/domain_integration": ">=1,<1.2",
                 "drupal/drupal": ">=7,<7.62|>=8,<8.5.11|>=8.6,<8.6.10",
-                "drupal/entity": ">=1,<1.9",
-                "drupal/entity_ref_tab_formatter": ">=1,<1.3",
-                "drupal/entityqueue_taxonomy": ">=1,<1.1",
-                "drupal/esign": ">=1,<1.10",
-                "drupal/eu_cookie_compliance": ">=1,<1.1",
-                "drupal/exif": ">=1,<1.1",
-                "drupal/feedback_collect": ">=1,<1.6",
-                "drupal/filefield_paths": ">=1,<1.1",
-                "drupal/filefield_sources": ">=1,<1.11",
-                "drupal/focal_point": ">=1,<1.2",
-                "drupal/fontawesome": ">=2,<2.12",
-                "drupal/fraction": ">=1,<1.2",
-                "drupal/gathercontent": ">=3,<3.5",
-                "drupal/genpass": ">=1,<1.1",
-                "drupal/hosting_https": ">=3,<3.170",
-                "drupal/jsonapi": ">=1,<1.16",
-                "drupal/lightbox2": ">=2,<2.11",
-                "drupal/link": ">=1,<1.6",
-                "drupal/litejazz": ">=2,<2.3",
-                "drupal/mailhandler": ">=2,<2.11",
-                "drupal/mass_pwreset": ">=1,<1.1",
-                "drupal/me": ">=1,<1.3",
-                "drupal/media": ">=2,<2.19",
-                "drupal/menu_export": ">=1,<1.2",
-                "drupal/metatag": ">=1,<1.8",
-                "drupal/miniorange_oauth_client": ">=1,<1.21",
-                "drupal/moneysuite": ">=10,<10.4",
-                "drupal/mosaik": ">=1,<1.2",
-                "drupal/netforum_authentication": ">=1,<1.1",
-                "drupal/newsflash": ">=2,<2.6",
-                "drupal/node_feedback": ">=1,<1.3",
-                "drupal/node_view_permissions": ">=1,<1.1",
-                "drupal/nucleus": ">=1,<1.6",
-                "drupal/nvp": ">=1,<1.1",
-                "drupal/panels_breadcrumbs": ">=2,<2.4",
-                "drupal/panopoly_core": ">=1,<1.49",
-                "drupal/paragraphs": ">=1,<1.6",
-                "drupal/password_policy": ">=1,<1.16",
-                "drupal/permissions_by_term": ">=1,<1.35",
-                "drupal/phonefield": ">=1,<1.1",
-                "drupal/phpconfig": ">=1,<1.1",
-                "drupal/preview_link": ">=1,<1.1",
-                "drupal/print": ">=2,<2.1",
-                "drupal/provision": ">=3,<3.170",
-                "drupal/pubdlcnt": ">=1,<1.3",
-                "drupal/renderkit": ">=1,<1.6",
-                "drupal/responsive_menus": ">=1,<1.7",
-                "drupal/restws": ">=2,<2.8",
-                "drupal/sagepay_payment": ">=1,<1.5",
-                "drupal/salesforce": ">=3,<3.1",
-                "drupal/search_api_solr": ">=1,<1.14",
-                "drupal/search_autocomplete": ">=4,<4.8",
-                "drupal/services_sso_client": ">=1,<1.6",
-                "drupal/stacks": ">=1,<1.1",
-                "drupal/tapestry": ">=2,<2.2",
-                "drupal/term_reference_tree": ">=1,<1.11",
-                "drupal/tfa_basic": ">=1,<1.1",
-                "drupal/tft": ">=1,<1.1",
-                "drupal/tmgmt": ">=1,<1.7",
-                "drupal/uuid": ">=1,<1.1",
-                "drupal/video": ">=1,<1.4",
-                "drupal/workbench_moderation": ">=1,<1.4",
-                "drupal/yandex_metrics": ">=3,<3.1",
-                "drupal/zircon": ">=1,<1.2",
                 "erusev/parsedown": "<1.7",
                 "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.13.1|>=6,<6.7.9.1|>=6.8,<6.13.5.1|>=7,<7.2.4.1|>=7.3,<7.3.2.1",
                 "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.12.3|>=2011,<2017.12.4.3|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3",
@@ -3935,7 +3612,7 @@
                 "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
                 "tecnickcom/tcpdf": "<6.2.22",
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-                "thelia/thelia": ">=2.1,<2.1.2|>=2.1.0-beta1,<2.1.3",
+                "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
                 "theonedemon/phpwhois": "<=4.2.5",
                 "titon/framework": ">=0,<9.9.99",
                 "truckersmp/phpwhois": "<=4.3.1",
@@ -3993,7 +3670,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-02-22T18:40:39+00:00"
+            "time": "2019-02-26T21:14:50+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -4430,6 +4107,69 @@
             "time": "2019-01-16T09:39:14+00:00"
         },
         {
+            "name": "symfony/config",
+            "version": "v4.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/config.git",
+                "reference": "25a2e7abe0d97e70282537292e3df45cf6da7b98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/config/zipball/25a2e7abe0d97e70282537292e3df45cf6da7b98",
+                "reference": "25a2e7abe0d97e70282537292e3df45cf6da7b98",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/filesystem": "~3.4|~4.0",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/finder": "<3.4"
+            },
+            "require-dev": {
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/event-dispatcher": "~3.4|~4.0",
+                "symfony/finder": "~3.4|~4.0",
+                "symfony/yaml": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/yaml": "To use the yaml reference dumper"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Config\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-01-30T11:44:30+00:00"
+        },
+        {
             "name": "symfony/css-selector",
             "version": "v3.4.22",
             "source": {
@@ -4616,6 +4356,56 @@
                 }
             ],
             "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-01-16T20:35:37+00:00"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v4.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "7c16ebc2629827d4ec915a52ac809768d060a4ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/7c16ebc2629827d4ec915a52ac809768d060a4ee",
+                "reference": "7c16ebc2629827d4ec915a52ac809768d060a4ee",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
             "time": "2019-01-16T20:35:37+00:00"
         },
