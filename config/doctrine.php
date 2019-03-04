@@ -18,7 +18,9 @@ declare(strict_types=1);
 use ChartItMD\Model\Type\Uuid64Type;
 use Doctrine\Common\Cache\ApcuCache;
 use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\Migrations\Configuration\Configuration as MConfiguration;
 use Doctrine\ORM\Configuration as ORMConfiguration;
 use Doctrine\ORM\EntityManager;
 use Psr\Container\ContainerInterface;
@@ -27,11 +29,33 @@ use function DI\string;
 
 $doctrine = [
     'ChartItMD.Doctrine.entityDir' => string('{ChartItMD.srcDir}Model/Entity'),
+    'ChartItMD.Doctrine.migrationDir' => string('{ChartItMD.srcDir}Model/Migration'),
     'ChartItMD.Doctrine.proxyDir' => string('{ChartItMD.srcDir}Model/Proxy'),
     'ChartItMD.Doctrine.Parameters.proxyNamespace' => 'ChartItMD\Model\Proxy',
+    'ChartItMD.Doctrine.Parameters.migrationsNamespace' => 'ChartItMD\Model\Migration',
+    'ChartItMD.Doctrine.Parameters.migrationsName' => 'ChartItMD Migrations',
+    'ChartItMD.Doctrine.Parameters.migrationsVersion' => '0.0.1',
     'ChartItMD.Doctrine.Parameters.CustomTypes' => [
         'uuid64' => ['class' => Uuid64Type::class, 'extends' => 'binary'],
     ],
+    'ChartItMD.Doctrine.MConnection' => function (ContainerInterface $dic) {
+        $dbParams = [
+            'driver' => 'pdo_' . $dic->get('ChartItMD.Pdo.Parameters.platform'),
+            'host' => $dic->get('ChartItMD.Pdo.Parameters.hostName'),
+            'user' => $dic->get('ChartItMD.Pdo.Parameters.username'),
+            'password' => $dic->get('ChartItMD.Pdo.Parameters.password'),
+            'dbname' => $dic->get('ChartItMD.Pdo.Parameters.database'),
+        ];
+        return DriverManager::getConnection($dbParams);
+    },
+    MConfiguration::class => function (ContainerInterface $dic): MConfiguration {
+        $conn = $dic->get('ChartItMD.Doctrine.MConnection');
+        $config = new MConfiguration($conn);
+        $config->setName((string)$dic->get('ChartItMD.Doctrine.Parameters.migrationsName'));
+        $config->setMigrationsNamespace((string)$dic->get('ChartItMD.Doctrine.Parameters.migrationsNamespace'));
+        $config->setMigrationsDirectory((string)$dic->get('ChartItMD.Doctrine.migrationDir'));
+        return $config;
+    },
     ORMConfiguration::class => autowire(ORMConfiguration::class),
     EntityManager::class => function (ContainerInterface $dic): EntityManager {
         $isDebug = $dic->get('mode') === 'debug';
@@ -53,7 +77,7 @@ $doctrine = [
             'host' => $dic->get('ChartItMD.Pdo.Parameters.hostName'),
             'user' => $dic->get('ChartItMD.Pdo.Parameters.username'),
             'password' => $dic->get('ChartItMD.Pdo.Parameters.password'),
-            'dbname' => $dic->get('ChartItMD.Pdo.Parameters.database')
+            'dbname' => $dic->get('ChartItMD.Pdo.Parameters.database'),
         ];
         $em = EntityManager::create($dbParams, $config);
         $conn = $em->getConnection();

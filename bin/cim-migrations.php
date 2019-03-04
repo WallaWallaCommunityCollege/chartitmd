@@ -40,6 +40,7 @@ try {
     $conn = $dic->get('ChartItMD.Doctrine.MConnection');
     $config = $dic->get(Configuration::class);
     $name = $dic->get('ChartItMD.Doctrine.Parameters.migrationsName');
+    $version = $dic->get('ChartItMD.Doctrine.Parameters.migrationsVersion');
 } catch (Exception $e) {
     print $e->getTraceAsString();
     exit(1);
@@ -48,7 +49,7 @@ $helperSet = new HelperSet();
 $helperSet->set(new QuestionHelper(), 'question');
 $helperSet->set(new ConnectionHelper($conn), 'db');
 $helperSet->set(new ConfigurationHelper($conn, $config));
-$cli = new Application($name);
+$cli = new Application($name, $version);
 $cli->setCatchExceptions(true);
 $cli->setHelperSet($helperSet);
 try {
