@@ -30,7 +30,7 @@ final class Version20190304034902 extends AbstractMigration {
         $this->addSql('ALTER TABLE vital_signs DROP FOREIGN KEY FK_D79431356B899279');
         $this->addSql('ALTER TABLE user_role DROP FOREIGN KEY FK_2DE8C6A3A76ED395');
         $this->addSql(
-            'CREATE TABLE arterial_blood_gas_lab_report (
+            'CREATE TABLE IF NOT EXISTS arterial_blood_gas_lab_report (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           abg_name VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
           range_minimum NUMERIC(10, 0) NOT NULL, 
@@ -41,7 +41,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE chemistry_chems (
+            'CREATE TABLE IF NOT EXISTS chemistry_chems (
           chemical_id BIGINT AUTO_INCREMENT NOT NULL, 
           chemical_name VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
           INDEX chemical_id (chemical_id), 
@@ -49,7 +49,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE chemistry_lab_report (
+            'CREATE TABLE IF NOT EXISTS chemistry_lab_report (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           chemical_id BIGINT NOT NULL, 
           range_minimum NUMERIC(10, 0) NOT NULL, 
@@ -61,7 +61,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE diagnostic_cardiology (
+            'CREATE TABLE IF NOT EXISTS diagnostic_cardiology (
           diagnosis_id BIGINT AUTO_INCREMENT NOT NULL, 
           patient_id BIGINT NOT NULL, 
           purpose VARCHAR(100) NOT NULL COLLATE utf8mb4_general_ci, 
@@ -73,7 +73,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE diagnostic_imaging (
+            'CREATE TABLE IF NOT EXISTS diagnostic_imaging (
           diagnosis_id BIGINT AUTO_INCREMENT NOT NULL, 
           patient_id BIGINT NOT NULL, 
           purpose VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
@@ -85,7 +85,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE hematology_lab_report (
+            'CREATE TABLE IF NOT EXISTS hematology_lab_report (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           hematology_id BIGINT NOT NULL, 
           range_minimum NUMERIC(10, 0) NOT NULL, 
@@ -97,7 +97,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE hematology_names (
+            'CREATE TABLE IF NOT EXISTS hematology_names (
           name_id BIGINT AUTO_INCREMENT NOT NULL, 
           hematology_name VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
           INDEX name_id (name_id), 
@@ -105,7 +105,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE intake (
+            'CREATE TABLE IF NOT EXISTS intake (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           patient_id BIGINT NOT NULL, 
           orally VARCHAR(8) NOT NULL COLLATE utf8mb4_general_ci, 
@@ -122,7 +122,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE measured_values (
+            'CREATE TABLE IF NOT EXISTS measured_values (
           measured_value_id BIGINT AUTO_INCREMENT NOT NULL, 
           measured_value_type VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
           measured_value_value NUMERIC(10, 0) NOT NULL, 
@@ -133,7 +133,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE medication_administration (
+            'CREATE TABLE IF NOT EXISTS medication_administration (
           admin_id BIGINT AUTO_INCREMENT NOT NULL, 
           patient_id BIGINT NOT NULL, 
           medication VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
@@ -145,7 +145,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE microbiology_lab_report (
+            'CREATE TABLE IF NOT EXISTS microbiology_lab_report (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           name_id BIGINT NOT NULL, 
           range_minimum NUMERIC(10, 0) NOT NULL, 
@@ -157,7 +157,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE microbiology_names (
+            'CREATE TABLE IF NOT EXISTS microbiology_names (
           name_id BIGINT AUTO_INCREMENT NOT NULL, 
           microbiology_name VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
           INDEX name_id (name_id), 
@@ -165,7 +165,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE migrations (
+            'CREATE TABLE IF NOT EXISTS migrations (
           version BIGINT NOT NULL, 
           migration_name VARCHAR(100) DEFAULT NULL COLLATE utf8_general_ci, 
           start_time DATETIME DEFAULT NULL, 
@@ -175,7 +175,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE output (
+            'CREATE TABLE IF NOT EXISTS output (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           patient_id BIGINT NOT NULL, 
           urine BIGINT DEFAULT NULL, 
@@ -194,7 +194,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE patients (
+            'CREATE TABLE IF NOT EXISTS patients (
           patient_id BIGINT AUTO_INCREMENT NOT NULL, 
           gender_id BIGINT NOT NULL, 
           patient_firstname VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
@@ -209,7 +209,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE urinalysis_lab_report (
+            'CREATE TABLE IF NOT EXISTS urinalysis_lab_report (
           report_id BIGINT AUTO_INCREMENT NOT NULL, 
           item_id BIGINT NOT NULL, 
           range_minimum NUMERIC(10, 0) NOT NULL, 
@@ -221,17 +221,17 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
         $this->addSql(
-            'CREATE TABLE urinalysis_report_fields (
+            'CREATE TABLE IF NOT EXISTS urinalysis_report_fields (
           item_id BIGINT AUTO_INCREMENT NOT NULL, 
           report_name VARCHAR(50) NOT NULL COLLATE utf8mb4_general_ci, 
           INDEX item_id (item_id), 
           PRIMARY KEY(item_id)
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\''
         );
-        $this->addSql('DROP TABLE patient');
-        $this->addSql('DROP TABLE patient_height');
-        $this->addSql('DROP TABLE patient_weight');
-        $this->addSql('DROP TABLE user');
+        $this->addSql('DROP TABLE IF EXISTS patient');
+        $this->addSql('DROP TABLE IF EXISTS patient_height');
+        $this->addSql('DROP TABLE IF EXISTS patient_weight');
+        $this->addSql('DROP TABLE IF EXISTS user');
         $this->addSql('DROP INDEX gender_all ON gender');
         $this->addSql('ALTER TABLE gender DROP PRIMARY KEY');
         $this->addSql(
@@ -433,7 +433,7 @@ final class Version20190304034902 extends AbstractMigration {
             'Migration can only be executed safely on \'mysql\'.'
         );
         $this->addSql(
-            'CREATE TABLE patient (
+            'CREATE TABLE IF NOT EXISTS patient (
           id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
           gender_id BINARY(22) DEFAULT NULL COMMENT \'(DC2Type:uuid64)\', 
           created_at DATETIME NOT NULL, 
@@ -446,7 +446,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
         );
         $this->addSql(
-            'CREATE TABLE patient_height (
+            'CREATE TABLE IF NOT EXISTS patient_height (
           id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
           patient_id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
           created_at DATETIME NOT NULL, 
@@ -456,7 +456,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
         );
         $this->addSql(
-            'CREATE TABLE patient_weight (
+            'CREATE TABLE IF NOT EXISTS patient_weight (
           id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
           patient_id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
           created_at DATETIME NOT NULL, 
@@ -466,7 +466,7 @@ final class Version20190304034902 extends AbstractMigration {
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
         );
         $this->addSql(
-            'CREATE TABLE user (
+            'CREATE TABLE IF NOT EXISTS user (
           id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
           created_at DATETIME NOT NULL, 
           name VARCHAR(100) NOT NULL, 
@@ -476,41 +476,23 @@ final class Version20190304034902 extends AbstractMigration {
           PRIMARY KEY(id)
         ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
         );
-        $this->addSql(
-            'ALTER TABLE 
-          patient 
-        ADD 
-          CONSTRAINT FK_1ADAD7EB708A0E0 FOREIGN KEY (gender_id) REFERENCES gender (id)'
-        );
-        $this->addSql(
-            'ALTER TABLE 
-          patient_height 
-        ADD 
-          CONSTRAINT FK_FE030CF56B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)'
-        );
-        $this->addSql(
-            'ALTER TABLE 
-          patient_weight 
-        ADD 
-          CONSTRAINT FK_C83BCBB6B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)'
-        );
-        $this->addSql('DROP TABLE arterial_blood_gas_lab_report');
-        $this->addSql('DROP TABLE chemistry_chems');
-        $this->addSql('DROP TABLE chemistry_lab_report');
-        $this->addSql('DROP TABLE diagnostic_cardiology');
-        $this->addSql('DROP TABLE diagnostic_imaging');
-        $this->addSql('DROP TABLE hematology_lab_report');
-        $this->addSql('DROP TABLE hematology_names');
-        $this->addSql('DROP TABLE intake');
-        $this->addSql('DROP TABLE measured_values');
-        $this->addSql('DROP TABLE medication_administration');
-        $this->addSql('DROP TABLE microbiology_lab_report');
-        $this->addSql('DROP TABLE microbiology_names');
-        $this->addSql('DROP TABLE migrations');
-        $this->addSql('DROP TABLE output');
-        $this->addSql('DROP TABLE patients');
-        $this->addSql('DROP TABLE urinalysis_lab_report');
-        $this->addSql('DROP TABLE urinalysis_report_fields');
+        $this->addSql('DROP TABLE IF EXISTS arterial_blood_gas_lab_report');
+        $this->addSql('DROP TABLE IF EXISTS chemistry_chems');
+        $this->addSql('DROP TABLE IF EXISTS chemistry_lab_report');
+        $this->addSql('DROP TABLE IF EXISTS diagnostic_cardiology');
+        $this->addSql('DROP TABLE IF EXISTS diagnostic_imaging');
+        $this->addSql('DROP TABLE IF EXISTS hematology_lab_report');
+        $this->addSql('DROP TABLE IF EXISTS hematology_names');
+        $this->addSql('DROP TABLE IF EXISTS intake');
+        $this->addSql('DROP TABLE IF EXISTS measured_values');
+        $this->addSql('DROP TABLE IF EXISTS medication_administration');
+        $this->addSql('DROP TABLE IF EXISTS microbiology_lab_report');
+        $this->addSql('DROP TABLE IF EXISTS microbiology_names');
+        $this->addSql('DROP TABLE IF EXISTS migrations');
+        $this->addSql('DROP TABLE IF EXISTS output');
+        $this->addSql('DROP TABLE IF EXISTS patients');
+        $this->addSql('DROP TABLE IF EXISTS urinalysis_lab_report');
+        $this->addSql('DROP TABLE IF EXISTS urinalysis_report_fields');
         $this->addSql('ALTER TABLE gender MODIFY gender_id BIGINT NOT NULL');
         $this->addSql('DROP INDEX gender_id ON gender');
         $this->addSql('ALTER TABLE gender DROP PRIMARY KEY');
@@ -662,11 +644,22 @@ final class Version20190304034902 extends AbstractMigration {
         $this->addSql('ALTER TABLE user_role ADD PRIMARY KEY (role_id, user_id)');
         $this->addSql('DROP INDEX fk_user_role_role ON user_role');
         $this->addSql('CREATE INDEX fk_role_id ON user_role (role_id)');
-        $this->addSql('ALTER TABLE vital_signs MODIFY vital_sign_report_id BIGINT NOT NULL');
+        $this->addSql('ALTER TABLE vital_signs MODIFY vital_sign_report_id INT UNSIGNED NOT NULL');
         $this->addSql('ALTER TABLE vital_signs DROP PRIMARY KEY');
         $this->addSql(
+        /** @lang MariaDB */
             'ALTER TABLE 
           vital_signs 
+        DROP 
+          vital_sign_report_id, 
+        DROP 
+          blood_pressure_top_number, 
+        DROP 
+          blood_pressure_bottom_number, 
+        DROP 
+          pulse, 
+        DROP 
+          respiration, 
         ADD 
           id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
         ADD 
@@ -679,32 +672,40 @@ final class Version20190304034902 extends AbstractMigration {
           respiration_rate SMALLINT UNSIGNED NOT NULL, 
         ADD 
           systolic NUMERIC(3, 0) NOT NULL, 
-        DROP 
-          vital_sign_report_id, 
-        DROP 
-          blood_pressure_top_number, 
-        DROP 
-          blood_pressure_bottom_number, 
-        DROP 
-          pulse, 
-        DROP 
-          respiration, 
-          CHANGE patient_id patient_id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
-          CHANGE temperature temperature NUMERIC(4, 1) NOT NULL, 
-          CHANGE temperature_method temperature_method CHAR(20) NOT NULL, 
-          CHANGE oxygen_saturation oxygen_saturation SMALLINT UNSIGNED NOT NULL, 
-          CHANGE pain pain SMALLINT UNSIGNED NOT NULL, 
-          CHANGE pain_location pain_location CHAR(20) NOT NULL, 
-          CHANGE time created_at DATETIME NOT NULL'
+        CHANGE patient_id patient_id BINARY(22) NOT NULL COMMENT \'(DC2Type:uuid64)\', 
+        CHANGE temperature temperature NUMERIC(4, 1) NOT NULL, 
+        CHANGE temperature_method temperature_method CHAR(20) NOT NULL, 
+        CHANGE oxygen_saturation oxygen_saturation SMALLINT UNSIGNED NOT NULL, 
+        CHANGE pain pain SMALLINT UNSIGNED NOT NULL, 
+        CHANGE pain_location pain_location CHAR(20) NOT NULL, 
+        CHANGE time created_at DATETIME NOT NULL'
         );
+        $this->addSql('ALTER TABLE vital_signs ADD PRIMARY KEY (id)');
+        $this->addSql('DROP INDEX patient_id ON vital_signs');
+        $this->addSql('CREATE INDEX fk_patient_id ON vital_signs (patient_id)');
         $this->addSql(
             'ALTER TABLE 
           vital_signs 
         ADD 
           CONSTRAINT FK_D79431356B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)'
         );
-        $this->addSql('ALTER TABLE vital_signs ADD PRIMARY KEY (id)');
-        $this->addSql('DROP INDEX patient_id ON vital_signs');
-        $this->addSql('CREATE INDEX fk_patient_id ON vital_signs (patient_id)');
+        $this->addSql(
+            'ALTER TABLE 
+          patient 
+        ADD 
+          CONSTRAINT FK_1ADAD7EB708A0E0 FOREIGN KEY (gender_id) REFERENCES gender (id)'
+        );
+        $this->addSql(
+            'ALTER TABLE 
+          patient_height 
+        ADD 
+          CONSTRAINT FK_FE030CF56B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)'
+        );
+        $this->addSql(
+            'ALTER TABLE 
+          patient_weight 
+        ADD 
+          CONSTRAINT FK_C83BCBB6B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)'
+        );
     }
 }
