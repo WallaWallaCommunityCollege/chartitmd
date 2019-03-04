@@ -4,7 +4,7 @@ declare(strict_types=1);
 /**
  * Contains doctrine settings.
  *
- * PHP version 7.0+
+ * PHP version 7.2+
  *
  * LICENSE:
  * This file is part of ChartItMD.

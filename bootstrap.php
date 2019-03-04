@@ -3,7 +3,7 @@ declare(strict_types=1);
 /**
  * Contains Bootstrap.
  *
- * PHP version 7.0+
+ * PHP version 7.2+
  *
  */
 /*
