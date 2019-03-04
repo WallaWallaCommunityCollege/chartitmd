@@ -23,8 +23,10 @@ use Doctrine\DBAL\Types\Type;
 use Doctrine\Migrations\Configuration\Configuration as MConfiguration;
 use Doctrine\ORM\Configuration as ORMConfiguration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 use function DI\autowire;
+use function DI\get;
 use function DI\string;
 
 $doctrine = [
@@ -92,5 +94,6 @@ $doctrine = [
         $conn->exec((string)$dic->get('ChartItMD.Pdo.Parameters.initialization'));
         return $em;
     },
+    EntityManagerInterface::class => get(EntityManager::class),
 ];
 return $doctrine;

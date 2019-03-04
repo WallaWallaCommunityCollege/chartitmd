@@ -20,6 +20,8 @@ use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
 use Doctrine\Migrations\Configuration\Configuration;
 use Doctrine\Migrations\Tools\Console\Command;
 use Doctrine\Migrations\Tools\Console\Helper\ConfigurationHelper;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use josegonzalez\Dotenv\Loader;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Exception\LogicException as SLogicException;
@@ -39,6 +41,7 @@ try {
     $dic->get(Loader::class);
     $conn = $dic->get('ChartItMD.Doctrine.MConnection');
     $config = $dic->get(Configuration::class);
+    $entityManager = $dic->get(EntityManagerInterface::class);
     $name = $dic->get('ChartItMD.Doctrine.Parameters.migrationsName');
     $version = $dic->get('ChartItMD.Doctrine.Parameters.migrationsVersion');
 } catch (Exception $e) {
@@ -48,6 +51,7 @@ try {
 $helperSet = new HelperSet();
 $helperSet->set(new QuestionHelper(), 'question');
 $helperSet->set(new ConnectionHelper($conn), 'db');
+$helperSet->set(new EntityManagerHelper($entityManager), 'em');
 $helperSet->set(new ConfigurationHelper($conn, $config));
 $cli = new Application($name, $version);
 $cli->setCatchExceptions(true);
@@ -55,6 +59,7 @@ $cli->setHelperSet($helperSet);
 try {
     $cli->addCommands(
         [
+            new Command\DiffCommand(),
             new Command\DumpSchemaCommand(),
             new Command\ExecuteCommand(),
             new Command\GenerateCommand(),
@@ -62,6 +67,7 @@ try {
             new Command\MigrateCommand(),
             new Command\RollupCommand(),
             new Command\StatusCommand(),
+            new Command\UpToDateCommand(),
             new Command\VersionCommand(),
         ]
     );
