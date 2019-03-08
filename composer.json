@@ -49,6 +49,7 @@
         "ext-gmp": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
+        "ext-sodium": "*",
         "doctrine/migrations": "^2.0",
         "doctrine/orm": "^2.6",
         "dragonrun1/file_path_normalizer": "^2.1",
