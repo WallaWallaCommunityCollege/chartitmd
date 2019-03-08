@@ -23,8 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class PatientWeight.
  *
  * @ORM\Table(name="patient_weight", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
- * @ORM\Entity
- * Todo Need to add repository.
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientWeightRepository")
  */
 class PatientWeight {
     use Uuid4Trait;
@@ -41,6 +40,30 @@ class PatientWeight {
         $this->weight = $weight;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+    }
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeImmutable {
+        return $this->createdAt;
+    }
+    /**
+     * @return string
+     */
+    public function getId(): string {
+        return $this->id;
+    }
+    /**
+     * @return Patient
+     */
+    public function getPatient(): Patient {
+        return $this->patient;
+    }
+    /**
+     * @return string
+     */
+    public function getWeight(): string {
+        return $this->weight;
     }
     /**
      * @var \DateTimeImmutable

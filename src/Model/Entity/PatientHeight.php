@@ -23,8 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class PatientHeight.
  *
  * @ORM\Table(name="patient_height", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
- * @ORM\Entity
- * Todo Need to add repository.
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientHeightRepository")
  */
 class PatientHeight {
     use Uuid4Trait;
@@ -41,6 +40,39 @@ class PatientHeight {
         $this->height = $height;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+    }
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeImmutable {
+        return $this->createdAt;
+    }
+    /**
+     * @return string
+     */
+    public function getHeight(): string {
+        return $this->height;
+    }
+    /**
+     * @return string
+     */
+    public function getId(): string {
+        return $this->id;
+    }
+    /**
+     * @return Patient
+     */
+    public function getPatient(): Patient {
+        return $this->patient;
+    }
+    /**
+     * @param string $value
+     *
+     * @return self Fluent interface
+     */
+    public function setHeight(string $value): self {
+        $this->height = $value;
+        return $this;
     }
     /**
      * @var \DateTimeImmutable

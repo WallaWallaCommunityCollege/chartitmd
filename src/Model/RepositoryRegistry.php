@@ -22,11 +22,17 @@ declare(strict_types=1);
 
 namespace ChartItMD\Model;
 
+use ChartItMD\Model\Entity\Patient;
+use ChartItMD\Model\Entity\PatientHeight;
+use ChartItMD\Model\Entity\PatientWeight;
 use ChartItMD\Model\Entity\Permission;
 use ChartItMD\Model\Entity\Role;
 use ChartItMD\Model\Entity\RoleHierarchy;
 use ChartItMD\Model\Entity\RolePermission;
 use ChartItMD\Model\Entity\UserRole;
+use ChartItMD\Model\Repository\PatientHeightRepository;
+use ChartItMD\Model\Repository\PatientRepository;
+use ChartItMD\Model\Repository\PatientWeightRepository;
 use ChartItMD\Model\Repository\PermissionRepository;
 use ChartItMD\Model\Repository\RoleHierarchyRepository;
 use ChartItMD\Model\Repository\RolePermissionRepository;
@@ -37,6 +43,36 @@ use Doctrine\ORM\EntityManagerInterface;
 class RepositoryRegistry {
     public function __construct(EntityManagerInterface $entityManager) {
         $this->entityManager = $entityManager;
+    }
+    /**
+     * @return PatientHeightRepository
+     */
+    public function getPatientHeightRepository(): PatientHeightRepository {
+        /**
+         * @var PatientHeightRepository $phr
+         */
+        $phr = $this->entityManager->getRepository(PatientHeight::class);
+        return $phr;
+    }
+    /**
+     * @return PatientRepository
+     */
+    public function getPatientRepository(): PatientRepository {
+        /**
+         * @var PatientRepository $pr
+         */
+        $pr = $this->entityManager->getRepository(Patient::class);
+        return $pr;
+    }
+    /**
+     * @return PatientWeightRepository
+     */
+    public function getPatientWeightRepository(): PatientWeightRepository {
+        /**
+         * @var PatientWeightRepository $pwr
+         */
+        $pwr = $this->entityManager->getRepository(PatientWeight::class);
+        return $pwr;
     }
     /**
      * @return PermissionRepository
