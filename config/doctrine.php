@@ -15,6 +15,12 @@ declare(strict_types=1);
  * @license   Proprietary
  */
 
+use ChartItMD\Model\Entity\Patient;
+use ChartItMD\Model\Entity\PatientHeight;
+use ChartItMD\Model\Entity\PatientWeight;
+use ChartItMD\Model\Repository\PatientHeightRepository;
+use ChartItMD\Model\Repository\PatientRepository;
+use ChartItMD\Model\Repository\PatientWeightRepository;
 use ChartItMD\Model\Type\Uuid64Type;
 use Doctrine\Common\Cache\ApcuCache;
 use Doctrine\Common\Cache\ArrayCache;
@@ -95,5 +101,17 @@ $doctrine = [
         return $em;
     },
     EntityManagerInterface::class => get(EntityManager::class),
+    PatientRepository::class => function (ContainerInterface $dic): PatientRepository {
+        return $dic->get(EntityManager::class)
+                   ->getRepository(Patient::class);
+    },
+    PatientHeightRepository::class => function (ContainerInterface $dic): PatientHeightRepository {
+        return $dic->get(EntityManager::class)
+                   ->getRepository(PatientHeight::class);
+    },
+    PatientWeightRepository::class => function (ContainerInterface $dic): PatientWeightRepository {
+        return $dic->get(EntityManager::class)
+                   ->getRepository(PatientWeight::class);
+    },
 ];
 return $doctrine;

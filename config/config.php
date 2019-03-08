@@ -26,6 +26,7 @@ use function DI\string;
 $settings = [
     // Needed by potievdev/slim-rbac and possibly other middleware.
     'determineRouteBeforeAppMiddleware' => true,
+    'settings.determineRouteBeforeAppMiddleware' => true,
     'mode' => 'production',
     // Converts directory to *nix style '/' since they work everywhere in PHP.
     'ChartItMD.baseDir' => dirname(str_replace('\\', '/', __DIR__)) . '/',
@@ -38,6 +39,7 @@ $settings = [
 if ('cli-server' === PHP_SAPI) {
     $settings['mode'] = 'debug';
     $settings['displayErrorDetails'] = true;
+    $settings['settings.displayErrorDetails'] = true;
 }
 return $settings;
 
