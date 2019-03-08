@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+    <meta content="connect-src 'self' http://localhost/ https://www.chartItMD.com/; default-src 'self'"
+          http-equiv="Content-Security-Policy">
+    <title>ChartItMD Client</title>
+    <link href="../assets/960-Grid-System/code/css/reset.css" rel="stylesheet">
+    <link href="../assets/960-Grid-System/code/css/960_12_col.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <table>
+        <caption class="grid_12">Patient</caption>
+        <tr>
+            <th>Last name:</th>
+            <th>First name:</th>
+            <th>Age:</th>
+            <th>Gender:</th>
+            <th>Date of Birth:</th>
+            <th>Patient ID:</th>
+        </tr>
+        <tr id="patient-ident">
+            <td><input id="patient-lastName" name="patient-lastName" type="text" value=""></td>
+            <td><input id="patient-firstName" name="patient-firstName" type="text" value=""></td>
+            <td><input id="patient-age" name="patient-age" type="text" value=""></td>
+            <td><input id="patient-sex" name="patient-sex" type="text" value=""></td>
+            <td><input id="patient-dob" name="patient-dob" type="text" value=""></td>
+            <td class="uuid64"><input id="patient-id" name="patient-id" type="text" value=""></td>
+        </tr>
+        <tr>
+            <th>Isolation:</th>
+            <th>Height (cm):</th>
+            <th>Weight (kg):</th>
+            <th>BSA (m<sup>2</sup>):</th>
+            <th>BMI (kg/m<sup>2</sup>):</th>
+            <th>Religion:</th>
+        </tr>
+        <tr id="patient-measurements">
+            <td>-</td>
+            <td><input id="patient-height" name="patient-height" type="text" value=""></td>
+            <td><input id="patient-weight" name="patient-weight" type="text" value=""></td>
+            <td><input id="patient-bsa" name="patient-bsa" type="text" value=""></td>
+            <td><input id="patient-bmi" name="patient-bmi" type="text" value=""></td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th colspan="6"><strong>Code Status:</strong></th>
+        </tr>
+        <tr>
+            <td><label><input name="code-option" type="radio" value="dnr">&nbsp;<span>DNR</span></label></td>
+            <td><label><input multiple name="code-option" type="radio" value="full">&nbsp;<span>Full</span></label></td>
+            <td><label><input name="code-option" type="radio" value="limited">&nbsp;<span>Limited</span></label></td>
+            <td><label><input name="code-status" type="checkbox"
+                              value="intubation">&nbsp;<span>Intubation</span></label></td>
+            <td><label><input name="code-status" type="checkbox"
+                              value="defibrillation">&nbsp;<span>Defibrillation</span></label></td>
+            <td><label><input name="code-status" type="checkbox" value="chest-compressions">&nbsp;<span>Chest Compressions</span></label>
+            </td>
+        </tr>
+    </table>
+</header>
+<main>
+    <table>
+        <caption class="grid_12">Patient Profile</caption>
+        <colgroup>
+            <col class="grid_8">
+            <col class="grid_4">
+        </colgroup>
+        <tr>
+            <th>Provider:</th>
+            <th>Role:</th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</main>
+<!--<nav>-->
+<!--    <ul>-->
+<!--        <li><a href="#"></a> </li>-->
+<!--    </ul>-->
+<!--</nav>-->
+<script src="index.js"></script>
+</body>
+</html>

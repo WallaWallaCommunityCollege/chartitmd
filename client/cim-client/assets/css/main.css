@@ -1,0 +1,52 @@
+body {
+    /*background-image: url("../960-Grid-System/code/img/12_col.gif");*/
+    margin: .5em auto .5em 10px;
+}
+
+caption {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+th {
+    font-weight: normal;
+    background-color: #d0ffd0;
+}
+
+td {
+    font-weight: bold;
+}
+
+td, th {
+    border-left: gray solid 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: .25em .5em;
+    width: 140px;
+}
+
+tr {
+    width: 100%;
+}
+
+table {
+    border: black solid 2px;
+    border-collapse: collapse;
+    box-shadow: 5px 5px 5px lightgray;
+    margin: .5em 10px;
+    width: 940px;
+}
+
+.plain {
+    font-weight: normal;
+}
+
+.uuid64 {
+    font-size: 70%;
+    font-weight: normal;
+}
+
+input {
+    width: 120px;
+}
