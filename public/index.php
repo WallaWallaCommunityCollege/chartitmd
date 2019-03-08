@@ -1,16 +1,5 @@
 <?php
 declare(strict_types=1);
-if ('cli-server' === PHP_SAPI) {
-    // To help the built-in PHP dev server, check if the request was actually for
-    // something which should probably be served as a static file.
-    // This closely matches what the rewrite rules in .htaccess file for Apache
-    // does for us.
-    $url = parse_url($_SERVER['REQUEST_URI']);
-    $file = __DIR__ . $url['path'];
-    if (is_file($file)) {
-        return false;
-    }
-}
 $root_path = str_replace('\\', '/', dirname(__DIR__));
 /** @noinspection PhpIncludeInspection */
 require $root_path . '/bootstrap.php';
