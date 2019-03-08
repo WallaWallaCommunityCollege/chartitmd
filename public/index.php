@@ -17,19 +17,17 @@ require $root_path . '/bootstrap.php';
 
 use ChartItMD\ChartItMD;
 
-session_start();
+//session_start();
 try {
     $app = new ChartItMD();
 } catch (Exception $e) {
     print $e->getTraceAsString();
     exit(1);
 }
-// Set up dependencies
-//require $root_path . '/src/dependencies.php';
 // Register middleware
-//require $root_path . '/src/middleware.php';
+require $root_path . '/src/middleware.php';
 // Register routes
-//require $root_path . '/src/routes.php';
+require $root_path . '/src/routes.php';
 // Run app
 try {
     $app->run();
