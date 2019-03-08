@@ -230,4 +230,16 @@ trait Uuid4Trait {
         '111110' => '_',
         '111111' => '-',
     ];
+    /**
+     * Converts normal UUID v4 into custom base 64
+     *
+     * @param string $uuid
+     *
+     * @return string
+     * @throws \Exception
+     */
+    protected function fromFullToBase64(string $uuid): string {
+        $binary = sodium_hex2bin($uuid, '{-}');
+        return $this->asBase64($binary);
+    }
 }
