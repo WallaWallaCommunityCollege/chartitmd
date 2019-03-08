@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace ChartItMD\Model\Type;
 
+use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\BinaryType;
@@ -24,6 +25,7 @@ use Doctrine\DBAL\Types\BinaryType;
  * Custom doctrine UUID v4 (random) datatype using custom base 64 encoding.
  */
 class Uuid64Type extends BinaryType {
+    use Uuid4Trait;
     /**
      * Gets the name of this type.
      *
@@ -53,5 +55,17 @@ class Uuid64Type extends BinaryType {
      */
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool {
         return true;
+    }
+    /**
+     * Converts a value from its database representation to its PHP representation
+     * of this type.
+     *
+     * @param mixed            $value    The value to convert.
+     * @param AbstractPlatform $platform The currently used database platform.
+     *
+     * @return mixed The PHP representation of the value.
+     */
+    public function convertToPHPValue($value, AbstractPlatform $platform) {
+        return $value;
     }
 }
