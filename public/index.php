@@ -5,6 +5,7 @@ $root_path = str_replace('\\', '/', dirname(__DIR__));
 require $root_path . '/bootstrap.php';
 
 use ChartItMD\ChartItMD;
+use josegonzalez\Dotenv\Loader;
 
 //session_start();
 try {
@@ -13,6 +14,9 @@ try {
     print $e->getTraceAsString();
     exit(1);
 }
+// Load environment from dot_env settings.
+$app->getContainer()
+    ->get(Loader::class);
 // Register middleware
 require $root_path . '/src/middleware.php';
 // Register routes

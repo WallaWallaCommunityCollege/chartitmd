@@ -30,9 +30,11 @@ $dotEnv = [
         /** @var Loader $loader */
         $loader = new Loader($dic->get('ChartItMD.DotEnv.Parameters.filePaths'));
         $loader->parse()
-               ->toEnv()
-               ->putenv();
+               ->toEnv(true)
+               ->putenv(true)
+               ->toServer(true)
+               ->apacheSetenv(true);
         return $loader;
-    }
+    },
 ];
 return $dotEnv;
