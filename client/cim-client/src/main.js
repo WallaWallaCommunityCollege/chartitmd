@@ -15,8 +15,8 @@ function createWindow() {
         width: 1000,
         height: 700,
         useContentSize: true,
-        minWidth: 960,
-        minHeight: 480,
+        minWidth: 600,
+        minHeight: 400,
         titleText: 'ChartItMD Client',
         webPreferences: {
             allowRunningInsecureContent: false,
@@ -41,62 +41,11 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null
     });
-    let menu = Menu.buildFromTemplate([
-        {
-            label: 'File',
-            submenu: [
-                {
-                    label: 'Exit',
-                    click() {
-                        app.quit();
-                    }
-                },
-            ]
-        },
-        {
-            label: 'View',
-            submenu: [
-                {
-                    label: 'Dev Tools',
-                    click() {
-                        win.webContents.openDevTools();
-                    }
-                }
-            ]
-        },
-        {
-            label: 'Help',
-            submenu: [
-                {
-                    label: 'About',
-                    click() {
-                        let aboutOptions = {
-                            height: 480,
-                            minHeight: 480,
-                            minWidth: 960,
-                            parent: win,
-                            useContentSize: true,
-                            width: 640,
-                            webPreferences: {
-                                allowRunningInsecureContent: false,
-                                webSecurity: true,
-                                devTools: true,
-                                nodeIntegration: true
-                            }
-                        };
-                        let about = new BrowserWindow(aboutOptions);
-                        about.loadURL(url.format({
-                            pathname: path.join(__dirname, 'src/about.html'),
-                            protocol: 'file:',
-                            slashes: true
-                        }));
-                    }
-                }
-            ]
-        }
-    ]);
-    Menu.setApplicationMenu(menu);
+    module.exports.win = win;
+    require('./appMenu');
 }
+
+module.exports.app = app;
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
