@@ -3,10 +3,9 @@ const path = require('path');
 const url = require('url');
 const axios = require('axios');
 
-let test_it = document.getElementById('test-it');
-
 function getPatientAsJson() {
-    axios.get('http://localhost/patient/2Y9ovLbO93RUekOOu75TV5')
+    // TODO Need to update to use env var here from dotnet for host name.
+    axios.get('https://www.chartitmd.com/~dragonrun1/public/patient/2Y9ovLbO93RUekOOu75TV5')
         .then(res => {
             const patient = res.data;
             patient.age = getAge(patient.dob);
@@ -28,12 +27,7 @@ function getPatientAsJson() {
             for (let i = 0; i < order.length; i++) {
                 let inp = document.getElementById('patient-' + order[i]);
                 inp.setAttribute('value', patient[order[i]]);
-                // patient_ident['patient-' + order[i]].innerHTML = patient[order[i]];
             }
-            // document.getElementById('patient-bmi').innerHTML = patient.bmi.toFixed(1);
-            // document.getElementById('patient-bsa').innerHTML = patient.bsa.toFixed(1);
-            // document.getElementById('patient-height').innerHTML = patient.height;
-            // document.getElementById('patient-weight').innerHTML = patient.weight;
         });
 }
 
