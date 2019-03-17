@@ -35,16 +35,32 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RolePermissionRepository")
  */
 class RolePermission {
-    public function __construct(Role $role, Permission $permission) {
+    /**
+     * RolePermission constructor.
+     *
+     * @param User       $createdBy
+     * @param Role       $role
+     * @param Permission $permission
+     *
+     * @throws \Exception
+     */
+    public function __construct(User $createdBy, Role $role, Permission $permission) {
         $this->permission = $permission;
         $this->role = $role;
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return \DateTimeImmutable
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return Permission
@@ -64,6 +80,13 @@ class RolePermission {
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+    /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
     /**
      * @var Permission
      *

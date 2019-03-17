@@ -42,7 +42,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class User.
  *
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="idx_name", columns={"name"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class User {

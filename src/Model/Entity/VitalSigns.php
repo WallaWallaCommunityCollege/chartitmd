@@ -31,14 +31,100 @@ class VitalSigns {
     /**
      * VitalSigns constructor.
      *
+     * @param User    $createdBy
      * @param Patient $patient
      *
      * @throws \Exception
      */
-    public function __construct(Patient $patient) {
+    public function __construct(User $createdBy, Patient $patient) {
         $this->patient = $patient;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
+    }
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeImmutable {
+        return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
+    }
+    /**
+     * @return string
+     */
+    public function getDiastolic(): string {
+        return $this->diastolic;
+    }
+    /**
+     * @return string
+     */
+    public function getId(): string {
+        return $this->id;
+    }
+    /**
+     * @return string
+     */
+    public function getOxygenLocation(): string {
+        return $this->oxygenLocation;
+    }
+    /**
+     * @return int
+     */
+    public function getOxygenSaturation(): int {
+        return $this->oxygenSaturation;
+    }
+    /**
+     * @return int
+     */
+    public function getPain(): int {
+        return $this->pain;
+    }
+    /**
+     * @return string
+     */
+    public function getPainLocation(): string {
+        return $this->painLocation;
+    }
+    /**
+     * @return Patient
+     */
+    public function getPatient(): Patient {
+        return $this->patient;
+    }
+    /**
+     * @return int
+     */
+    public function getPulseRate(): int {
+        return $this->pulseRate;
+    }
+    /**
+     * @return int
+     */
+    public function getRespirationRate(): int {
+        return $this->respirationRate;
+    }
+    /**
+     * @return string
+     */
+    public function getSystolic(): string {
+        return $this->systolic;
+    }
+    /**
+     * @return string
+     */
+    public function getTemperature(): string {
+        return $this->temperature;
+    }
+    /**
+     * @return string
+     */
+    public function getTemperatureMethod(): string {
+        return $this->temperatureMethod;
     }
     /**
      * @var \DateTimeImmutable
@@ -47,9 +133,16 @@ class VitalSigns {
      */
     private $createdAt;
     /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
+    /**
      * @var string $diastolic (bottom number)
      *
-     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=false)
+     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=true)
      */
     private $diastolic;
     /**
@@ -64,25 +157,25 @@ class VitalSigns {
     /**
      * @var string
      *
-     * @ORM\Column(name="oxygen_location", type="string", length=20, nullable=false, options={"fixed": true})
+     * @ORM\Column(name="oxygen_location", type="string", length=20, nullable=true, options={"fixed": true})
      */
     private $oxygenLocation;
     /**
      * @var int $oxygenSaturation Peripheral oxygen saturation (SpO2) as %.
      *
-     * @ORM\Column(name="oxygen_saturation", type="smallint", nullable=false, options={"unsigned": true})
+     * @ORM\Column(name="oxygen_saturation", type="smallint", nullable=true, options={"unsigned": true})
      */
     private $oxygenSaturation;
     /**
      * @var int $pain
      *
-     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
+     * @ORM\Column(type="smallint", nullable=true, options={"unsigned": true})
      */
     private $pain;
     /**
      * @var string
      *
-     * @ORM\Column(name="pain_location", type="string", length=20, nullable=false, options={"fixed": true})
+     * @ORM\Column(name="pain_location", type="string", length=20, nullable=true, options={"fixed": true})
      */
     private $painLocation;
     /**
@@ -95,31 +188,31 @@ class VitalSigns {
     /**
      * @var int $pulseRate Beat Per Minute (BPM).
      *
-     * @ORM\Column(name="pulse_rate", type="smallint", nullable=false, options={"unsigned": true})
+     * @ORM\Column(name="pulse_rate", type="smallint", nullable=true, options={"unsigned": true})
      */
     private $pulseRate;
     /**
      * @var int $respirationRate
      *
-     * @ORM\Column(name="respiration_rate", type="smallint", nullable=false, options={"unsigned": true})
+     * @ORM\Column(name="respiration_rate", type="smallint", nullable=true, options={"unsigned": true})
      */
     private $respirationRate;
     /**
      * @var string $systolic (top number)
      *
-     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=false)
+     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=true)
      */
     private $systolic;
     /**
      * @var string
      *
-     * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
+     * @ORM\Column(type="decimal", precision=4, scale=1, nullable=true)
      */
     private $temperature;
     /**
      * @var string
      *
-     * @ORM\Column(name="temperature_method", type="string", length=20, nullable=false, options={"fixed": true})
+     * @ORM\Column(name="temperature_method", type="string", length=20, nullable=true, options={"fixed": true})
      */
     private $temperatureMethod;
 }

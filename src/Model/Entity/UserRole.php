@@ -23,7 +23,6 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * UserRole
@@ -36,16 +35,32 @@ use Doctrine\ORM\Mapping\ManyToOne;
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRoleRepository")
  */
 class UserRole {
-    public function __construct(User $user, Role $role) {
+    /**
+     * UserRole constructor.
+     *
+     * @param User $createdBy
+     * @param User $user
+     * @param Role $role
+     *
+     * @throws \Exception
+     */
+    public function __construct(User $createdBy, User $user, Role $role) {
         $this->role = $role;
         $this->user = $user;
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return \DateTimeImmutable
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return Role
@@ -66,17 +81,24 @@ class UserRole {
      */
     private $createdAt;
     /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
+    /**
      * @var Role
      *
      * @ORM\Id
-     * @ManyToOne(targetEntity="Role")
+     * @ORM\ManyToOne(targetEntity="Role")
      */
     private $role;
     /**
      * @var User
      *
      * @ORM\Id
-     * @ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
 }

@@ -34,10 +34,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RoleHierarchyRepository")
  */
 class RoleHierarchy {
-    public function __construct(Role $parent, Role $child) {
+    public function __construct(User $createdBy, Role $parent, Role $child) {
         $this->parent = $parent;
         $this->child = $child;
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return string
@@ -50,6 +51,12 @@ class RoleHierarchy {
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return string
@@ -70,6 +77,13 @@ class RoleHierarchy {
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+    /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
     /**
      * @var Role
      *
