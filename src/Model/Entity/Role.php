@@ -37,20 +37,28 @@ class Role {
     /**
      * Role constructor.
      *
+     * @param User   $createdBy
      * @param string $name
      *
      * @throws \Exception
      */
-    public function __construct(string $name) {
+    public function __construct(User $createdBy, string $name) {
         $this->name = $name;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return \DateTimeImmutable
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return string
@@ -113,6 +121,13 @@ class Role {
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+    /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
     /**
      * @var string
      *

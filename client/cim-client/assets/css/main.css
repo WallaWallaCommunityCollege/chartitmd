@@ -1,12 +1,31 @@
-body {
-    /*background-image: url("../960-Grid-System/code/img/12_col.gif");*/
-    margin: .5em auto .5em 10px;
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: normal;
+    src: url("../font/SourceCodePro-Regular.otf.woff") format("woff");
 }
 
-caption {
-    text-align: left;
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: normal;
+    font-style: italic;
+    src: url("../font/SourceCodePro-It.otf.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Source Code Pro";
     font-weight: bold;
-    font-size: 20px;
+    src: url("../font/SourceCodePro-Bold.otf.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: 900;
+    src: url("../font/SourceCodePro-Black.otf.woff") format("woff");
+}
+
+body {
+    /*background-image: url("../960-Grid-System/code/img/12_col.gif");*/
+    margin: 0 auto .5em auto;
 }
 
 th {
@@ -33,9 +52,9 @@ tr {
 table {
     border: black solid 2px;
     border-collapse: collapse;
-    box-shadow: 5px 5px 5px lightgray;
-    margin: .5em 10px;
-    width: 940px;
+    box-shadow: 5px 5px 5px #c3c3c3;
+    margin: .7em 10px;
+    width: calc(100vw - 30px);
 }
 
 .plain {
@@ -50,3 +69,23 @@ table {
 input {
     width: 120px;
 }
+
+.banner {
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px #c3c3c3;
+    left: 10px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    width: calc(100vw - 30px);
+}
+
+main {
+    /*position: relative;*/
+    top: calc(80px + 125 * ((100vw - 600px) / 1000));
+}
+
+/*footer {*/
+/*    position: relative;*/
+/*}*/

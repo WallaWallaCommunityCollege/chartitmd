@@ -30,22 +30,30 @@ class PatientWeight {
     /**
      * PatientWeight constructor.
      *
+     * @param User    $createdBy
      * @param Patient $patient
      * @param string  $weight
      *
      * @throws \Exception
      */
-    public function __construct(Patient $patient, string $weight) {
+    public function __construct(User $createdBy, Patient $patient, string $weight) {
         $this->patient = $patient;
         $this->weight = $weight;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return \DateTimeImmutable
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return string
@@ -93,4 +101,11 @@ class PatientWeight {
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
      */
     private $weight;
+    /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
 }

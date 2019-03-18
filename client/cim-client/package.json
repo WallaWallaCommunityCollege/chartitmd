@@ -2,17 +2,19 @@
     "name": "cim-client",
     "version": "0.0.1",
     "description": "ChartItMd client",
-    "main": "main.js",
+    "main": "src/main.js",
+    "private": true,
     "scripts": {
         "start": "electron .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Michael Cummings",
-    "license": "MIT",
+    "license": "proprietary",
     "devDependencies": {
         "electron": "^4.0.7"
     },
     "dependencies": {
-        "axios": "^0.18.0"
+        "axios": "^0.18.0",
+        "dotenv": "^6.2.0"
     }
 }

@@ -30,22 +30,30 @@ class PatientHeight {
     /**
      * PatientHeight constructor.
      *
+     * @param User    $createdBy
      * @param Patient $patient
      * @param string  $height
      *
      * @throws \Exception
      */
-    public function __construct(Patient $patient, string $height) {
+    public function __construct(User $createdBy, Patient $patient, string $height) {
         $this->patient = $patient;
         $this->height = $height;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return \DateTimeImmutable
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return string
@@ -80,6 +88,13 @@ class PatientHeight {
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+    /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
     /**
      * @var string $height (cm)
      *

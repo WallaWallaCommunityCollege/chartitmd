@@ -11,8 +11,7 @@ use ChartItMD\Model\Repository as repos;
  * Gender
  *
  * @ORM\Table(name="gender", uniqueConstraints={@ORM\UniqueConstraint(name="gender_all", columns={"identity","pronoun","assigned_sex"})})
- * @ORM\Entity
- * Todo Need to add repository.
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\GenderRepository")
  */
 
 class Gender {
@@ -20,18 +19,20 @@ class Gender {
     /**
      * Gender constructor.
      *
+     * @param User   $createdBy
      * @param string $identity
      * @param string $pronoun
      * @param string $sex
      *
      * @throws \Exception
      */
-    public function __construct(string $identity, string $pronoun, string $sex) {
+    public function __construct(User $createdBy, string $identity, string $pronoun, string $sex) {
         $this->identity = $identity;
         $this->pronoun = $pronoun;
         $this->assignedSex = $sex;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
+        $this->createdBy = $createdBy;
     }
     /**
      * @return string
@@ -44,6 +45,12 @@ class Gender {
      */
     public function getCreatedAt(): \DateTimeImmutable {
         return $this->createdAt;
+    }
+    /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
     }
     /**
      * @return string
@@ -75,6 +82,13 @@ class Gender {
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+    /**
+     * @var User $createdBy
+     *
+     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $createdBy;
     /**
      * @var string
      *

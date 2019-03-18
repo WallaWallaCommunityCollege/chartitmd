@@ -55,4 +55,7 @@ class PatientRepository extends EntityRepository {
         ];
         return $result;
     }
+    public function getLatestVitalSigns(Patient $patient) {
+        // TODO Write query to pull from one or more tables the patients most current vital signs.
+    }
 }

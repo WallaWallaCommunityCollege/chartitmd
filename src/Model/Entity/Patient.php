@@ -163,4 +163,10 @@ class Patient {
      * @ORM\OneToMany(targetEntity="PatientWeight", mappedBy="patient")
      */
     private $weights;
+    /**
+     * @var BloodPressure $bloodPressure
+     *
+     * @ORM\OneToMany(targetEntity="BloodPressure", mappedBy="patient")
+     */
+    private $bloodPressure;
 }
