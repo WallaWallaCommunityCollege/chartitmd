@@ -24,7 +24,7 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-
+use ChartItMD\Model\Repository as repos;
 /**
  * Permission
  *

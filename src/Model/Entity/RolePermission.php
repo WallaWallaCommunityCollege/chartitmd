@@ -23,7 +23,7 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use ChartItMD\Model\Repository as repos;
 /**
  * RolePermission
  *

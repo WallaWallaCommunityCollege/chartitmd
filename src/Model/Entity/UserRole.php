@@ -24,7 +24,7 @@ namespace ChartItMD\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
-
+use ChartItMD\Model\Repository as repos;
 /**
  * UserRole
  *
