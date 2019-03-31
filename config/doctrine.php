@@ -18,9 +18,11 @@ declare(strict_types=1);
 use ChartItMD\Model\Entity\Patient;
 use ChartItMD\Model\Entity\PatientHeight;
 use ChartItMD\Model\Entity\PatientWeight;
+use ChartItMD\Model\Entity\User;
 use ChartItMD\Model\Repository\PatientHeightRepository;
 use ChartItMD\Model\Repository\PatientRepository;
 use ChartItMD\Model\Repository\PatientWeightRepository;
+use ChartItMD\Model\Repository\UserRepository;
 use ChartItMD\Model\Type\Uuid64Type;
 use Doctrine\Common\Cache\ApcuCache;
 use Doctrine\Common\Cache\ArrayCache;
@@ -112,6 +114,10 @@ $doctrine = [
     PatientWeightRepository::class => function (ContainerInterface $dic): PatientWeightRepository {
         return $dic->get(EntityManager::class)
                    ->getRepository(PatientWeight::class);
+    },
+    UserRepository::class => function (ContainerInterface $dic): UserRepository {
+        return $dic->get(EntityManager::class)
+                   ->getRepository(User::class);
     },
 ];
 return $doctrine;
