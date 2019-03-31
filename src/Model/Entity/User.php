@@ -37,15 +37,16 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+use JsonSerializable;
+
 /**
  * Class User.
  *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="idx_name", columns={"name"})})
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User {
+class User implements JsonSerializable {
     use Uuid4Trait;
     /**
      * User constructor.
@@ -90,6 +91,22 @@ class User {
      */
     public function getUpdatedAt(): \DateTime {
         return $this->updatedAt;
+    }
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * NOTE:
+     * This filters out sensitive information like the password.
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array {
+        $result = [];
+        foreach ($this as $k => $v) {
+            $result[$k] = $v;
+        }
+        unset($result['password'], $result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        return $result;
     }
     /**
      * @ORM\PreUpdate
