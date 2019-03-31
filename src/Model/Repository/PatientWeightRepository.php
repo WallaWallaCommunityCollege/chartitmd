@@ -43,4 +43,22 @@ class PatientWeightRepository extends EntityRepository {
                  ->getOneOrNullResult();
         return $weight;
     }
+    public function getLast10WeightsForPatientId(string $patientId) {
+        try {
+            $qb = $this->createQueryBuilder('w');
+            $weights =
+                $qb->where('w.patient = :id')
+                   ->setParameter('id', $patientId)
+                   ->setMaxResults(10)
+                   ->getQuery()
+                   ->getArrayResult();
+            foreach ($weights as &$weight) {
+                unset($weight['patient']);
+            }
+        } catch (\Throwable $e) {
+            var_dump($e->getMessage());
+            return [];
+        }
+        return $weights;
+    }
 }
