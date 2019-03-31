@@ -2,42 +2,49 @@
 
 namespace ChartItMD\Model\Entity;
 
+use ChartItMD\Model\JsonArrayCollection;
 use ChartItMD\Utils\Uuid4Trait;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+use JsonSerializable;
+
 /**
  * Patient
  *
- * @ORM\Table(name="patient", indexes={@ORM\Index(name="gender_id", columns={"gender_id"})})
+ * @ORM\Table(name="patient",
+ *     indexes={
+ *         @ORM\Index(name="fk_gender_id", columns={"gender_id"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Patient {
+class Patient implements JsonSerializable {
     use Uuid4Trait;
+    use EntityCommon;
     /**
      * Patients constructor.
      *
+     * @param User   $createdBy
      * @param string $firstName
      * @param string $lastName
      *
      * @throws \Exception
      */
-    public function __construct(string $firstName, string $lastName) {
+    public function __construct(User $createdBy, string $firstName, string $lastName) {
+        $this->createdBy = $createdBy;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->heights = new ArrayCollection();
-        $this->vitalSigns = new ArrayCollection();
-        $this->weights = new ArrayCollection();
+        $this->bloodPressures = new JsonArrayCollection();
+        $this->heights = new JsonArrayCollection();
+        $this->weights = new JsonArrayCollection();
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
     }
     /**
-     * @return \DateTimeImmutable
+     * @return BloodPressure[]|JsonArrayCollection
      */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
+    public function getBloodPressures() {
+        return $this->bloodPressures;
     }
     /**
      * @return \DateTime
@@ -58,16 +65,10 @@ class Patient {
         return $this->gender;
     }
     /**
-     * @return Collection
+     * @return JsonArrayCollection|PatientHeight[]
      */
-    public function getHeights(): Collection {
+    public function getHeights() {
         return $this->heights;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string {
-        return $this->id;
     }
     /**
      * @return string
@@ -82,15 +83,9 @@ class Patient {
         return $this->updatedAt;
     }
     /**
-     * @return Collection
+     * @return JsonArrayCollection|PatientWeight[]
      */
-    public function getVitalSigns(): Collection {
-        return $this->vitalSigns;
-    }
-    /**
-     * @return Collection
-     */
-    public function getWeights(): Collection {
+    public function getWeights() {
         return $this->weights;
     }
     /**
@@ -101,72 +96,64 @@ class Patient {
         $this->updatedAt = new \DateTimeImmutable();
     }
     /**
-     * @var \DateTimeImmutable
+     * @param Gender $value
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @return self Fluent interface
      */
-    private $createdAt;
+    public function setGender(Gender $value): self {
+        $this->gender = $value;
+        return $this;
+    }
     /**
-     * @var \DateTime
+     * @var JsonArrayCollection|BloodPressure[] $bloodPressures
      *
-     * @ORM\Column(name="dob", type="date", nullable=true)
+     * @ORM\OneToMany(targetEntity="BloodPressure", mappedBy="patient")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $bloodPressures;
+    /**
+     * @var \DateTime $dateOfBirth
+     *
+     * @ORM\Column(name="date_of_birth", type="date", nullable=true)
      */
     private $dateOfBirth;
     /**
-     * @var string
+     * @var string $firstName
      *
      * @ORM\Column(name="first_name", type="string", length=50, nullable=false)
      */
     private $firstName;
     /**
-     * @var Gender
+     * @var Gender $gender
      *
      * @ORM\ManyToOne(targetEntity="Gender")
+     * @ORM\JoinColumn(name="gender_id", referencedColumnName="id", nullable=false)
      */
     private $gender;
     /**
-     * @var Collection
+     * @var JsonArrayCollection|PatientHeight[] $heights
      *
      * @ORM\OneToMany(targetEntity="PatientHeight", mappedBy="patient")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $heights;
     /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
-    /**
-     * @var string
+     * @var string $lastName
      *
      * @ORM\Column(name="last_name", type="string", length=50, nullable=false)
      */
     private $lastName;
     /**
-     * @var \DateTime|null
+     * @var \DateTime|null $updatedAt
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
     /**
-     * @var Collection $vitalSigns
-     *
-     * @ORM\OneToMany(targetEntity="VitalSigns", mappedBy="patient")
-     */
-    private $vitalSigns;
-    /**
-     * @var Collection
+     * @var JsonArrayCollection|PatientWeight[] $weights
      *
      * @ORM\OneToMany(targetEntity="PatientWeight", mappedBy="patient")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $weights;
-    /**
-     * @var BloodPressure $bloodPressure
-     *
-     * @ORM\OneToMany(targetEntity="BloodPressure", mappedBy="patient")
-     */
-    private $bloodPressure;
 }
