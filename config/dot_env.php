@@ -32,8 +32,7 @@ $dotEnv = [
         $loader->parse()
                ->toEnv(true)
                ->putenv(true)
-               ->toServer(true)
-               ->apacheSetenv(true);
+               ->toServer(true);
         return $loader;
     },
 ];
