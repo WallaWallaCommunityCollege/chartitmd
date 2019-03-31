@@ -4,18 +4,24 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-
-use ChartItMD\Model\Repository as repos;
+use JsonSerializable;
 
 /**
  * Gender
  *
- * @ORM\Table(name="gender", uniqueConstraints={@ORM\UniqueConstraint(name="gender_all", columns={"identity","pronoun","assigned_sex"})})
+ * @ORM\Table(name="gender",
+ *     indexes={
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
+ *     },
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="gender_all", columns={"identity", "pronoun", "assigned_sex"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\GenderRepository")
  */
-
-class Gender {
+class Gender implements JsonSerializable {
     use Uuid4Trait;
+    use EntityCommon;
     /**
      * Gender constructor.
      *
@@ -41,24 +47,6 @@ class Gender {
         return $this->assignedSex;
     }
     /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string {
-        return $this->id;
-    }
-    /**
      * @return string
      */
     public function getIdentity(): string {
@@ -76,28 +64,6 @@ class Gender {
      * @ORM\Column(name="assigned_sex", type="string", length=20, nullable=false)
      */
     private $assignedSex;
-    /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
     /**
      * @var string
      *
