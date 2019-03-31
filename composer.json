@@ -47,6 +47,7 @@
         "ext-SPL": "*",
         "ext-apcu": "*",
         "ext-gmp": "*",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
         "ext-sodium": "*",
