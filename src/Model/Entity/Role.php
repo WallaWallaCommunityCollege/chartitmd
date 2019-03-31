@@ -24,16 +24,22 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+
 /**
  * Role
  *
- * @ORM\Table(name="role", uniqueConstraints={@ORM\UniqueConstraint(name="idx_name", columns={"name"})})
+ * @ORM\Table(name="role",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="idx_name", columns={"name"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RoleRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Role {
     use Uuid4Trait;
+
+    // TODO: Look at using EntityCommon trait with this class as well or something.
     /**
      * Role constructor.
      *
