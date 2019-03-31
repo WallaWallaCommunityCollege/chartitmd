@@ -18,15 +18,22 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+use JsonSerializable;
+
 /**
  * Class PatientHeight.
  *
- * @ORM\Table(name="patient_height", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
+ * @ORM\Table(name="patient_height",
+ *     indexes={
+ *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientHeightRepository")
  */
-class PatientHeight {
+class PatientHeight implements JsonSerializable {
     use Uuid4Trait;
+    use EntityCommon;
     /**
      * PatientHeight constructor.
      *
@@ -37,35 +44,17 @@ class PatientHeight {
      * @throws \Exception
      */
     public function __construct(User $createdBy, Patient $patient, string $height) {
-        $this->patient = $patient;
-        $this->height = $height;
-        $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
-    }
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
+        $this->height = $height;
+        $this->id = $this->asBase64();
+        $this->patient = $patient;
     }
     /**
      * @return string
      */
     public function getHeight(): string {
         return $this->height;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string {
-        return $this->id;
     }
     /**
      * @return Patient
@@ -83,38 +72,16 @@ class PatientHeight {
         return $this;
     }
     /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
-    /**
      * @var string $height (cm)
      *
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
      */
     private $height;
     /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
-    /**
      * @var Patient $patient
      *
      * @ORM\ManyToOne(targetEntity="Patient", inversedBy="heights")
-     * @ORM\JoinColumn(name="patient_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $patient;
 }
