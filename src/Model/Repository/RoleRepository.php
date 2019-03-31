@@ -31,4 +31,28 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class RoleRepository extends EntityRepository {
+    /**
+     * @param string $name
+     *
+     * @return string|null
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     */
+    public function getRoleIdByName(string $name): ?string {
+        $qb = $this->createQueryBuilder('role');
+        $result =
+            $qb->select('role.id')
+               ->where(
+                   $qb->expr()
+                      ->eq(
+                          'role.name',
+                          $qb->expr()
+                             ->literal($name)
+                      )
+               )
+               ->setMaxResults(1)
+               ->getQuery()
+               ->getArrayResult();
+        return 0 < count($result) ? $result[0]['id'] : null;
+    }
 }

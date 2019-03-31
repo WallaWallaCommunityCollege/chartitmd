@@ -34,27 +34,26 @@ class PermissionRepository extends EntityRepository {
     /**
      * Finds permission by name. If it founded returns permission id
      *
-     * @param string $permissionName
+     * @param string $name
      *
      * @return string|null
      * @throws \InvalidArgumentException
      * @throws \RuntimeException
      */
-    public function getPermissionIdByName(string $permissionName): ?string {
+    public function getPermissionIdByName(string $name): ?string {
         $qb = $this->createQueryBuilder('permission');
-        $result =
-            $qb->select('permission.permissionId')
-               ->where(
+        $result = $qb->select('permission.id')
+                     ->where(
                    $qb->expr()
                       ->eq(
-                          'permission.permissionName',
+                          'permission.name',
                           $qb->expr()
-                             ->literal($permissionName)
+                             ->literal($name)
                       )
                )
-               ->setMaxResults(1)
-               ->getQuery()
-               ->getArrayResult();
-        return 0 < count($result) ? $result[0]['permissionId'] : null;
+                     ->setMaxResults(1)
+                     ->getQuery()
+                     ->getArrayResult();
+        return 0 < count($result) ? $result[0]['id'] : null;
     }
 }
