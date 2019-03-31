@@ -16,11 +16,8 @@ declare(strict_types=1);
 
 namespace ChartItMD;
 
-use ChartItMD\Model\Entity\PatientHeight;
-use ChartItMD\Model\Entity\PatientWeight;
-use ChartItMD\Model\Repository\PatientHeightRepository;
 use ChartItMD\Model\Repository\PatientRepository;
-use ChartItMD\Model\Repository\PatientWeightRepository;
+use ChartItMD\Model\Repository\UserRepository;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -40,21 +37,7 @@ $app->group(
                 $dic = $app->getContainer();
                 $patient =
                     $dic->get(PatientRepository::class)
-                        ->getPatientByIdAsArray($id);
-                /**
-                 * @var PatientHeight|null $height
-                 */
-                $height =
-                    $dic->get(PatientHeightRepository::class)
-                        ->getLatestHeightByPatientId($id);
-                $patient['height'] = null !== $height ? $height->getHeight() : '-';
-                /**
-                 * @var PatientWeight| null $weight
-                 */
-                $weight =
-                    $dic->get(PatientWeightRepository::class)
-                        ->getLatestWeightByPatientId($id);
-                $patient['weight'] = null !== $weight ? $weight->getWeight() : '-';
+                        ->getPatientById($id, ['recentBloodPressures', 'recentHeights', 'recentWeights']);
                 return $response->withJson($patient, 200);
             }
         );
@@ -84,6 +67,19 @@ $app->get(
             ],
         ];
         return $response->withJson($patient, 200);
+    }
+);
+$app->get(
+    '/users',
+    function (Request $request, Response $response) use ($app) {
+        /**
+         * @var ContainerInterface $dic
+         */
+        $dic = $app->getContainer();
+        $users =
+            $dic->get(UserRepository::class)
+                ->getAllUsers();
+        return $response->withJson($users);
     }
 );
 $app->get(
