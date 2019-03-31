@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+    <meta
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' 'unsafe-inline' http://localhost/; default-src 'self'"
+        http-equiv="Content-Security-Policy"/>
+    <title>Patient</title>
+    <link href="../assets/css/normalize.css" rel="stylesheet"/>
+    <link href="../assets/css/main.css" rel="stylesheet"/>
+    <script src="../assets/js/jquery.js"></script>
+</head>
+<body>
+<header>
+    <picture>
+        <source class="banner"
+                media="(min-width: 350px)"
+                sizes="98vw"
+                srcset="../assets/image/chart_it_md_header.svg 1600w,../assets/image/chart_it_md_header.svg 1200w,../assets/image/chart_it_md_header.svg 960w,../assets/image/chart_it_md_header.svg 800w,../assets/image/chart_it_md_header.svg 600w"
+                type="image/svg-xml">
+        <img
+            alt="Chart It MD banner heading with chart and laptop graphics on left and right of name and heart beat like green trace in background over a blue to purple linear gradient"
+            class="banner"
+            sizes="98vw"
+            src="../assets/image/chart_it_md_header_960.png"
+            srcset="../assets/image/chart_it_md_header_1600.png 1600w,../assets/image/chart_it_md_header_1200.png 1200w,../assets/image/chart_it_md_header_960.png 960w,../assets/image/chart_it_md_header_800.png 800w,../assets/image/chart_it_md_header_600.png 600w">
+    </picture>
+</header>
+<main>
+    <section>
+        <form action="patient.html" method="post">
+            <fieldset>
+                <legend>Patient - PII</legend>
+                <details open>
+                    <summary>
+                        <label><span>last name:</span><input id="patient-lastName" name="patient-lastName" readonly
+                                                             required
+                                                             type="text"/><span></span></label>
+                        <label><span>first name:</span><input id="patient-firstName" name="patient-firstName"
+                                                              readonly required
+                                                              type="text"/></label>
+                        <label><span>date of birth:</span>
+                            <input id="patient-dateOfBirth" name="patient-dateOfBirth" readonly required type="date"/>
+                        </label>
+                    </summary>
+                    <label><span>age:</span>
+                        <output for="patient-dateOfBirth" id="patient-age"></output>
+                    </label>
+                    <label><span>assigned sex:</span><input id="patient-assignedSex" name="patient-assignedSex"
+                                                            readonly required
+                                                            type="text"/></label>
+                    <details>
+                        <summary>
+                            <label>
+                                <span>height:</span>
+                                <input id="patient-height" name="patient-height" readonly required step=".1"
+                                       type="number"/>
+                            </label>
+                        </summary>
+                        <div>
+                            <label>
+                                <span>date:</span>
+                                <input id="patient-height-createdAt" name="patient-height-createdAt" readonly
+                                       type="date"/>
+                            </label>
+                            <label>
+                                <span>id:</span>
+                                <input class="id" id="patient-height-id" name="patient-height-id" readonly type="text"/>
+                            </label><br>
+                            <a href="patient-add-height.html">New</a>&nbsp;
+                            <a href="patient-heights.html">More ...</a><br>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>
+                            <label>
+                                <span>weight:</span>
+                                <input id="patient-weight" name="patient-weight" readonly required step=".1"
+                                       type="number"/>
+                            </label>
+                        </summary>
+                        <div>
+                            <label>
+                                <span>date:</span>
+                                <input id="patient-weight-createdAt" name="patient-weight-createdAt" readonly
+                                       type="date"/>
+                            </label>
+                            <label>
+                                <span>id:</span>
+                                <input class="id" id="patient-weight-id" name="patient-weight-id" readonly type="text"/>
+                            </label><br>
+                            <a href="patient-add-weight.html">New</a>&nbsp;
+                            <a href="patient-weights.html">More ...</a><br>
+                        </div>
+                    </details>
+                    <label>
+                        <span>bsa:</span>
+                        <output for="patient-height patient-weight" id="patient-bsa"></output>
+                    </label>
+                    <label>
+                        <span>bmi:</span>
+                        <output for="patient-height patient-weight" id="patient-bmi"></output>
+                    </label>
+                    <label>
+                        <span>id:</span>
+                        <input class="id" id="patient-id" name="patient-id" readonly required type="text"/>
+                    </label>
+                </details>
+            </fieldset>
+        </form>
+    </section>
+</main>
+<script>window.$ = window.jQuery = require('jquery');</script>
+<script src="patient.js"></script>
+</body>
+</html>
