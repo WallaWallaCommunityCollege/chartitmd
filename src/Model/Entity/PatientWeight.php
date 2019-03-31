@@ -18,15 +18,20 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+use JsonSerializable;
+
 /**
  * Class PatientWeight.
  *
- * @ORM\Table(name="patient_weight", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
+ * @ORM\Table(name="patient_weight", indexes={
+ *     @ORM\Index(name="fk_patient", columns={"patient_id"}),
+ *     @ORM\Index(name="idx_created_at", columns={"created_at"})
+ * })
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientWeightRepository")
  */
-class PatientWeight {
+class PatientWeight implements JsonSerializable {
     use Uuid4Trait;
+    use EntityCommon;
     /**
      * PatientWeight constructor.
      *
@@ -41,25 +46,7 @@ class PatientWeight {
         $this->weight = $weight;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
-        $this->createdBy = $createdBy;
-    }
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string {
-        return $this->id;
+        $this->createdBy = $createdBy->getId();
     }
     /**
      * @return Patient
@@ -74,25 +61,10 @@ class PatientWeight {
         return $this->weight;
     }
     /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
-    /**
      * @var Patient $patient
      *
      * @ORM\ManyToOne(targetEntity="Patient", inversedBy="weights")
-     * @ORM\JoinColumn(name="patient_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $patient;
     /**
@@ -101,11 +73,4 @@ class PatientWeight {
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
      */
     private $weight;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
 }
