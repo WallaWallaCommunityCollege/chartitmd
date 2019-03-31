@@ -24,29 +24,35 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+
 /**
  * Permission
  *
- * @ORM\Table(name="permission", uniqueConstraints={@ORM\UniqueConstraint(name="idx_name", columns={"name"})})
+ * @ORM\Table(name="permission",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="idx_name", columns={"name"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PermissionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Permission {
     use Uuid4Trait;
+
+    // TODO: Look at using EntityCommon trait with class.
     /**
      * Permission constructor.
      *
-     * @param User   $ceatedBy
+     * @param User   $createdBy
      * @param string $name
      *
      * @throws \Exception
      */
-    public function __construct(User $ceatedBy, string $name) {
+    public function __construct(User $createdBy, string $name) {
         $this->name = $name;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
-        $this->createdBy = $ceatedBy;
+        $this->createdBy = $createdBy;
     }
     /**
      * @return \DateTimeImmutable
