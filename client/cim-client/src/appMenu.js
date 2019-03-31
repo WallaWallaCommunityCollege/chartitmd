@@ -1,53 +1,74 @@
 const {BrowserWindow, Menu} = require('electron');
-const {app, win} = require('./main');
-
+const {win} = require('./main');
+const path = require('path');
+const url = require('url');
 const appMenu = [
     {
-        label: 'File',
-        submenu: [
+        role: 'windowMenu',
+    }, {
+        role: "editMenu"
+    }, {
+        label: 'View', submenu: [
             {
-                label: 'Exit',
-                click() {
-                    app.quit();
-                }
-            },
-        ]
-    },
-    {
-        label: 'View',
-        submenu: [
-            {
-                label: 'Reload',
-                accelerator: 'CmdOrCtrl+R',
-                click(item, focusedWindow) {
-                    if (focusedWindow) {
-                        focusedWindow.reload();
-                    }
-                }
+                role: 'reload'
             },
             {
-                label: 'Toggle Developer Tools',
-                accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
-                click() {
-                    win.webContents.toggleDevTools();
-                }
+                role: 'forceReload'
+            }, {
+                type: 'separator'
+            }, {
+                role: 'resetzoom'
             },
             {
-                label: 'Reset Main Window Size',
-                accelerator: 'Alt+R',
-                click() {
+                role: 'zoomin', accelerator: 'Ctrl+='
+            },
+            {
+                role: 'zoomout'
+            },
+            {
+                type: 'separator'
+            }, {
+                label: 'Reset Main Window Size', accelerator: 'Alt+R', click() {
                     win.setSize(1000, 700);
                     win.center();
                 }
-            },
+            }, {
+                role: 'togglefullscreen'
+            }, {
+                role: 'toggleDevTools'
+            }
         ]
     },
     {
-        label: 'Help',
+        label: 'Patient', submenu: [
+            {
+                label: 'Home', click() {
+                    win.loadURL(url.format({
+                                               pathname: path.join(__dirname, 'patient.html'),
+                                               protocol: 'file:',
+                                               slashes: true
+                                           }));
+                }
+            }, {type: 'separator'},
+        ],
+    }, {
+        label: 'Admin',
         submenu: [
             {
-                label: 'About',
+                label: 'Browse Users',
                 click() {
+                    win.loadURL(url.format({
+                                               pathname: path.join(__dirname, 'users.html'),
+                                               protocol: 'file:',
+                                               slashes: true
+                                           }));
+                }
+            },
+        ]
+    }, {
+        label: 'Help', submenu: [
+            {
+                label: 'About', click() {
                     let aboutOptions = {
                         height: 480,
                         minHeight: 480,
@@ -56,22 +77,19 @@ const appMenu = [
                         useContentSize: true,
                         width: 640,
                         webPreferences: {
-                            allowRunningInsecureContent: false,
-                            webSecurity: true,
-                            devTools: true,
-                            nodeIntegration: true
+                            allowRunningInsecureContent: false, webSecurity: true, devTools: true, nodeIntegration: true
                         }
                     };
                     let about = new BrowserWindow(aboutOptions);
                     about.loadURL(url.format({
-                        pathname: path.join(__dirname, 'about.html'),
-                        protocol: 'file:',
-                        slashes: true
-                    }));
+                                                 pathname: path.join(__dirname, 'about.html'),
+                                                 protocol: 'file:',
+                                                 slashes: true
+                                             }));
                 }
             }
         ]
     }
 ];
-let menu = Menu.buildFromTemplate(appMenu);
+const menu = Menu.buildFromTemplate(appMenu);
 Menu.setApplicationMenu(menu);
