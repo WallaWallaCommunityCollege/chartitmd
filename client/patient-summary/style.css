@@ -1,0 +1,52 @@
+.table_cell{
+	background-color: #6AB5E1;
+}
+.table_style{
+	width: 300px;
+	height: 100px;
+	padding: 8px;
+}
+.table_general{
+	background-color: #8C2A9E;
+}
+.table_medication{
+	background-color: #30B1AE;
+}
+.table_allergy{
+	background-color: #1F39A2;
+}
+.table_current{
+	background-color: #cc79af;
+}
+.header{
+
+	background-color: #12E456;
+}
+.test1{
+	background-color: #ABCDEF;
+	width: 300px;
+}
+.sub_table{
+	display: block;
+	height: 100px;
+	max-height: 100px;
+	overflow-y: scroll;
+}
+.field_row_desc{
+	width: 140px;
+	max-width: 140px;
+	text-align: left;
+}
+.field_value_general{
+	width: 150px;
+	max-width: 150px;
+	text-align: right;
+}
+.field_value_other{
+		width: 250px;
+		max-width: 250px;
+		text-align: left;
+}
+.sum_label{
+	text-align: left;
+}
