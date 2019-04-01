@@ -14,18 +14,21 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
      * @see \Doctrine\Common\Persistence\Proxy::__setInitializer
      */
     public $__initializer__;
+
     /**
      * @var \Closure the callback responsible of loading properties that need to be copied in the cloned object
      *
      * @see \Doctrine\Common\Persistence\Proxy::__setCloner
      */
     public $__cloner__;
+
     /**
      * @var boolean flag indicating if this object was already initialized
      *
      * @see \Doctrine\Common\Persistence\Proxy::__isInitialized
      */
     public $__isInitialized__ = false;
+
     /**
      * @var array properties to be lazy loaded, with keys being the property
      *            names and values being their default values
@@ -78,21 +81,26 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
             $this->__initializer__ = function (User $proxy) {
                 $proxy->__setInitializer(null);
                 $proxy->__setCloner(null);
+
                 $existingProperties = get_object_vars($proxy);
+
                 foreach ($proxy->__getLazyProperties() as $property => $defaultValue) {
                     if (!array_key_exists($property, $existingProperties)) {
                         $proxy->$property = $defaultValue;
                     }
                 }
             };
+
         }
     }
+
     /**
      *
      */
     public function __clone() {
         $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
+
     /**
      * Forces initialization of the proxy
      */
@@ -156,8 +164,6 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
     public function __getLazyProperties() {
         return self::$lazyPropertiesDefaults;
     }
-
-
     /**
      * {@inheritDoc}
      */
@@ -206,6 +212,7 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
      * {@inheritDoc}
      */
     public function jsonSerialize(): array {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
         return parent::jsonSerialize();
     }
