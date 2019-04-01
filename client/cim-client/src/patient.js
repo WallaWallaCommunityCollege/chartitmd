@@ -1,19 +1,22 @@
 'use strict';
-const electron = require('electron');
 const path = require('path');
+const dotenv = require('dotenv')
+    .config();
+const electron = require('electron');
 const url = require('url');
 const axios = require('axios');
 const {DateTime} = require('luxon');
+// config axios defaults.
+axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
+
 function getPatientAsJson() {
-    // TODO Need to update to use env var here from dotenv for host name.
-    axios.get('http://localhost/patient/2Y9ovLbO93RUekOOu75TV5')
+    axios.get('/patient/2Y9ovLbO93RUekOOu75TV5')
          .then(res => {
              const patient = res.data['patient'];
              const recentBloodPressures = res.data['recentBloodPressures'];
              const recentHeights = res.data['recentHeights'];
              const recentWeights = res.data['recentWeights'];
              let dob = DateTime.fromSQL(patient['dateOfBirth']['date']);
-             // dob.setHours(12);
              let age = Math.floor(Math.abs(dob.diffNow('year')
                                               .as('year')));
              $("#patient-age")
