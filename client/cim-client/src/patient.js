@@ -1,14 +1,12 @@
 'use strict';
-const path = require('path');
-const dotenv = require('dotenv')
+require('dotenv')
     .config();
-const electron = require('electron');
-const url = require('url');
 const axios = require('axios');
 const {DateTime} = require('luxon');
 // config axios defaults.
 axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
-
+// Setup JQuery
+window.$ = window.jQuery = require('jquery');
 function getPatientAsJson() {
     axios.get('/patient/2Y9ovLbO93RUekOOu75TV5')
          .then(res => {
