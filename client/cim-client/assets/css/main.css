@@ -23,13 +23,19 @@
     src: url("../font/SourceCodePro-Black.otf.woff") format("woff");
 }
 
+:root {
+    --cim-fluid-precalc: calc((100vw - 300px) / (1600 - 300));
+    --cim-font-size-precalc: calc((26 - 12) * var(--cim-fluid-precalc));
+    --cim-line-height-precalc: calc((1.5 - 1.2) * var(--cim-fluid-precalc));
+}
+
 *, *:after, *:before {
     box-sizing: border-box;
 }
 
 body {
-    font-size: calc(.75rem + (26 - 12) * ((100vw - 300px) / (1600 - 300)));
-    line-height: calc(1.2rem + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(.75rem + var(--cim-font-size-precalc));
+    line-height: calc(1.2rem + var(--cim-line-height-precalc));
 }
 
 main {
@@ -54,29 +60,37 @@ th {
     text-align: left;
 }
 
+form {
+    width: calc(100vw - 30px);
+}
+
 fieldset {
     border-radius: 8px;
     box-shadow: 5px 5px 5px hsl(0, 0%, 76%);
-    margin: .5em .5em .5em 10px;
-    width: calc(100vw - 30px);
+    width: 100%;
 }
 
 label {
     border: hsl(0, 0%, 0%) solid 1px;
     display: inline-block;
     font-size: .75em;
-    height: calc(1.6em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
-    margin: 0 0 calc(.35em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300))) 0;
+    height: calc(1.6em + var(--cim-line-height-precalc));
+    margin: 0 0 calc(.35em + var(--cim-line-height-precalc)) 0;
 }
 
 input {
     padding: 0 .25em;
-    height: calc(1.25em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    height: calc(1.25em + var(--cim-line-height-precalc));
     width: 7em;
 }
 
 input[readonly] {
     border: none;
+}
+
+input[type=date] {
+    padding: 0 .25em;
+    width: auto;
 }
 
 input:invalid + span:after {
@@ -91,14 +105,9 @@ input:valid + span:after {
     padding: .25rem;
 }
 
-input[type=date] {
-    padding: 0 .25em;
-    width: auto;
-}
-
 output {
     display: inline-block;
-    line-height: calc(1.3rem + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.2rem + var(--cim-line-height-precalc));
     padding: 0 .25em;
 }
 
@@ -118,76 +127,43 @@ label span:first-child {
     padding: 0;
 }
 
-details details {
-    border: hsl(0, 0%, 0%) solid 1px;
-    border-radius: 8px 8px 0 0;
-    display: inline-block;
-    height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
-    margin: 0;
-    padding: 0;
-    position: relative;
-    vertical-align: top;
-}
-
-details details summary {
-    border-radius: 8px 0 0 0;
-    margin: 0;
-    padding: 0;
-}
-
-details details summary label:first-child span {
-    border-radius: 8px 0 0 0;
-}
-
-details details summary:after {
-    content: "\25bc";
-    float: right;
-    font-size: .75em;
-    height: 100%;
-    padding: 5px;
-    width: calc(1.75em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
-}
-
-details details[open] summary:after {
-    background-color: hsl(214, 41%, 78%);
-    border-radius: 0 8px 0 0;
-    content: "\25b2";
+summary::-webkit-details-marker {
+    display: none;
 }
 
 details summary:before {
     content: "\25bc";
     float: left;
     font-size: .75em;
-    padding: 0 0 0 5px;
+    padding: 5px 0 0 5px;
     height: 100%;
-    width: calc(1.5em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    width: calc(1.5em + var(--cim-line-height-precalc));
 }
 
 details[open] summary:before {
     content: "\25b2";
 }
 
-details details summary:before {
-    display: none;
-}
-
-summary::-webkit-details-marker {
-    display: none;
-}
-
-details details[open] {
-    border: hsl(0, 0%, 0%) solid 2px;
-    border-bottom-color: hsl(0, 0%, 91%);
-}
-
-details details label {
-    border: none;
+details details {
+    border: hsl(0, 0%, 0%) solid 1px;
+    border-radius: 8px 8px 0 0;
+    display: inline-block;
+    height: calc(1.3em + var(--cim-line-height-precalc));
+    margin: 0;
     padding: 0;
+    position: relative;
+    vertical-align: top;
+    z-index: 1;
+}
+
+details details a {
+    font-size: .75em;
 }
 
 details details div {
     overflow: visible;
     width: 12em;
+    z-index: 10;
 }
 
 details details[open] div {
@@ -198,12 +174,44 @@ details details[open] div {
     box-shadow: 8px 8px 8px hsl(0, 0%, 63%);
     padding-top: .125em;
     position: absolute;
-    top: calc(.75em + (26 - 12) * ((100vw - 300px) / (1600 - 300)));
+    top: calc(.75em + var(--cim-font-size-precalc));
     left: -2px;
 }
 
-details details[open] a {
+details details label {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+details details summary {
+    border-radius: 8px 0 0 0;
+    height: calc(1.3em + var(--cim-line-height-precalc));
+    margin: 0;
+    padding: 0;
+}
+
+details details summary:after {
+    content: "\25bc";
+    float: right;
     font-size: .75em;
+    height: 100%;
+    padding: 5px;
+    width: calc(1.75em + var(--cim-line-height-precalc));
+}
+
+details details summary:before {
+    display: none;
+}
+
+details details[open] summary:after {
+    background-color: hsl(214, 41%, 78%);
+    border-radius: 0 8px 0 0;
+    content: "\25b2";
+}
+
+details details summary label:first-child span {
+    border-radius: 8px 0 0 0;
 }
 
 .banner {
@@ -219,4 +227,9 @@ details details[open] a {
 
 .id {
     width: 13.5em;
+}
+
+.bp {
+    display: inline;
+    width: 6em;
 }

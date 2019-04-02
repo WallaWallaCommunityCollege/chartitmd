@@ -41,22 +41,52 @@
                 <legend>Patient - PII</legend>
                 <details open>
                     <summary>
-                        <label><span>last name:</span><input id="patient-lastName" name="patient-lastName" readonly
-                                                             required
-                                                             type="text"/><span></span></label>
-                        <label><span>first name:</span><input id="patient-firstName" name="patient-firstName"
-                                                              readonly required
-                                                              type="text"/></label>
-                        <label><span>date of birth:</span>
+                        <label>
+                            <span>last name:</span>
+                            <input id="patient-lastName" name="patient-lastName" readonly required type="text"/>
+                            <span></span>
+                        </label>
+                        <label>
+                            <span>first name:</span>
+                            <input id="patient-firstName" name="patient-firstName" readonly required type="text"/>
+                        </label>
+                        <label>
+                            <span>date of birth:</span>
                             <input id="patient-dateOfBirth" name="patient-dateOfBirth" readonly required type="date"/>
                         </label>
                     </summary>
-                    <label><span>age:</span>
+                    <label>
+                        <span>age:</span>
                         <output for="patient-dateOfBirth" id="patient-age"></output>
                     </label>
-                    <label><span>assigned sex:</span><input id="patient-assignedSex" name="patient-assignedSex"
-                                                            readonly required
-                                                            type="text"/></label>
+                    <label>
+                        <span>assigned sex:</span>
+                        <input id="patient-assignedSex" name="patient-assignedSex" readonly required type="text"/>
+                    </label>
+                    <details>
+                        <summary>
+                            <label>
+                                <span>bloodPressure</span>
+                                <output class="bp" id="patient-bloodPressure-systolic"></output>
+                                &nbsp;/&nbsp;
+                                <output class="bp" id="patient-bloodPressure-diastolic"></output>
+                            </label>
+                        </summary>
+                        <div>
+                            <label>
+                                <span>date:</span>
+                                <input id="patient-bloodPressure-createdAt" name="patient-height-createdAt" readonly
+                                       type="date"/>
+                            </label>
+                            <label>
+                                <span>id:</span>
+                                <input class="id" id="patient-bloodPressure-id" name="patient-height-id" readonly
+                                       type="text"/>
+                            </label><br>
+                            <a href="#">New</a>&nbsp;
+                            <a href="#">More ...</a><br>
+                        </div>
+                    </details>
                     <details>
                         <summary>
                             <label>
@@ -75,8 +105,8 @@
                                 <span>id:</span>
                                 <input class="id" id="patient-height-id" name="patient-height-id" readonly type="text"/>
                             </label><br>
-                            <a href="patient-add-height.html">New</a>&nbsp;
-                            <a href="patient-heights.html">More ...</a><br>
+                            <a href="#">New</a>&nbsp;
+                            <a href="#">More ...</a><br>
                         </div>
                     </details>
                     <details>
@@ -97,8 +127,8 @@
                                 <span>id:</span>
                                 <input class="id" id="patient-weight-id" name="patient-weight-id" readonly type="text"/>
                             </label><br>
-                            <a href="patient-add-weight.html">New</a>&nbsp;
-                            <a href="patient-weights.html">More ...</a><br>
+                            <a href="#">New</a>&nbsp;
+                            <a href="#">More ...</a><br>
                         </div>
                     </details>
                     <label>
