@@ -125,7 +125,10 @@ class User implements JsonSerializable {
         foreach ($this as $k => $v) {
             $result[$k] = $v;
         }
-        unset($result['password'], $result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        // Filter out any unneeded Doctrine Entity Proxy c**p.
+        unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        // Filter sensitive properties.
+        unset($result['password']);
         return $result;
     }
     /**
