@@ -18,11 +18,15 @@ namespace ChartItMD\Model\Repository;
 
 use ChartItMD\Model\Entity\Gender;
 use Doctrine\ORM\EntityRepository;
-
 /**
  * Class GenderRepository.
  */
 class GenderRepository extends EntityRepository {
+    /**
+     * @param string $id
+     *
+     * @return Gender|null
+     */
     public function getGenderById(string $id): ?Gender {
         try {
             $qb = $this->createQueryBuilder('g');

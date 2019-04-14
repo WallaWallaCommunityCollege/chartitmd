@@ -19,11 +19,32 @@ namespace ChartItMD\Model\Repository;
 use ChartItMD\Model\Entity\PatientWeight;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
-
 /**
  * Class PatientWeightRepository.
  */
 class PatientWeightRepository extends EntityRepository {
+    /**
+     * @param string $patientId
+     *
+     * @return array
+     */
+    public function getLast10WeightsForPatientId(string $patientId): array {
+        $query = $this->createQueryBuilder('w')
+                      ->where('w.patient = :id')
+                      ->setParameter('id', $patientId)
+                      ->setMaxResults(10)
+                      ->getQuery();
+        try {
+            $weights = $query->getArrayResult();
+            foreach ($weights as &$weight) {
+                unset($weight['patient']);
+            }
+        } catch (\Throwable $e) {
+            var_dump($e->getMessage());
+            return [];
+        }
+        return $weights;
+    }
     /**
      * @param string $id
      *
@@ -33,32 +54,13 @@ class PatientWeightRepository extends EntityRepository {
      * @throws \RuntimeException
      */
     public function getLatestWeightByPatientId(string $id): ?PatientWeight {
-        $weight =
-            $this->createQueryBuilder('h')
-                 ->where('h.patient = :id')
-                 ->setParameter('id', $id)
-                 ->orderBy('h.createdAt', 'DESC')
-                 ->setMaxResults(1)
-                 ->getQuery()
-                 ->getOneOrNullResult();
+        $query = $this->createQueryBuilder('h')
+                      ->where('h.patient = :id')
+                      ->setParameter('id', $id)
+                      ->orderBy('h.createdAt', 'DESC')
+                      ->setMaxResults(1)
+                      ->getQuery();
+        $weight = $query->getOneOrNullResult();
         return $weight;
-    }
-    public function getLast10WeightsForPatientId(string $patientId) {
-        try {
-            $qb = $this->createQueryBuilder('w');
-            $weights =
-                $qb->where('w.patient = :id')
-                   ->setParameter('id', $patientId)
-                   ->setMaxResults(10)
-                   ->getQuery()
-                   ->getArrayResult();
-            foreach ($weights as &$weight) {
-                unset($weight['patient']);
-            }
-        } catch (\Throwable $e) {
-            var_dump($e->getMessage());
-            return [];
-        }
-        return $weights;
     }
 }
