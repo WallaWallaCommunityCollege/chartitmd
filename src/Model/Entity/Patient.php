@@ -103,7 +103,7 @@ class Patient implements JsonSerializable {
      * @throws \Exception
      */
     public function preUpdate(): void {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTime();
     }
     /**
      * @param Gender $value
