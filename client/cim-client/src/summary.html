@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; default-src 'self'"
+          http-equiv="Content-Security-Policy">
+    <title>Patient summary</title>
+    <link href="style.css" rel="stylesheet"/>
+    <!--
+    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<!--
+
+    TODO: Have the tables display the data from the database.
+          Use for loops for tables like medication and allergies.
+          Change the design of the webpage to be consistent.
+          Figure out what else the page needs to display.
+          Align the text under the tables to be in the div, and also being left-aligned.
+          Add banner to top of page(when its done).
+          Display doctor information: their name and contact information.
+
+-->
+<!--
+
+  All of the values here in the rows are hard coded for the moment
+  until this page can get information from the database and print it out
+
+
+Use jquery
+    <div w3-include-html="patient.html"></div>
+-->
+
+<h1 class="header" align="center">Patient Summary</h1>
+<button onclick="test();">Test</button>
+<a href="settings.html">Settings</a>
+<a href="patient.html">Patient</a>
+<div class="header col-sm-12" align="center">
+    <table>
+        <tr>
+            <!-- Has patient name, age, and gender-->
+            <td>
+                <h3 class="section_name">Medication</h3>
+                <!-- Medication. Use a for loop to grab medication patient is currently taking,
+                    display a message if no result shows. -->
+                <table class="table_style table_medication">
+                    <tbody class="sub_table">
+                    <tr class="table_cell">
+                        <td class="field_value_other">Several cups of milk. It's good for your bones.</td>
+                    </tr>
+                    <tr class="table_cell">
+                        <td class="field_value_other">Some salad to go with your ice cream.</td>
+                    </tr>
+                    <tr class="table_cell">
+                        <td class="field_value_other">Everybody knows laughter is the best medicine.</td>
+                    </tr>
+                    <tr class="table_cell">
+                        <td class="field_value_other">WTH IS THIS MEDICATION/DIET PLAN!?!?!</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <h3 class="section_name">List of allergies</h3>
+                <table class="table_style table_allergy">
+                    <tbody class="sub_table">
+                    <tr class="table_cell">
+                        <td class="field_value_other">Allergic reaction to bee stings. Patient swells where they're stung</td>
+                    </tr>
+                    <tr class="table_cell">
+                        <td class="field_value_other">Allergy to spoons. Don't exactly know why someone would specifically be allergic to spoons</td>
+                    </tr>
+                    <tr class="table_cell">
+                        <td class="field_value_other">An allergy that has to be explained in an unncessarilly long so that I can test the table body
+                            so that if it overflows the table, the scroll bar will be usable. If there are any questions, that's why this has to be very long
+                            P.S., This is also temporary, as with the other allergies, patient data, and medications in the patient summary page</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td rowspan="2">
+                <!-- Graph placeholder-->
+                <img src="../assets/image/chart_it_md.ico" id="graph" class="graph" width="300px" height="300px">
+            </td>
+
+
+        </tr>
+        <!-- Change text to not be in table-->
+        <tr>
+            <td>
+                <div class="previous_appt">
+                    Since last appointment:
+                    <br>
+                    <br>
+                    <label id="weightResult" class="sum_label"></label>
+                    <br>
+                    <label id="heightResult" class="sum_label"></label>
+                    <br>
+                    <label id="bsaResult" class="sum_label"></label>
+                    <br>
+                    <label id="bmiResult" class="sum_label"></label>
+                    <br>
+                    <label id="bmiStatus" class="sum_label"></label>
+                </div>
+            </td>
+        </tr>
+        <!-- Use a for loop to display doctors. -->
+        <tr>
+            <td id="doctors">
+                Doctors:
+                <br>Doctor1
+                <br>Doctor2
+                <br>Doctor3
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="summary.js"></script>
+</body>
+</html>

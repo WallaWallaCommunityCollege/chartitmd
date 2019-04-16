@@ -2,7 +2,7 @@
 	background-color: #6AB5E1;
 }
 .table_style{
-	width: 300px;
+	width: 400px;
 	height: 100px;
 	padding: 8px;
 }
@@ -18,18 +18,21 @@
 .table_current{
 	background-color: #cc79af;
 }
+.previous_appt{
+	background-color: #AAAAAA;
+}
 .header{
-
 	background-color: #12E456;
 }
-.test1{
-	background-color: #ABCDEF;
-	width: 300px;
+.section_name{
+	background-color: #A312E9;
+	align: center;
+	text-align: center;
 }
 .sub_table{
 	display: block;
-	height: 100px;
-	max-height: 100px;
+	height: 200px;
+	max-height: 200px;
 	overflow-y: scroll;
 }
 .field_row_desc{
@@ -37,16 +40,14 @@
 	max-width: 140px;
 	text-align: left;
 }
-.field_value_general{
-	width: 150px;
-	max-width: 150px;
-	text-align: right;
-}
 .field_value_other{
-		width: 250px;
-		max-width: 250px;
+		width: 350px;
+		max-width: 350px;
 		text-align: left;
 }
 .sum_label{
 	text-align: left;
+}
+.graph{
+	background-color: cyan;
 }
