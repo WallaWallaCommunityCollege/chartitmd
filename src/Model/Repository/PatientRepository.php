@@ -21,7 +21,6 @@ use ChartItMD\Model\Entity\Patient;
 use ChartItMD\Model\Entity\PatientHeight;
 use ChartItMD\Model\Entity\PatientWeight;
 use Doctrine\ORM\EntityRepository;
-
 /**
  * Class PatientRepository.
  */
@@ -35,9 +34,8 @@ class PatientRepository extends EntityRepository {
         /**
          * @var BloodPressureRepository $bpr
          */
-        $bpr =
-            $this->getEntityManager()
-                 ->getRepository(BloodPressure::class);
+        $bpr = $this->getEntityManager()
+                    ->getRepository(BloodPressure::class);
         return $bpr->getLast10BloodPressuresForPatientId($patientId);
     }
     /**
@@ -49,9 +47,8 @@ class PatientRepository extends EntityRepository {
         /**
          * @var PatientHeightRepository $phr
          */
-        $phr =
-            $this->getEntityManager()
-                 ->getRepository(PatientHeight::class);
+        $phr = $this->getEntityManager()
+                    ->getRepository(PatientHeight::class);
         return $phr->getLast10HeightsForPatientId($patientId);
     }
     /**
@@ -63,39 +60,37 @@ class PatientRepository extends EntityRepository {
         /**
          * @var PatientWeightRepository $pwr
          */
-        $pwr =
-            $this->getEntityManager()
-                 ->getRepository(PatientWeight::class);
+        $pwr = $this->getEntityManager()
+                    ->getRepository(PatientWeight::class);
         return $pwr->getLast10WeightsForPatientId($patientId);
     }
     /**
-     * @param string $id
-     * @param array  $options List of additional patient table data. Valid
-     *                        options are:
+     * @param string     $id
+     * @param array|null $options List of additional patient table data. Valid
+     *                            options are:
      *
-     *                           * 'recentHeights'
-     *                           * 'recentWeights'
-     *                           * 'recentBloodPressures'
+     *                             * 'recentHeights'
+     *                             * 'recentWeights'
+     *                             * 'recentBloodPressures'
      *
      * @return array|null
      */
-    public function getPatientById(string $id, array $options = []): ?array {
+    public function getPatientById(string $id, ?array $options): ?array {
         $result = null;
+        $query = $this->createQueryBuilder('p')
+                      ->select('p, g, u')
+                      ->join('p.gender', 'g')
+                      ->join('p.createdBy', 'u')
+                      ->where('p.id = :id')
+                      ->setParameter('id', $id)
+                      ->getQuery();
         try {
-            $qb = $this->createQueryBuilder('p');
             /**
              * @var Patient $patient
              */
-            $patient =
-                $qb->select('p, g, u')
-                   ->join('p.gender', 'g')
-                   ->join('p.createdBy', 'u')
-                   ->where('p.id = :id')
-                   ->setParameter('id', $id)
-                   ->getQuery()
-                   ->getSingleResult();
+            $patient = $query->getSingleResult();
             $result = ['patient' => $patient];
-            if (!empty($options)) {
+            if (null !== $options) {
                 foreach ($options as $option) {
                     switch ($option) {
                         case 'recentBloodPressures':

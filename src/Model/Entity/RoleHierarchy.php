@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Contains class RoleHierarchy.
  *
@@ -22,7 +23,7 @@
 namespace ChartItMD\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ChartItMD\Model\Repository as repos;
+
 /**
  * RoleHierarchy
  *
@@ -34,6 +35,15 @@ use ChartItMD\Model\Repository as repos;
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RoleHierarchyRepository")
  */
 class RoleHierarchy {
+    /**
+     * RoleHierarchy constructor.
+     *
+     * @param User $createdBy
+     * @param Role $parent
+     * @param Role $child
+     *
+     * @throws \Exception
+     */
     public function __construct(User $createdBy, Role $parent, Role $child) {
         $this->parent = $parent;
         $this->child = $child;

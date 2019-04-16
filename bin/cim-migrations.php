@@ -46,6 +46,7 @@ try {
     $version = $dic->get('ChartItMD.Doctrine.Parameters.migrationsVersion');
 } catch (Exception $e) {
     print $e->getTraceAsString();
+    print $e->getMessage();
     exit(1);
 }
 $helperSet = new HelperSet();
@@ -73,11 +74,13 @@ try {
     );
 } catch (SLogicException $e) {
     print $e->getTraceAsString();
+    print $e->getMessage();
     exit(2);
 }
 try {
     $cli->run();
 } catch (Exception $e) {
     print $e->getTraceAsString();
+    print $e->getMessage();
     exit(3);
 }

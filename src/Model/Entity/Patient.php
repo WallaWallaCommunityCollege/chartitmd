@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Model\JsonArrayCollection;
@@ -77,9 +77,19 @@ class Patient implements JsonSerializable {
         return $this->lastName;
     }
     /**
+     * Date and time when entity was updated.
+     *
+     * Note:
+     * Doctrine often will return date-times as plain string instead of correct
+     * object so this method will correct it when called.
+     *
      * @return \DateTime|null
+     * @throws \Exception
      */
     public function getUpdatedAt(): ?\DateTime {
+        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTime) {
+            $this->updatedAt = new \DateTime($this->updatedAt);
+        }
         return $this->updatedAt;
     }
     /**
@@ -93,7 +103,7 @@ class Patient implements JsonSerializable {
      * @throws \Exception
      */
     public function preUpdate(): void {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTime();
     }
     /**
      * @param Gender $value

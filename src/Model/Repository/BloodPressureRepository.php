@@ -1,9 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace ChartItMD\Model\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
 /**
  * BloodPressureRepository
  *
@@ -11,17 +11,21 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class BloodPressureRepository extends EntityRepository {
-    public function getLast10BloodPressuresForPatientId(string $patientId) {
+    /**
+     * @param string $patientId
+     *
+     * @return array
+     */
+    public function getLast10BloodPressuresForPatientId(string $patientId): array {
+        $query = $this->createQueryBuilder('b')
+                      ->where('b.patient = :id')
+                      ->join('b.locationUsed', 'l')
+                      ->join('b.createdBy', 'u')
+                      ->setParameter('id', $patientId)
+                      ->setMaxResults(10)
+                      ->getQuery();
         try {
-            $qb = $this->createQueryBuilder('b');
-            $bps =
-                $qb->where('b.patient = :id')
-                   ->join('b.locationUsed', 'l')
-                   ->join('b.createdBy', 'u')
-                   ->setParameter('id', $patientId)
-                   ->setMaxResults(10)
-                   ->getQuery()
-                   ->getArrayResult();
+            $bps = $query->getArrayResult();
             foreach ($bps as &$bp) {
                 unset($bp['patient']);
             }

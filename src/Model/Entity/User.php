@@ -63,9 +63,19 @@ class User implements JsonSerializable {
         $this->createdAt = new \DateTimeImmutable();
     }
     /**
+     * Date and time when entity was created.
+     *
+     * Note:
+     * Doctrine often will return date-times as plain string instead of correct
+     * object so this method will correct it when called.
+     *
      * @return \DateTimeImmutable
+     * @throws \Exception
      */
     public function getCreatedAt(): \DateTimeImmutable {
+        if (!$this->createdAt instanceof \DateTimeImmutable) {
+            $this->createdAt = new \DateTimeImmutable($this->createdAt);
+        }
         return $this->createdAt;
     }
     /**
@@ -87,9 +97,19 @@ class User implements JsonSerializable {
         return $this->password;
     }
     /**
-     * @return \DateTime
+     * Date and time when entity was updated.
+     *
+     * Note:
+     * Doctrine often will return date-times as plain string instead of correct
+     * object so this method will correct it when called.
+     *
+     * @return \DateTime|null
+     * @throws \Exception
      */
-    public function getUpdatedAt(): \DateTime {
+    public function getUpdatedAt(): ?\DateTime {
+        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTime) {
+            $this->updatedAt = new \DateTime($this->updatedAt);
+        }
         return $this->updatedAt;
     }
     /**
@@ -105,7 +125,10 @@ class User implements JsonSerializable {
         foreach ($this as $k => $v) {
             $result[$k] = $v;
         }
-        unset($result['password'], $result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        // Filter out any unneeded Doctrine Entity Proxy c**p.
+        unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        // Filter sensitive properties.
+        unset($result['password']);
         return $result;
     }
     /**
@@ -113,7 +136,7 @@ class User implements JsonSerializable {
      * @throws \Exception
      */
     public function preUpdate(): void {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTime();
     }
     /**
      * @param string $value
