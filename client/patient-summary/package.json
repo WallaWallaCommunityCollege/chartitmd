@@ -1,0 +1,24 @@
+{
+  "name": "cim-client",
+  "version": "0.0.1",
+  "description": "ChartItMd client",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "package": "electron-packager ./ ChartItMD --out=\"../../cache/\" --app-version=\"0.0.1\" --win32metadata.CompanyName=\"ChartItMD Development Group\" --overwrite --icon=\"C:/repos/chartitmd/chartitmd/client/cim-client/assets/image/chart_it_md.ico\"",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Cummings",
+  "license": "proprietary",
+  "devDependencies": {
+    "electron": "^4.1.1",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "jquery": "^3.3.1",
+    "luxon": "^1.12.0"
+  }
+}

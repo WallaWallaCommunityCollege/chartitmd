@@ -4,7 +4,7 @@ declare(strict_types=1);
 /**
  * Contains dot_env settings.
  *
- * PHP version 7.0+
+ * PHP version 7.2+
  *
  * LICENSE:
  * This file is part of ChartItMD.
@@ -30,9 +30,10 @@ $dotEnv = [
         /** @var Loader $loader */
         $loader = new Loader($dic->get('ChartItMD.DotEnv.Parameters.filePaths'));
         $loader->parse()
-               ->toEnv()
-               ->putenv();
+               ->toEnv(true)
+               ->putenv(true)
+               ->toServer(true);
         return $loader;
-    }
+    },
 ];
 return $dotEnv;

@@ -1,0 +1,222 @@
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: normal;
+    src: url("../font/SourceCodePro-Regular.otf.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: normal;
+    font-style: italic;
+    src: url("../font/SourceCodePro-It.otf.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: bold;
+    src: url("../font/SourceCodePro-Bold.otf.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Source Code Pro";
+    font-weight: 900;
+    src: url("../font/SourceCodePro-Black.otf.woff") format("woff");
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: calc(.75rem + (26 - 12) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.2rem + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+
+main {
+    margin: .25rem auto .25rem 10px;
+    top: calc(80px + 125 * ((100vw - 800px) / 800));
+}
+
+table {
+    box-shadow: 5px 5px 5px hsl(0, 0%, 76%);
+    width: calc(100vw - 30px);
+}
+
+td {
+    padding: .25rem .5rem;
+}
+
+td:nth-child(odd) {
+    background: hsl(240, 100%, 98%);
+}
+
+th {
+    text-align: left;
+}
+
+fieldset {
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 76%);
+    margin: .5em .5em .5em 10px;
+    width: calc(100vw - 30px);
+}
+
+label {
+    border: hsl(0, 0%, 0%) solid 1px;
+    display: inline-block;
+    font-size: .75em;
+    height: calc(1.6em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    margin: 0 0 calc(.35em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300))) 0;
+}
+
+input {
+    padding: 0 .25em;
+    height: calc(1.25em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    width: 7em;
+}
+
+input[readonly] {
+    border: none;
+}
+
+input:invalid + span:after {
+    color: hsl(0, 100%, 50%);
+    content: '\2716'; /* X (multiple) symbol */
+    padding: .25rem;
+}
+
+input:valid + span:after {
+    color: hsl(120, 100%, 25%);
+    content: '\2713'; /* Check mark */
+    padding: .25rem;
+}
+
+input[type=date] {
+    padding: 0 .25em;
+    width: auto;
+}
+
+output {
+    display: inline-block;
+    line-height: calc(1.3rem + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    padding: 0 .25em;
+}
+
+/*output[id=age] {*/
+/*    width: 1.5em;*/
+/*}*/
+
+input[name=patient-assignedSex] {
+    width: 5em;
+}
+
+label span:first-child {
+    background-color: hsl(214, 41%, 78%);
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+details details {
+    border: hsl(0, 0%, 0%) solid 1px;
+    border-radius: 8px 8px 0 0;
+    display: inline-block;
+    height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: top;
+}
+
+details details summary {
+    border-radius: 8px 0 0 0;
+    margin: 0;
+    padding: 0;
+}
+
+details details summary label:first-child span {
+    border-radius: 8px 0 0 0;
+}
+
+details details summary:after {
+    content: "\25bc";
+    float: right;
+    font-size: .75em;
+    height: 100%;
+    padding: 5px;
+    width: calc(1.75em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+
+details details[open] summary:after {
+    background-color: hsl(214, 41%, 78%);
+    border-radius: 0 8px 0 0;
+    content: "\25b2";
+}
+
+details summary:before {
+    content: "\25bc";
+    float: left;
+    font-size: .75em;
+    padding: 0 0 0 5px;
+    height: 100%;
+    width: calc(1.5em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+
+details[open] summary:before {
+    content: "\25b2";
+}
+
+details details summary:before {
+    display: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details details[open] {
+    border: hsl(0, 0%, 0%) solid 2px;
+    border-bottom-color: hsl(0, 0%, 91%);
+}
+
+details details label {
+    border: none;
+    padding: 0;
+}
+
+details details div {
+    overflow: visible;
+    width: 12em;
+}
+
+details details[open] div {
+    border: hsl(0, 0%, 0%) solid 2px;
+    border-top-right-radius: 8px;
+    border-top: none;
+    background-color: hsl(0, 0%, 91%);
+    box-shadow: 8px 8px 8px hsl(0, 0%, 63%);
+    padding-top: .125em;
+    position: absolute;
+    top: calc(.75em + (26 - 12) * ((100vw - 300px) / (1600 - 300)));
+    left: -2px;
+}
+
+details details[open] a {
+    font-size: .75em;
+}
+
+.banner {
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 76%);
+    left: 10px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    width: calc(100vw - 30px);
+}
+
+.id {
+    width: 13.5em;
+}

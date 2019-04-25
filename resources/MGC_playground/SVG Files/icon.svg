@@ -1,0 +1,47 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="-128 -128 256 256"
+     preserveAspectRatio="xMinYMid meet"
+     fill="#010101">
+    <!--
+    Copyright (c) 2019 ChartItMD Development Group
+
+    Original artwork designs by Bradley Bunney
+    Edited by Michael Cummings
+    -->
+    <defs>
+        <linearGradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0" stop-color="#00aeef"/>
+            <stop offset="0.19" stop-color="#02aded"/>
+            <stop offset="0.26" stop-color="#09a9e8"/>
+            <stop offset="0.3" stop-color="#14a1dd"/>
+            <stop offset="0.34" stop-color="#2597cf"/>
+            <stop offset="0.38" stop-color="#3b89bc"/>
+            <stop offset="0.41" stop-color="#5779a5"/>
+            <stop offset="0.43" stop-color="#776589"/>
+            <stop offset="0.46" stop-color="#9d4d69"/>
+            <stop offset="0.48" stop-color="#c63446"/>
+            <stop offset="0.5" stop-color="#ed1c24"/>
+            <stop offset="0.51" stop-color="#e6202d"/>
+            <stop offset="0.53" stop-color="#cb2e4c"/>
+            <stop offset="0.57" stop-color="#b53a68"/>
+            <stop offset="0.61" stop-color="#a2447e"/>
+            <stop offset="0.65" stop-color="#944c8f"/>
+            <stop offset="0.71" stop-color="#8a519a"/>
+            <stop offset="0.78" stop-color="#8554a1"/>
+            <stop offset="1" stop-color="#8355a3"/>
+        </linearGradient>
+        <path id="beat" stroke-miterlimit="10" d="m-40,5  h25 l6.5,18 l7.5,-53 l11.5,71 l4.5,-36 h25"/>
+    </defs>
+    <!--    <rect x="-128" y="-128" height="255" width="255" fill="none" stroke="black"/>-->
+    <g id="clipboard" fill="none" stroke="black" stroke-width="6" transform="scale(1.85)">
+        <rect x="-43" y="-52" height="110" width="86" rx="5" ry="5" fill="url(#grad1)"/>
+        <rect x="-21.5" y="-58" height="12" width="43" rx="2" ry="2" fill="black"/>
+        <circle cx="0" cy="-58" r="8" fill="#02aded"/>
+        <use xlink:href="#beat" fill="none" stroke="white" stroke-width="3"/>
+        <path id="small-cross" d="m-33,-27 v-4 h8 v-8 h8 v8 h8 v8 h-8 v8 h-8 v-8 h-8 z" stroke-width="1" fill="red"/>
+        <circle cx="38" cy="48" r="16" fill="#8355a3"/>
+        <path id="check-mark" d="m29.5,47 l6,8 l9.5,-12" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <!--    <path d="m-128,5 h 255" stroke="gray" fill="none"/>-->
+</svg>

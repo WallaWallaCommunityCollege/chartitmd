@@ -3,7 +3,7 @@ declare(strict_types=1);
 /**
  * Contains helper for slim-rbac cli tool.
  *
- * PHP version 7.0+
+ * PHP version 7.2+
  *
  * LICENSE:
  * This file is part of ChartItMD.

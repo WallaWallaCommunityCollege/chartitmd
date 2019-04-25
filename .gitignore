@@ -1,6 +1,7 @@
 .env
 .idea/
 cache/
+node_modules/
 junk*.*
 test*.*
 ssh/
