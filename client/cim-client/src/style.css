@@ -1,3 +1,46 @@
+table{
+	width: 500px;
+    height: 200px;
+    overflow-y: scroll;
+	border: 3px solid black;
+	background-color: gray;
+	padding: 10px;
+	display: inline-block;
+}
+
+.report{
+    font-family: "Comic Sans MS";
+}
+
+.report td{
+    width: 300px;
+    background-color: #4dc71f;
+}
+
+.selected-report{
+    background-color: lightcyan;
+}
+
+td{
+	border: 1px dotted red;
+	max-width: 80px;
+	min-width: 40px;
+	text-align: center;
+}
+.graph{
+	width: 200px;
+	height: 200px;
+    margin: 15px;
+}
+
+
+
+.graph:hover{
+	cursor: pointer;
+	border: 2px solid red;
+}
+
+
 .table_cell{
 	background-color: #6AB5E1;
 }
@@ -50,4 +93,12 @@
 }
 .graph{
 	background-color: cyan;
+}
+
+.report-history{
+    width: 300px;
+}
+
+.report-history td{
+    background-color: #6AB5E1;
 }

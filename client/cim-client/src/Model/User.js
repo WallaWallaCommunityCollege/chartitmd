@@ -1,6 +1,6 @@
 'use strict';
 const {DateTime} = require('luxon');
-
+window.$ = window.jQuery = require('jquery');
 /**
  * @typedef {Object} PHPUser User JSON object as returned by PHP.
  * @property {{}}

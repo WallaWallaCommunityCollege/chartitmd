@@ -1,0 +1,173 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+
+    <title>Patient</title>
+    <link href="../assets/css/normalize.css" rel="stylesheet"/>
+    <link href="../assets/css/main.css" rel="stylesheet"/>
+    <script> window.$ = window.jQuery = require('jquery');</script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" id="themeStyles" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<script type="text/javascript">
+    window.$ = window.jQuery = require('jquery');
+    var measuretype = "";
+    var value = "";
+    var unit = "";
+
+    function saveTextBoxes() {
+        measuretype = $("#type").val();
+        value = $("#value").val();
+        unit = $("#unit").val();
+    }
+
+    function alertSavedValues() {
+        alert("type: " + measuretype + " value: " + value + " " + unit)
+    }
+    function valueSelected(selection){
+        if (selection.value != "0"){
+            //alert("called");
+            document.getElementById('value').disabled = false;
+            document.getElementById('unit').disabled = false;
+            document.getElementById('unit').value = types[selection.value-1][3];
+        }
+        else{
+            document.getElementById('value').disabled = true;
+            document.getElementById('unit').disabled = true;
+        }
+    }
+
+    function setFocus(){
+        alert("called");
+        document.getElementById("type").focus();
+    }
+
+</script><div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"> Measurement Input Form</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        Type <select id ="type" name="type" onchange="valueSelected(this);">
+
+                        <option value="0" >Select a type</option><script> types = [];</script><option value="1" >Heart Rate</option> <script> types.push(["1","Heart Rate","1","bpm",""])</script><option value="2" >Blood Pressure</option> <script> types.push(["2","Blood Pressure","2","mmHg",""])</script><option value="3" >Temperature</option> <script> types.push(["3","Temperature","1","�F",""])</script></select>
+                    </div>
+
+                    <div class="row">
+
+                        Value <input type="textbox" id="value" disabled="true"> </input>
+                        Unit <input type="textbox" id="unit" disabled="true"> </input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveTextBoxes()">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div id="vs-reports">
+    <label id="output"></label>
+    <!-- Report history will be ordered from latest report to older reports -->
+    Vital signs:<br>
+    <template id="row-template">
+        <tr>
+            <form action="add-vs.php" method="post">
+                <td name="vs-name">Name</td>
+                <td name="vs-latest-value">Latest value</td>
+                <td name="vs-latest-date">Latest date</td>
+                <td><button class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal">New</button></td>
+                <td><button>Graph</button></td>
+            </form>
+        </tr>
+    </template>
+</div>
+<div>
+    <table id="show-data">
+        <tbody>
+
+        </tbody>
+
+        <!-- TODO:
+        Get data from the database, and use a loop to grab each row
+        and display its latest value.
+        -->
+    </table>
+</div>
+
+<div class="selected-report">
+
+    <!--
+    <div class="report">
+        <table>
+            <tr>
+                <td>Field name</td>
+                <td>Value</td>
+            </tr>
+            <tr>
+                <td>Blood pressure</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pulse</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Respiration</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Temperature</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Temerature method</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Oxygen location</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Oxygen saturation</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Diastolic</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Systolic</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pain</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pain location</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    -->
+</div>
+<button id="backUp">Back</button>
+<script src="vitalsigns.js"></script>
+</body>
+</html>
