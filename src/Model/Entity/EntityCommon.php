@@ -60,12 +60,13 @@ trait EntityCommon {
      */
     public function jsonSerialize(): array {
         $result = [];
-        foreach ($this as $k => $v) {
+        foreach ((array)$this as $k => $v) {
             $result[$k] = $v;
         }
         // Filter out any unneeded Doctrine Entity Proxy c**p.
         unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
         // Filter sensitive properties.
+        /** @noinspection UnsetConstructsCanBeMergedInspection */
         unset($result['password']);
         return $result;
     }

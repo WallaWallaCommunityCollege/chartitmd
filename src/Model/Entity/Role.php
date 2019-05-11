@@ -38,8 +38,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Role {
     use Uuid4Trait;
-
-    // TODO: Look at using EntityCommon trait with this class as well or something.
+    use EntityCommon;
     /**
      * Role constructor.
      *
@@ -55,28 +54,10 @@ class Role {
         $this->createdBy = $createdBy;
     }
     /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
-    }
-    /**
      * @return string
      */
     public function getDescription(): string {
         return $this->description;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string {
-        return $this->id;
     }
     /**
      * @return string
@@ -110,45 +91,17 @@ class Role {
         $this->description = $value;
     }
     /**
-     * @param string $value
+     * @param bool|null $value
      */
-    public function setName(string $value): void {
-        $this->name = $value;
+    public function setStatus(?bool $value): void {
+        $this->status = $value ?? true;
     }
-    /**
-     * @param bool $value
-     */
-    public function setStatus(bool $value): void {
-        $this->status = $value;
-    }
-    /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
     private $description;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
     /**
      * @var string
      *
