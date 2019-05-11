@@ -14,7 +14,6 @@ declare(strict_types=1);
  * @copyright 2019 ChartItMD Development Group
  * @license   Proprietary
  */
-
 use ChartItMD\Model\Entity\Patient;
 use ChartItMD\Model\Entity\PatientHeight;
 use ChartItMD\Model\Entity\PatientWeight;
@@ -68,7 +67,7 @@ $doctrine = [
     },
     ORMConfiguration::class => autowire(ORMConfiguration::class),
     EntityManager::class => function (ContainerInterface $dic): EntityManager {
-        $isDebug = $dic->get('mode') === 'debug';
+        $isDebug = 'debug' === $dic->get('mode');
         $config = $dic->get(ORMConfiguration::class);
         // Setup all the caches that Doctrine uses to improve performance.
         $cache = $isDebug ? ArrayCache::class : ApcuCache::class;
