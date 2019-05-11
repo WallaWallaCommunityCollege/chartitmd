@@ -122,7 +122,7 @@ class User implements JsonSerializable {
      */
     public function jsonSerialize(): array {
         $result = [];
-        foreach ((array)$this as $k => $v) {
+        foreach ($this as $k => $v) {
             $result[$k] = $v;
         }
         // Filter out any unneeded Doctrine Entity Proxy c**p.
