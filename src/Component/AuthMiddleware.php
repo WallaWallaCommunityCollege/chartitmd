@@ -46,9 +46,11 @@ class AuthMiddleware extends BaseComponent {
      * @throws \InvalidArgumentException
      * @throws \RuntimeException
      */
-    public function __invoke(ServerRequestInterface $request,
+    public function __invoke(
+        ServerRequestInterface $request,
         ResponseInterface $response,
-        callable $next): ResponseInterface {
+        callable $next
+    ): ResponseInterface {
         $variableName = $this->authOptions->getVariableName();
         $storageType = $this->authOptions->getVariableStorageType();
         $userId = (string)$request->getAttribute($variableName);
@@ -61,9 +63,8 @@ class AuthMiddleware extends BaseComponent {
                 $userId = (string)$params[$variableName];
                 break;
         }
-        $permissionName =
-            $request->getUri()
-                    ->getPath();
+        $permissionName = $request->getUri()
+                                  ->getPath();
         $permitted = $this->checkAccess($userId, $permissionName);
         $response = false === $permitted ? $response->withStatus(403, 'Permission denied') : $next($request, $response);
         return $response;
