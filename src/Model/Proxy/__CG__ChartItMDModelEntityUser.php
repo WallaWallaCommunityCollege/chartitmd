@@ -224,7 +224,7 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
