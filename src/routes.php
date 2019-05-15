@@ -36,9 +36,8 @@ $app->group(
                  * @var ContainerInterface $dic
                  */
                 $dic = $app->getContainer();
-                $patient =
-                    $dic->get(PatientRepository::class)
-                        ->getPatientById($id, ['recentBloodPressures', 'recentHeights', 'recentWeights']);
+                $patient = $dic->get(PatientRepository::class)
+                               ->getPatientById($id, ['recentBloodPressures', 'recentHeights', 'recentWeights']);
                 return $response->withJson($patient, 200);
             }
         );
@@ -70,6 +69,45 @@ $app->get(
         return $response->withJson($patient, 200);
     }
 );
+$app->group(
+    '/user/',
+    function () use ($app) {
+        $app->post(
+            'login/',
+            function (Request $request, Response $response) use ($app) {
+                /**
+                 * @var ContainerInterface $dic
+                 */
+                $dic = $app->getContainer();
+                $user = $request->getParsedBody();
+                $result = null;
+                if (null !== $user) {
+                    $result = $dic->get(UserRepository::class)
+                                  ->userLogin($user['name']);
+                    if (null !== $result) {
+                        return $response->withJson($result, 200);
+                    }
+                }
+                return $response->withJson(null, 401);
+            }
+        );
+    },
+    function () use ($app) {
+        $app->get(
+            '{name}',
+            function (Request $request, Response $response, $name) use ($app) {
+                /**
+                 * @var ContainerInterface $dic
+                 */
+                $dic = $app->getContainer();
+                $id = $dic->get(UserRepository::class)
+                          ->getUserIdByName($name);
+//                $user =
+                return $response->withJson($id, 200);
+            }
+        );
+    }
+);
 $app->get(
     '/users',
     function (Request $request, Response $response) use ($app) {
@@ -77,9 +115,8 @@ $app->get(
          * @var ContainerInterface $dic
          */
         $dic = $app->getContainer();
-        $users =
-            $dic->get(UserRepository::class)
-                ->getAllUsers();
+        $users = $dic->get(UserRepository::class)
+                     ->getAllUsers();
         return $response->withJson($users);
     }
 );

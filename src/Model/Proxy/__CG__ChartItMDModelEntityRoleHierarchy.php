@@ -176,7 +176,7 @@ class RoleHierarchy extends \ChartItMD\Model\Entity\RoleHierarchy implements \Do
     /**
      * {@inheritDoc}
      */
-    public function getChild(): string
+    public function getChild(): \ChartItMD\Model\Entity\Role
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChild', []);
@@ -209,7 +209,7 @@ class RoleHierarchy extends \ChartItMD\Model\Entity\RoleHierarchy implements \Do
     /**
      * {@inheritDoc}
      */
-    public function getParent(): string
+    public function getParent(): \ChartItMD\Model\Entity\Role
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParent', []);

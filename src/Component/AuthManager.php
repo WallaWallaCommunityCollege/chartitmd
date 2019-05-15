@@ -30,6 +30,8 @@ use ChartItMD\Model\Entity\RoleHierarchy;
 use ChartItMD\Model\Entity\RolePermission;
 use ChartItMD\Model\Entity\User;
 use ChartItMD\Model\Entity\UserRole;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\ORMInvalidArgumentException;
@@ -87,6 +89,26 @@ class AuthManager extends BaseComponent {
         $this->saveEntity($ur);
     }
     /**
+     * Checking hierarchy cyclic line
+     *
+     * @param string $parentRoleId
+     * @param string $childRoleId
+     *
+     * @throws CyclicException
+     * @throws QueryException
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     */
+    private function checkForCyclicHierarchy(string $parentRoleId, string $childRoleId): void {
+        $result = $this->repositoryRegistry->getRoleHierarchyRepository()
+                                           ->hasChildRoleId($parentRoleId, $childRoleId);
+        if (true === $result) {
+            throw new CyclicException(
+                'There detected cyclic line. Role with id = ' . $parentRoleId . ' has child role whit id =' . $childRoleId
+            );
+        }
+    }
+    /**
      * Creates permission instance with given name and return it
      *
      * @param string $permissionName
@@ -111,7 +133,7 @@ class AuthManager extends BaseComponent {
      * @throws ORMInvalidArgumentException
      * @throws \Exception
      */
-    public function createRole($roleName): Role {
+    public function createRole(string $roleName): Role {
         $r = new Role($roleName);
         $this->entityManager->persist($r);
         return $r;
@@ -133,54 +155,31 @@ class AuthManager extends BaseComponent {
     /**
      * Truncates all tables
      *
-     * @param bool $includingUser
+     * @param bool|null $includingUser
      *
      * @throws DatabaseException
      */
-    public function removeAll(bool $includingUser = false): void {
-        $pdo =
-            $this->entityManager->getConnection()
-                                ->getWrappedConnection();
-        $pdo->beginTransaction();
+    public function removeAll(?bool $includingUser): void {
+        $includingUser = $includingUser ?? false;
+        /**
+         * @var Connection $pdo
+         */
+        $pdo = $this->entityManager->getConnection()
+                                   ->getWrappedConnection();
+        /** @noinspection BadExceptionsProcessingInspection */
         try {
             $pdo->exec('SET FOREIGN_KEY_CHECKS=0');
-            $pdo->exec('TRUNCATE role_permission');
-            $pdo->exec('TRUNCATE role_hierarchy');
-            $pdo->exec('TRUNCATE role');
             $pdo->exec('TRUNCATE permission');
-            $pdo->exec('TRUNCATE user_role');
+            $pdo->exec('TRUNCATE role');
+            $pdo->exec('TRUNCATE role_hierarchy');
+            $pdo->exec('TRUNCATE role_permission');
             if ($includingUser) {
                 $pdo->exec('TRUNCATE user');
             }
+            $pdo->exec('TRUNCATE user_role');
             $pdo->exec('SET FOREIGN_KEY_CHECKS=1');
-            $pdo->commit();
-        } catch (\Exception $e) {
-            $pdo->rollBack();
+        } catch (DBALException $e) {
             throw new DatabaseException($e->getMessage());
-        }
-    }
-    /**
-     * Checking hierarchy cyclic line
-     *
-     * @param string $parentRoleId
-     * @param string $childRoleId
-     *
-     * @throws CyclicException
-     * @throws QueryException
-     * @throws \InvalidArgumentException
-     * @throws \RuntimeException
-     */
-    private function checkForCyclicHierarchy(string $parentRoleId, string $childRoleId): void {
-        $result =
-            $this->repositoryRegistry->getRoleHierarchyRepository()
-                                     ->hasChildRoleId($parentRoleId, $childRoleId);
-        if ($result === true) {
-            throw new CyclicException(
-                'There detected cyclic line. Role with id = ' .
-                $parentRoleId .
-                ' has child role whit id =' .
-                $childRoleId
-            );
         }
     }
 }

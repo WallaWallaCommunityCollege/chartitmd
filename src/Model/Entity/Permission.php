@@ -38,8 +38,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Permission {
     use Uuid4Trait;
-
-    // TODO: Look at using EntityCommon trait with class.
+    use EntityCommon;
     /**
      * Permission constructor.
      *
@@ -49,22 +48,10 @@ class Permission {
      * @throws \Exception
      */
     public function __construct(User $createdBy, string $name) {
-        $this->name = $name;
-        $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
-    }
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
+        $this->id = $this->asBase64();
+        $this->name = $name;
     }
     /**
      * @return string
@@ -75,14 +62,24 @@ class Permission {
     /**
      * @return string
      */
-    public function getId(): string {
-        return $this->id;
-    }
-    /**
-     * @return string
-     */
     public function getName(): string {
         return $this->name;
+    }
+    /**
+     * Date and time when entity was updated.
+     *
+     * Note:
+     * Doctrine often will return date-times as plain string instead of correct
+     * object so this method will correct it when called.
+     *
+     * @return \DateTime|null
+     * @throws \Exception
+     */
+    public function getUpdatedAt(): ?\DateTime {
+        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTime) {
+            $this->updatedAt = new \DateTime($this->updatedAt);
+        }
+        return $this->updatedAt;
     }
     /**
      * @return bool
@@ -98,51 +95,23 @@ class Permission {
         $this->updatedAt = new \DateTime();
     }
     /**
-     * @param string $value
+     * @param string|null $value
      */
-    public function setDescription(string $value = null): void {
+    public function setDescription(?string $value): void {
         $this->description = $value;
     }
     /**
-     * @param string $value
+     * @param bool|null $value
      */
-    public function setName(string $value): void {
-        $this->name = $value;
+    public function setStatus(?bool $value): void {
+        $this->status = $value ?? true;
     }
-    /**
-     * @param bool $value
-     */
-    public function setStatus(bool $value = true): void {
-        $this->status = $value;
-    }
-    /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
     private $description;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
     /**
      * @var string
      *
@@ -156,7 +125,7 @@ class Permission {
      */
     private $status = true;
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */

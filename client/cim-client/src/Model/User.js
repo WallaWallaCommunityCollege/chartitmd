@@ -48,6 +48,7 @@ class User {
          */
         this.updatedAt = null;
     }
+
     /**
      *
      * @param {Object} data
@@ -77,6 +78,16 @@ class User {
                   }
               });
         return user;
+    }
+
+    /**
+     *
+     * @param value
+     * @returns {User}
+     */
+    setPassword(value) {
+        this.password = value;
+        return this;
     }
 }
 
