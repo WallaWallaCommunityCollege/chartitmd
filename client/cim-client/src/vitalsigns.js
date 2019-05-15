@@ -4,7 +4,11 @@ require('dotenv')
 const axios = require('axios');
 const Patient = require('./Model/Patient.js');
 window.$ = window.jQuery = require('jquery');
+axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
 
+function getVSAsJson(){
+    axios.get('VitalSigns')
+}
 
 function loadReport(){
     //Get each row

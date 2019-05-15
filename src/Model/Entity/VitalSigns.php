@@ -24,7 +24,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="vital_signs", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
  * @ORM\Entity
- * Todo Need to add repository.
+ *
+ *
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\VitalSignsRepository")
  */
 class VitalSigns {
     use Uuid4Trait;

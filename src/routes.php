@@ -18,6 +18,7 @@ namespace ChartItMD;
 
 use ChartItMD\Model\Repository\PatientRepository;
 use ChartItMD\Model\Repository\UserRepository;
+use ChartItMD\Model\Repository\VitalSignsRepository;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -82,6 +83,18 @@ $app->get(
         return $response->withJson($users);
     }
 );
+$app->get(
+  '/vitalsigns/{id}',
+    function (Request $request, Response $response, $id) use ($app) {
+        /**
+         * @var ContainerInterface $dic
+         */
+        $dic = $app->getContainer();
+        $vitalSigns =
+            $dic->get(VitalSignsRepository::class)
+                ->getVitalSignsById($id);
+        return $response->withJson($vitalSigns, 200);
+    });
 $app->get(
     '/',
     function (Request $request, Response $response, array $args) {

@@ -1,15 +1,11 @@
-table{
-	width: 500px;
-    height: 200px;
-    overflow-y: scroll;
-	border: 3px solid black;
-	background-color: gray;
-	padding: 10px;
-	display: inline-block;
-}
+
 
 .report{
     font-family: "Comic Sans MS";
+}
+
+#summary{
+	background-color: gray;
 }
 
 .report td{
@@ -21,12 +17,6 @@ table{
     background-color: lightcyan;
 }
 
-td{
-	border: 1px dotted red;
-	max-width: 80px;
-	min-width: 40px;
-	text-align: center;
-}
 .graph{
 	width: 200px;
 	height: 200px;
