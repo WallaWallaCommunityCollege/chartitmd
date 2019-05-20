@@ -58,17 +58,14 @@ class BaseComponent {
      * @throws \RuntimeException
      */
     public function checkAccess(string $userId, string $permissionName): bool {
-        $permissionId =
-            $this->repositoryRegistry->getPermissionRepository()
-                                     ->getPermissionIdByName($permissionName);
+        $permissionId = $this->repositoryRegistry->getPermissionRepository()
+                                                 ->getPermissionIdByName($permissionName);
         if (null !== $permissionId) {
-            $rootRoleIds =
-                $this->repositoryRegistry->getUserRoleRepository()
-                                         ->getUserRoleIds($userId);
-            if (count($rootRoleIds) > 0) {
-                $allRoleIds =
-                    $this->repositoryRegistry->getRoleHierarchyRepository()
-                                             ->getAllRoleIdsHierarchy($rootRoleIds);
+            $rootRoleIds = $this->repositoryRegistry->getUserRoleRepository()
+                                                    ->getUserRoleIds($userId);
+            if (\count($rootRoleIds) > 0) {
+                $allRoleIds = $this->repositoryRegistry->getRoleHierarchyRepository()
+                                                       ->getAllRoleIdsHierarchy($rootRoleIds);
                 return $this->repositoryRegistry->getRolePermissionRepository()
                                                 ->isPermissionAssigned($permissionId, $allRoleIds);
             }

@@ -1,3 +1,36 @@
+
+
+.report{
+    font-family: "Comic Sans MS";
+}
+
+#summary{
+	background-color: gray;
+}
+
+.report td{
+    width: 300px;
+    background-color: #4dc71f;
+}
+
+.selected-report{
+    background-color: lightcyan;
+}
+
+.graph{
+	width: 200px;
+	height: 200px;
+    margin: 15px;
+}
+
+
+
+.graph:hover{
+	cursor: pointer;
+	border: 2px solid red;
+}
+
+
 .table_cell{
 	background-color: #6AB5E1;
 }
@@ -50,4 +83,12 @@
 }
 .graph{
 	background-color: cyan;
+}
+
+.report-history{
+    width: 300px;
+}
+
+.report-history td{
+    background-color: #6AB5E1;
 }

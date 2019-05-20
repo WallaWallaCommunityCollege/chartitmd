@@ -5,9 +5,98 @@ Auto-generated from Git log.
 
 ## Table of Contents
 
+ * [master](#master)
+ * [0.0.3](#0.0.3)
  * [0.0.2](#0.0.2)
  * [0.0.1](#0.0.1)
 
+## [master](../../tree/master)
+ * [00d158e101](../../commit/00d158e1010d81033b4d1db3d855edb4b5c1014f) 2019-05-11T17:52:35+00:00 (Michael Cummings) - Minor optimization in middleware.php file.
+ * [d36d7549d1](../../commit/d36d7549d132a979d4b203cabbd5d2343b2cd8d6) 2019-05-11T17:46:25+00:00 (Michael Cummings) - Updated doctrine proxies for entity changes.
+ * [d6c7c99877](../../commit/d6c7c99877eff466d76de35b11eca1ae3ae5910a) 2019-05-11T17:43:43+00:00 (Michael Cummings) - Started Refactoring AuthManager classes.
+ * [41515137a2](../../commit/41515137a248c1efec35f659ebe6f6a7736a5acb) 2019-05-11T17:42:20+00:00 (Michael Cummings) - Added new routes for user paths.
+ * [2ad9f23f7c](../../commit/2ad9f23f7c4005bd7bff70a9cf5538913b035bf1) 2019-05-11T17:40:45+00:00 (Michael Cummings) - Removed outdated DB migrations.
+ * [7653fb0502](../../commit/7653fb05021f116c3699ec130036f153baf5b160) 2019-05-11T17:39:06+00:00 (Michael Cummings) - Updated client package.json to include react and bootstrap. Also updated versions on other packages.
+ * [a5bdab86e8](../../commit/a5bdab86e887d00a09b3586dee46185acc8599db) 2019-05-11T17:36:55+00:00 (Michael Cummings) - Updated to couple of the *Repository classes.
+ * [54afd22045](../../commit/54afd220459be1a13cc733cf5762eeca821a5e90) 2019-05-11T17:34:11+00:00 (Michael Cummings) - yoda fixed in config/doctrine file.
+ * [648bfdfa2f](../../commit/648bfdfa2f18219b563dd9f1d50913825b12a9ee) 2019-05-11T17:32:55+00:00 (Michael Cummings) - Updated RBAC entities to use EntityCommon where possible.
+ * [78a16d8711](../../commit/78a16d87116d9b5ecdbd6b9d08974850522fe504) 2019-05-11T17:28:28+00:00 (Michael Cummings) - Added setPassword() method to client User model.
+ * [c57df7f0f9](../../commit/c57df7f0f959cba94c6d029653c17134f33e476d) 2019-05-09T03:54:23+00:00 (Alec Aichele) - Various additions including the vital-signs page and a new patient summary page
+ * [501a36e3d6](../../commit/501a36e3d6180c0e70a51e0782aaa14ece7bcb73) 2019-04-16T23:05:50+00:00 (Alec Aichele) - Merge remote-tracking branch 'origin/master'
+ * [99311533f1](../../commit/99311533f1fa044c0081dbd4e7c24cdd45278aeb) 2019-04-16T23:05:11+00:00 (Alec Aichele) - Continued work on the patient summary page, added a settings page, and have moved those and their assets into cim-client
+ * [0e0d6888fa](../../commit/0e0d6888fa0b4bc6ed7098398337ee7a3727b052) 2019-04-14T05:08:22+00:00 (Michael Cummings) - Refactor query building in several entity repositories to move outside try blocks etc.
+ * [068bedd125](../../commit/068bedd1258c717bf54d35e0e6e826893d5f833a) 2019-04-14T03:32:04+00:00 (Michael Cummings) - Updated Patient::preUpdate() to use DateTime and not immutable.
+ * [a5e6454633](../../commit/a5e64546335e0d6ccfbbf94bdd8a5e9793dcf162) 2019-04-13T20:15:49+00:00 (Michael Cummings) - Updated User::jsonSerialize() to closer match code from entity common trait.
+ * [223733808c](../../commit/223733808c4ca64f9d9ba2e3ef0a3773fc51eccb) 2019-04-13T20:13:41+00:00 (Michael Cummings) - Switched User::preUpdate() to use DateTime instead of immutable version.
+ * [2d6e99ec02](../../commit/2d6e99ec02456083272ba992d05a543f8ce224f9) 2019-04-13T20:12:52+00:00 (Michael Cummings) - Updated User::getUpdatedAt() method to handle null and string values correctly. Updated getCreatedAt() method to handle string values correctly.
+ * [1567465726](../../commit/1567465726a18b87d1cbfa92e8bc29bf1d45ad4e) 2019-04-13T20:06:28+00:00 (Michael Cummings) - Updated getUpdatedAt() method to handle null and string values correctly.
+ * [f862be76e6](../../commit/f862be76e60f1b84a519d94943241ed53ce1cf9d) 2019-04-13T20:02:25+00:00 (Michael Cummings) - Added missing strict_types declare to some entities.
+ * [7bf01b5a06](../../commit/7bf01b5a06d1078ee8d617a1b706935d82b514b1) 2019-04-13T19:14:10+00:00 (Michael Cummings) - Updated error handling in bin/cim-migrations file so actual error message is shown.
+## [0.0.3](../../tree/0.0.3)
+ * [3514fd96aa](../../commit/3514fd96aaa05f2abba2edc85ea2813f69f329bb) 2019-04-07T17:41:23+00:00 (Dragonrun1) - Updated patient HTML and js files to work with new Patient class and show example for future user configurable view.
+ * [34e9fa51c9](../../commit/34e9fa51c93bf221ad7dd2d2fb312206b8d1b50a) 2019-04-07T17:38:29+00:00 (Dragonrun1) - Did some accessibility (color) updates to main.css file.
+ * [15e9480480](../../commit/15e94804805fb686b441f75ded72281f3ca06551) 2019-04-07T17:35:43+00:00 (Dragonrun1) - Created cim-client/src/Model/Patient and JsonDate js classes to work with JSON data from server.
+ * [1e33bbe053](../../commit/1e33bbe053c02a905765ae2dad8518f3e8c0caf0) 2019-04-07T17:30:27+00:00 (Dragonrun1) - Updated proxies.
+ * [de06ae2d52](../../commit/de06ae2d52fac4fb8a84903c81fadbbaea8f5046) 2019-04-02T16:43:30+00:00 (Dragonrun1) - Refactored how JQuery is called. Cleaned up require statements.
+ * [d988e99ef9](../../commit/d988e99ef90274fa866aca0611deea56e8e48ae7) 2019-04-02T16:40:41+00:00 (Dragonrun1) - Add recentBloodPressures details. Added .bp to CSS for bloodPressures. Formatting update to patient.html file. Changed links to not go anywhere for now.
+ * [7fb142fa82](../../commit/7fb142fa82ac54d0713a64efc8e5a89ba5b2c073) 2019-04-01T03:03:26+00:00 (Dragonrun1) - Merge remote-tracking branch 'origin/master'
+ * [e77746eaa0](../../commit/e77746eaa09937b6caf6a14192f89f0004a4a5f0) 2019-04-01T03:02:55+00:00 (Dragonrun1) - Minor update to Proxy file. Updated composer.lock file.
+ * [308a706d8f](../../commit/308a706d8f86c144015508f8a4cecd24dfad1231) 2019-04-01T03:01:37+00:00 (Dragonrun1) - Updated patient.js to use dotenv for server URL. Updated client .env.example file for everyone's staging info.
+ * [798e28a800](../../commit/798e28a800cba16ae59a5b2917aa8d4180bc158b) 2019-04-01T02:17:14+00:00 (Alec Aichele) - patient summary page.
+ * [20a56047e9](../../commit/20a56047e927aa2c44ba65191ccc675f92edda23) 2019-03-31T22:45:59+00:00 (Dragonrun1) - Added new Model/Repository classes that were missed in other PHP work. Delete empty FinalPaper_Michael.docx that became actual paper that was turned in for class.
+ * [7a37991707](../../commit/7a37991707a44b23cb7a49bf668fde35da9f6a39) 2019-03-31T22:41:07+00:00 (Dragonrun1) - Cleaned up refs to 960 grid from index.html file. Moved patient stuff into new patient.html and js files. Lots of work on patient files to switch from using tables to IMHO cleaner details/summary structure.
+ * [b31058f0ac](../../commit/b31058f0ac3ec48970fa324763c3c88b518d4f00) 2019-03-31T22:36:36+00:00 (Dragonrun1) - Added first try at js model of User class from PHP side. First table base stab at users.html and users.js files.
+ * [c608476316](../../commit/c6084763165456ad7388bf071d70d1e273b36715) 2019-03-31T22:33:56+00:00 (Dragonrun1) - Update structure and added many default electron role items to main app menu.
+ * [5f578000c6](../../commit/5f578000c6ab6d51145bb4fdd7171f4ef22dac40) 2019-03-31T22:30:36+00:00 (Dragonrun1) - Added css links to src/about.html. Remove ref to 960 grid.
+ * [a26e028452](../../commit/a26e02845244b944d32f6a09d4975800212fe011) 2019-03-31T22:28:39+00:00 (Dragonrun1) - Updated electron version in package.json for client. Added electron-packager for now to dev depends. Added dotenv, jquery, luxon dependencies for Node.
+ * [9193f423a1](../../commit/9193f423a1c2a22ab5781aa30270f0df54691a74) 2019-03-31T22:25:27+00:00 (Dragonrun1) - Lots of changed to assets/css/main.css to support work on patient tables etc.
+ * [048e6094b9](../../commit/048e6094b9a75b011e78d093ef63e4cf1b276067) 2019-03-31T22:23:52+00:00 (Dragonrun1) - Updated routes config for changes to patient endpoint. Added '/users/' endpoint.
+ * [da835c2dee](../../commit/da835c2dee814bdff20858a87425021bbeb10bb6) 2019-03-31T22:20:41+00:00 (Dragonrun1) - Updated/Added stuff to patient related Doctrine repositories as needed for changes to Entity classes.
+ * [93f950e5d7](../../commit/93f950e5d7e38eef03c20dacf484fdcfdebd66a2) 2019-03-31T22:18:28+00:00 (Dragonrun1) - Updated/Added stuff to {User, Role, Permission} Repository classes.
+ * [9d88ac540b](../../commit/9d88ac540b8b2ad32b76ebf9b71186170823d897) 2019-03-31T21:59:26+00:00 (Dragonrun1) - Updated/Added all the Doctrine Entity Proxies.
+ * [457adf0781](../../commit/457adf0781ab168306bff492b25dbe0729e86df6) 2019-03-31T21:57:19+00:00 (Dragonrun1) - Updated Model/Patient to use new common trait and implement JsonSerialize interface. Updated table indexes. Lots of work on getting join with other tables right. Switch to new JsonArrayCollection class to make server requests and responses easier when dealing with other tables.
+ * [2fff419e4d](../../commit/2fff419e4dd62991d4a68778dcba6445d3a72733) 2019-03-31T21:46:33+00:00 (Dragonrun1) - Updated Model/PatientWeight to use new common trait and implement JsonSerialize interface. Added/Updated table indexes. Lots of work on getting join with patient right.
+ * [e87f0c306c](../../commit/e87f0c306c4406410779a0205ebef4029c39af84) 2019-03-31T21:45:32+00:00 (Dragonrun1) - Updated Model/PatientHeight to use new common trait and implement JsonSerialize interface. Added/Updated table indexes. Lots of work on getting join with patient right.
+ * [bfd98c3720](../../commit/bfd98c37205eb25ea3033724a34fcd8a0416a0bf) 2019-03-31T21:33:03+00:00 (Dragonrun1) - Fixed typo in Model/ Permission class and added todo.
+ * [f80e952dde](../../commit/f80e952ddefd69a3144ff8163f05597836939c40) 2019-03-31T21:27:25+00:00 (Dragonrun1) - Minor cleanup on Model/Role class. Added todo.
+ * [21f6af37ed](../../commit/21f6af37edfccf26f12c15327b4e1cf992fdaf01) 2019-03-31T21:17:56+00:00 (Dragonrun1) - Made Model/UnitOfMeasurement class into an actual Doctrine Entity. Updated it to use new common trait and implement JsonSerialize interface. Added public getters.
+ * [555af05b05](../../commit/555af05b05dc879571c60013e462be573ff7a10c) 2019-03-31T21:16:53+00:00 (Dragonrun1) - Made Model/Method class into an actual Doctrine Entity. Updated it to use new common trait and implement JsonSerialize interface. Added public getters.
+ * [023ca50799](../../commit/023ca5079916c7ff3d1b895c8d7658fc897831d4) 2019-03-31T21:13:07+00:00 (Dragonrun1) - Make Model/Location class into an actual Doctrine Entity. Updated class to use new common trait and implement JsonSerialize interface. Added public getters.
+ * [0a59c07e70](../../commit/0a59c07e702f64f47109cdf942ea54ae5c8700f5) 2019-03-31T21:09:54+00:00 (Dragonrun1) - Updated Model/Gender to use new common trait and implement JsonSerialize interface. Added/Updated table indexes and unique constraints.
+ * [fa09f699b6](../../commit/fa09f699b6874e467418f09856680a029fdeea94) 2019-03-31T21:06:10+00:00 (Dragonrun1) - Made Model/BloodPressure class into an actual entity.
+ * [3f4670d3e1](../../commit/3f4670d3e1361d333be0ee848ae3d2e575cbf101) 2019-03-31T20:56:00+00:00 (Dragonrun1) - Added JsonArrayCollection that extends from Doctrine's ArrayCollection to make json requests easier to process.
+ * [64723268b8](../../commit/64723268b856c932301128562ecfa11358b4cec9) 2019-03-31T20:51:52+00:00 (Dragonrun1) - Extracted some common Entity properties and their methods out into separate trait so they can be reused.
+ * [97cf29a8cf](../../commit/97cf29a8cf09a1519d3aa1a367548b5f33361fd7) 2019-03-31T20:46:53+00:00 (Dragonrun1) - Removed several classes from Model/RepositoryRegistry that were added there by mistake.
+ * [701c8699cd](../../commit/701c8699cdafee974b28c9b4bbcfc95a18190426) 2019-03-31T20:41:24+00:00 (Dragonrun1) - Updated composer.json to require PHP JSON extension.
+ * [7e1f9d2aea](../../commit/7e1f9d2aea49545f4d518fa537e0547a160e6e38) 2019-03-31T20:38:39+00:00 (Dragonrun1) - Added .editorconfig to help standardize formatting code commits for everybody.
+ * [d369d09ac1](../../commit/d369d09ac19923dbba1c0845a1fb9f2d0bf23702) 2019-03-31T20:35:43+00:00 (Dragonrun1) - Added JSON serializable method to Model/Entity/User class to help prevent exposing password in JSON.
+ * [67bd89d78e](../../commit/67bd89d78e9a39591b0e70bb219980cc81e13fe8) 2019-03-31T20:32:36+00:00 (Dragonrun1) - Added User class to doctrine config.
+ * [d321f820f2](../../commit/d321f820f22193aaa571f1b578c281b3fc53e379) 2019-03-31T20:29:00+00:00 (Dragonrun1) - Small tweak to PHP dot_env config to solve some errors.
+ * [f38b62405a](../../commit/f38b62405afeeb0e79c5312e90f8c7aa94a0324f) 2019-03-31T20:26:38+00:00 (Dragonrun1) - Added assets/js/jquery.* so we can start using it in the client easier.
+ * [4472e0cc07](../../commit/4472e0cc077c70b7249695c0c244415602822076) 2019-03-31T20:24:37+00:00 (Dragonrun1) - Add assets/css/normalize.css file.
+ * [6abe2fcce3](../../commit/6abe2fcce366d3dd34e887511e1af364b7cfeff3) 2019-03-31T20:23:33+00:00 (Dragonrun1) - Removed reset.css as normalize.css is better solution.
+ * [307ab1ebcf](../../commit/307ab1ebcf259ed4b69514f52f3843071ac19fc9) 2019-03-31T20:20:53+00:00 (Dragonrun1) - Removed 960 grid system as its not very useful for more fluid designs.
+ * [7041d7af31](../../commit/7041d7af31f428c8f2492d06c656dc11c135ed65) 2019-03-31T20:04:42+00:00 (Dragonrun1) - Added .env.example for client.
+ * [960444a51d](../../commit/960444a51dde8b8a55271582b613e8336eafbad6) 2019-03-20T07:00:41+00:00 (Dragonrun1) - Did a little cleanup on final paper and added PDF version.
+ * [a7962304f4](../../commit/a7962304f4e97c9ec4527a533abc7c2164a41e42) 2019-03-20T06:54:41+00:00 (Dragonrun1) - Adding the final paper for capstone
+ * [a9a4e23b61](../../commit/a9a4e23b61505836fe18b176e1cd48b782c4df45) 2019-03-19T03:36:41+00:00 (Alec) - Writing my part of the final draft.
+ * [3452268eda](../../commit/3452268eda2a1c291909444015c7e29defd42b33) 2019-03-18T22:46:32+00:00 (Alec) - Final rough drafts
+ * [e0545a4f77](../../commit/e0545a4f778012ac1013c876ad4ff48d11b1421d) 2019-03-18T22:36:44+00:00 (Alec) - Added repository to php files
+ * [35a9e69ed0](../../commit/35a9e69ed07c185ea72a1a3002958a227e302e14) 2019-03-17T20:06:36+00:00 (Dragonrun1) - Added original source of artwork by Bunney to resources/asset_master and my modified versions that are used as source for client images.
+ * [e05947c7a3](../../commit/e05947c7a38f57e622fec54053aff5c43e54a701) 2019-03-17T20:02:23+00:00 (Dragonrun1) - Changed index.js to point at server instead of local.
+ * [936daf5849](../../commit/936daf5849a9caba53d4c22963bb98e840ee0273) 2019-03-17T19:58:55+00:00 (Dragonrun1) - Refactored banner in index.html to use picture tag so it can be more responsive. Updated main.css for stuff with banner.
+ * [d8d0dfde8c](../../commit/d8d0dfde8ceb94d9e143390c4532d7a186ec4346) 2019-03-17T19:58:15+00:00 (Dragonrun1) - Added new reworked header images and icons from work with Bunney.
+ * [8ce9f74075](../../commit/8ce9f74075b117996339297bf478c8c9b59d20ae) 2019-03-17T19:50:07+00:00 (Dragonrun1) - Refactored main app menu building into appMenu.js file.
+ * [5a5410037b](../../commit/5a5410037b592dc847c97038442dd8449dec7b46) 2019-03-17T19:49:30+00:00 (Dragonrun1) - Added and updated Entity/* and Repository/* from work with electron etc. Some of this is WIP.
+ * [5558d9dbfa](../../commit/5558d9dbfa73687bc004009e70c8163e123b43b8) 2019-03-17T19:46:33+00:00 (Dragonrun1) - Updated main .htaccess file to redirect everything to public/index.php.
+ * [01ce93074c](../../commit/01ce93074c4cb38589d86acacb365d02d42923dc) 2019-03-17T19:43:34+00:00 (Dragonrun1) - Moved main.js into src/ directory and updated paths. Added exports for win and app to main.js.
+ * [7c178a3824](../../commit/7c178a3824e376aa397fc440b1fb52e6a5fb52fd) 2019-03-09T04:59:41+00:00 (Dragonrun1) - Fixed issue with dot_env values not being seen correctly.
+ * [4d5573ad34](../../commit/4d5573ad340ea9e00502389773fa7d7e02a8eae6) 2019-03-08T21:40:28+00:00 (Dragonrun1) - Updated/ Added doctrine proxy files.
+ * [a5b8cd8e3f](../../commit/a5b8cd8e3f5f957ab693cfcfee6a314405a0f4be) 2019-03-08T19:51:38+00:00 (Dragonrun1) - Fixed url typo in meta tag of index.html file.
+ * [26363d176e](../../commit/26363d176e0ada90f0e98af91af56bd5f2c6db26) 2019-03-08T19:49:37+00:00 (Dragonrun1) - Fix try 2 for .htaccess files.
+ * [f102d5e563](../../commit/f102d5e563e12fae0a5364ea5a7335f87f3abaac) 2019-03-08T10:36:53+00:00 (Dragonrun1) - Refactored .htaccess files and public/index.php to be simpler.
+ * [0619377522](../../commit/0619377522b96fb7d3a7cd5e93de48685010cdce) 2019-03-08T10:34:56+00:00 (Dragonrun1) - Updated composer.lock
+ * [31ddffbca1](../../commit/31ddffbca1975e17ad4ac0c742cbf22d27a0a822) 2019-03-08T07:10:36+00:00 (Dragonrun1) - Change log with new v0.0.2 tag
 ## [0.0.2](../../tree/0.0.2)
  * [8d68df9298](../../commit/8d68df929838ba91ec242770fd3afb61c8ac9e63) 2019-03-08T07:05:42+00:00 (Dragonrun1) - Added developer uuid util to bin/ directory.
  * [f27e79f816](../../commit/f27e79f816212106914008e6f5930ad3471a1d99) 2019-03-08T07:00:43+00:00 (Dragonrun1) - Updated .gitignore for node_modules directory.

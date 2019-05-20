@@ -4,33 +4,45 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; default-src 'self'"
-          http-equiv="Content-Security-Policy">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+    <meta
+            content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/; default-src 'self'"
+            http-equiv="Content-Security-Policy"/>
     <title>Settings page</title>
-    <script src="main.js"></script>
-    <script src="../assets/js/jquery.js"></script>
+    <link href="../assets/css/normalize.css" rel="stylesheet"/>
+    <link href="../assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
     <main>
+        <div align="center">
+            <input id="TextColor" type="color" name="text-color" onchange="updatePreview()"> Text color
+            <br>
+            <input id="BgColor" type="color" name="background-color" onchange="updatePreview()" value="#FFFFFF"> Background color
+            <br>
+                <button id="colorBlindOptions">WIP Color Blind Options WIP</button>
+            <br>
+            <div>
+                <label id="preview">Preview Text</label>
+            </div>
 
-    <input id="text-color" type="color"> Text color
-    <br>
-    <input id="background-color" type="color"> background color
-
-        <button id="color-blind" onclick="displayColorBlind()">Color blind options</button>
-    <br>
-    <br>
-<button id="apply" onclick="applyChanges('#123456', '#123456');">Apply</button>
-        <button id="cancel">Cancel</button>
-<a href="index.html">Cancel</a>
-
-    <br>
-    <br>
-    <label id="applyText">not changed</label>
-    <br>
-    <label id="applyText2">not changed</label>
+            <input type="button" value="Apply" id="ApplyChanges" onclick="applyChanges()">
+            <input type="button" value="Reset" id="RevertChanges" onclick="resetValues()">
+            <button id="cancel" onclick="cancelChanges()">Cancel</button>
+        </div>
     </main>
-    <script src="settings.js"></script>
+    <aside>
+        <input type="checkbox" id="display-age">Age<br>
+        <input type="checkbox" id="display-gender">Gender<br>
+        <input type="checkbox" id="display-height">Height<br>
+        <input type="checkbox" id="display-weight">Weight<br>
+    </aside>
+<script src="settings.js"></script>
 </body>
-
 </html>

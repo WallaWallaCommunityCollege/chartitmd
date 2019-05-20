@@ -24,10 +24,13 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="vital_signs", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
  * @ORM\Entity
- * Todo Need to add repository.
+ *
+ *
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\VitalSignsRepository")
  */
 class VitalSigns {
     use Uuid4Trait;
+    use EntityCommon;
     /**
      * VitalSigns constructor.
      *
@@ -42,29 +45,12 @@ class VitalSigns {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
     }
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
-    }
+
     /**
      * @return string
      */
     public function getDiastolic(): string {
         return $this->diastolic;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string {
-        return $this->id;
     }
     /**
      * @return string
@@ -127,33 +113,11 @@ class VitalSigns {
         return $this->temperatureMethod;
     }
     /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
-    /**
      * @var string $diastolic (bottom number)
      *
      * @ORM\Column(type="decimal", precision=3, scale=0, nullable=true)
      */
     private $diastolic;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="uuid64", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")
-     */
-    private $id;
     /**
      * @var string
      *

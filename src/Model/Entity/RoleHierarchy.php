@@ -51,9 +51,9 @@ class RoleHierarchy {
         $this->createdBy = $createdBy;
     }
     /**
-     * @return string
+     * @return Role
      */
-    public function getChild(): string {
+    public function getChild(): Role {
         return $this->child;
     }
     /**
@@ -69,9 +69,9 @@ class RoleHierarchy {
         return $this->createdBy;
     }
     /**
-     * @return string
+     * @return Role
      */
-    public function getParent(): string {
+    public function getParent(): Role {
         return $this->parent;
     }
     /**

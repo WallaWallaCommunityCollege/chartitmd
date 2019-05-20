@@ -66,6 +66,7 @@ trait EntityCommon {
         // Filter out any unneeded Doctrine Entity Proxy c**p.
         unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
         // Filter sensitive properties.
+        /** @noinspection UnsetConstructsCanBeMergedInspection */
         unset($result['password']);
         return $result;
     }

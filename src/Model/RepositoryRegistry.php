@@ -34,7 +34,17 @@ use ChartItMD\Model\Repository\RoleRepository;
 use ChartItMD\Model\Repository\UserRoleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * Class RepositoryRegistry
+ *
+ * @package ChartItMD\Model
+ */
 class RepositoryRegistry {
+    /**
+     * RepositoryRegistry constructor.
+     *
+     * @param EntityManagerInterface $entityManager
+     */
     public function __construct(EntityManagerInterface $entityManager) {
         $this->entityManager = $entityManager;
     }
