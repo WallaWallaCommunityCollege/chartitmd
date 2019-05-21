@@ -45,47 +45,45 @@ use Doctrine\ORM\Query\QueryException;
  */
 class AuthManager extends BaseComponent {
     /**
+     * @param User $createdBy
      * @param Role $child
      * @param Role $parent
      *
      * @throws CyclicException
      * @throws ORMException
-     * @throws ORMInvalidArgumentException
      * @throws QueryException
-     * @throws \InvalidArgumentException
-     * @throws \RuntimeException
      * @throws \Exception
      */
-    public function assignChildRoleToParent(Role $child, Role $parent): void {
-        $rh = new RoleHierarchy($parent->getId(), $child->getId());
+    public function assignChildRoleToParent(User $createdBy, Role $child, Role $parent): void {
+        $rh = new RoleHierarchy($createdBy, $parent, $child);
         $this->checkForCyclicHierarchy($parent->getId(), $child->getId());
         $this->entityManager->persist($rh);
     }
     /**
+     * @param User       $createdBy
      * @param Permission $permission
      * @param Role       $role
      *
      * @throws ORMException
-     * @throws ORMInvalidArgumentException
      * @throws \Exception
      */
-    public function assignPermissionToRole(Permission $permission, Role $role): void {
-        $pr = new RolePermission($role->getId(), $permission->getId());
+    public function assignPermissionToRole(User $createdBy, Permission $permission, Role $role): void {
+        $pr = new RolePermission($createdBy, $role, $permission);
         $this->entityManager->persist($pr);
     }
     /**
      * Assign role to user
      *
+     * @param User $createdBy
      * @param Role $role
      * @param User $user
      *
      * @throws ORMException
-     * @throws ORMInvalidArgumentException
      * @throws OptimisticLockException
      * @throws \Exception
      */
-    public function assignRoleToUser(Role $role, User $user): void {
-        $ur = new UserRole($role->getId(), $user->getId());
+    public function assignRoleToUser(User $createdBy, Role $role, User $user): void {
+        $ur = new UserRole($createdBy, $user, $role);
         $this->saveEntity($ur);
     }
     /**
@@ -111,30 +109,30 @@ class AuthManager extends BaseComponent {
     /**
      * Creates permission instance with given name and return it
      *
+     * @param User   $createdBy
      * @param string $permissionName
      *
      * @return Permission
      * @throws ORMException
-     * @throws ORMInvalidArgumentException
      * @throws \Exception
      */
-    public function createPermission($permissionName): Permission {
-        $p = new Permission($permissionName);
+    public function createPermission(User $createdBy, $permissionName): Permission {
+        $p = new Permission($createdBy, $permissionName);
         $this->entityManager->persist($p);
         return $p;
     }
     /**
      * Creates role instance with given name and return it
      *
+     * @param User   $createdBy
      * @param string $roleName
      *
      * @return Role
      * @throws ORMException
-     * @throws ORMInvalidArgumentException
      * @throws \Exception
      */
-    public function createRole(string $roleName): Role {
-        $r = new Role($roleName);
+    public function createRole(User $createdBy, string $roleName): Role {
+        $r = new Role($createdBy, $roleName);
         $this->entityManager->persist($r);
         return $r;
     }
