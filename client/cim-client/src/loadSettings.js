@@ -3,12 +3,11 @@ window.$ = window.jQuery = require('jquery');
 
 let pageBody = document.getElementById("pageBody");
 
-let bgColor= "#ABCDEF";
+let bgColor = "#ABCDEF";
 let textColor = "#7D2AC2";
-try{
+try {
     pageBody.style.cssText = `background-color: ${bgColor} !important; color: ${textColor} !important;`;
-}
-catch(e){
+} catch (e) {
     alert(e);
     console.log(e);
 }
