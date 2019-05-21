@@ -266,17 +266,22 @@ class Role extends \ChartItMD\Model\Entity\Role implements \Doctrine\ORM\Proxy\P
 
         parent::setStatus($value);
     }
+
     /**
      * {@inheritDoc}
      */
     public function getCreatedAt(): \DateTimeImmutable {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
+
         return parent::getCreatedAt();
     }
+
     /**
      * {@inheritDoc}
      */
     public function getCreatedBy(): \ChartItMD\Model\Entity\User {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
         return parent::getCreatedBy();
     }
@@ -284,6 +289,7 @@ class Role extends \ChartItMD\Model\Entity\Role implements \Doctrine\ORM\Proxy\P
      * {@inheritDoc}
      */
     public function getId(): string {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
         return parent::getId();
     }
@@ -291,6 +297,7 @@ class Role extends \ChartItMD\Model\Entity\Role implements \Doctrine\ORM\Proxy\P
      * {@inheritDoc}
      */
     public function jsonSerialize(): array {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
         return parent::jsonSerialize();
     }

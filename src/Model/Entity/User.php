@@ -13,26 +13,6 @@ declare(strict_types=1);
  * @copyright 2019 ChartItMD Development Group
  * @license   Proprietary
  */
-/**
- * Contains class AuthManager.
- *
- * PHP version 7.2+
- *
- * LICENSE:
- * This file is part of ChartItMD.
- * Copyright (C) 2019 ChartItMD Development Group
- *
- * Additional code from {@link https://github.com/potievdev/slim-rbac} with MIT
- * license by Abdulmalik Abdulpotiev.
- *
- * @see       MIT_LICENSE
- * @author    Abdulmalik Abdulpotiev <potievdev@gmail.com>
- *
- * @author    Michael Cummings <mgcummings@yahoo.com>
- * @copyright 2019 ChartItMD Development Group
- * @license   Proprietary
- */
-
 namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
@@ -42,7 +22,11 @@ use JsonSerializable;
 /**
  * Class User.
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="user",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="idx_name", columns={"name"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -122,6 +106,7 @@ class User implements JsonSerializable {
      */
     public function jsonSerialize(): array {
         $result = [];
+        /** @noinspection ForeachSourceInspection */
         foreach ($this as $k => $v) {
             $result[$k] = $v;
         }
@@ -138,18 +123,6 @@ class User implements JsonSerializable {
      */
     public function preUpdate(): void {
         $this->updatedAt = new \DateTime();
-    }
-    /**
-     * @param string $value
-     */
-    public function setName(string $value): void {
-        $this->name = $value;
-    }
-    /**
-     * @param string $value
-     */
-    public function setPassword(string $value): void {
-        $this->password = $value;
     }
     /**
      * @var \DateTimeImmutable
