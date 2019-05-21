@@ -6,8 +6,16 @@ const Patient = require('./Model/Patient.js');
 window.$ = window.jQuery = require('jquery');
 axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
 
+getVSAsJson();
+
 function getVSAsJson(){
-    axios.get('VitalSigns')
+    try{
+        axios.get('/vitalsigns/');
+    }
+    catch(e){
+        console.log(e);
+    }
+
 }
 
 function loadReport(){

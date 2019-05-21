@@ -6,6 +6,7 @@ function saveData(){
     let activity = document.getElementById("activity").value;
     let orders = document.getElementById("orders").value;
     alert("Data saved\n" + allergies);
+    window.location.href = "patient.html"
 }
 
 function loadLatest(){

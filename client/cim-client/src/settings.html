@@ -12,22 +12,30 @@
     * Scripts can connect only to itself, localhost, or our website to get json
       etc.
      -->
-    <meta
+    <!--<meta
             content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/; default-src 'self'"
             http-equiv="Content-Security-Policy"/>
-    <title>Settings page</title>
+    --><title>Settings page</title>
     <link href="../assets/css/normalize.css" rel="stylesheet"/>
     <link href="../assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
     <main>
         <div align="center">
+            Presets:<br>
+            <div id="presets">
+                <input type="button" id="default" value="Default" onclick="loadPreset(this.value)">
+                <input type="button" id="inverted" value="Inverted" onclick="loadPreset(this.value)">
+                <input type="button" id="wwccSpirit" value="WWCC spirit" onclick="loadPreset(this.value)">
+            </div>
+            <br>
+            <br>
             <input id="TextColor" type="color" name="text-color" onchange="updatePreview()"> Text color
             <br>
             <input id="BgColor" type="color" name="background-color" onchange="updatePreview()" value="#FFFFFF"> Background color
-            <br>
+           <!-- <br>
                 <button id="colorBlindOptions">WIP Color Blind Options WIP</button>
-            <br>
+            <br>-->
             <div>
                 <label id="preview">Preview Text</label>
             </div>
@@ -37,12 +45,13 @@
             <button id="cancel" onclick="cancelChanges()">Cancel</button>
         </div>
     </main>
+    <!--
     <aside>
         <input type="checkbox" id="display-age">Age<br>
         <input type="checkbox" id="display-gender">Gender<br>
         <input type="checkbox" id="display-height">Height<br>
         <input type="checkbox" id="display-weight">Weight<br>
-    </aside>
+    </aside>-->
 <script src="settings.js"></script>
 </body>
 </html>

@@ -9,6 +9,18 @@ axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
 window.$ = window.jQuery = require('jquery');
 getPatientAsJson();
 
+document.getElementById("summary").addEventListener("click", function(){
+   alert("clicked");
+    window.location.href = "summary.html";
+});
+
+document.getElementById("vitalSigns").addEventListener("click", function(){
+    window.location.href = "vitalsigns.html";
+});
+
+document.getElementById("settings").addEventListener("click", function(){
+    window.location.href = "settings.html";
+})
 
 /**
  * Simple wrapper around an Axios call to get extended patient detail and display it.

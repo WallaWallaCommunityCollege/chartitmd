@@ -6,7 +6,9 @@ let pageBody = document.getElementById("pageBody");
 let bgColor= "#ABCDEF";
 let textColor = "#7D2AC2";
 try{
-    pageBody.style.cssText = `background-color: ${bgColor} !important; color: ${textColor} !important;`;
+    pageBody.style.cssText =
+        `background-color: ${bgColor} !important;
+         color: ${textColor} !important;`;
 }
 catch(e){
     alert(e);
