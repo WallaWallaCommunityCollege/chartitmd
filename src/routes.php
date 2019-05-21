@@ -41,6 +41,18 @@ $app->group(
                 return $response->withJson($patient, 200);
             }
         );
+        $app->get(
+            'vitalSigns/{id}',
+            function (Request $request, Response $response, $id) use ($app) {
+                /**
+                 * @var ContainerInterface $dic
+                 */
+                $dic = $app->getContainer();
+                $vitalSigns = $dic->get(VitalSignsRepository::class)
+                                  ->getLast10VitalSignsByPatientId($id);
+                return $response->withJson($vitalSigns, 200);
+            }
+        );
     }
 );
 $app->get(
@@ -121,17 +133,17 @@ $app->get(
     }
 );
 $app->get(
-  '/vitalsigns/{id}',
+    '/vitalSigns/{id}',
     function (Request $request, Response $response, $id) use ($app) {
         /**
          * @var ContainerInterface $dic
          */
         $dic = $app->getContainer();
-        $vitalSigns =
-            $dic->get(VitalSignsRepository::class)
-                ->getVitalSignsById($id);
+        $vitalSigns = $dic->get(VitalSignsRepository::class)
+                          ->getVitalSignsById($id);
         return $response->withJson($vitalSigns, 200);
-    });
+    }
+);
 $app->get(
     '/',
     function (Request $request, Response $response, array $args) {

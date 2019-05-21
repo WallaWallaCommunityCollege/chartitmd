@@ -18,17 +18,16 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Class VitalSigns.
  *
  * @ORM\Table(name="vital_signs", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
- * @ORM\Entity
- *
- *
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\VitalSignsRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class VitalSigns {
+class VitalSigns implements JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**
@@ -45,7 +44,6 @@ class VitalSigns {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
     }
-
     /**
      * @return string
      */
@@ -53,9 +51,9 @@ class VitalSigns {
         return $this->diastolic;
     }
     /**
-     * @return string
+     * @return Location
      */
-    public function getOxygenLocation(): string {
+    public function getOxygenLocation(): Location {
         return $this->oxygenLocation;
     }
     /**
@@ -71,9 +69,9 @@ class VitalSigns {
         return $this->pain;
     }
     /**
-     * @return string
+     * @return Location
      */
-    public function getPainLocation(): string {
+    public function getPainLocation(): Location {
         return $this->painLocation;
     }
     /**
@@ -97,19 +95,13 @@ class VitalSigns {
     /**
      * @return string
      */
-    public function getSystolic(): string {
-        return $this->systolic;
-    }
-    /**
-     * @return string
-     */
     public function getTemperature(): string {
         return $this->temperature;
     }
     /**
-     * @return string
+     * @return Method
      */
-    public function getTemperatureMethod(): string {
+    public function getTemperatureMethod(): Method {
         return $this->temperatureMethod;
     }
     /**
@@ -119,9 +111,10 @@ class VitalSigns {
      */
     private $diastolic;
     /**
-     * @var string
+     * @var Location $oxygenLocation
      *
-     * @ORM\Column(name="oxygen_location", type="string", length=20, nullable=true, options={"fixed": true})
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(name="oxygen_location", referencedColumnName="id", nullable=true)
      */
     private $oxygenLocation;
     /**
@@ -137,16 +130,17 @@ class VitalSigns {
      */
     private $pain;
     /**
-     * @var string
+     * @var Location $painLocation
      *
-     * @ORM\Column(name="pain_location", type="string", length=20, nullable=true, options={"fixed": true})
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(name="pain_location", referencedColumnName="id", nullable=true)
      */
     private $painLocation;
     /**
      * @var Patient $patient
      *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="vitalSigns")
-     * @ORM\JoinColumn(name="patient_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="VitalSigns")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $patient;
     /**
@@ -162,7 +156,7 @@ class VitalSigns {
      */
     private $respirationRate;
     /**
-     * @var string $systolic (top number)
+     * @var int|string $systolic (top number)
      *
      * @ORM\Column(type="decimal", precision=3, scale=0, nullable=true)
      */
@@ -174,9 +168,10 @@ class VitalSigns {
      */
     private $temperature;
     /**
-     * @var string
+     * @var Method $temperatureMethod
      *
-     * @ORM\Column(name="temperature_method", type="string", length=20, nullable=true, options={"fixed": true})
+     * @ORM\ManyToOne(targetEntity="Method")
+     * @ORM\JoinColumn(name="temperature_method", referencedColumnName="id", nullable=true)
      */
     private $temperatureMethod;
 }
