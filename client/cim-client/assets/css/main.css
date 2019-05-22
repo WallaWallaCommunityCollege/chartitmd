@@ -72,6 +72,11 @@ fieldset {
     width: 100%;
 }
 
+fieldset fieldset {
+    box-shadow: none;
+    margin: 0 0 calc(.35em + var(--cim-line-height-precalc)) 0;
+}
+
 legend {
     padding: 0 .25em;
 }
@@ -133,6 +138,15 @@ label span:first-child {
     padding: 0 .25em;
 }
 
+/*label span:nth-of-type(1) {*/
+/*    background-color: hsl(214, 41%, 78%);*/
+/*    display: inline-block;*/
+/*    float: left;*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    padding: 0 .25em;*/
+/*}*/
+
 summary::-webkit-details-marker {
     display: none;
 }
@@ -144,6 +158,7 @@ summary:focus {
 [id$="-dont-show"] {
     display: none;
 }
+
 details summary:before {
     color: hsl(120, 100%, 25%);
     content: "\25bc";

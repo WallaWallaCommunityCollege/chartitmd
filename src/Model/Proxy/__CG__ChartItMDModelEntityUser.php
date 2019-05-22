@@ -254,26 +254,4 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
         parent::preUpdate();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setName(string $value): void
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$value]);
-
-        parent::setName($value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setPassword(string $value): void
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', [$value]);
-
-        parent::setPassword($value);
-    }
-
 }

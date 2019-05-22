@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; default-src 'self'"
-          http-equiv="Content-Security-Policy">
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+    <meta
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' 'unsafe-inline' http://localhost/; default-src 'self'"
+        http-equiv="Content-Security-Policy">
     <title>Patient summary</title>
     <link href="style.css" rel="stylesheet"/>
     <!--
     <link href="assets/css/normalize.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="main.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
 </head>
 <body id="pageBody">
 <!--
@@ -34,44 +41,38 @@
 Use jquery
     <div w3-include-html="patient.html"></div>
 -->
-
-<h1 align="center">Patient Summary</h1>
+<h1>Patient Summary</h1>
 <a href="settings.html">Settings</a>
 <a href="patient.html">Patient</a>
-<a href="vitalsigns.html">VS</a>
+<a href="vitalSigns.html">VitalSigns</a>
 <main>
     <button id="save">Save</button>
-<table id="summary">
-    <tr>
-        <th>Allergies</th>
-        <th>Current problems</th>
-    </tr>
-    <tr>
-        <td><textarea id="allergy" cols="50" rows="30"></textarea></td>
-        <td><textarea id="problem" cols="50" rows="30"></textarea></td>
-    </tr>
-    <tr>
-        <th>Medication</th>
-        <th>Surgical History</th>
-    </tr>
-    <tr>
-        <td><textarea id="medication" cols="50" rows="30"></textarea></td>
-        <td><textarea id="surgical" cols="50" rows="30"></textarea></td>
-    </tr>
-    <tr>
-        <th>Activity</th>
-        <th>Orders</th>
-    </tr>
-    <tr>
-        <td><textarea id="activity" cols="50" rows="30"></textarea></td>
-        <td><textarea id="orders" cols="50" rows="30"></textarea></td>
-    </tr>
-</table>
-
-
-
-
-
+    <table id="summary">
+        <tr>
+            <th>Allergies</th>
+            <th>Current problems</th>
+        </tr>
+        <tr>
+            <td><textarea cols="50" id="allergy" rows="30">&nbsp;</textarea></td>
+            <td><textarea cols="50" id="problem" rows="30">&nbsp;</textarea></td>
+        </tr>
+        <tr>
+            <th>Medication</th>
+            <th>Surgical History</th>
+        </tr>
+        <tr>
+            <td><textarea cols="50" id="medication" rows="30">&nbsp;</textarea></td>
+            <td><textarea cols="50" id="surgical" rows="30">&nbsp;</textarea></td>
+        </tr>
+        <tr>
+            <th>Activity</th>
+            <th>Orders</th>
+        </tr>
+        <tr>
+            <td><textarea cols="50" id="activity" rows="30">&nbsp;</textarea></td>
+            <td><textarea cols="50" id="orders" rows="30">&nbsp;</textarea></td>
+        </tr>
+    </table>
     <div id="allergies">
         Allergies:
         <br>
@@ -88,7 +89,6 @@ Use jquery
                 <td>A week ago</td>
             </tr>
         </table>
-
     </div>
     <div id="problems">
         Current Problems:
@@ -152,10 +152,9 @@ Use jquery
     </div>
 </main>
 <br><br><br><br>
-<div class="header col-sm-12" align="center">
+<div class="header col-sm-12">
 </div>
-
 <script src="summary.js"></script>
-<script src="loadSettings.js"></script>
+<!--<script src="loadSettings.js"></script>-->
 </body>
 </html>
