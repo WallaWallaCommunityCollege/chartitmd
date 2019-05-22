@@ -1,7 +1,16 @@
 'use strict';
+require('dotenv')
+    .config();
 const axios = require('axios');
+// Config Axios defaults.
+axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
 const {DateTime} = require('luxon');
 const User = require('./Model/User.js');
+// Setup JQuery
+window.$ = window.jQuery = require('jquery');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const {UsersTable, UserRow} = require('./Components/UsersTable');
 /**
  * @typedef {Object} User - A user as return from the server in JSON.
  * @readonly
@@ -18,17 +27,19 @@ const User = require('./Model/User.js');
  */
 $(document)
     .ready(getAllUsers());
+
 /**
  *
  */
 function getAllUsers() {
-    axios.get('http://localhost/users')
-         .then(res => {
-             const users = res.data;
+    axios.get('/users')
+         .then(response => {
+             const users = response.data;
              console.log(users);
              displayUsers(users);
          });
 }
+
 /**
  *
  * @param {User[]} users
@@ -36,9 +47,7 @@ function getAllUsers() {
 function displayUsers(users) {
     let template = document.querySelector('#template-user-row');
     let tbody = document.querySelector("tbody");
-    let order = [
-        'createdAt', 'id', 'name', 'password', 'updatedAt',
-    ];
+    let order = ['createdAt', 'id', 'name', 'password', 'updatedAt',];
     for (let i = 0; i < users.length; i++) {
         let user = User.fromJson(users[i]);
         let clone = document.importNode(template.content, true);
@@ -59,6 +68,7 @@ function displayUsers(users) {
         tbody.appendChild(clone);
     }
 }
+
 function processForm() {
     return false;
 }

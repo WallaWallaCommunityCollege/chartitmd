@@ -233,7 +233,7 @@ will be needed to add the new server side git repo as a remote so you can push
 to it from your local copy.
 
 ```bash
-git remote add staging ssh://<username>@www.chartitmd.com/~/public_html/
+git remote add staging ssh://<username>@www.chartitmd.com/~/staging.git/
 ```
 
 Now to push the local master to it.

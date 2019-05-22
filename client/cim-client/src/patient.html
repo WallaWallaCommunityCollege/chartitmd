@@ -68,10 +68,53 @@
                             <span>assigned sex:</span>
                             <input id="patient-assignedSex" name="patient-assignedSex" readonly required type="text"/>
                         </label>
+                        <details id="patient-codeStatus-item">
+                            <summary id="patient-codeStatus-must-show">
+                                <label>
+                                    <span>code status</span>
+                                    <select id="patient-codeStatus-status" name="patient-codeStatus-status"
+                                            required>
+                                        <option value="dnr">dnr</option>
+                                        <option value="full">full</option>
+                                        <option value="limited">limited</option>
+                                    </select>
+                                    <!--                                        <input id="patient-codeStatus-dnr" name="code-radio" type="radio" value="dnr"-->
+                                    <!--                                               readonly required>-->
+                                </label>
+                                <!--                                    <label>-->
+                                <!--                                        <span>Full</span>-->
+                                <!--                                        <input id="patient-codeStatus-full" name="code-radio" type="radio" value="full">-->
+                                <!--                                    </label>-->
+                                <!--                                    <label>-->
+                                <!--                                        <span>Limited</span>-->
+                                <!--                                        <input id="patient-codeStatus-limited" name="code-radio" type="radio"-->
+                                <!--                                               value="limited">-->
+                                <!--                                    </label>-->
+                            </summary>
+                            <div id="patient-codeStatus-limited-may-show">
+                                <label>
+                                    <span>Intubation</span>
+                                    <input id="patient-codeStatus-limited-check-intubation" name="code-check"
+                                           readonly required type="checkbox" value="intubation">
+                                </label>
+                                <label>
+                                    <span>Defibrillation</span>
+                                    <input id="patient-codeStatus-limited-check-defibrillation" name="code-check"
+                                           type="checkbox" value="defibrillation">
+                                </label>
+                                <label>
+                                    <span>Chest Compressions</span>
+                                    <input id="patient-codeStatus-limited-check-chest-compressions"
+                                           name="code-check"
+                                           type="checkbox" value="chest-compressions">
+                                </label>
+                                <a href="#">New</a>&nbsp
+                            </div>
+                        </details>
                         <details id="patient-bloodPressures-item">
                             <summary id="patient-bloodPressures-must-show">
                                 <label id="patient-bloodPressure-pressures-item">
-                                    <span>bloodPressure</span>
+                                    <span>blood pressure</span>
                                     <output class="bp" id="patient-bloodPressure-systolic"></output>
                                     &nbsp;/&nbsp;
                                     <output class="bp" id="patient-bloodPressure-diastolic"></output>
@@ -169,6 +212,6 @@
     </section>
 </main>
 <script src="patient.js"></script>
-<script src="loadSettings.js"></script>
+<!--<script src="loadSettings.js"></script>-->
 </body>
 </html>

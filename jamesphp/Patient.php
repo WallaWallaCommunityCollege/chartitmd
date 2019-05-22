@@ -28,7 +28,7 @@ class Patient
 
     private function findAge()//gets age from date or birth
     {
-        $birthDate = explode("-", $this->patientDOB);
+        $birthDate = explode("-",$this->patientDOB);
 
         $this->patientAge = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
             ? ((date("Y") - $birthDate[2]) - 1)

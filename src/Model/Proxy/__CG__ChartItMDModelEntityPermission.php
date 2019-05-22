@@ -211,11 +211,14 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
 
         return parent::getName();
     }
+
     /**
      * {@inheritDoc}
      */
     public function getUpdatedAt(): ?\DateTime {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
+
         return parent::getUpdatedAt();
     }
 
@@ -262,10 +265,12 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
 
         parent::setStatus($value);
     }
+
     /**
      * {@inheritDoc}
      */
     public function getCreatedAt(): \DateTimeImmutable {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
         return parent::getCreatedAt();
     }
@@ -273,6 +278,7 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
      * {@inheritDoc}
      */
     public function getCreatedBy(): \ChartItMD\Model\Entity\User {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
         return parent::getCreatedBy();
     }
@@ -280,6 +286,7 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
      * {@inheritDoc}
      */
     public function getId(): string {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
         return parent::getId();
     }
@@ -287,6 +294,7 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
      * {@inheritDoc}
      */
     public function jsonSerialize(): array {
+
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
         return parent::jsonSerialize();
     }
