@@ -1,12 +1,37 @@
-function attemptLogin(){
+'use strict';
+require('dotenv')
+    .config();
+const axios = require('axios');
+const User = require('./Model/User.js');
+// Config Axios defaults.
+axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
+// Setup JQuery
+window.$ = window.jQuery = require('jquery');
+
+function login(){
     let input = {
+        username: document.getElementById("userLog").value,
+        password: document.getElementById("passLog").value
+    };
+    axios.get(`user/${input.username}`)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+}
+
+function attemptLogin(){
+    login();
+    /*let input = {
         username: document.getElementById("userLog").value,
         password: document.getElementById("passLog").value
     };
 
     sessionStorage.setItem("UserName", document.getElementById("userLog").value);
     sessionStorage.setItem("PassWord", document.getElementById("passLog").value);
-    window.location.href = "confirm.html";
+    window.location.href = "confirm.html";*/
 }
 document.getElementById("tryLogin").addEventListener("click", attemptLogin);
 
