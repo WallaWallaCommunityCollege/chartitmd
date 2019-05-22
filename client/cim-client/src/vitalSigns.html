@@ -15,7 +15,7 @@
     <title>Vital Signs</title>
     <link href="../assets/css/normalize.css" rel="stylesheet"/>
     <link href="../assets/css/main.css" rel="stylesheet"/>
-    <script src="../assets/js/jquery.min.js"></script>
+    <!--    <script src="../assets/js/jquery-3.3.1.min.js"></script>-->
     <!--    <script> window.$ = window.jQuery = require('jquery');</script>-->
     <!--    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>-->
     <!--    <link rel="stylesheet" id="themeStyles"-->
@@ -55,132 +55,186 @@
 <!--                .focus();-->
 <!--    }-->
 <!--</script>-->
-<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"> Measurement Input Form</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        Type <select id="type" name="type" onchange="valueSelected(this);">
-                        <option value="0">Select a type</option>
-                        <!--                        <script> types = [];</script>-->
-                        <option value="1">Heart Rate</option>
-                        <!--                        <script> types.push(["1", "Heart Rate", "1", "bpm", ""])</script>-->
-                        <option value="2">Blood Pressure</option>
-                        <!--                        <script> types.push(["2", "Blood Pressure", "2", "mmHg", ""])</script>-->
-                        <option value="3">Temperature</option>
-                        <!--                        <script> types.push(["3", "Temperature", "1", "�F", ""])</script>-->
-                    </select>
-                    </div>
-
-                    <div class="row">
-
-                        Value <input type="textbox" id="value" disabled="true"> </input>
-                        Unit <input type="textbox" id="unit" disabled="true"> </input>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="saveTextBoxes()">Save changes</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<div id="vs-reports">
-    <label id="output"></label>
-    <!-- Report history will be ordered from latest report to older reports -->
-    Vital signs:<br>
-    <template id="row-template">
+<!--<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--                <h4 class="modal-title" id="myModalLabel"> Measurement Input Form</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="container-fluid">-->
+<!--                    <div class="row">-->
+<!--                        Type <select id="type" name="type" onchange="valueSelected(this);">-->
+<!--                        <option value="0">Select a type</option>-->
+<!--                        &lt;!&ndash;                        <script> types = [];</script>&ndash;&gt;-->
+<!--                        <option value="1">Heart Rate</option>-->
+<!--                        &lt;!&ndash;                        <script> types.push(["1", "Heart Rate", "1", "bpm", ""])</script>&ndash;&gt;-->
+<!--                        <option value="2">Blood Pressure</option>-->
+<!--                        &lt;!&ndash;                        <script> types.push(["2", "Blood Pressure", "2", "mmHg", ""])</script>&ndash;&gt;-->
+<!--                        <option value="3">Temperature</option>-->
+<!--                        &lt;!&ndash;                        <script> types.push(["3", "Temperature", "1", "�F", ""])</script>&ndash;&gt;-->
+<!--                    </select>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        Value <input type="textbox" id="value" disabled="true"> </input>-->
+<!--                        Unit <input type="textbox" id="unit" disabled="true"> </input>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary" onclick="saveTextBoxes()">Save changes</button>-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+<!--    </div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--<div id="vs-reports">-->
+<!--    <label id="output"></label>-->
+<!--    &lt;!&ndash; Report history will be ordered from latest report to older reports &ndash;&gt;-->
+<!--    Vital signs:<br>-->
+<!--    <template id="row-template">-->
+<!--        <tr>-->
+<!--            <td id="vs-name">Name</td>-->
+<!--            <td id="vs-latest-value">Latest value</td>-->
+<!--            <td id="vs-latest-date">Latest date</td>-->
+<!--            <td>-->
+<!--                <button class="btn btn-primary btn-lg" data-target="#myModal" data-toggle="modal">New</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button>Graph</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </template>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <table id="show-data">-->
+<!--        <tbody>-->
+<!--        </tbody>-->
+<!--        &lt;!&ndash; TODO:-->
+<!--        Get data from the database, and use a loop to grab each row-->
+<!--        and display its latest value.-->
+<!--        &ndash;&gt;-->
+<!--    </table>-->
+<!--</div>-->
+<!--<div class="selected-report">-->
+<!--
+<div class="report">
+    <table>
         <tr>
-            <td id="vs-name">Name</td>
-            <td id="vs-latest-value">Latest value</td>
-            <td id="vs-latest-date">Latest date</td>
-            <td>
-                <button class="btn btn-primary btn-lg" data-target="#myModal" data-toggle="modal">New</button>
-            </td>
-            <td>
-                <button>Graph</button>
-            </td>
+            <td>Field name</td>
+            <td>Value</td>
         </tr>
-    </template>
-</div>
-<div>
-    <table id="show-data">
-        <tbody>
-
-        </tbody>
-
-        <!-- TODO:
-        Get data from the database, and use a loop to grab each row
-        and display its latest value.
-        -->
+        <tr>
+            <td>Blood pressure</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Pulse</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Respiration</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Temperature</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Temerature method</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Oxygen location</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Oxygen saturation</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Diastolic</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Systolic</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Pain</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Pain location</td>
+            <td></td>
+        </tr>
     </table>
 </div>
-
-<div class="selected-report">
-
-    <!--
-    <div class="report">
-        <table>
-            <tr>
-                <td>Field name</td>
-                <td>Value</td>
-            </tr>
-            <tr>
-                <td>Blood pressure</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pulse</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Respiration</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Temperature</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Temerature method</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Oxygen location</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Oxygen saturation</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Diastolic</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Systolic</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pain</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pain location</td>
-                <td></td>
-            </tr>
-        </table>
-    </div>
-    -->
-</div>
-<button id="backUp">Back</button>
+-->
+<!--</div>-->
+<!--<button id="backUp">Back</button>-->
+<main>
+    <section>
+        <form action="patient.html" method="post">
+            <fieldset>
+                <legend>Vital Signs</legend>
+                <details id="patient-vitalSigns-item">
+                    <summary id="patient-vitalSigns-must-show">
+                        <label id="patient-vitalSign-pressures-item">
+                            <span>blood pressure</span>
+                            <output class="bp" id="patient-vitalSign-systolic"></output>
+                            &nbsp;/&nbsp;
+                            <output class="bp" id="patient-vitalSign-diastolic"></output>
+                        </label>
+                        <label id="patient-vitalSign-pulseRate-item">
+                            <span>pulse rate:</span>
+                            <output id="patient-vitalSign-pulseRate"></output>
+                        </label>
+                        <label id="patient-vitalSign-respirationRate-item">
+                            <span>respiration rate:</span>
+                            <output id="patient-vitalSign-respirationRate"></output>
+                        </label>
+                        <label id="patient-vitalSign-temperature-item">
+                            <span>temperature:</span>
+                            <output id="patient-vitalSign-temperature"></output>
+                        </label>
+                        <label id="patient-vitalSign-temperatureMethod-item">
+                            <span>temperature method:</span>
+                            <output id="patient-vitalSign-temperatureMethod"></output>
+                        </label>
+                    </summary>
+                    <div id="patient-vitalSigns-may-show">
+                        <label id="patient-vitalSign-painLocation-item">
+                            <span>pain location:</span>
+                            <output id="patient-vitalSign-painLocation"></output>
+                        </label>
+                        <label id="patient-vitalSign-pain-item">
+                            <span>pain level:</span>
+                            <output id="patient-vitalSign-pain"></output>
+                        </label>
+                    </div>
+                    <div id="patient-vitalSigns-dont-show">
+                        &nbsp;
+                        <label id="patient-vitalSign-createdAt-item">
+                            <span>createdAt:</span>
+                            <input id="patient-vitalSign-createdAt" name="patient-vitalSign-createdAt" readonly
+                                   type="date"/>
+                        </label>
+                        <label id="patient-vitalSign-id-item">
+                            <span>id:</span>
+                            <input class="id" id="patient-vitalSign-id" name="patient-vitalSign-id" readonly
+                                   type="text"/>
+                        </label>
+                    </div>
+                    <a href="#">New</a>&nbsp;
+                    <a href="#">More ...</a><br>
+                </details>
+            </fieldset>
+        </form>
+        <a href="summary.html">Back</a>
+    </section>
+</main>
 <script src="vitalSigns.js"></script>
 <!--<script src="loadSettings.js"></script>-->
 </body>

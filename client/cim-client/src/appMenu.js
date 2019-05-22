@@ -49,7 +49,15 @@ const appMenu = [
                                                slashes: true
                                            }));
                 }
-            }, {type: 'separator'},
+            }, {type: 'separator'}, {
+                label: 'Vital Signs', click() {
+                    win.loadURL(url.format({
+                                               pathname: path.join(__dirname, 'vitalSigns.html'),
+                                               protocol: 'file:',
+                                               slashes: true
+                                           }));
+                }
+            }
         ],
     }, {
         label: 'Admin',
