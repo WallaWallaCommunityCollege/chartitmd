@@ -18,6 +18,7 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Location of measurement, injection site, etc.
@@ -34,7 +35,7 @@ use Doctrine\ORM\Mapping as ORM;
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\LocationRepository")
  */
-class Location {
+class Location implements JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**

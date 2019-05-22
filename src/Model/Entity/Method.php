@@ -18,6 +18,7 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Method use in procedure, of measurement, etc.
@@ -34,7 +35,7 @@ use Doctrine\ORM\Mapping as ORM;
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\MethodRepository")
  */
-class Method {
+class Method implements JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**
