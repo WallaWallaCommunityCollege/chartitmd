@@ -14,16 +14,16 @@ declare(strict_types=1);
  * @copyright 2019 ChartItMD Development Group
  * @license   Proprietary
  */
+use ChartItMD\Model\Entity\Height;
 use ChartItMD\Model\Entity\Patient;
-use ChartItMD\Model\Entity\PatientHeight;
-use ChartItMD\Model\Entity\PatientWeight;
 use ChartItMD\Model\Entity\User;
 use ChartItMD\Model\Entity\VitalSigns;
-use ChartItMD\Model\Repository\PatientHeightRepository;
+use ChartItMD\Model\Entity\Weight;
+use ChartItMD\Model\Repository\HeightRepository;
 use ChartItMD\Model\Repository\PatientRepository;
-use ChartItMD\Model\Repository\PatientWeightRepository;
 use ChartItMD\Model\Repository\UserRepository;
 use ChartItMD\Model\Repository\VitalSignsRepository;
+use ChartItMD\Model\Repository\WeightRepository;
 use ChartItMD\Model\Type\Uuid64Type;
 use Doctrine\Common\Cache\ApcuCache;
 use Doctrine\Common\Cache\ArrayCache;
@@ -108,13 +108,13 @@ $doctrine = [
         return $dic->get(EntityManager::class)
                    ->getRepository(Patient::class);
     },
-    PatientHeightRepository::class => function (ContainerInterface $dic): PatientHeightRepository {
+    HeightRepository::class => function (ContainerInterface $dic): HeightRepository {
         return $dic->get(EntityManager::class)
-                   ->getRepository(PatientHeight::class);
+                   ->getRepository(Height::class);
     },
-    PatientWeightRepository::class => function (ContainerInterface $dic): PatientWeightRepository {
+    WeightRepository::class => function (ContainerInterface $dic): WeightRepository {
         return $dic->get(EntityManager::class)
-                   ->getRepository(PatientWeight::class);
+                   ->getRepository(Weight::class);
     },
     UserRepository::class => function (ContainerInterface $dic): UserRepository {
         return $dic->get(EntityManager::class)

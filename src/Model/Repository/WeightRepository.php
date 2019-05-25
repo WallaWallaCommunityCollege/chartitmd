@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class PatientWeightRepository.
+ * Contains class WeightRepository.
  *
  * PHP version 7.2+
  *
@@ -16,13 +16,14 @@ declare(strict_types=1);
 
 namespace ChartItMD\Model\Repository;
 
-use ChartItMD\Model\Entity\PatientWeight;
+use ChartItMD\Model\Entity\Weight;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
+
 /**
- * Class PatientWeightRepository.
+ * Class WeightRepository.
  */
-class PatientWeightRepository extends EntityRepository {
+class WeightRepository extends EntityRepository {
     /**
      * @param string $patientId
      *
@@ -48,12 +49,12 @@ class PatientWeightRepository extends EntityRepository {
     /**
      * @param string $id
      *
-     * @return PatientWeight|null
+     * @return Weight|null
      * @throws NonUniqueResultException
      * @throws \InvalidArgumentException
      * @throws \RuntimeException
      */
-    public function getLatestWeightByPatientId(string $id): ?PatientWeight {
+    public function getLatestWeightByPatientId(string $id): ?Weight {
         $query = $this->createQueryBuilder('h')
                       ->where('h.patient = :id')
                       ->setParameter('id', $id)

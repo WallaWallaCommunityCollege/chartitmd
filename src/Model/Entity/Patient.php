@@ -78,7 +78,7 @@ class Patient implements JsonSerializable {
         return $this->gender;
     }
     /**
-     * @return JsonArrayCollection|PatientHeight[]
+     * @return JsonArrayCollection|Height[]
      */
     public function getHeights() {
         return $this->heights;
@@ -106,7 +106,7 @@ class Patient implements JsonSerializable {
         return $this->updatedAt;
     }
     /**
-     * @return JsonArrayCollection|PatientWeight[]
+     * @return JsonArrayCollection|Weight[]
      */
     public function getWeights() {
         return $this->weights;
@@ -154,9 +154,9 @@ class Patient implements JsonSerializable {
      */
     private $gender;
     /**
-     * @var JsonArrayCollection|PatientHeight[] $heights
+     * @var JsonArrayCollection|Height[] $heights
      *
-     * @ORM\OneToMany(targetEntity="PatientHeight", mappedBy="patient")
+     * @ORM\OneToMany(targetEntity="Height", mappedBy="patient")
      * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $heights;
@@ -173,9 +173,9 @@ class Patient implements JsonSerializable {
      */
     private $updatedAt;
     /**
-     * @var JsonArrayCollection|PatientWeight[] $weights
+     * @var JsonArrayCollection|Weight[] $weights
      *
-     * @ORM\OneToMany(targetEntity="PatientWeight", mappedBy="patient")
+     * @ORM\OneToMany(targetEntity="Weight", mappedBy="patient")
      * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $weights;

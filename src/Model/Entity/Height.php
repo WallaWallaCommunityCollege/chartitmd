@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class PatientHeight.
+ * Contains class Height.
  *
  * PHP version 7.2+
  *
@@ -21,17 +21,17 @@ use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 
 /**
- * Class PatientHeight.
+ * Class Height.
  *
- * @ORM\Table(name="patient_height",
+ * @ORM\Table(name="height",
  *     indexes={
  *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
- * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientHeightRepository")
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\HeightRepository")
  */
-class PatientHeight implements JsonSerializable {
+class Height implements JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**
@@ -57,6 +57,12 @@ class PatientHeight implements JsonSerializable {
         return $this->height;
     }
     /**
+     * @return UnitOfMeasurement|null
+     */
+    public function getMeasuredIn(): ?UnitOfMeasurement {
+        return $this->measuredIn;
+    }
+    /**
      * @return Patient
      */
     public function getPatient(): Patient {
@@ -72,11 +78,27 @@ class PatientHeight implements JsonSerializable {
         return $this;
     }
     /**
+     * @param UnitOfMeasurement|null $value
+     *
+     * @return self Fluent interface
+     */
+    public function setMeasuredIn(?UnitOfMeasurement $value): self {
+        $this->measuredIn = $value;
+        return $this;
+    }
+    /**
      * @var string $height (cm)
      *
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
      */
     private $height;
+    /**
+     * @var UnitOfMeasurement|null $measuredIn Unit of measurement used.
+     *
+     * @ORM\ManyToOne(targetEntity="UnitOfMeasurement")
+     * @ORM\JoinColumn(name="measured_in", referencedColumnName="id", nullable=true)
+     */
+    private $measuredIn;
     /**
      * @var Patient $patient
      *

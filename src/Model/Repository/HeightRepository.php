@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class PatientHeightRepository.
+ * Contains class HeightRepository.
  *
  * PHP version 7.2+
  *
@@ -16,17 +16,18 @@ declare(strict_types=1);
 
 namespace ChartItMD\Model\Repository;
 
+use ChartItMD\Model\Entity\Height;
 use ChartItMD\Model\Entity\Patient;
-use ChartItMD\Model\Entity\PatientHeight;
 use Doctrine\ORM\EntityRepository;
+
 /**
- * Class PatientHeightRepository.
+ * Class HeightRepository.
  */
-class PatientHeightRepository extends EntityRepository {
+class HeightRepository extends EntityRepository {
     /**
      * @param string $patientId
      *
-     * @return array|PatientHeight[]
+     * @return array|Height[]
      */
     public function getAllHeightsByPatientId(string $patientId): array {
         $query = $this->createQueryBuilder('h')
@@ -45,7 +46,7 @@ class PatientHeightRepository extends EntityRepository {
     /**
      * @param Patient $patient
      *
-     * @return PatientHeight[]
+     * @return Height[]
      */
     public function getAllHeightsForPatient(Patient $patient): array {
         $query = $this->createQueryBuilder('h')
@@ -68,10 +69,10 @@ class PatientHeightRepository extends EntityRepository {
      */
     public function getLast10HeightsForPatientId(string $patientId) {
         $query = $this->createQueryBuilder('h')
-                      ->where('h.patient = :id')
-                      ->setParameter('id', $patientId)
-                      ->setMaxResults(10)
-                      ->getQuery();
+            ->where('h.patient = :id')
+            ->setParameter('id', $patientId)
+            ->setMaxResults(10)
+            ->getQuery();
         try {
             $heights = $query->getArrayResult();
             foreach ($heights as &$height) {
@@ -86,9 +87,9 @@ class PatientHeightRepository extends EntityRepository {
     /**
      * @param string $id
      *
-     * @return PatientHeight|null
+     * @return Height|null
      */
-    public function getLatestHeightByPatientId(string $id): ?PatientHeight {
+    public function getLatestHeightByPatientId(string $id): ?Height {
         $query = $this->createQueryBuilder('h')
                       ->where('h.patient = :id')
                       ->setParameter('id', $id)
@@ -105,9 +106,9 @@ class PatientHeightRepository extends EntityRepository {
     /**
      * @param string $id
      *
-     * @return PatientHeight|null
+     * @return Height|null
      */
-    public function getPatientHeightsById(string $id): ?PatientHeight {
+    public function getPatientHeightsById(string $id): ?Height {
         $query = $this->createQueryBuilder('h')
                       ->where('h.id = :id')
                       ->setParameter('id', $id)
