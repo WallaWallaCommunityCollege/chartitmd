@@ -17,10 +17,11 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Repository;
 
 use ChartItMD\Model\Entity\BloodPressure;
+use ChartItMD\Model\Entity\Height;
 use ChartItMD\Model\Entity\Patient;
-use ChartItMD\Model\Entity\PatientHeight;
-use ChartItMD\Model\Entity\PatientWeight;
+use ChartItMD\Model\Entity\Weight;
 use Doctrine\ORM\EntityRepository;
+
 /**
  * Class PatientRepository.
  */
@@ -41,27 +42,27 @@ class PatientRepository extends EntityRepository {
     /**
      * @param string $patientId
      *
-     * @return array|PatientHeight[]
+     * @return array|Height[]
      */
     public function getLast10HeightsForPatientId(string $patientId): array {
         /**
-         * @var PatientHeightRepository $phr
+         * @var HeightRepository $phr
          */
         $phr = $this->getEntityManager()
-                    ->getRepository(PatientHeight::class);
+                    ->getRepository(Height::class);
         return $phr->getLast10HeightsForPatientId($patientId);
     }
     /**
      * @param string $patientId
      *
-     * @return array|PatientWeight[]
+     * @return array|Weight[]
      */
     public function getLast10WeightsForPatientId(string $patientId): array {
         /**
-         * @var PatientWeightRepository $pwr
+         * @var WeightRepository $pwr
          */
         $pwr = $this->getEntityManager()
-                    ->getRepository(PatientWeight::class);
+                    ->getRepository(Weight::class);
         return $pwr->getLast10WeightsForPatientId($patientId);
     }
     /**
