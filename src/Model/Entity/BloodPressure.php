@@ -22,17 +22,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class BloodPressure.
  *
- * @ORM\Table(name="blood_pressure", indexes={
- *     @ORM\Index(name="fk_location_used", columns={"location_used"}),
- *     @ORM\Index(name="fk_measured_in", columns={"measured_in"}),
- *     @ORM\Index(name="fk_method_used", columns={"method_used"}),
- *     @ORM\Index(name="idx_created_at", columns={"created_at"})
- * })
+ * @ORM\Table(name="blood_pressure",
+ *     indexes={
+ *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\BloodPressureRepository")
  */
-class BloodPressure {
+class BloodPressure implements \JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
+    use MeasurementCommon;
     /**
      * BloodPressure constructor.
      *
@@ -52,106 +53,27 @@ class BloodPressure {
         $this->systolic = $systolic;
     }
     /**
-     * @return string
+     * @return int
      */
-    public function getDiastolic(): string {
+    public function getDiastolic(): int {
         return $this->diastolic;
     }
     /**
-     * @return Location
+     * @return int
      */
-    public function getLocationUsed(): Location {
-        return $this->locationUsed;
-    }
-    /**
-     * @return string
-     */
-    public function getMeasuredIn(): string {
-        return $this->measuredIn;
-    }
-    /**
-     * @return string
-     */
-    public function getMethodUsed(): string {
-        return $this->methodUsed;
-    }
-    /**
-     * @return Patient
-     */
-    public function getPatient(): Patient {
-        return $this->patient;
-    }
-    /**
-     * @return string
-     */
-    public function getSystolic(): string {
+    public function getSystolic(): int {
         return $this->systolic;
     }
     /**
-     * @param string $value
+     * @var int $diastolic (bottom number)
      *
-     * @return self Fluent interface
-     */
-    public function setLocationUsed(string $value): self {
-        $this->locationUsed = $value;
-        return $this;
-    }
-    /**
-     * @param string $value
-     *
-     * @return self Fluent interface
-     */
-    public function setMeasuredIn(string $value): self {
-        $this->measuredIn = $value;
-        return $this;
-    }
-    /**
-     * @param string $value
-     *
-     * @return self Fluent interface
-     */
-    public function setMethodUsed(string $value): self {
-        $this->methodUsed = $value;
-        return $this;
-    }
-    /**
-     * @var string $diastolic (bottom number)
-     *
-     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=false)
+     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
     private $diastolic;
     /**
-     * @var Location $locationUsed
+     * @var int $systolic (top number)
      *
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\JoinColumn(name="location_used", referencedColumnName="id", nullable=true)
-     */
-    private $locationUsed;
-    /**
-     * @var string $measuredIn Unit of measurement used.
-     *
-     * @ORM\ManyToOne(targetEntity="UnitOfMeasurement")
-     * @ORM\JoinColumn(name="measured_in", referencedColumnName="id", nullable=true)
-     */
-    private $measuredIn;
-    /**
-     * @var string $methodUsed
-     *
-     * @ORM\ManyToOne(targetEntity="Method")
-     * @ORM\JoinColumn(name="method_used", referencedColumnName="id", nullable=true)
-     */
-    private $methodUsed;
-    /**
-     * @var Patient $patient
-     *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="BloodPressures")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $patient;
-    /**
-     * @var string $systolic (top number)
-     *
-     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=false)
+     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
     private $systolic;
 }
