@@ -35,7 +35,7 @@ use Doctrine\ORM\Mapping as ORM;
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UnitOfMeasurementRepository")
  */
-class UnitOfMeasurement {
+class UnitOfMeasurement implements \JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**
