@@ -64,27 +64,10 @@ class Role extends \ChartItMD\Model\Entity\Role implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return [
-                '__isInitialized__',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'description',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'name',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'status',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'updatedAt',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdAt',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdBy',
-                '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'id',
-            ];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'status', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'id'];
         }
-        return [
-            '__isInitialized__',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'description',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'name',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'status',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'updatedAt',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdAt',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdBy',
-            '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'id',
-        ];
+
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'status', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Role' . "\0" . 'id'];
     }
 
     /**
@@ -270,7 +253,8 @@ class Role extends \ChartItMD\Model\Entity\Role implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getCreatedAt(): \DateTimeImmutable {
+    public function getCreatedAt(): \DateTimeImmutable
+    {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
@@ -280,25 +264,33 @@ class Role extends \ChartItMD\Model\Entity\Role implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getCreatedBy(): \ChartItMD\Model\Entity\User {
+    public function getCreatedBy(): \ChartItMD\Model\Entity\User
+    {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
+
         return parent::getCreatedBy();
     }
+
     /**
      * {@inheritDoc}
      */
-    public function getId(): string {
+    public function getId(): string
+    {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
         return parent::getId();
     }
+
     /**
      * {@inheritDoc}
      */
-    public function jsonSerialize(): array {
+    public function jsonSerialize(): array
+    {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
+
         return parent::jsonSerialize();
     }
 
