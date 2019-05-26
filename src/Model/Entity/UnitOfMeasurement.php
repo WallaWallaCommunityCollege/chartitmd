@@ -36,8 +36,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UnitOfMeasurementRepository")
  */
 class UnitOfMeasurement implements \JsonSerializable {
-    use Uuid4Trait;
+    use DAndNCommon;
     use EntityCommon;
+    use Uuid4Trait;
     /**
      * UnitOfMeasurement constructor.
      *
@@ -56,18 +57,6 @@ class UnitOfMeasurement implements \JsonSerializable {
         $this->symbol = $symbol;
         $this->unitOf = $unitOf;
     }
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $description;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=false, unique=true)
-     */
-    private $name;
     /**
      * @var string
      *
