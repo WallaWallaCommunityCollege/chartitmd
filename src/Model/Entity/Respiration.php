@@ -32,9 +32,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks
  */
 class Respiration implements \JsonSerializable {
-    use Uuid4Trait;
     use EntityCommon;
     use MeasurementCommon;
+    use Uuid4Trait;
     /**
      * Respiration constructor.
      *

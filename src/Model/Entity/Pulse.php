@@ -32,8 +32,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks
  */
 class Pulse implements \JsonSerializable {
-    use Uuid4Trait;
     use EntityCommon;
+    use Uuid4Trait;
     use MeasurementCommon;
     /**
      * Pulse constructor.

@@ -30,8 +30,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks
  */
 class Patient implements \JsonSerializable {
-    use Uuid4Trait;
     use EntityCommon;
+    use Uuid4Trait;
     /**
      * Patients constructor.
      *

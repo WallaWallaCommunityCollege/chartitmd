@@ -18,7 +18,6 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 /**
  * Class Weight.
@@ -31,9 +30,9 @@ use JsonSerializable;
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\WeightRepository")
  */
-class Weight implements JsonSerializable {
-    use Uuid4Trait;
+class Weight implements \JsonSerializable {
     use EntityCommon;
+    use Uuid4Trait;
     /**
      * PatientWeight constructor.
      *

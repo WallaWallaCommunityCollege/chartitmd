@@ -18,7 +18,6 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 /**
  * Class Height.
@@ -31,7 +30,7 @@ use JsonSerializable;
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\HeightRepository")
  */
-class Height implements JsonSerializable {
+class Height implements \JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**
