@@ -64,10 +64,10 @@ class Patient extends \ChartItMD\Model\Entity\Patient implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'bloodPressures', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'dateOfBirth', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'firstName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'gender', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'heights', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'lastName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'weights', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'dateOfBirth', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'firstName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'gender', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'lastName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'bloodPressures', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'dateOfBirth', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'firstName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'gender', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'heights', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'lastName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'weights', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'dateOfBirth', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'firstName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'gender', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'lastName', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Patient' . "\0" . 'id'];
     }
 
     /**
@@ -176,17 +176,6 @@ class Patient extends \ChartItMD\Model\Entity\Patient implements \Doctrine\ORM\P
     /**
      * {@inheritDoc}
      */
-    public function getBloodPressures()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBloodPressures', []);
-
-        return parent::getBloodPressures();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getDateOfBirth(): \DateTime
     {
 
@@ -220,17 +209,6 @@ class Patient extends \ChartItMD\Model\Entity\Patient implements \Doctrine\ORM\P
     /**
      * {@inheritDoc}
      */
-    public function getHeights()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeights', []);
-
-        return parent::getHeights();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getLastName(): string
     {
 
@@ -248,17 +226,6 @@ class Patient extends \ChartItMD\Model\Entity\Patient implements \Doctrine\ORM\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getWeights()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWeights', []);
-
-        return parent::getWeights();
     }
 
     /**
