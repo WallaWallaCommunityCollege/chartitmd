@@ -17,13 +17,13 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Entity;
 
 /**
- * Trait DAndNCommon.
+ * Trait for common name and description pattern in entities.
  */
 trait DAndNCommon {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string {
+    public function getDescription(): ?string {
         return $this->description;
     }
     /**
@@ -33,13 +33,16 @@ trait DAndNCommon {
         return $this->name;
     }
     /**
-     * @param string $value
+     * @param string|null $value
+     *
+     * @return self Fluent interface
      */
-    public function setDescription(string $value): void {
+    public function setDescription(?string $value): self {
         $this->description = $value;
+        return $this;
     }
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
      */
