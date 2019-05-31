@@ -25,9 +25,7 @@ class Patient {
      * @returns {string}
      */
     static getBMI(height, weight) {
-        return (
-            weight / Math.pow(height / 100, 2)
-        ).toFixed(1);
+        return (weight / Math.pow(height / 100, 2)).toFixed(1);
     }
     /**
      * Calculates Body Surface Area (BSA) from height and weight.
@@ -38,22 +36,20 @@ class Patient {
      * @returns {string}
      */
     static getBSA(height, weight) {
-        return (
-            Math.sqrt(height * weight) / 60
-        ).toFixed(1);
+        return (Math.sqrt(height * weight) / 60).toFixed(1);
     }
     displayBMIAndBSA() {
         if (undefined === this.data['recentHeights'] || undefined === this.data['recentWeights']) {
-            $('#patient-bmi-item').hide();
-            $('#patient-bsa-item').hide();
+            $('#patient-bmi-item')
+                .hide();
+            $('#patient-bsa-item')
+                .hide();
             return;
         }
-        $('#patient-bmi').text(Patient.getBMI(this.data['recentHeights'][0]['height'],
-                                              this.data['recentWeights'][0]['weight']
-        ));
-        $('#patient-bsa').text(Patient.getBSA(this.data['recentHeights'][0]['height'],
-                                              this.data['recentWeights'][0]['weight']
-        ));
+        $('#patient-bmi')
+            .text(Patient.getBMI(this.data['recentHeights'][0]['height'], this.data['recentWeights'][0]['weight']));
+        $('#patient-bsa')
+            .text(Patient.getBSA(this.data['recentHeights'][0]['height'], this.data['recentWeights'][0]['weight']));
     }
     /**
      *
@@ -116,37 +112,50 @@ class Patient {
     }
     displayRecentBloodPressures() {
         if (undefined === this.data['recentBloodPressures']) {
-            $('#patient-bloodPressures-may-show').hide();
+            $('#patient-bloodPressures-may-show')
+                .hide();
             return;
         }
         const recentBloodPressures = this.data['recentBloodPressures'];
-        $('#patient-bloodPressure-diastolic').text(recentBloodPressures[0]['diastolic']);
-        $('#patient-bloodPressure-systolic').text(recentBloodPressures[0]['systolic']);
+        $('#patient-bloodPressure-diastolic')
+            .text(recentBloodPressures[0]['diastolic']);
+        $('#patient-bloodPressure-systolic')
+            .text(recentBloodPressures[0]['systolic']);
         let createdAt = JsonDate.fromJsonPHPDate(recentBloodPressures[0]['createdAt']);
-        $('#patient-bloodPressure-createdAt').val(createdAt.toFormat('yyyy-MM-dd'));
-        $('#patient-bloodPressure-id').val(recentBloodPressures[0]['id']);
+        $('#patient-bloodPressure-createdAt')
+            .val(createdAt.toFormat('yyyy-MM-dd'));
+        $('#patient-bloodPressure-id')
+            .val(recentBloodPressures[0]['id']);
     }
     displayRecentHeights() {
         if (undefined === this.data['recentHeights']) {
-            $('#patient-heights-dont-show').hide();
+            $('#patient-heights-dont-show')
+                .hide();
             return;
         }
         const recentHeights = this.data['recentHeights'];
-        $('#patient-height-height').val(recentHeights[0]['height']);
+        $('#patient-height-height')
+            .val(recentHeights[0]['height']);
         let createdAt = JsonDate.fromJsonPHPDate(recentHeights[0]['createdAt']);
-        $('#patient-height-createdAt').val(createdAt.toFormat('yyyy-MM-dd'));
-        $('#patient-height-id').val(recentHeights[0]['id']);
+        $('#patient-height-createdAt')
+            .val(createdAt.toFormat('yyyy-MM-dd'));
+        $('#patient-height-id')
+            .val(recentHeights[0]['id']);
     }
     displayRecentWeights() {
         if (undefined === this.data['recentWeights']) {
-            $('#patient-weights-dont-show').hide();
+            $('#patient-weights-dont-show')
+                .hide();
             return;
         }
         const recentWeights = this.data['recentWeights'];
-        $('#patient-weight-weight').val(recentWeights[0]['weight']);
+        $('#patient-weight-weight')
+            .val(recentWeights[0]['weight']);
         let createdAt = JsonDate.fromJsonPHPDate(recentWeights[0]['createdAt']);
-        $('#patient-weight-createdAt').val(createdAt.toFormat('yyyy-MM-dd'));
-        $('#patient-weight-id').val(recentWeights[0]['id']);
+        $('#patient-weight-createdAt')
+            .val(createdAt.toFormat('yyyy-MM-dd'));
+        $('#patient-weight-id')
+            .val(recentWeights[0]['id']);
     }
 }
 

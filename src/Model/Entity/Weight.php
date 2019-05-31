@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class PatientWeight.
+ * Contains class Weight.
  *
  * PHP version 7.2+
  *
@@ -18,20 +18,21 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 /**
- * Class PatientWeight.
+ * Class Weight.
  *
- * @ORM\Table(name="patient_weight", indexes={
- *     @ORM\Index(name="fk_patient", columns={"patient_id"}),
- *     @ORM\Index(name="idx_created_at", columns={"created_at"})
- * })
- * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PatientWeightRepository")
+ * @ORM\Table(name="weight",
+ *     indexes={
+ *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
+ *     }
+ * )
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\WeightRepository")
  */
-class PatientWeight implements JsonSerializable {
-    use Uuid4Trait;
+class Weight implements \JsonSerializable {
     use EntityCommon;
+    use Uuid4Trait;
     /**
      * PatientWeight constructor.
      *
@@ -49,6 +50,12 @@ class PatientWeight implements JsonSerializable {
         $this->createdBy = $createdBy->getId();
     }
     /**
+     * @return UnitOfMeasurement|null
+     */
+    public function getMeasuredIn(): ?UnitOfMeasurement {
+        return $this->measuredIn;
+    }
+    /**
      * @return Patient
      */
     public function getPatient(): Patient {
@@ -60,6 +67,22 @@ class PatientWeight implements JsonSerializable {
     public function getWeight(): string {
         return $this->weight;
     }
+    /**
+     * @param UnitOfMeasurement $value
+     *
+     * @return self Fluent interface
+     */
+    public function setMeasuredIn(?UnitOfMeasurement $value): self {
+        $this->measuredIn = $value;
+        return $this;
+    }
+    /**
+     * @var UnitOfMeasurement|null $measuredIn Unit of measurement used.
+     *
+     * @ORM\ManyToOne(targetEntity="UnitOfMeasurement")
+     * @ORM\JoinColumn(name="measured_in", referencedColumnName="id", nullable=true)
+     */
+    private $measuredIn;
     /**
      * @var Patient $patient
      *

@@ -29,16 +29,20 @@ use Doctrine\ORM\Mapping as ORM;
  * Permission
  *
  * @ORM\Table(name="permission",
+ *     indexes={
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
+ *     },
  *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="idx_name", columns={"name"})
+ *         @ORM\UniqueConstraint(name="uniq_name", columns={"name"})
  *     }
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PermissionRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Permission {
-    use Uuid4Trait;
+class Permission implements \JsonSerializable {
+    use DAndNCommon;
     use EntityCommon;
+    use Uuid4Trait;
     /**
      * Permission constructor.
      *
@@ -52,18 +56,6 @@ class Permission {
         $this->createdBy = $createdBy;
         $this->id = $this->asBase64();
         $this->name = $name;
-    }
-    /**
-     * @return string
-     */
-    public function getDescription(): string {
-        return $this->description;
-    }
-    /**
-     * @return string
-     */
-    public function getName(): string {
-        return $this->name;
     }
     /**
      * Date and time when entity was updated.
@@ -95,29 +87,11 @@ class Permission {
         $this->updatedAt = new \DateTime();
     }
     /**
-     * @param string|null $value
-     */
-    public function setDescription(?string $value): void {
-        $this->description = $value;
-    }
-    /**
      * @param bool|null $value
      */
     public function setStatus(?bool $value): void {
         $this->status = $value ?? true;
     }
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $description;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100, nullable=false, unique=true)
-     */
-    private $name;
     /**
      * @var bool
      *

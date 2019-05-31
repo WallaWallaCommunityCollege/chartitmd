@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class BloodPressure.
+ * Contains class OxygenSaturation.
  *
  * PHP version 7.2+
  *
@@ -20,60 +20,47 @@ use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class BloodPressure.
+ * Class OxygenSaturation.
  *
- * @ORM\Table(name="blood_pressure",
+ * @ORM\Table(name="oxygen_saturation",
  *     indexes={
  *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
- * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\BloodPressureRepository")
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\OxygenSaturationRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class BloodPressure implements \JsonSerializable {
+class OxygenSaturation implements \JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     use MeasurementCommon;
     /**
-     * BloodPressure constructor.
+     * Pain constructor.
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param int     $diastolic
-     * @param int     $systolic
+     * @param int     $saturation
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, int $diastolic, int $systolic) {
+    public function __construct(User $createdBy, Patient $patient, int $saturation) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
-        $this->diastolic = $diastolic;
         $this->id = $this->asBase64();
         $this->patient = $patient;
-        $this->systolic = $systolic;
+        $this->saturation = $saturation;
     }
     /**
      * @return int
      */
-    public function getDiastolic(): int {
-        return $this->diastolic;
+    public function getSaturation(): int {
+        return $this->saturation;
     }
     /**
-     * @return int
-     */
-    public function getSystolic(): int {
-        return $this->systolic;
-    }
-    /**
-     * @var int $diastolic (bottom number)
+     * @var int $saturation Peripheral oxygen saturation (SpO2) as %.
      *
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
-    private $diastolic;
-    /**
-     * @var int $systolic (top number)
-     *
-     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
-     */
-    private $systolic;
+    private $saturation;
 }

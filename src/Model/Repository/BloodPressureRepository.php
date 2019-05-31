@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Repository;
 
 use Doctrine\ORM\EntityRepository;
+
 /**
  * BloodPressureRepository
  *
@@ -19,7 +20,7 @@ class BloodPressureRepository extends EntityRepository {
     public function getLast10BloodPressuresForPatientId(string $patientId): array {
         $query = $this->createQueryBuilder('b')
                       ->where('b.patient = :id')
-                      ->join('b.locationUsed', 'l')
+                      ->join('b.location', 'l')
                       ->join('b.createdBy', 'u')
                       ->setParameter('id', $patientId)
                       ->setMaxResults(10)

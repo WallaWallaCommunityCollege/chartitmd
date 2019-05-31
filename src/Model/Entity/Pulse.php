@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class BloodPressure.
+ * Contains class Pulse.
  *
  * PHP version 7.2+
  *
@@ -20,60 +20,47 @@ use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class BloodPressure.
+ * Class Pulse.
  *
- * @ORM\Table(name="blood_pressure",
+ * @ORM\Table(name="pulse",
  *     indexes={
  *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
- * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\BloodPressureRepository")
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PulseRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class BloodPressure implements \JsonSerializable {
-    use Uuid4Trait;
+class Pulse implements \JsonSerializable {
     use EntityCommon;
+    use Uuid4Trait;
     use MeasurementCommon;
     /**
-     * BloodPressure constructor.
+     * Pulse constructor.
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param int     $diastolic
-     * @param int     $systolic
+     * @param int     $rate
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, int $diastolic, int $systolic) {
+    public function __construct(User $createdBy, Patient $patient, int $rate) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
-        $this->diastolic = $diastolic;
         $this->id = $this->asBase64();
         $this->patient = $patient;
-        $this->systolic = $systolic;
+        $this->rate = $rate;
     }
     /**
      * @return int
      */
-    public function getDiastolic(): int {
-        return $this->diastolic;
+    public function getRate(): int {
+        return $this->rate;
     }
     /**
-     * @return int
-     */
-    public function getSystolic(): int {
-        return $this->systolic;
-    }
-    /**
-     * @var int $diastolic (bottom number)
+     * @var int $rate Beat Per Minute (BPM).
      *
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
-    private $diastolic;
-    /**
-     * @var int $systolic (top number)
-     *
-     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
-     */
-    private $systolic;
+    private $rate;
 }

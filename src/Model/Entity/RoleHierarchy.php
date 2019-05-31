@@ -34,7 +34,7 @@ use Doctrine\ORM\Mapping as ORM;
  * })
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RoleHierarchyRepository")
  */
-class RoleHierarchy {
+class RoleHierarchy implements \JsonSerializable {
     /**
      * RoleHierarchy constructor.
      *
@@ -73,6 +73,24 @@ class RoleHierarchy {
      */
     public function getParent(): Role {
         return $this->parent;
+    }
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * NOTE:
+     * This filters out sensitive information like the password.
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array {
+        $result = [];
+        /** @noinspection ForeachSourceInspection */
+        foreach ($this as $k => $v) {
+            $result[$k] = $v;
+        }
+        // Filter out any unneeded Doctrine Entity Proxy c**p.
+        unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        return $result;
     }
     /**
      * @var Role

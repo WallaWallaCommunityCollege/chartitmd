@@ -17,7 +17,6 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 /**
  * Class User.
@@ -30,7 +29,7 @@ use JsonSerializable;
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User implements JsonSerializable {
+class User implements \JsonSerializable {
     use Uuid4Trait;
     /**
      * User constructor.

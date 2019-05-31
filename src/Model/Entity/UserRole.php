@@ -24,19 +24,18 @@ namespace ChartItMD\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Doctrine\ORM\Mapping\ManyToOne;
-use ChartItMD\Model\Repository as repos;
 /**
  * UserRole
  *
  * @ORM\Table(name="user_role",
- *     indexes={@ORM\Index(name="idx_user_role", columns={"user_id", "role_id"}),
+ *     indexes={
+ *     @ORM\Index(name="idx_user_role", columns={"user_id", "role_id"}),
  *     @ORM\Index(name="fk_role_id",columns={"role_id"}),
  *     @ORM\Index(name="fk_user_id",columns={"user_id"})
  * })
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRoleRepository")
  */
-class UserRole {
+class UserRole implements \JsonSerializable {
     /**
      * UserRole constructor.
      *
@@ -75,6 +74,24 @@ class UserRole {
      */
     public function getUser(): User {
         return $this->user;
+    }
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * NOTE:
+     * This filters out sensitive information like the password.
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array {
+        $result = [];
+        /** @noinspection ForeachSourceInspection */
+        foreach ($this as $k => $v) {
+            $result[$k] = $v;
+        }
+        // Filter out any unneeded Doctrine Entity Proxy c**p.
+        unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
+        return $result;
     }
     /**
      * @var \DateTimeImmutable
