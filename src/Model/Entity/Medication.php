@@ -9,7 +9,7 @@ declare(strict_types=1);
  * This file is part of ChartItMD.
  * Copyright (C) 2019 ChartItMD Development Group
  *
- * @author    Michael Cummings <mgcummings@yahoo.com>
+ * @author    James Wood <Jamesewood87@gmail.com>
  * @copyright 2019 ChartItMD Development Group
  * @license   Proprietary
  */
@@ -28,41 +28,37 @@ use ChartItMD\Utils\Uuid4Trait;
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\MedicationRepository")
  */
-class Medication implements \JsonSerializable
-{
+class Medication implements \JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     use MeasurementCommon;
     /**
-     * @var int $measurement (bottom number)
-     *
-     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
-     */
-    private $measurement;
-
-    /**
      * BloodPressure constructor.
      *
-     * @param User $createdBy
+     * @param User    $createdBy
      * @param Patient $patient
-     * @param int $measurement
+     * @param int     $measurement
      *      *
+     *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, int $measurement)
-    {
+    public function __construct(User $createdBy, Patient $patient, int $measurement) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
         $this->id = $this->asBase64();
         $this->measurement = $measurement;
         $this->patient = $patient;
     }
-
     /**
      * @return int
      */
-    public function getMeasurement(): int
-    {
+    public function getMeasurement(): int {
         return $this->measurement;
     }
+    /**
+     * @var int $measurement (bottom number)
+     *
+     * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
+     */
+    private $measurement;
 }
