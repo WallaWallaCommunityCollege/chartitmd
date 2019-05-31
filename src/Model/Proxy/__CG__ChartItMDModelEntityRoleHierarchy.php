@@ -64,10 +64,10 @@ class RoleHierarchy extends \ChartItMD\Model\Entity\RoleHierarchy implements \Do
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'child', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'parent'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'child', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'parent', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdBy'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'child', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'parent'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'child', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'parent', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RoleHierarchy' . "\0" . 'createdBy'];
     }
 
     /**
@@ -187,6 +187,17 @@ class RoleHierarchy extends \ChartItMD\Model\Entity\RoleHierarchy implements \Do
     /**
      * {@inheritDoc}
      */
+    public function getParent(): \ChartItMD\Model\Entity\Role
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParent', []);
+
+        return parent::getParent();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getCreatedAt(): \DateTimeImmutable
     {
 
@@ -209,12 +220,12 @@ class RoleHierarchy extends \ChartItMD\Model\Entity\RoleHierarchy implements \Do
     /**
      * {@inheritDoc}
      */
-    public function getParent(): \ChartItMD\Model\Entity\Role
+    public function jsonSerialize(): array
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParent', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
 
-        return parent::getParent();
+        return parent::jsonSerialize();
     }
 
 }

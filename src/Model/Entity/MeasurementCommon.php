@@ -93,9 +93,9 @@ trait MeasurementCommon {
      */
     private $methodUsed;
     /**
-     * @var Patient $patient
+     * @var Patient
      *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="BloodPressures")
+     * @ORM\ManyToOne(targetEntity="Patient")
      * @ORM\JoinColumn(nullable=false)
      */
     private $patient;

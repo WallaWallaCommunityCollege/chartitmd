@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingParentCallCommonInspection */
 declare(strict_types=1);
 /**
  * Contains class Uuid64Type.
@@ -26,35 +27,18 @@ use Doctrine\DBAL\Types\BinaryType;
  */
 class Uuid64Type extends BinaryType {
     use Uuid4Trait;
+    public const UUID64 = 'uuid64';
     /**
-     * Gets the name of this type.
+     * Converts a value from its PHP representation to its database representation
+     * of this type.
      *
-     * This is the name you will need in Doctrine ORM to use the type.
+     * @param mixed            $value    The value to convert.
+     * @param AbstractPlatform $platform The currently used database platform.
      *
-     * @return string
+     * @return mixed The database representation of the value.
      */
-    public function getName(): string {
-        return 'uuid64';
-    }
-    /**
-     * {@inheritdoc}
-     *
-     * @throws DBALException
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string {
-        $fieldDeclaration['length'] = 22;
-        $fieldDeclaration['fixed'] = true;
-        return parent::getSQLDeclaration($fieldDeclaration, $platform);
-    }
-    /**
-     * Force SQL comment containing DC2Type so Doctrine reverse engineering works correctly.
-     *
-     * @param AbstractPlatform $platform
-     *
-     * @return bool
-     */
-    public function requiresSQLCommentHint(AbstractPlatform $platform): bool {
-        return true;
+    public function convertToDatabaseValue($value, AbstractPlatform $platform) {
+        return (string)$value;
     }
     /**
      * Converts a value from its database representation to its PHP representation
@@ -66,6 +50,38 @@ class Uuid64Type extends BinaryType {
      * @return mixed The PHP representation of the value.
      */
     public function convertToPHPValue($value, AbstractPlatform $platform) {
-        return $value;
+        if (null === $value) {
+            return null;
+        }
+        return (string)$value;
+    }
+    /**
+     * Gets the name of this type.
+     *
+     * This is the name you will need in Doctrine ORM to use the type.
+     *
+     * @return string
+     */
+    public function getName(): string {
+        return self::UUID64;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws DBALException
+     */
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string {
+        $dec = \array_merge($fieldDeclaration, ['length'=>22, 'fixed'=>true]);
+        return parent::getSQLDeclaration($dec, $platform);
+    }
+    /**
+     * Force SQL comment containing DC2Type so Doctrine reverse engineering works correctly.
+     *
+     * @param AbstractPlatform $platform
+     *
+     * @return bool
+     */
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool {
+        return true;
     }
 }

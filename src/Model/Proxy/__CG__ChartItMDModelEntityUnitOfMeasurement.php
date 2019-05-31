@@ -64,10 +64,10 @@ class UnitOfMeasurement extends \ChartItMD\Model\Entity\UnitOfMeasurement implem
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'symbol', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'unitOf', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'measurementRange', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'symbol', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'unitOf', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'symbol', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'unitOf', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'measurementRange', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'symbol', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'unitOf', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\UnitOfMeasurement' . "\0" . 'id'];
     }
 
     /**
@@ -173,6 +173,39 @@ class UnitOfMeasurement extends \ChartItMD\Model\Entity\UnitOfMeasurement implem
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
+
+        return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
+
+        return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescription(?string $value): \ChartItMD\Model\Entity\UnitOfMeasurement
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$value]);
+
+        return parent::setDescription($value);
+    }
+
     /**
      * {@inheritDoc}
      */

@@ -64,10 +64,10 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'status', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'status', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'status', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'status', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'updatedAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'description', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Permission' . "\0" . 'id'];
     }
 
     /**
@@ -176,29 +176,7 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function getDescription(): string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
-
-        return parent::getDescription();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getName(): string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
-
-        return parent::getName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getUpdatedAt(): ?\DateTime
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
@@ -231,23 +209,45 @@ class Permission extends \ChartItMD\Model\Entity\Permission implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function setDescription(?string $value): void
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$value]);
-
-        parent::setDescription($value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setStatus(?bool $value): void
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$value]);
 
         parent::setStatus($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
+
+        return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
+
+        return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescription(?string $value): \ChartItMD\Model\Entity\Permission
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$value]);
+
+        return parent::setDescription($value);
     }
 
     /**

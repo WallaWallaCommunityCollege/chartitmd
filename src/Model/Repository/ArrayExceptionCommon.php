@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains trait JsonExceptionCommon.
+ * Contains trait ArrayExceptionCommon.
  *
  * PHP version 7.2+
  *
@@ -17,15 +17,15 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Repository;
 
 /**
- * Trait JsonExceptionCommon.
+ * Trait ArrayExceptionCommon.
  */
-trait JsonExceptionCommon {
+trait ArrayExceptionCommon {
     /**
      * @param \Throwable $thrown
      *
      * @return array
      */
-    public function exceptionAsJson(\Throwable $thrown): array {
+    public function exceptionAsArray(\Throwable $thrown): array {
         return [
             'error' => [
                 'message' => $thrown->getMessage(),

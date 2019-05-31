@@ -176,7 +176,7 @@ class Location extends \ChartItMD\Model\Entity\Location implements \Doctrine\ORM
     /**
      * {@inheritDoc}
      */
-    public function getAbbreviation(): string
+    public function getAbbreviation(): ?string
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAbbreviation', []);
@@ -187,7 +187,18 @@ class Location extends \ChartItMD\Model\Entity\Location implements \Doctrine\ORM
     /**
      * {@inheritDoc}
      */
-    public function getDescription(): string
+    public function setAbbreviation(?string $value): \ChartItMD\Model\Entity\Location
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAbbreviation', [$value]);
+
+        return parent::setAbbreviation($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription(): ?string
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
@@ -209,23 +220,12 @@ class Location extends \ChartItMD\Model\Entity\Location implements \Doctrine\ORM
     /**
      * {@inheritDoc}
      */
-    public function setAbbreviation(string $value): void
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAbbreviation', [$value]);
-
-        parent::setAbbreviation($value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDescription(string $value): void
+    public function setDescription(?string $value): \ChartItMD\Model\Entity\Location
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$value]);
 
-        parent::setDescription($value);
+        return parent::setDescription($value);
     }
 
     /**

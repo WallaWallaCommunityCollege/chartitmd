@@ -21,5 +21,7 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Class OxygenSaturationRepository.
  */
-class OxygenSaturationRepository extends EntityRepository {
+class OxygenSaturationRepository extends EntityRepository implements GetForPatientInterface {
+    use GetForPatientTrait;
+    use ArrayExceptionCommon;
 }

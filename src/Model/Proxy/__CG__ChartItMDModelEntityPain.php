@@ -64,10 +64,10 @@ class Pain extends \ChartItMD\Model\Entity\Pain implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'rating', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'rating', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id'];
     }
 
     /**
@@ -198,12 +198,12 @@ class Pain extends \ChartItMD\Model\Entity\Pain implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getRating(): int
+    public function getMeasurement(): int
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRating', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
 
-        return parent::getRating();
+        return parent::getMeasurement();
     }
 
     /**

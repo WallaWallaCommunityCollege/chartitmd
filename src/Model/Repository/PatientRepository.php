@@ -16,67 +16,20 @@ declare(strict_types=1);
 
 namespace ChartItMD\Model\Repository;
 
-use ChartItMD\Model\Entity\BloodPressure;
-use ChartItMD\Model\Entity\Height;
 use ChartItMD\Model\Entity\Patient;
-use ChartItMD\Model\Entity\Weight;
 use Doctrine\ORM\EntityRepository;
 
 /**
  * Class PatientRepository.
  */
 class PatientRepository extends EntityRepository {
+    use ArrayExceptionCommon;
     /**
-     * @param string $patientId
-     *
-     * @return array|BloodPressure[]
-     */
-    public function getLast10BloodPressuresForPatientId(string $patientId): array {
-        /**
-         * @var BloodPressureRepository $bpr
-         */
-        $bpr = $this->getEntityManager()
-                    ->getRepository(BloodPressure::class);
-        return $bpr->getLast10BloodPressuresForPatientId($patientId);
-    }
-    /**
-     * @param string $patientId
-     *
-     * @return array|Height[]
-     */
-    public function getLast10HeightsForPatientId(string $patientId): array {
-        /**
-         * @var HeightRepository $phr
-         */
-        $phr = $this->getEntityManager()
-                    ->getRepository(Height::class);
-        return $phr->getLast10HeightsForPatientId($patientId);
-    }
-    /**
-     * @param string $patientId
-     *
-     * @return array|Weight[]
-     */
-    public function getLast10WeightsForPatientId(string $patientId): array {
-        /**
-         * @var WeightRepository $pwr
-         */
-        $pwr = $this->getEntityManager()
-                    ->getRepository(Weight::class);
-        return $pwr->getLast10WeightsForPatientId($patientId);
-    }
-    /**
-     * @param string     $id
-     * @param array|null $options List of additional patient table data. Valid
-     *                            options are:
-     *
-     *                             * 'recentHeights'
-     *                             * 'recentWeights'
-     *                             * 'recentBloodPressures'
+     * @param string $id
      *
      * @return array|null
      */
-    public function getPatientById(string $id, ?array $options): ?array {
+    public function getById(string $id): ?array {
         $result = null;
         $query = $this->createQueryBuilder('p')
                       ->select('p, g, u')
@@ -91,26 +44,32 @@ class PatientRepository extends EntityRepository {
              */
             $patient = $query->getSingleResult();
             $result = ['patient' => $patient];
-            if (null !== $options) {
-                foreach ($options as $option) {
-                    switch ($option) {
-                        case 'recentBloodPressures':
-                            $result[$option] = $this->getLast10BloodPressuresForPatientId($id);
-                            break;
-                        case 'recentHeights':
-                            $result[$option] = $this->getLast10HeightsForPatientId($id);
-                            break;
-                        case 'recentWeights':
-                            $result[$option] = $this->getLast10WeightsForPatientId($id);
-                            break;
-                        default:
-                            break;
-                    }
-                }
+        } catch (\Throwable $thrown) {
+            return $this->exceptionAsArray($thrown);
+        }
+        return $result;
+    }
+    /**
+     * @param string     $patientId
+     * @param array|null $list
+     *
+     * @return array|null
+     */
+    public function getVitalSignsForPatientId(string $patientId, ?array $list = null): ?array {
+        $items = $list ?? ['Diastolic', 'OxygenSaturation', 'Pain', 'Pulse', 'Respiration', 'Systolic', 'Temperature'];
+        $result = [];
+        $base = \dirname(self::class, 2);
+        foreach ($items as $item) {
+            /**
+             * @var GetForPatientInterface $repo
+             */
+            $repo = $this->getEntityManager()
+                         ->getRepository($base . '\Entity\\' . $item);
+            try {
+                $result[\strtolower($item)] = $repo->getForPatientId($patientId);
+            } catch (\Throwable $thrown) {
+                return $this->exceptionAsArray($thrown);
             }
-        } catch (\Throwable $e) {
-            var_dump($e->getMessage());
-            return null;
         }
         return $result;
     }

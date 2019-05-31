@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="weight",
  *     indexes={
- *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
@@ -38,13 +37,13 @@ class Weight implements \JsonSerializable {
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param string  $weight
+     * @param string  $measurement
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, string $weight) {
+    public function __construct(User $createdBy, Patient $patient, string $measurement) {
         $this->patient = $patient;
-        $this->weight = $weight;
+        $this->measurement = $measurement;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy->getId();
@@ -56,16 +55,16 @@ class Weight implements \JsonSerializable {
         return $this->measuredIn;
     }
     /**
+     * @return string
+     */
+    public function getMeasurement(): string {
+        return $this->measurement;
+    }
+    /**
      * @return Patient
      */
     public function getPatient(): Patient {
         return $this->patient;
-    }
-    /**
-     * @return string
-     */
-    public function getWeight(): string {
-        return $this->weight;
     }
     /**
      * @param UnitOfMeasurement $value
@@ -84,16 +83,16 @@ class Weight implements \JsonSerializable {
      */
     private $measuredIn;
     /**
-     * @var Patient $patient
-     *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="weights")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $patient;
-    /**
-     * @var string $weight (kg)
+     * @var string $measurement (kg)
      *
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
      */
-    private $weight;
+    private $measurement;
+    /**
+     * @var Patient
+     *
+     * @ORM\ManyToOne(targetEntity="Patient")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $patient;
 }

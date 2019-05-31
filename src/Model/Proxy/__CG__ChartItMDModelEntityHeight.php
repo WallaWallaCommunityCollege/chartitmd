@@ -64,10 +64,10 @@ class Height extends \ChartItMD\Model\Entity\Height implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'height', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'height', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Height' . "\0" . 'id'];
     }
 
     /**
@@ -176,12 +176,12 @@ class Height extends \ChartItMD\Model\Entity\Height implements \Doctrine\ORM\Pro
     /**
      * {@inheritDoc}
      */
-    public function getHeight(): string
+    public function getMeasurement(): string
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
 
-        return parent::getHeight();
+        return parent::getMeasurement();
     }
 
     /**
@@ -209,12 +209,12 @@ class Height extends \ChartItMD\Model\Entity\Height implements \Doctrine\ORM\Pro
     /**
      * {@inheritDoc}
      */
-    public function setHeight(string $value): \ChartItMD\Model\Entity\Height
+    public function setMeasurement(string $value): \ChartItMD\Model\Entity\Height
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', [$value]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeasurement', [$value]);
 
-        return parent::setHeight($value);
+        return parent::setMeasurement($value);
     }
 
     /**

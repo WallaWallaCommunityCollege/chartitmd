@@ -27,9 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="method",
  *     indexes={
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
- *     },
- *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="uniq_name", columns={"name"})
  *     }
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\MethodRepository")
@@ -53,22 +50,22 @@ class Method implements \JsonSerializable {
         $this->createdBy = $createdBy->getId();
     }
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAbbreviation(): string {
+    public function getAbbreviation(): ?string {
         return $this->abbreviation;
     }
     /**
-     * @param string $value
+     * @param string|null $value
      *
      * @return self Fluent interface
      */
-    public function setAbbreviation(string $value): self {
+    public function setAbbreviation(?string $value): self {
         $this->abbreviation = $value;
         return $this;
     }
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="abbreviation", type="string", length=15, nullable=true)
      */

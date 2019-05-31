@@ -21,5 +21,7 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Class TemperatureRepository.
  */
-class TemperatureRepository extends EntityRepository {
+class TemperatureRepository extends EntityRepository implements GetForPatientInterface {
+    use GetForPatientTrait;
+    use ArrayExceptionCommon;
 }

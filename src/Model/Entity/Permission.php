@@ -31,9 +31,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="permission",
  *     indexes={
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
- *     },
- *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="uniq_name", columns={"name"})
  *     }
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\PermissionRepository")
@@ -64,12 +61,12 @@ class Permission implements \JsonSerializable {
      * Doctrine often will return date-times as plain string instead of correct
      * object so this method will correct it when called.
      *
-     * @return \DateTime|null
+     * @return \DateTimeImmutable|null
      * @throws \Exception
      */
-    public function getUpdatedAt(): ?\DateTime {
-        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTime) {
-            $this->updatedAt = new \DateTime($this->updatedAt);
+    public function getUpdatedAt(): ?\DateTimeImmutable {
+        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTimeImmutable) {
+            $this->updatedAt = new \DateTimeImmutable($this->updatedAt);
         }
         return $this->updatedAt;
     }
@@ -99,9 +96,9 @@ class Permission implements \JsonSerializable {
      */
     private $status = true;
     /**
-     * @var \DateTime|null
+     * @var \DateTimeImmutable|null
      *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetime_immutable", nullable=true)
      */
     private $updatedAt;
 }

@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class BloodPressureRepository extends EntityRepository {
+    use ArrayExceptionCommon;
     /**
      * @param string $patientId
      *
@@ -19,20 +20,15 @@ class BloodPressureRepository extends EntityRepository {
      */
     public function getLast10BloodPressuresForPatientId(string $patientId): array {
         $query = $this->createQueryBuilder('b')
+                      ->select('b')
                       ->where('b.patient = :id')
-                      ->join('b.location', 'l')
-                      ->join('b.createdBy', 'u')
                       ->setParameter('id', $patientId)
                       ->setMaxResults(10)
                       ->getQuery();
         try {
-            $bps = $query->getArrayResult();
-            foreach ($bps as &$bp) {
-                unset($bp['patient']);
-            }
+            $bps = $query->getResult();
         } catch (\Throwable $e) {
-            var_dump($e->getMessage());
-            return [];
+            return $this->exceptionAsArray($e);
         }
         return $bps;
     }

@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+    <meta
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/ https://www.chartitmd.com/; style-src 'self' 'unsafe-inline' http://localhost/ https://www.chartitmd.com/; default-src 'self'"
+        http-equiv="Content-Security-Policy"/>
+    <title>Blood Pressures</title>
+    <!--    <link href="../assets/css/normalize.css" rel="stylesheet"/>-->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!--    <link href="../assets/css/main.css" rel="stylesheet"/>-->
+    <style>
+        caption {
+            caption-side: top;
+        }
+
+        table thead.thead-dark {
+            background-color: darkblue !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+<main class="container-fluid">
+    <table class="shadow-sm table table-sm table-hover table-light table-bordered table-striped"
+           id="patient-bloodPressures-table">
+        <caption class="text-center text-capitalize">Patient blood pressures</caption>
+        <thead class="text-center">
+        <tr>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+        </tr>
+        </tfoot>
+        <tbody class="text-right">
+        </tbody>
+    </table>
+</main>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/popper.js/dist/popper.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bloodPressures.js"></script>
+<!--<script src="loadSettings.js"></script>-->
+</body>
+</html>

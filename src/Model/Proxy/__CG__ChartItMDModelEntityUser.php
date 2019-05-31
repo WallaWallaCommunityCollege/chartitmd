@@ -224,7 +224,7 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getUpdatedAt(): ?\DateTime
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
@@ -252,6 +252,17 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'preUpdate', []);
 
         parent::preUpdate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword(string $value): \ChartItMD\Model\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', [$value]);
+
+        return parent::setPassword($value);
     }
 
 }

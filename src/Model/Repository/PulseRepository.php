@@ -21,17 +21,13 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Class PulseRepository.
  */
-class PulseRepository extends EntityRepository {
+class PulseRepository extends EntityRepository implements GetForPatientInterface {
+    use GetForPatientTrait;
+    use ArrayExceptionCommon;
     /**
      * @param string $id
      */
-    public function getPulseRateById(string $id) {
-        //TODO
-    }
-    /**
-     * @param string $id
-     */
-    public function getPulseRatesForPatientId(string $id) {
+    public function getById(string $id) {
         //TODO
     }
 }

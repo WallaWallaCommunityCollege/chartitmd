@@ -176,7 +176,7 @@ class Method extends \ChartItMD\Model\Entity\Method implements \Doctrine\ORM\Pro
     /**
      * {@inheritDoc}
      */
-    public function getAbbreviation(): string
+    public function getAbbreviation(): ?string
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAbbreviation', []);
@@ -187,7 +187,18 @@ class Method extends \ChartItMD\Model\Entity\Method implements \Doctrine\ORM\Pro
     /**
      * {@inheritDoc}
      */
-    public function getDescription(): string
+    public function setAbbreviation(?string $value): \ChartItMD\Model\Entity\Method
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAbbreviation', [$value]);
+
+        return parent::setAbbreviation($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription(): ?string
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
@@ -209,18 +220,7 @@ class Method extends \ChartItMD\Model\Entity\Method implements \Doctrine\ORM\Pro
     /**
      * {@inheritDoc}
      */
-    public function setAbbreviation(string $value): \ChartItMD\Model\Entity\Method
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAbbreviation', [$value]);
-
-        return parent::setAbbreviation($value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDescription(string $value): \ChartItMD\Model\Entity\Method
+    public function setDescription(?string $value): \ChartItMD\Model\Entity\Method
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$value]);

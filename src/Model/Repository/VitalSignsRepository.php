@@ -26,12 +26,13 @@ use Doctrine\ORM\EntityRepository;
  *
  */
 class VitalSignsRepository extends EntityRepository {
+    use ArrayExceptionCommon;
     /**
      * @param string $id
      *
-     * @return VitalSigns|null
+     * @return VitalSigns|array|null
      */
-    public function getVitalSignsById(string $id): ?VitalSigns {
+    public function getVitalSignsById(string $id) {
         $result = null;
         $query = $this->createQueryBuilder('v')
                       ->select('v')
@@ -41,7 +42,7 @@ class VitalSignsRepository extends EntityRepository {
         try {
             $result = $query->getSingleResult();
         } catch (\Throwable $e) {
-            var_dump($e->getMessage());
+            return $this->exceptionAsArray($e);
         }
         return $result;
     }
@@ -50,7 +51,7 @@ class VitalSignsRepository extends EntityRepository {
      *
      * @return array
      */
-    public function getLast10VitalSignsByPatientId(string $patientId): array {
+    public function getLast10VitalSignsForPatientId(string $patientId): array {
         $query = $this->createQueryBuilder('v')
                       ->where('v.patient = :id')
                       ->join('v.oxygenLocation', 'ol')
@@ -66,8 +67,7 @@ class VitalSignsRepository extends EntityRepository {
                 unset($vs['patient']);
             }
         } catch (\Throwable $e) {
-            var_dump($e->getMessage());
-            return [];
+            return $this->exceptionAsArray($e);
         }
         return $vss;
     }

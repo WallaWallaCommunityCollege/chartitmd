@@ -64,10 +64,10 @@ class UserRole extends \ChartItMD\Model\Entity\UserRole implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'role', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'user'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'role', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'user', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdBy'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'role', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'user'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'role', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'user', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\UserRole' . "\0" . 'createdBy'];
     }
 
     /**
@@ -176,6 +176,28 @@ class UserRole extends \ChartItMD\Model\Entity\UserRole implements \Doctrine\ORM
     /**
      * {@inheritDoc}
      */
+    public function getRole(): \ChartItMD\Model\Entity\Role
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
+
+        return parent::getRole();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUser(): \ChartItMD\Model\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
+
+        return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getCreatedAt(): \DateTimeImmutable
     {
 
@@ -198,23 +220,12 @@ class UserRole extends \ChartItMD\Model\Entity\UserRole implements \Doctrine\ORM
     /**
      * {@inheritDoc}
      */
-    public function getRole(): \ChartItMD\Model\Entity\Role
+    public function jsonSerialize(): array
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
 
-        return parent::getRole();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getUser(): \ChartItMD\Model\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
-
-        return parent::getUser();
+        return parent::jsonSerialize();
     }
 
 }

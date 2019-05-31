@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="oxygen_saturation",
  *     indexes={
- *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
@@ -40,27 +39,27 @@ class OxygenSaturation implements \JsonSerializable {
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param int     $saturation
+     * @param int     $measurement
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, int $saturation) {
+    public function __construct(User $createdBy, Patient $patient, int $measurement) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
         $this->id = $this->asBase64();
         $this->patient = $patient;
-        $this->saturation = $saturation;
+        $this->measurement = $measurement;
     }
     /**
      * @return int
      */
-    public function getSaturation(): int {
-        return $this->saturation;
+    public function getMeasurement(): int {
+        return $this->measurement;
     }
     /**
-     * @var int $saturation Peripheral oxygen saturation (SpO2) as %.
+     * @var int $measurement Peripheral oxygen saturation (SpO2) as %.
      *
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
-    private $saturation;
+    private $measurement;
 }

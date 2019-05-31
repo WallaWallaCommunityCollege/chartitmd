@@ -64,10 +64,10 @@ class RolePermission extends \ChartItMD\Model\Entity\RolePermission implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'permission', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'role'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'permission', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'role', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdBy'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'permission', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'role'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'permission', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'role', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\RolePermission' . "\0" . 'createdBy'];
     }
 
     /**
@@ -176,6 +176,28 @@ class RolePermission extends \ChartItMD\Model\Entity\RolePermission implements \
     /**
      * {@inheritDoc}
      */
+    public function getPermission(): \ChartItMD\Model\Entity\Permission
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPermission', []);
+
+        return parent::getPermission();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRole(): \ChartItMD\Model\Entity\Role
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
+
+        return parent::getRole();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getCreatedAt(): \DateTimeImmutable
     {
 
@@ -198,23 +220,12 @@ class RolePermission extends \ChartItMD\Model\Entity\RolePermission implements \
     /**
      * {@inheritDoc}
      */
-    public function getPermission(): \ChartItMD\Model\Entity\Permission
+    public function jsonSerialize(): array
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPermission', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
 
-        return parent::getPermission();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getRole(): \ChartItMD\Model\Entity\Role
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
-
-        return parent::getRole();
+        return parent::jsonSerialize();
     }
 
 }

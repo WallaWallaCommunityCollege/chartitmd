@@ -23,7 +23,8 @@ use Doctrine\ORM\NonUniqueResultException;
 /**
  * Class WeightRepository.
  */
-class WeightRepository extends EntityRepository {
+class WeightRepository extends EntityRepository implements GetForPatientInterface {
+    use GetForPatientTrait;
     /**
      * @param string $patientId
      *

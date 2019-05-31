@@ -27,10 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="unit_of_measurement",
  *     indexes={
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
- *     },
- *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="uniq_name", columns={"name"}),
- *         @ORM\UniqueConstraint(name="uniq_symbol", columns={"symbol"})
  *     }
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UnitOfMeasurementRepository")
@@ -58,9 +54,16 @@ class UnitOfMeasurement implements \JsonSerializable {
         $this->unitOf = $unitOf;
     }
     /**
+     * @var MeasurementRange $measurementRange
+     *
+     * @ORM\ManyToOne(targetEntity="MeasurementRange")
+     * @ORM\JoinColumn(name="measurement_range", referencedColumnName="id", nullable=true)
+     */
+    private $measurementRange;
+    /**
      * @var string
      *
-     * @ORM\Column(type="string", length=15, nullable=false, unique=true)
+     * @ORM\Column(type="string", length=15, nullable=false, unique=false)
      */
     private $symbol;
     /**

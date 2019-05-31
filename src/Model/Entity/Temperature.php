@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="temperature",
  *     indexes={
- *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )

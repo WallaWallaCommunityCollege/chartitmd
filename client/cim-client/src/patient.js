@@ -27,10 +27,14 @@ document.getElementById("settings")
 function getPatientAsJson() {
     axios.get('/patient/2Y9ovLbO93RUekOOu75TV5')
          .then(response => {
-             $(document)
-                 .ready(() => {
-                     (new Patient(response.data)).displayDetails(['recentBloodPressures', 'recentHeights', 'recentWeights']);
-                 });
+             if (response['error']) {
+                 console.log(response['error']);
+             } else {
+                 $(document)
+                     .ready(() => {
+                         (new Patient(response.data)).displayDetails();
+                     });
+             }
          })
          .catch(function (error) {
              console.log(error);

@@ -23,26 +23,8 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Class HeightRepository.
  */
-class HeightRepository extends EntityRepository {
-    /**
-     * @param string $patientId
-     *
-     * @return array|Height[]
-     */
-    public function getAllHeightsByPatientId(string $patientId): array {
-        $query = $this->createQueryBuilder('h')
-                      ->where('h.patientId = :id')
-                      ->setParameter('id', $patientId)
-                      ->orderBy('h.createdAt', 'DESC')
-                      ->getQuery();
-        try {
-            $heights = $query->getArrayResult();
-        } catch (\Throwable $e) {
-            var_dump($e->getMessage());
-            return [];
-        }
-        return $heights;
-    }
+class HeightRepository extends EntityRepository implements GetForPatientInterface {
+    use GetForPatientTrait;
     /**
      * @param Patient $patient
      *
@@ -67,12 +49,12 @@ class HeightRepository extends EntityRepository {
      *
      * @return array
      */
-    public function getLast10HeightsForPatientId(string $patientId) {
+    public function getLast10HeightsForPatientId(string $patientId): array {
         $query = $this->createQueryBuilder('h')
-            ->where('h.patient = :id')
-            ->setParameter('id', $patientId)
-            ->setMaxResults(10)
-            ->getQuery();
+                      ->where('h.patient = :id')
+                      ->setParameter('id', $patientId)
+                      ->setMaxResults(10)
+                      ->getQuery();
         try {
             $heights = $query->getArrayResult();
             foreach ($heights as &$height) {

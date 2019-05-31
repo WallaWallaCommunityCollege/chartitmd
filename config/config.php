@@ -16,6 +16,9 @@ declare(strict_types=1);
 
 namespace ChartItMD;
 
+use Psr\Container\ContainerInterface;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use function DI\string;
 
 /**
@@ -29,14 +32,78 @@ $settings = [
     'settings.determineRouteBeforeAppMiddleware' => true,
     'mode' => 'production',
     // Converts directory to *nix style '/' since they work everywhere in PHP.
-    'ChartItMD.baseDir' => dirname(str_replace('\\', '/', __DIR__)) . '/',
+    'ChartItMD.baseDir' => \dirname(\str_replace('\\', '/', __DIR__)) . '/',
     'ChartItMD.configDir' => string('{ChartItMD.baseDir}config/'),
     'ChartItMD.publicDir' => string('{ChartItMD.baseDir}public/'),
     'ChartItMD.srcDir' => string('{ChartItMD.baseDir}src/'),
-    'ChartItMD.resourcesDir' => string('{ChartItMD.baseDir}resources/')
+    'ChartItMD.resourcesDir' => string('{ChartItMD.baseDir}resources/'),
+    'errorHandler' => function (ContainerInterface $dic) {
+        return function (Request $request, Response $response, \Throwable $thrown) use ($dic) {
+            return $response->withJson(
+                [
+                    'error' => [
+                        'message' => $thrown->getMessage(),
+                        'code' => $thrown->getCode(),
+                        'file' => $thrown->getFile(),
+                        'line' => $thrown->getLine(),
+                        'trace' => $thrown->getTrace(),
+                    ],
+                ],
+                500
+            );
+        };
+    },
+    'phpErrorHandler' => function (ContainerInterface $dic) {
+        return function (Request $request, Response $response, \Throwable $thrown) use ($dic) {
+            return $response->withJson(
+                [
+                    'error' => [
+                        'message' => $thrown->getMessage(),
+                        'code' => $thrown->getCode(),
+                        'file' => $thrown->getFile(),
+                        'line' => $thrown->getLine(),
+                        'trace' => $thrown->getTrace(),
+                    ],
+                ],
+                500
+            );
+        };
+    },
+    'notFoundHandler' => function (ContainerInterface $dic) {
+        return function (Request $request, Response $response, \Throwable $thrown) use ($dic) {
+            return $response->withJson(
+                [
+                    'error' => [
+                        'message' => $thrown->getMessage(),
+                        'code' => $thrown->getCode(),
+                        'file' => $thrown->getFile(),
+                        'line' => $thrown->getLine(),
+                        'trace' => $thrown->getTrace(),
+                    ],
+                ],
+                500
+            );
+        };
+    },
+    'notAllowedHandler' => function (ContainerInterface $dic) {
+        return function (Request $request, Response $response, \Throwable $thrown) use ($dic) {
+            return $response->withJson(
+                [
+                    'error' => [
+                        'message' => $thrown->getMessage(),
+                        'code' => $thrown->getCode(),
+                        'file' => $thrown->getFile(),
+                        'line' => $thrown->getLine(),
+                        'trace' => $thrown->getTrace(),
+                    ],
+                ],
+                500
+            );
+        };
+    },
 ];
 // Automate some debug settings for local developer server.
-if ('cli-server' === PHP_SAPI) {
+if ('cli-server' === \PHP_SAPI) {
     $settings['mode'] = 'debug';
     $settings['displayErrorDetails'] = true;
     $settings['settings.displayErrorDetails'] = true;

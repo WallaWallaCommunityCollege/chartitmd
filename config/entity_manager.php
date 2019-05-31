@@ -14,7 +14,6 @@ declare(strict_types=1);
  * @license   Proprietary
  */
 require_once dirname(__DIR__) . '/vendor/autoload.php';
-
 use DI\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 use josegonzalez\Dotenv\Loader;
@@ -22,6 +21,7 @@ use josegonzalez\Dotenv\Loader;
 // Initial same environment that application will be running in so they don't
 // become desynchronized later.
 $builder = new ContainerBuilder();
+/** @noinspection BadExceptionsProcessingInspection */
 try {
     $builder->addDefinitions(dirname(__DIR__) . '/config/config.php')
             ->addDefinitions(dirname(__DIR__) . '/config/dot_env.php')

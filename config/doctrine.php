@@ -14,6 +14,7 @@ declare(strict_types=1);
  * @license   Proprietary
  */
 use ChartItMD\Model\Entity\BloodPressure;
+use ChartItMD\Model\Entity\Diastolic;
 use ChartItMD\Model\Entity\Gender;
 use ChartItMD\Model\Entity\Height;
 use ChartItMD\Model\Entity\Method;
@@ -26,6 +27,7 @@ use ChartItMD\Model\Entity\Respiration;
 use ChartItMD\Model\Entity\Role;
 use ChartItMD\Model\Entity\RoleHierarchy;
 use ChartItMD\Model\Entity\RolePermission;
+use ChartItMD\Model\Entity\Systolic;
 use ChartItMD\Model\Entity\Temperature;
 use ChartItMD\Model\Entity\UnitOfMeasurement;
 use ChartItMD\Model\Entity\User;
@@ -33,6 +35,7 @@ use ChartItMD\Model\Entity\UserRole;
 use ChartItMD\Model\Entity\VitalSigns;
 use ChartItMD\Model\Entity\Weight;
 use ChartItMD\Model\Repository\BloodPressureRepository;
+use ChartItMD\Model\Repository\DiastolicRepository;
 use ChartItMD\Model\Repository\GenderRepository;
 use ChartItMD\Model\Repository\HeightRepository;
 use ChartItMD\Model\Repository\LocationRepository;
@@ -46,6 +49,7 @@ use ChartItMD\Model\Repository\RespirationRepository;
 use ChartItMD\Model\Repository\RoleHierarchyRepository;
 use ChartItMD\Model\Repository\RolePermissionRepository;
 use ChartItMD\Model\Repository\RoleRepository;
+use ChartItMD\Model\Repository\SystolicRepository;
 use ChartItMD\Model\Repository\TemperatureRepository;
 use ChartItMD\Model\Repository\UnitOfMeasurementRepository;
 use ChartItMD\Model\Repository\UserRepository;
@@ -118,6 +122,8 @@ return [
             'user' => $dic->get('ChartItMD.Pdo.Parameters.username'),
             'password' => $dic->get('ChartItMD.Pdo.Parameters.password'),
             'dbname' => $dic->get('ChartItMD.Pdo.Parameters.database'),
+            'charset' => $dic->get('ChartItMD.Pdo.Parameters.characterSet'),
+            'collate' => $dic->get('ChartItMD.Pdo.Parameters.characterCollate'),
         ];
         $em = EntityManager::create($dbParams, $config);
         $conn = $em->getConnection();
@@ -127,6 +133,8 @@ return [
                 Type::addType($type, $v['class']);
                 $conn->getDatabasePlatform()
                      ->registerDoctrineTypeMapping($type, $v['extends']);
+                $conn->getDatabasePlatform()
+                     ->markDoctrineTypeCommented($type);
             }
         }
         $conn->exec((string)$dic->get('ChartItMD.Pdo.Parameters.initialization'));
@@ -136,6 +144,10 @@ return [
     BloodPressureRepository::class => function (ContainerInterface $dic): BloodPressureRepository {
         return $dic->get(EntityManager::class)
                    ->getRepository(BloodPressure::class);
+    },
+    DiastolicRepository::class => function (ContainerInterface $dic): DiastolicRepository {
+        return $dic->get(EntityManager::class)
+                   ->getRepository(Diastolic::class);
     },
     GenderRepository::class => function (ContainerInterface $dic): GenderRepository {
         return $dic->get(EntityManager::class)
@@ -188,6 +200,10 @@ return [
     RoleRepository::class => function (ContainerInterface $dic): RoleRepository {
         return $dic->get(EntityManager::class)
                    ->getRepository(Role::class);
+    },
+    SystolicRepository::class => function (ContainerInterface $dic): SystolicRepository {
+        return $dic->get(EntityManager::class)
+                   ->getRepository(Systolic::class);
     },
     TemperatureRepository::class => function (ContainerInterface $dic): TemperatureRepository {
         return $dic->get(EntityManager::class)

@@ -64,10 +64,10 @@ class OxygenSaturation extends \ChartItMD\Model\Entity\OxygenSaturation implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'saturation', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'patient'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'patient'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'saturation', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'patient'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\OxygenSaturation' . "\0" . 'patient'];
     }
 
     /**
@@ -176,12 +176,12 @@ class OxygenSaturation extends \ChartItMD\Model\Entity\OxygenSaturation implemen
     /**
      * {@inheritDoc}
      */
-    public function getSaturation(): int
+    public function getMeasurement(): int
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaturation', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
 
-        return parent::getSaturation();
+        return parent::getMeasurement();
     }
 
     /**

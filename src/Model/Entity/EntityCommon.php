@@ -71,22 +71,22 @@ trait EntityCommon {
         return $result;
     }
     /**
-     * @var \DateTimeImmutable $createdAt
+     * @var \DateTimeImmutable
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @ORM\Column(name="created_at", type="datetime_immutable", nullable=false)
      */
     private $createdAt;
     /**
-     * @var User $createdBy
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=false)
      */
     private $createdBy;
     /**
-     * @var string $id
+     * @var string
      *
-     * @ORM\Column(type="uuid64", nullable=false)
+     * @ORM\Column(type="uuid64", nullable=false, options={"fixed":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class="ChartItMD\Model\Uuid64Generator")

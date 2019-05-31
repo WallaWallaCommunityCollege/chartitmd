@@ -64,10 +64,10 @@ class Weight extends \ChartItMD\Model\Entity\Weight implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'weight', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'weight', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Weight' . "\0" . 'id'];
     }
 
     /**
@@ -187,23 +187,23 @@ class Weight extends \ChartItMD\Model\Entity\Weight implements \Doctrine\ORM\Pro
     /**
      * {@inheritDoc}
      */
+    public function getMeasurement(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
+
+        return parent::getMeasurement();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getPatient(): \ChartItMD\Model\Entity\Patient
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPatient', []);
 
         return parent::getPatient();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getWeight(): string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWeight', []);
-
-        return parent::getWeight();
     }
 
     /**

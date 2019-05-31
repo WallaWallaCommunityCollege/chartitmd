@@ -21,5 +21,7 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Class PainRepository.
  */
-class PainRepository extends EntityRepository {
+class PainRepository extends EntityRepository implements GetForPatientInterface {
+    use GetForPatientTrait;
+    use ArrayExceptionCommon;
 }

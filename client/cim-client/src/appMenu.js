@@ -57,6 +57,14 @@ const appMenu = [
                                                slashes: true
                                            }));
                 }
+            }, {
+                label: 'Blood Pressures', click() {
+                    win.loadURL(url.format({
+                                               pathname: path.join(__dirname, 'bloodPressures.html'),
+                                               protocol: 'file:',
+                                               slashes: true
+                                           }));
+                }
             }
         ],
     }, {

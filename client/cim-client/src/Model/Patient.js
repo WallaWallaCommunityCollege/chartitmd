@@ -1,5 +1,6 @@
 'use strict';
 const JsonDate = require('./JsonDate.js');
+const DisplayTable = require('./DisplayTable');
 window.$ = window.jQuery = require('jquery');
 
 /**
@@ -51,30 +52,10 @@ class Patient {
         $('#patient-bsa')
             .text(Patient.getBSA(this.data['recentHeights'][0]['height'], this.data['recentWeights'][0]['weight']));
     }
-    /**
-     *
-     * @param options
-     */
-    displayDetails(options = []) {
+    displayDetails() {
+        console.log(this.data['patient']);
+        (new DisplayTable(this.data['patient'], 'patient-')).displayTable();
         this.displayGeneralDetails();
-        this.displayBMIAndBSA();
-        if (0 !== options.length) {
-            for (let i = 0; i < options.length; i++) {
-                switch (options[i]) {
-                    case 'recentBloodPressures':
-                        this.displayRecentBloodPressures();
-                        break;
-                    case 'recentHeights':
-                        this.displayRecentHeights();
-                        break;
-                    case 'recentWeights':
-                        this.displayRecentWeights();
-                        break;
-                    default:
-                        throw new Error('Unknown option: ' + options[i]);
-                }
-            }
-        }
     }
     /**
      *

@@ -29,13 +29,13 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="role_permission",
  *     indexes={
- *     @ORM\Index(name="idx_role_permission", columns={"role_id","permission_id"}),
- *     @ORM\Index(name="fk_permission_id",columns={"permission_id"}),
- *     @ORM\Index(name="fk_role_id",columns={"role_id"})
+ *         @ORM\Index(name="idx_role_permission", columns={"role_id","permission_id"}),
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  * })
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RolePermissionRepository")
  */
 class RolePermission implements \JsonSerializable {
+    use RbacCommon;
     /**
      * RolePermission constructor.
      *
@@ -52,18 +52,6 @@ class RolePermission implements \JsonSerializable {
         $this->createdBy = $createdBy;
     }
     /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable {
-        return $this->createdAt;
-    }
-    /**
-     * @return User
-     */
-    public function getCreatedBy(): User {
-        return $this->createdBy;
-    }
-    /**
      * @return Permission
      */
     public function getPermission(): Permission {
@@ -75,37 +63,6 @@ class RolePermission implements \JsonSerializable {
     public function getRole(): Role {
         return $this->role;
     }
-    /**
-     * Specify data which should be serialized to JSON
-     *
-     * NOTE:
-     * This filters out sensitive information like the password.
-     *
-     * @return array
-     */
-    public function jsonSerialize(): array {
-        $result = [];
-        /** @noinspection ForeachSourceInspection */
-        foreach ($this as $k => $v) {
-            $result[$k] = $v;
-        }
-        // Filter out any unneeded Doctrine Entity Proxy c**p.
-        unset($result['__initializer__'], $result['__cloner__'], $result['__isInitialized__']);
-        return $result;
-    }
-    /**
-     * @var \DateTimeImmutable
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-    /**
-     * @var User $createdBy
-     *
-     * @ORM\Column(name="created_by", type="uuid64", nullable=false)
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $createdBy;
     /**
      * @var Permission
      *

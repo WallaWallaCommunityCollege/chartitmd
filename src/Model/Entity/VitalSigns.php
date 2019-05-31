@@ -23,7 +23,7 @@ use JsonSerializable;
 /**
  * Class VitalSigns.
  *
- * @ORM\Table(name="vital_signs", indexes={@ORM\Index(name="fk_patient_id", columns={"patient_id"})})
+ * @ORM\Table(name="vital_signs")
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\VitalSignsRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -137,9 +137,9 @@ class VitalSigns implements JsonSerializable {
      */
     private $painLocation;
     /**
-     * @var Patient $patient
+     * @var Patient
      *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="VitalSigns")
+     * @ORM\ManyToOne(targetEntity="Patient")
      * @ORM\JoinColumn(nullable=false)
      */
     private $patient;

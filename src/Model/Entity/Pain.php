@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="pain",
  *     indexes={
- *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
@@ -39,16 +38,16 @@ class Pain implements \JsonSerializable {
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param int     $rating
+     * @param int     $measurement
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, int $rating) {
+    public function __construct(User $createdBy, Patient $patient, int $measurement) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
         $this->id = $this->asBase64();
         $this->patient = $patient;
-        $this->rating = $rating;
+        $this->measurement = $measurement;
     }
     /**
      * @return Location|null
@@ -65,8 +64,8 @@ class Pain implements \JsonSerializable {
     /**
      * @return int
      */
-    public function getRating(): int {
-        return $this->rating;
+    public function getMeasurement(): int {
+        return $this->measurement;
     }
     /**
      * @param Location|null $value
@@ -85,16 +84,16 @@ class Pain implements \JsonSerializable {
      */
     private $location;
     /**
-     * @var Patient $patient
+     * @var Patient
      *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="VitalSigns")
+     * @ORM\ManyToOne(targetEntity="Patient")
      * @ORM\JoinColumn(nullable=false)
      */
     private $patient;
     /**
-     * @var int $rating
+     * @var int $measurement
      *
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
-    private $rating;
+    private $measurement;
 }

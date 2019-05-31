@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @copyright 2019 ChartItMD Development Group
  * @license   Proprietary
  */
+
 namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
@@ -22,8 +23,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Class User.
  *
  * @ORM\Table(name="user",
- *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="idx_name", columns={"name"})
+ *     indexes={
+ *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\UserRepository")
@@ -38,10 +39,11 @@ class User implements \JsonSerializable {
      * @param string $password
      *
      * @throws \Exception
+     * @throws \UnexpectedValueException
      */
     public function __construct(string $name, string $password) {
         $this->name = $name;
-        $this->password = $password;
+        $this->setPassword($password);
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
     }
@@ -86,12 +88,12 @@ class User implements \JsonSerializable {
      * Doctrine often will return date-times as plain string instead of correct
      * object so this method will correct it when called.
      *
-     * @return \DateTime|null
+     * @return \DateTimeImmutable|null
      * @throws \Exception
      */
-    public function getUpdatedAt(): ?\DateTime {
-        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTime) {
-            $this->updatedAt = new \DateTime($this->updatedAt);
+    public function getUpdatedAt(): ?\DateTimeImmutable {
+        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTimeImmutable) {
+            $this->updatedAt = new \DateTimeImmutable($this->updatedAt);
         }
         return $this->updatedAt;
     }
@@ -121,12 +123,34 @@ class User implements \JsonSerializable {
      * @throws \Exception
      */
     public function preUpdate(): void {
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+    /**
+     * Sets user password.
+     *
+     * NOTE:
+     *      Ensures all passwords have at least default hashing.
+     *
+     * @param string $value
+     *
+     * @return self Fluent interface
+     * @throws \UnexpectedValueException
+     */
+    public function setPassword(string $value): self {
+        $info = \password_get_info($value);
+        if (0 === $info['algo'] || 'unknown' === $info['algoName']) {
+            $value = \password_hash($value, \PASSWORD_DEFAULT);
+            if (false === $value) {
+                throw new \UnexpectedValueException('Password hashing failed for user');
+            }
+        }
+        $this->password = $value;
+        return $this;
     }
     /**
      * @var \DateTimeImmutable
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @ORM\Column(name="created_at", type="datetime_immutable", nullable=false)
      */
     private $createdAt;
     /**
@@ -151,9 +175,9 @@ class User implements \JsonSerializable {
      */
     private $password;
     /**
-     * @var \DateTime|null
+     * @var \DateTimeImmutable|null
      *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetime_immutable", nullable=true)
      */
     private $updatedAt;
 }

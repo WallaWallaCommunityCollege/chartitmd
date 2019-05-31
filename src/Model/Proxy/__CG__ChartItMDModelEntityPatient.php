@@ -220,7 +220,7 @@ class Patient extends \ChartItMD\Model\Entity\Patient implements \Doctrine\ORM\P
     /**
      * {@inheritDoc}
      */
-    public function getUpdatedAt(): ?\DateTime
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);

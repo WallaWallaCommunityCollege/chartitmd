@@ -31,9 +31,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="role",
  *     indexes={
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
- *     },
- *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="uniq_name", columns={"name"})
  *     }
  * )
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\RoleRepository")
@@ -58,9 +55,19 @@ class Role implements \JsonSerializable {
         $this->createdBy = $createdBy;
     }
     /**
-     * @return \DateTime
+     * Date and time when entity was updated.
+     *
+     * Note:
+     * Doctrine often will return date-times as plain string instead of correct
+     * object so this method will correct it when called.
+     *
+     * @return \DateTimeImmutable|null
+     * @throws \Exception
      */
-    public function getUpdatedAt(): \DateTime {
+    public function getUpdatedAt(): ?\DateTimeImmutable {
+        if (null !== $this->updatedAt && !$this->updatedAt instanceof \DateTimeImmutable) {
+            $this->updatedAt = new \DateTimeImmutable($this->updatedAt);
+        }
         return $this->updatedAt;
     }
     /**
@@ -74,7 +81,7 @@ class Role implements \JsonSerializable {
      * @throws \Exception
      */
     public function preUpdate(): void {
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt = new \DateTimeImmutable();
     }
     /**
      * @param bool|null $value
@@ -89,9 +96,9 @@ class Role implements \JsonSerializable {
      */
     private $status = true;
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable|null
      *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetime_immutable", nullable=true)
      */
     private $updatedAt;
 }

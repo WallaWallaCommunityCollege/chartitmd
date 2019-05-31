@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="pulse",
  *     indexes={
- *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
@@ -40,27 +39,27 @@ class Pulse implements \JsonSerializable {
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param int     $rate
+     * @param int     $measurement
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, int $rate) {
+    public function __construct(User $createdBy, Patient $patient, int $measurement) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
         $this->id = $this->asBase64();
         $this->patient = $patient;
-        $this->rate = $rate;
+        $this->measurement = $measurement;
     }
     /**
      * @return int
      */
-    public function getRate(): int {
-        return $this->rate;
+    public function getMeasurement(): int {
+        return $this->measurement;
     }
     /**
-     * @var int $rate Beat Per Minute (BPM).
+     * @var int $measurement Beat Per Minute (BPM).
      *
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned": true})
      */
-    private $rate;
+    private $measurement;
 }

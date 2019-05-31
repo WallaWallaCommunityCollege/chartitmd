@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="height",
  *     indexes={
- *         @ORM\Index(name="fk_patient", columns={"patient_id"}),
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
@@ -38,22 +37,22 @@ class Height implements \JsonSerializable {
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param string  $height
+     * @param string  $measurement
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, string $height) {
+    public function __construct(User $createdBy, Patient $patient, string $measurement) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
-        $this->height = $height;
         $this->id = $this->asBase64();
+        $this->measurement = $measurement;
         $this->patient = $patient;
     }
     /**
      * @return string
      */
-    public function getHeight(): string {
-        return $this->height;
+    public function getMeasurement(): string {
+        return $this->measurement;
     }
     /**
      * @return UnitOfMeasurement|null
@@ -72,8 +71,8 @@ class Height implements \JsonSerializable {
      *
      * @return self Fluent interface
      */
-    public function setHeight(string $value): self {
-        $this->height = $value;
+    public function setMeasurement(string $value): self {
+        $this->measurement = $value;
         return $this;
     }
     /**
@@ -86,11 +85,11 @@ class Height implements \JsonSerializable {
         return $this;
     }
     /**
-     * @var string $height (cm)
+     * @var string $measurement (cm)
      *
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=false)
      */
-    private $height;
+    private $measurement;
     /**
      * @var UnitOfMeasurement|null $measuredIn Unit of measurement used.
      *
@@ -99,9 +98,9 @@ class Height implements \JsonSerializable {
      */
     private $measuredIn;
     /**
-     * @var Patient $patient
+     * @var Patient
      *
-     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="heights")
+     * @ORM\ManyToOne(targetEntity="Patient")
      * @ORM\JoinColumn(nullable=false)
      */
     private $patient;

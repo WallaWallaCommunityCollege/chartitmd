@@ -64,10 +64,10 @@ class Respiration extends \ChartItMD\Model\Entity\Respiration implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'rate', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'patient'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'patient'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'rate', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'patient'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Respiration' . "\0" . 'patient'];
     }
 
     /**
@@ -176,12 +176,12 @@ class Respiration extends \ChartItMD\Model\Entity\Respiration implements \Doctri
     /**
      * {@inheritDoc}
      */
-    public function getRate(): int
+    public function getMeasurement(): int
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRate', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
 
-        return parent::getRate();
+        return parent::getMeasurement();
     }
 
     /**

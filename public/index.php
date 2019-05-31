@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
-$root_path = str_replace('\\', '/', dirname(__DIR__));
+$rootPath = str_replace('\\', '/', dirname(__DIR__));
 /** @noinspection PhpIncludeInspection */
-require $root_path . '/bootstrap.php';
-
+require $rootPath . '/bootstrap.php';
 use ChartItMD\ChartItMD;
 use josegonzalez\Dotenv\Loader;
 
@@ -18,9 +17,9 @@ try {
 $app->getContainer()
     ->get(Loader::class);
 // Register middleware
-require $root_path . '/src/middleware.php';
+require_once $rootPath . '/src/middleware.php';
 // Register routes
-require $root_path . '/src/routes.php';
+require_once $rootPath . '/src/routes.php';
 // Run app
 try {
     $app->run();

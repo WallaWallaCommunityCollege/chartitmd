@@ -64,10 +64,10 @@ class Pulse extends \ChartItMD\Model\Entity\Pulse implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'rate', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'patient'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'patient'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'rate', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'patient'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pulse' . "\0" . 'patient'];
     }
 
     /**
@@ -176,12 +176,12 @@ class Pulse extends \ChartItMD\Model\Entity\Pulse implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getRate(): int
+    public function getMeasurement(): int
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRate', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
 
-        return parent::getRate();
+        return parent::getMeasurement();
     }
 
     /**
