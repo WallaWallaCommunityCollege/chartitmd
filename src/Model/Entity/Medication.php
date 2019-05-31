@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Medication.
