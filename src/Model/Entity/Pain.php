@@ -31,8 +31,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks
  */
 class Pain implements \JsonSerializable {
-    use Uuid4Trait;
     use EntityCommon;
+    use MeasurementCommon;
+    use Uuid4Trait;
     /**
      * Pain constructor.
      *
@@ -50,46 +51,11 @@ class Pain implements \JsonSerializable {
         $this->measurement = $measurement;
     }
     /**
-     * @return Location|null
-     */
-    public function getLocation(): ?Location {
-        return $this->location;
-    }
-    /**
-     * @return Patient
-     */
-    public function getPatient(): Patient {
-        return $this->patient;
-    }
-    /**
      * @return int
      */
     public function getMeasurement(): int {
         return $this->measurement;
     }
-    /**
-     * @param Location|null $value
-     *
-     * @return self Fluent interface
-     */
-    public function setLocation(?Location $value): self {
-        $this->location = $value;
-        return $this;
-    }
-    /**
-     * @var Location|null $location
-     *
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $location;
-    /**
-     * @var Patient
-     *
-     * @ORM\ManyToOne(targetEntity="Patient")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $patient;
     /**
      * @var int $measurement
      *
