@@ -26,4 +26,10 @@ interface GetForPatientInterface {
      * @return array|null
      */
     public function getForPatientId(string $patientId): ?array;
+    /**
+     * @param string $patientId
+     *
+     * @return array|null
+     */
+    public function getMeasurementsForPatientId(string $patientId): ?array;
 }
