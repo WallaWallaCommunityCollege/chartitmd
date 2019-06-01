@@ -46,7 +46,4 @@ document.addEventListener('keydown', (event) => {
     if(inputKey === 'Enter'){
         attemptLogin();
     }
-    else if(inputKey === 'Escape'){
-        window.location.href = "index.html";
-    }
-})
+});
