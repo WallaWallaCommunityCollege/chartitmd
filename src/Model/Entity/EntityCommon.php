@@ -68,6 +68,9 @@ trait EntityCommon {
         // Filter sensitive properties.
         /** @noinspection UnsetConstructsCanBeMergedInspection */
         unset($result['password']);
+        // Filter out redundant patient.
+        /** @noinspection UnsetConstructsCanBeMergedInspection */
+        unset($result['patient']);
         return $result;
     }
     /**
