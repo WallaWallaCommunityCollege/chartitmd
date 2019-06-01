@@ -38,4 +38,21 @@ trait GetForPatientTrait {
         }
         return $result;
     }
+    /**
+     * @param string $patientId
+     *
+     * @return array|null
+     */
+    public function getMeasurementsForPatientId(string $patientId): ?array {
+        $query = $this->createQueryBuilder('x')
+                      ->where('x.patient = :id')
+                      ->setParameter('id', $patientId)
+                      ->getQuery();
+        try {
+            $result = $query->getResult();
+        } catch (\Throwable $e) {
+            return $this->exceptionAsArray($e);
+        }
+        return $result;
+    }
 }

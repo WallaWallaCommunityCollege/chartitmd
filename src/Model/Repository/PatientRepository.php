@@ -66,7 +66,7 @@ class PatientRepository extends EntityRepository {
             $repo = $this->getEntityManager()
                          ->getRepository($base . '\Entity\\' . $item);
             try {
-                $result[\strtolower($item)] = $repo->getForPatientId($patientId);
+                $result[\strtolower($item)] = $repo->getMeasurementsForPatientId($patientId);
             } catch (\Throwable $thrown) {
                 return $this->exceptionAsArray($thrown);
             }
