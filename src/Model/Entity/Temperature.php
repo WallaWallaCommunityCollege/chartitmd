@@ -39,27 +39,27 @@ class Temperature implements \JsonSerializable {
      *
      * @param User    $createdBy
      * @param Patient $patient
-     * @param string  $temperature
+     * @param string  $measurement
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient, string $temperature) {
+    public function __construct(User $createdBy, Patient $patient, string $measurement) {
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
         $this->id = $this->asBase64();
         $this->patient = $patient;
-        $this->temperature = $temperature;
+        $this->measurement = $measurement;
     }
     /**
      * @return string
      */
-    public function getTemperature(): string {
-        return $this->temperature;
+    public function getMeasurement(): string {
+        return $this->measurement;
     }
     /**
      * @var string
      *
      * @ORM\Column(type="decimal", precision=4, scale=1, nullable=true)
      */
-    private $temperature;
+    private $measurement;
 }
