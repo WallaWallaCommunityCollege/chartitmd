@@ -64,10 +64,10 @@ class Pain extends \ChartItMD\Model\Entity\Pain implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Pain' . "\0" . 'patient'];
     }
 
     /**
@@ -176,45 +176,12 @@ class Pain extends \ChartItMD\Model\Entity\Pain implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getLocation(): ?\ChartItMD\Model\Entity\Location
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocation', []);
-
-        return parent::getLocation();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPatient(): \ChartItMD\Model\Entity\Patient
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPatient', []);
-
-        return parent::getPatient();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getMeasurement(): int
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurement', []);
 
         return parent::getMeasurement();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setLocation(?\ChartItMD\Model\Entity\Location $value): \ChartItMD\Model\Entity\Pain
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocation', [$value]);
-
-        return parent::setLocation($value);
     }
 
     /**
@@ -259,6 +226,83 @@ class Pain extends \ChartItMD\Model\Entity\Pain implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
 
         return parent::jsonSerialize();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLocation(): ?\ChartItMD\Model\Entity\Location
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocation', []);
+
+        return parent::getLocation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMeasuredIn(): ?\ChartItMD\Model\Entity\UnitOfMeasurement
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasuredIn', []);
+
+        return parent::getMeasuredIn();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMethodUsed(): ?\ChartItMD\Model\Entity\Method
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMethodUsed', []);
+
+        return parent::getMethodUsed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPatient(): \ChartItMD\Model\Entity\Patient
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPatient', []);
+
+        return parent::getPatient();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLocation(?\ChartItMD\Model\Entity\Location $value): \ChartItMD\Model\Entity\Pain
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocation', [$value]);
+
+        return parent::setLocation($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMeasuredIn(?\ChartItMD\Model\Entity\UnitOfMeasurement $value): \ChartItMD\Model\Entity\Pain
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeasuredIn', [$value]);
+
+        return parent::setMeasuredIn($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMethodUsed(?\ChartItMD\Model\Entity\Method $value): \ChartItMD\Model\Entity\Pain
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMethodUsed', [$value]);
+
+        return parent::setMethodUsed($value);
     }
 
 }
