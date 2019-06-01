@@ -34,12 +34,11 @@ class Diastolic implements \JsonSerializable {
     use EntityCommon;
     use MeasurementCommon;
     /**
-     * BloodPressure constructor.
+     * Diastolic constructor.
      *
      * @param User    $createdBy
      * @param Patient $patient
      * @param int     $measurement
-     * @param int     $systolic
      *
      * @throws \Exception
      */
