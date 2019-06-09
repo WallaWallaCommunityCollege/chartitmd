@@ -18,61 +18,51 @@ namespace ChartItMD\Model\Entity;
 
 use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 /**
  * Class VitalSigns.
  *
  * @ORM\Table(name="vital_signs")
  * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\VitalSignsRepository")
- * @ORM\HasLifecycleCallbacks
  */
-class VitalSigns implements JsonSerializable {
+class VitalSigns implements \JsonSerializable {
     use Uuid4Trait;
     use EntityCommon;
     /**
      * VitalSigns constructor.
      *
-     * @param User    $createdBy
-     * @param Patient $patient
+     * @param User      $createdBy
+     * @param Patient   $patient
+     * @param Diastolic $diastolic
+     * @param Systolic  $systolic
      *
      * @throws \Exception
      */
-    public function __construct(User $createdBy, Patient $patient) {
+    public function __construct(User $createdBy, Patient $patient, Diastolic $diastolic, Systolic $systolic) {
         $this->patient = $patient;
         $this->id = $this->asBase64();
         $this->createdAt = new \DateTimeImmutable();
         $this->createdBy = $createdBy;
+        $this->diastolic = $diastolic;
+        $this->systolic = $systolic;
     }
     /**
-     * @return string
+     * @return Diastolic
      */
-    public function getDiastolic(): string {
+    public function getDiastolic(): Diastolic {
         return $this->diastolic;
     }
     /**
-     * @return Location
+     * @return OxygenSaturation|null
      */
-    public function getOxygenLocation(): Location {
-        return $this->oxygenLocation;
-    }
-    /**
-     * @return int
-     */
-    public function getOxygenSaturation(): int {
+    public function getOxygenSaturation(): ?OxygenSaturation {
         return $this->oxygenSaturation;
     }
     /**
-     * @return int
+     * @return Pain|null
      */
-    public function getPain(): int {
+    public function getPain(): ?Pain {
         return $this->pain;
-    }
-    /**
-     * @return Location
-     */
-    public function getPainLocation(): Location {
-        return $this->painLocation;
     }
     /**
      * @return Patient
@@ -81,61 +71,95 @@ class VitalSigns implements JsonSerializable {
         return $this->patient;
     }
     /**
-     * @return int
+     * @return Pulse|null
      */
-    public function getPulseRate(): int {
-        return $this->pulseRate;
+    public function getPulse(): ?Pulse {
+        return $this->pulse;
     }
     /**
-     * @return int
+     * @return Respiration|null
      */
-    public function getRespirationRate(): int {
-        return $this->respirationRate;
+    public function getRespiration(): ?Respiration {
+        return $this->respiration;
     }
     /**
-     * @return string
+     * @return Systolic
      */
-    public function getTemperature(): string {
+    public function getSystolic(): Systolic {
+        return $this->systolic;
+    }
+    /**
+     * @return Temperature|null
+     */
+    public function getTemperature(): ?Temperature {
         return $this->temperature;
     }
     /**
-     * @return Method
+     * @param OxygenSaturation|null $value
+     *
+     * @return self Fluent interface
      */
-    public function getTemperatureMethod(): Method {
-        return $this->temperatureMethod;
+    public function setOxygenSaturation(?OxygenSaturation $value): self {
+        $this->oxygenSaturation = $value;
+        return $this;
     }
     /**
-     * @var string $diastolic (bottom number)
+     * @param Pain|null $value
      *
-     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=true)
+     * @return self Fluent interface
+     */
+    public function setPain(?Pain $value): self {
+        $this->pain = $value;
+        return $this;
+    }
+    /**
+     * @param Pulse|null $value
+     *
+     * @return self Fluent interface
+     */
+    public function setPulse(?Pulse $value): self {
+        $this->pulse = $value;
+        return $this;
+    }
+    /**
+     * @param Respiration|null $value
+     *
+     * @return self Fluent interface
+     */
+    public function setRespiration(?Respiration $value): self {
+        $this->respiration = $value;
+        return $this;
+    }
+    /**
+     * @param Temperature|null $value
+     *
+     * @return self Fluent interface
+     */
+    public function setTemperature(?Temperature $value): self {
+        $this->temperature = $value;
+        return $this;
+    }
+    /**
+     * @var Diastolic
+     *
+     * @ORM\OneToOne(targetEntity="Diastolic")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $diastolic;
     /**
-     * @var Location $oxygenLocation
+     * @var OxygenSaturation|null
      *
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\JoinColumn(name="oxygen_location", referencedColumnName="id", nullable=true)
-     */
-    private $oxygenLocation;
-    /**
-     * @var int $oxygenSaturation Peripheral oxygen saturation (SpO2) as %.
-     *
-     * @ORM\Column(name="oxygen_saturation", type="smallint", nullable=true, options={"unsigned": true})
+     * @ORM\OneToOne(targetEntity="OxygenSaturation")
+     * @ORM\JoinColumn(name="oxygen_saturation_id", nullable=true)
      */
     private $oxygenSaturation;
     /**
-     * @var int $pain
+     * @var Pain|null
      *
-     * @ORM\Column(type="smallint", nullable=true, options={"unsigned": true})
+     * @ORM\OneToOne(targetEntity="Pain")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $pain;
-    /**
-     * @var Location $painLocation
-     *
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\JoinColumn(name="pain_location", referencedColumnName="id", nullable=true)
-     */
-    private $painLocation;
     /**
      * @var Patient
      *
@@ -144,34 +168,31 @@ class VitalSigns implements JsonSerializable {
      */
     private $patient;
     /**
-     * @var int $pulseRate Beat Per Minute (BPM).
+     * @var Pulse|null
      *
-     * @ORM\Column(name="pulse_rate", type="smallint", nullable=true, options={"unsigned": true})
+     * @ORM\OneToOne(targetEntity="Pulse")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $pulseRate;
+    private $pulse;
     /**
-     * @var int $respirationRate
+     * @var Respiration|null
      *
-     * @ORM\Column(name="respiration_rate", type="smallint", nullable=true, options={"unsigned": true})
+     * @ORM\OneToOne(targetEntity="Respiration")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $respirationRate;
+    private $respiration;
     /**
-     * @var int|string $systolic (top number)
+     * @var Systolic
      *
-     * @ORM\Column(type="decimal", precision=3, scale=0, nullable=true)
+     * @ORM\OneToOne(targetEntity="Systolic")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $systolic;
     /**
-     * @var string
+     * @var Temperature|null
      *
-     * @ORM\Column(type="decimal", precision=4, scale=1, nullable=true)
+     * @ORM\OneToOne(targetEntity="Temperature")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $temperature;
-    /**
-     * @var Method $temperatureMethod
-     *
-     * @ORM\ManyToOne(targetEntity="Method")
-     * @ORM\JoinColumn(name="temperature_method", referencedColumnName="id", nullable=true)
-     */
-    private $temperatureMethod;
 }

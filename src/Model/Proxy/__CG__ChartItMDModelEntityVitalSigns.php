@@ -58,20 +58,45 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
 
 
     /**
-     * 
+     *
      * @return array
      */
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'diastolic', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'oxygenLocation', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'oxygenSaturation', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pain', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'painLocation', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pulseRate', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'respirationRate', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'systolic', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'temperature', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'temperatureMethod', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'id'];
+            return [
+                '__isInitialized__',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'diastolic',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'oxygenSaturation',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pain',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'patient',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pulse',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'respiration',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'systolic',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'temperature',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdAt',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdBy',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'id',
+            ];
         }
-
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'diastolic', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'oxygenLocation', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'oxygenSaturation', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pain', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'painLocation', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'patient', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pulseRate', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'respirationRate', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'systolic', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'temperature', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'temperatureMethod', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'id'];
+        return [
+            '__isInitialized__',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'diastolic',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'oxygenSaturation',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pain',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'patient',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'pulse',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'respiration',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'systolic',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'temperature',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdAt',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'createdBy',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\VitalSigns' . "\0" . 'id',
+        ];
     }
 
     /**
-     * 
+     *
      */
     public function __wakeup()
     {
@@ -93,7 +118,7 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
     }
 
     /**
-     * 
+     *
      */
     public function __clone()
     {
@@ -176,7 +201,7 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function getDiastolic(): string
+    public function getDiastolic(): \ChartItMD\Model\Entity\Diastolic
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDiastolic', []);
@@ -187,18 +212,7 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function getOxygenLocation(): \ChartItMD\Model\Entity\Location
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOxygenLocation', []);
-
-        return parent::getOxygenLocation();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getOxygenSaturation(): int
+    public function getOxygenSaturation(): ?\ChartItMD\Model\Entity\OxygenSaturation
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOxygenSaturation', []);
@@ -209,23 +223,12 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function getPain(): int
+    public function getPain(): ?\ChartItMD\Model\Entity\Pain
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPain', []);
 
         return parent::getPain();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPainLocation(): \ChartItMD\Model\Entity\Location
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPainLocation', []);
-
-        return parent::getPainLocation();
     }
 
     /**
@@ -242,29 +245,32 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function getPulseRate(): int
+    public function getPulse(): ?\ChartItMD\Model\Entity\Pulse {
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
+        return parent::getPulse();
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function getRespiration(): ?\ChartItMD\Model\Entity\Respiration
     {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseRate', []);
-
-        return parent::getPulseRate();
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRespiration', []);
+        return parent::getRespiration();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getRespirationRate(): int
+    public function getSystolic(): \ChartItMD\Model\Entity\Systolic
     {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRespirationRate', []);
-
-        return parent::getRespirationRate();
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSystolic', []);
+        return parent::getSystolic();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getTemperature(): string
+    public function getTemperature(): ?\ChartItMD\Model\Entity\Temperature
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTemperature', []);
@@ -275,12 +281,39 @@ class VitalSigns extends \ChartItMD\Model\Entity\VitalSigns implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function getTemperatureMethod(): \ChartItMD\Model\Entity\Method
+    public function setOxygenSaturation(?\ChartItMD\Model\Entity\OxygenSaturation $value
+    ): \ChartItMD\Model\Entity\VitalSigns {
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOxygenSaturation', [$value]);
+        return parent::setOxygenSaturation($value);
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function setPain(?\ChartItMD\Model\Entity\Pain $value): \ChartItMD\Model\Entity\VitalSigns {
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPain', [$value]);
+        return parent::setPain($value);
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function setPulse(?\ChartItMD\Model\Entity\Pulse $value): \ChartItMD\Model\Entity\VitalSigns {
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$value]);
+        return parent::setPulse($value);
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function setRespiration(?\ChartItMD\Model\Entity\Respiration $value): \ChartItMD\Model\Entity\VitalSigns {
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRespiration', [$value]);
+        return parent::setRespiration($value);
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function setTemperature(?\ChartItMD\Model\Entity\Temperature $value): \ChartItMD\Model\Entity\VitalSigns
     {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTemperatureMethod', []);
-
-        return parent::getTemperatureMethod();
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTemperature', [$value]);
+        return parent::setTemperature($value);
     }
 
     /**
