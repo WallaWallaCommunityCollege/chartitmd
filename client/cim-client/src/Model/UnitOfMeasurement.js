@@ -50,7 +50,7 @@ class UnitOfMeasurement extends ModelCommon {
                       case 'unitOf':
                           break;
                       default:
-                          throw `Unknown Json property ${key} given`;
+                          throw new Error(`Unknown Json property ${key} given`);
                   }
               });
         return result;
