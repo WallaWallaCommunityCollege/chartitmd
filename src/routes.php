@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace ChartItMD;
 
-use ChartItMD\Model\Repository\BloodPressureRepository;
 use ChartItMD\Model\Repository\PatientRepository;
 use ChartItMD\Model\Repository\UserRepository;
 use ChartItMD\Model\Repository\VitalSignsRepository;
@@ -82,9 +81,9 @@ try {
                     return $response->withJson($vitalSigns, 200);
                 }
             );
-
         }
     );
+    // TODO: need to get actual patients from DB.
     $app->get(
         '/patients',
         function (Request $request, Response $response) {
@@ -112,20 +111,21 @@ try {
         }
     );
     $app->group(
-        '/user/',
+        '/user',
         function () use ($app) {
             $app->post(
-                'login/',
+                '/login',
                 function (Request $request, Response $response) use ($app) {
                     /**
                      * @var ContainerInterface $dic
                      */
                     $dic = $app->getContainer();
-                    $user = $request->getParsedBody();
+                    $user = \json_decode($request->getParsedBody()['user'], true);
+                    //return $response->withJson($user, 200);
                     $result = null;
                     if (null !== $user) {
                         $result = $dic->get(UserRepository::class)
-                                      ->userLogin($user['name']);
+                                      ->userLogin($user);
                         if (null !== $result) {
                             return $response->withJson($result, 200);
                         }
@@ -134,7 +134,7 @@ try {
                 }
             );
             $app->get(
-                '{name}',
+                '/{name}',
                 function (Request $request, Response $response, $name) use ($app) {
                     /**
                      * @var ContainerInterface $dic
@@ -180,6 +180,15 @@ try {
             return $response;
         }
     );
-} catch (ContainerException $e) {
-    var_dump($e->getMessage());
+} catch (\Throwable | ContainerException $thrown) {
+    $error = [
+        'error' => [
+            'message' => $thrown->getMessage(),
+            'code' => $thrown->getCode(),
+            'file' => $thrown->getFile(),
+            'line' => $thrown->getLine(),
+            'trace' => $thrown->getTrace(),
+        ],
+    ];
+    return (new Response())->withJson($error, 200);
 }

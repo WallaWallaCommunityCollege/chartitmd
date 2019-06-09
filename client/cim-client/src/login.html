@@ -10,10 +10,10 @@
     * Scripts can connect only to itself, localhost, or our website to get json
       etc.
      -->
-    <!--<meta
-            content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/; default-src 'self'"
-            http-equiv="Content-Security-Policy"/>-->
-    <title>Patient</title>
+    <meta
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/; default-src 'self'"
+        http-equiv="Content-Security-Policy"/>
+    <title>Login</title>
     <link href="../assets/css/normalize.css" rel="stylesheet"/>
     <link href="../assets/css/main.css" rel="stylesheet"/>
 </head>
@@ -35,9 +35,9 @@
 </header>
 <main>
     <div align="center">
-            <label>Username: </label><input id="userLog" type="text" name="user-name" autofocus><br><br>
-            <label>Password: </label><input id="passLog" type="password" name="pass-word"><br><br>
-            <input type="button" value="Login" id="tryLogin" onclick="attemptLogin()">
+        <label for="username">Username: </label><input autofocus id="username" name="username" type="text"><br><br>
+        <label for="password">Password: </label><input id="password" name="password" type="password"><br><br>
+        <input id="login" type="button" value="login">
         <br>
     </div>
 </main>
