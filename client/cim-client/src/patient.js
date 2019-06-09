@@ -4,23 +4,10 @@ require('dotenv')
 const axios = require('axios');
 // Config Axios defaults.
 axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
+const Patient = require('./Model/Patient.js');
 // Setup JQuery
 window.$ = window.jQuery = require('jquery');
-const Patient = require('./Model/Patient.js');
 getPatientAsJson();
-document.getElementById("summary")
-        .addEventListener("click", function () {
-            alert("clicked");
-            window.location.href = "summary.html";
-        });
-document.getElementById("vitalSigns")
-        .addEventListener("click", function () {
-            window.location.href = "vitalSigns.html";
-        });
-document.getElementById("settings")
-        .addEventListener("click", function () {
-            window.location.href = "settings.html";
-        });
 /**
  * Simple wrapper around an Axios call to get extended patient detail and display it.
  */
@@ -32,7 +19,22 @@ function getPatientAsJson() {
              } else {
                  $(document)
                      .ready(() => {
-                         (new Patient(response.data)).displayDetails();
+                         // Switched buttons to use jquery and ensure DOM is fully loaded before adding.
+                         $('#summary')
+                             .on('click', function () {
+                                 window.location.href = "summary.html";
+                             });
+                         $('#vitalSigns')
+                             .on('click', function () {
+                                 window.location.href = "vitalSigns.html";
+                             });
+                         $('#settings')
+                             .on('click', function () {
+                                 window.location.href = "settings.html";
+                             });
+                         let patient = Patient.fromJson(response.data);
+                         console.log(patient);
+                         patient.displayDetails();
                      });
              }
          })

@@ -34,28 +34,16 @@
     </picture>
 </header>
 <main>
-    <table id="patient-table">
-        <thead>
-        <tr>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-        </tr>
-        </tfoot>
-        <tbody>
-        </tbody>
-    </table>
+    <div id="buttons">
+        <button id="summary">Summary</button>
+        <button id="vitalSigns">Vital Signs</button>
+        <button id="settings">Settings</button>
+    </div>
     <section>
         <form action="patient.html" method="post">
             <fieldset>
                 <legend>Patient</legend>
-                <div id="buttons">
-                    <button id="summary">Summary</button>
-                    <button id="vitalSigns">Vital Signs</button>
-                    <button id="settings">Settings</button>
-                </div>
-                <details open>
+                <details>
                     <summary id="patient-must-show">
                         <label id="patient-lastName-item">
                             <span>last name:</span>
@@ -90,18 +78,7 @@
                                         <option value="full">full</option>
                                         <option value="limited">limited</option>
                                     </select>
-                                    <!--                                        <input id="patient-codeStatus-dnr" name="code-radio" type="radio" value="dnr"-->
-                                    <!--                                               readonly required>-->
                                 </label>
-                                <!--                                    <label>-->
-                                <!--                                        <span>Full</span>-->
-                                <!--                                        <input id="patient-codeStatus-full" name="code-radio" type="radio" value="full">-->
-                                <!--                                    </label>-->
-                                <!--                                    <label>-->
-                                <!--                                        <span>Limited</span>-->
-                                <!--                                        <input id="patient-codeStatus-limited" name="code-radio" type="radio"-->
-                                <!--                                               value="limited">-->
-                                <!--                                    </label>-->
                             </summary>
                             <div id="patient-codeStatus-limited-may-show">
                                 <label>
@@ -123,95 +100,6 @@
                                 <a href="#">New</a>&nbsp
                             </div>
                         </details>
-                        <details id="patient-bloodPressures-item">
-                            <summary id="patient-bloodPressures-must-show">
-                                <label id="patient-bloodPressure-pressures-item">
-                                    <span>blood pressure</span>
-                                    <output class="bp" id="patient-bloodPressure-systolic"></output>
-                                    &nbsp;/&nbsp;
-                                    <output class="bp" id="patient-bloodPressure-diastolic"></output>
-                                </label>
-                            </summary>
-                            <div id="patient-bloodPressures-may-show">
-                            </div>
-                            <div id="patient-bloodPressures-dont-show">
-                                &nbsp;
-                                <label id="patient-bloodPressure-createdAt-item">
-                                    <span>createdAt:</span>
-                                    <input id="patient-bloodPressure-createdAt" name="patient-bloodPressure-createdAt"
-                                           readonly
-                                           type="date"/>
-                                </label>
-                                <label id="patient-bloodPressure-id-item">
-                                    <span>id:</span>
-                                    <input class="id" id="patient-bloodPressure-id" name="patient-bloodPressure-id"
-                                           readonly
-                                           type="text"/>
-                                </label>
-                            </div>
-                            <a href="#">New</a>&nbsp;
-                            <a href="#">More ...</a><br>
-                        </details>
-                        <details id="patient-heights-item">
-                            <summary id="patient-heights-must-show">
-                                <label id="patient-height-height-item">
-                                    <span>height:</span>
-                                    <input id="patient-height-height" name="patient-height-height" readonly required
-                                           step=".1" type="number"/>
-                                </label>
-                            </summary>
-                            <div id="patient-heights-may-show">
-                                <label id="patient-height-createdAt-item">
-                                    <span>createdAt:</span>
-                                    <input id="patient-height-createdAt" name="patient-height-createdAt" readonly
-                                           type="date"/>
-                                </label>
-                            </div>
-                            <div id="patient-heights-dont-show">
-                                &nbsp;
-                                <label id="patient-height-id-item">
-                                    <span>id:</span>
-                                    <input class="id" id="patient-height-id" name="patient-height-id" readonly
-                                           type="text"/>
-                                </label>
-                            </div>
-                            <a href="#">New</a>&nbsp;
-                            <a href="#">More ...</a><br>
-                        </details>
-                        <details id="patient-weights-item">
-                            <summary id="patient-weights-must-show">
-                                <label id="patient-weight-item">
-                                    <span>weight:</span>
-                                    <input id="patient-weight-weight" name="patient-weight-weight" readonly required
-                                           step=".1" type="number"/>
-                                </label>
-                            </summary>
-                            <div id="patient-weights-may-show">
-                                <label id="patient-weight-createdAt-item">
-                                    <span>createdAt:</span>
-                                    <input id="patient-weight-createdAt" name="patient-weight-createdAt" readonly
-                                           type="date"/>
-                                </label>
-                                <label id="patient-weight-id-item">
-                                    <span>id:</span>
-                                    <input class="id" id="patient-weight-id" name="patient-weight-id" readonly
-                                           type="text"/>
-                                </label><br>
-                            </div>
-                            <div id="patient-weights-dont-show">
-                                &nbsp;
-                            </div>
-                            <a href="#">New</a>&nbsp;
-                            <a href="#">More ...</a><br>
-                        </details>
-                        <label id="patient-bsa-item">
-                            <span>bsa:</span>
-                            <output for="patient-height patient-weight" id="patient-bsa"></output>
-                        </label>
-                        <label id="patient-bmi-item">
-                            <span>bmi:</span>
-                            <output for="patient-height patient-weight" id="patient-bmi"></output>
-                        </label>
                     </div>
                     <div id="patient-dont-show">
                         &nbsp;
