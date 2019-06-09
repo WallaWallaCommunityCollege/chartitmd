@@ -44,6 +44,10 @@ class DisplayTable {
             this.displayTbodyRow(rows[i]);
         }
     }
+    /**
+     *
+     * @param row
+     */
     displayTbodyRow(row) {
         let tbody = $(this.idBase + 'table tbody');
         // noinspection CheckTagEmptyBody

@@ -76,7 +76,8 @@ function getPatientAsJson() {
             } else {
                 $(document)
                     .ready(() => {
-                        (new Patient(response.data)).displayDetails();
+                        Patient.fromJson(response.data)
+                               .displayDetails();
                     });
             }
         })
