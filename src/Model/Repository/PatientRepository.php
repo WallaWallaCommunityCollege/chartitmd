@@ -27,9 +27,9 @@ class PatientRepository extends EntityRepository {
     /**
      * @param string $id
      *
-     * @return array|null
+     * @return Patient|array|null
      */
-    public function getById(string $id): ?array {
+    public function getById(string $id) {
         $result = null;
         $query = $this->createQueryBuilder('p')
                       ->select('p, g, u')
@@ -43,7 +43,7 @@ class PatientRepository extends EntityRepository {
              * @var Patient $patient
              */
             $patient = $query->getSingleResult();
-            $result = ['patient' => $patient];
+            $result = $patient;
         } catch (\Throwable $thrown) {
             return $this->exceptionAsArray($thrown);
         }
