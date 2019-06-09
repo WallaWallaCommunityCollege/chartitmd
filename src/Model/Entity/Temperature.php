@@ -59,7 +59,7 @@ class Temperature implements \JsonSerializable {
     /**
      * @var string
      *
-     * @ORM\Column(type="decimal", precision=4, scale=1, nullable=true)
+     * @ORM\Column(type="decimal", precision=4, scale=1)
      */
     private $measurement;
 }
