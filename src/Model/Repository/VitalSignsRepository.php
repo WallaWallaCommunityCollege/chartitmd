@@ -27,6 +27,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class VitalSignsRepository extends EntityRepository {
     use ArrayExceptionCommon;
+    use GetForPatientTrait;
     /**
      * @param string $id
      *
