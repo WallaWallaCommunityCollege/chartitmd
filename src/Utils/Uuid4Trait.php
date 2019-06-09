@@ -65,7 +65,7 @@ trait Uuid4Trait {
         $result = '';
         // Left pad to even number of 6 bits (134) for split.
         $binary = '0000' . $this->intoBinary($data);
-        $sixBits = str_split($binary, 6);
+        $sixBits = \str_split($binary, 6);
         foreach ($sixBits as $idx) {
             $result .= self::$base64[$idx];
         }
@@ -82,13 +82,13 @@ trait Uuid4Trait {
      */
     protected function fromBase64ToBinString(string $data): string {
         // Left pad with 0s and truncate to max length of UUID in base 64.
-        $data = substr(str_pad($data, 22, '0', STR_PAD_LEFT), 22);
-        $base64 = array_flip(self::$base64);
+        $data = \substr(\str_pad($data, 22, '0', \STR_PAD_LEFT), 22);
+        $base64 = \array_flip(self::$base64);
         $result = '';
         $binary = '';
         // First convert to binary string.
-        foreach (str_split($data) as $idx) {
-            if (array_key_exists($idx, $base64)) {
+        foreach (\str_split($data) as $idx) {
+            if (\array_key_exists($idx, $base64)) {
                 $binary .= $base64[$idx];
             } else {
                 $mess = 'Invalid base 64 number given';
@@ -96,10 +96,10 @@ trait Uuid4Trait {
             }
         }
         // Drop 4 left padding 0s to make 128 bits long again;
-        $binary = substr($binary, 4);
+        $binary = \substr($binary, 4);
         // Finally convert into the binary string.
-        foreach (str_split($binary, 8) as $value) {
-            $result .= chr(bindec($value));
+        foreach (\str_split($binary, 8) as $value) {
+            $result .= \chr(\bindec($value));
         }
         return $result;
     }
@@ -125,7 +125,7 @@ trait Uuid4Trait {
      */
     protected function uuid(?string $data = null): string {
         $data = $this->asBinString($data);
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+        return \vsprintf('%s%s-%s-%s-%s-%s%s%s', \str_split(\bin2hex($data), 4));
     }
     /**
      * Helper method for the common parts of creating new UUID in binary form.
@@ -139,12 +139,12 @@ trait Uuid4Trait {
      * sufficient entropy in random_bytes().
      */
     private function asBinString(?string $data = null): string {
-        $data = $data ?? random_bytes(16);
+        $data = $data ?? \random_bytes(16);
         // Left pad string to 16 chars using ascii code 0 if short else
         // truncate strings longer then 16 chars.
-        $data = substr(str_pad($data, 16, chr(0), STR_PAD_LEFT), 0, 16);
-        $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0100 (4 - random)
-        $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
+        $data = \substr(\str_pad($data, 16, \chr(0), \STR_PAD_LEFT), 0, 16);
+        $data[6] = \chr(\ord($data[6]) & 0x0f | 0x40); // set version to 0100 (4 - random)
+        $data[8] = \chr(\ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
         return $data;
     }
     /**
@@ -159,11 +159,14 @@ trait Uuid4Trait {
      */
     private function intoBinary(string $data): string {
         $result = '';
-        foreach (str_split($data) as $byte) {
-            $result .= str_pad(decbin(ord($byte)), 8, '0', STR_PAD_LEFT);
+        foreach (\str_split($data) as $byte) {
+            $result .= \str_pad(\decbin(\ord($byte)), 8, '0', \STR_PAD_LEFT);
         }
         return $result;
     }
+    /**
+     * @var array $base64
+     */
     private static $base64 = [
         '000000' => '0',
         '000001' => '1',
@@ -239,7 +242,7 @@ trait Uuid4Trait {
      * @throws \Exception
      */
     protected function fromFullToBase64(string $uuid): string {
-        $binary = sodium_hex2bin($uuid, '{-}');
+        $binary = \sodium_hex2bin($uuid, '{-}');
         return $this->asBase64($binary);
     }
 }
