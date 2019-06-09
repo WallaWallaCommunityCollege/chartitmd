@@ -44,7 +44,7 @@ class Method extends ModelCommon {
                           result.name = data[key];
                           break;
                       default:
-                          throw `Unknown Json property ${key} given`;
+                          throw new Error(`Unknown Json property ${key} given`);
                   }
               });
         return result;

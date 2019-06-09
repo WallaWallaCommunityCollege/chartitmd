@@ -108,7 +108,7 @@ class Patient extends ModelCommon {
                       case 'updatedAt':
                           break;
                       default:
-                          throw `Unknown Json property ${key} given`;
+                          throw new Error(`Unknown Json property ${key} given`);
                   }
               });
         return result;

@@ -44,7 +44,7 @@ class ModelCommon {
     /**
      *
      * @param {PHPDate} value
-     * @returns {ModelCommon}
+     * @returns this
      */
     setCreatedAt(value) {
         this.createdAt = JsonDate.fromJsonPHPDate(value);
@@ -53,7 +53,7 @@ class ModelCommon {
     /**
      *
      * @param {Object} value
-     * @returns {ModelCommon}
+     * @returns this
      */
     setCreatedBy(value) {
         this.createdBy = User.fromJson(value);
@@ -62,7 +62,7 @@ class ModelCommon {
     /**
      *
      * @param value
-     * @returns {ModelCommon}
+     * @returns this
      */
     setId(value) {
         this.id = value;
