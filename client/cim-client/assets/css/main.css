@@ -64,7 +64,7 @@ th {
     letter-spacing: .15em;
     padding: 5px;
     /* A little more subtle shadow here. */
-    text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
+    /*text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;*/
 }
 
 tbody tr:nth-child(even) {
@@ -141,17 +141,17 @@ input[type=submit] {
     text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
 }
 
-input:invalid + span:after {
-    color: hsl(0, 100%, 50%);
-    content: '\2716'; /* X (multiple) symbol */
-    padding: .25rem;
-}
+/*input:invalid + span:after {*/
+/*    color: hsl(0, 100%, 50%);*/
+/*    content: '\2716'; !* X (multiple) symbol *!*/
+/*    padding: .25rem;*/
+/*}*/
 
-input:valid + span:after {
-    color: hsl(120, 100%, 20%);
-    content: '\2713'; /* Check mark */
-    padding: .25rem;
-}
+/*input:valid + span:after {*/
+/*    color: hsl(120, 100%, 20%);*/
+/*    content: '\2713'; !* Check mark *!*/
+/*    padding: .25rem;*/
+/*}*/
 
 output {
     display: inline-block;
