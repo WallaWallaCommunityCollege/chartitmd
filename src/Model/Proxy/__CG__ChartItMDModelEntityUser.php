@@ -58,20 +58,35 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
 
 
     /**
-     * 
+     *
      * @return array
      */
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'password', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'updatedAt'];
+            return [
+                '__isInitialized__',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'createdAt',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'createdBy',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'id',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'name',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'password',
+                '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'updatedAt',
+            ];
         }
-
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'name', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'password', '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'updatedAt'];
+        return [
+            '__isInitialized__',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'createdAt',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'createdBy',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'id',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'name',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'password',
+            '' . "\0" . 'ChartItMD\\Model\\Entity\\User' . "\0" . 'updatedAt',
+        ];
     }
 
     /**
-     * 
+     *
      */
     public function __wakeup()
     {
@@ -93,7 +108,7 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
     }
 
     /**
-     * 
+     *
      */
     public function __clone()
     {
@@ -182,6 +197,13 @@ class User extends \ChartItMD\Model\Entity\User implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function getCreatedBy(): \ChartItMD\Model\Entity\User {
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
+        return parent::getCreatedBy();
     }
 
     /**

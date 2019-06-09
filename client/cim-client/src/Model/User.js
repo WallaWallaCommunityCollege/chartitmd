@@ -1,6 +1,9 @@
 'use strict';
+const JsonDate = require('./JsonDate');
 const {DateTime} = require('luxon');
+const ModelCommon = require('./ModelCommon');
 window.$ = window.jQuery = require('jquery');
+
 /**
  * @typedef {Object} PHPUser User JSON object as returned by PHP.
  * @property {{}}
@@ -9,25 +12,13 @@ window.$ = window.jQuery = require('jquery');
 /**
  *
  */
-class User {
+class User extends ModelCommon {
     /**
      *
      * @param {string} name
      */
     constructor(name) {
-        /**
-         *
-         * @type {?DateTime}
-         * @public
-         */
-        this.createdAt = null;
-        /**
-         *
-         * @type {?string}
-         * @public
-         * @readonly
-         */
-        this.id = null;
+        super();
         /**
          *
          * @type {string}
@@ -48,42 +39,49 @@ class User {
          */
         this.updatedAt = null;
     }
-
     /**
      *
      * @param {Object} data
      * @property {string} name
      *
-     * @return User
+     * @return this
      */
     static fromJson(data) {
-        let user = new User(data.name);
+        let result = new User(data.name);
         Object.keys(data)
               .forEach(function (key) {
+                  if (null === data[key]) {
+                      return;
+                  }
                   switch (key) {
                       case 'createdAt':
-                      case 'updatedAt':
-                          if (null !== data[key]) {
-                              // noinspection JSCheckFunctionSignatures
-                              user[key] = DateTime.fromSQL(data[key]['date'], {zone: data[key]['timezone']});
-                          }
+                          result.setCreatedAt(data[key]);
+                          break;
+                      case 'createdBy':
+                          result.setCreatedBy(data[key]);
+                          break;
+                      case 'id':
+                          result.setId(data[key]);
                           break;
                       case 'name':
-                          // Already set by constructor so ignore.
+                          // Already set by constructor above so ignore here.
+                          break;
+                      case 'password':
+                          result.setPassword(data[key]);
+                          break;
+                      case 'updatedAt':
+                          result.updatedAt = JsonDate.fromJsonPHPDate(data[key]);
                           break;
                       default:
-                          if (user.hasOwnProperty(key)) {
-                              user[key] = data[key];
-                          }
+                          throw new Error(`Unknown Json property ${key} given`);
                   }
               });
-        return user;
+        return result;
     }
-
     /**
      *
      * @param value
-     * @returns {User}
+     * @returns this
      */
     setPassword(value) {
         this.password = value;

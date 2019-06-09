@@ -64,6 +64,12 @@ class User implements \JsonSerializable {
         return $this->createdAt;
     }
     /**
+     * @return User
+     */
+    public function getCreatedBy(): User {
+        return $this->createdBy;
+    }
+    /**
      * @return string
      */
     public function getId(): string {
@@ -153,6 +159,13 @@ class User implements \JsonSerializable {
      * @ORM\Column(name="created_at", type="datetime_immutable", nullable=false)
      */
     private $createdAt;
+    /**
+     * @var User|null
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=true)
+     */
+    private $createdBy;
     /**
      * @var string
      *
