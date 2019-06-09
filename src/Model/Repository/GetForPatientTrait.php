@@ -30,6 +30,7 @@ trait GetForPatientTrait {
         $query = $this->createQueryBuilder('x')
                       ->where('x.patient = :id')
                       ->setParameter('id', $patientId)
+                      ->orderBy('x.createdAt', 'desc')
                       ->getQuery();
         try {
             $result = $query->getResult();
