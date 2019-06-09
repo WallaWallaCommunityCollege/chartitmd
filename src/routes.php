@@ -40,8 +40,20 @@ try {
                      * @var ContainerInterface $dic
                      */
                     $dic = $app->getContainer();
-                    $patient = $dic->get(PatientRepository::class)
-                                   ->getById($id);
+                    try {
+                        $patient = $dic->get(PatientRepository::class)
+                                       ->getById($id);
+                    } catch (\Throwable $thrown) {
+                        $patient = [
+                            'error' => [
+                                'message' => $thrown->getMessage(),
+                                'code' => $thrown->getCode(),
+                                'file' => $thrown->getFile(),
+                                'line' => $thrown->getLine(),
+                                'trace' => $thrown->getTrace(),
+                            ],
+                        ];
+                    }
                     return $response->withJson($patient, 200);
                 }
             );
@@ -52,23 +64,13 @@ try {
                      * @var ContainerInterface $dic
                      */
                     $dic = $app->getContainer();
-                    $vitalSigns = $dic->get(PatientRepository::class)
-                                      ->getVitalSignsForPatientId($id);
-                    return $response->withJson($vitalSigns, 200);
-                }
-            );
-            $app->get(
-                'bloodPressures/{id}',
-                function (Request $request, Response $response, string $id) use ($app) {
-                    /**
-                     * @var ContainerInterface $dic
-                     */
-                    $dic = $app->getContainer();
                     try {
-                        $vitalSigns = $dic->get(BloodPressureRepository::class)
-                                          ->getLast10BloodPressuresForPatientId($id);
+                        $vitalSigns = $dic->get(VitalSignsRepository::class)
+                                          ->getForPatientId($id);
+                        //$vitalSigns = $dic->get(PatientRepository::class)
+                        //                  ->getVitalSignsForPatientId($id);
                     } catch (\Throwable $thrown) {
-                        $vitalSigns =[
+                        $vitalSigns = [
                             'error' => [
                                 'message' => $thrown->getMessage(),
                                 'code' => $thrown->getCode(),
