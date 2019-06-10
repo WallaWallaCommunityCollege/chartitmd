@@ -22,6 +22,7 @@
     <title></title>
 </head>
 <body>
+<?php include("banner.html")?>
 <form action="PatientLookup.php" method="post">
     <label>Enter patient Date of birth</label>
     <input type="text" name="dob">

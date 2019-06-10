@@ -1,3 +1,23 @@
+<?php
+	session_start();
+	require_once 'DBConnection.php';
+	$patientId = $_SESSION['activePatientID'];
+	
+	$sql = 'SELECT * FROM patient_summary WHERE patient_id = :patient_id';
+	
+	$statement = $db->prepare($sql);
+	
+	$statement->bindValue(':patient_id', $patientId);
+	
+	$statement->execute();
+	$returned = $statement->fetchAll();
+	
+	$array = array_values($returned);
+	
+	$statement->closeCursor();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +44,6 @@
 
 
 Use jquery
-    <div w3-include-html="patient.html"></div>
 -->
 <h1>Patient Summary</h1>
 
@@ -36,24 +55,24 @@ Use jquery
             <th>Current problems</th>
         </tr>
         <tr>
-            <td><textarea cols="50" id="allergy" rows="30">&nbsp;</textarea></td>
-            <td><textarea cols="50" id="problem" rows="30">&nbsp;</textarea></td>
+            <td><textarea cols="50" id="allergy" rows="30"><?php include "Allergies.php"?></textarea></td>
+            <td><textarea cols="50" id="problem" rows="30"><?php echo $array[0]['problems']?></textarea></td>
         </tr>
         <tr>
             <th>Medication</th>
             <th>Surgical History</th>
         </tr>
         <tr>
-            <td><textarea cols="50" id="medication" rows="30">&nbsp;</textarea></td>
-            <td><textarea cols="50" id="surgical" rows="30">&nbsp;</textarea></td>
+            <td><textarea cols="50" id="medication" rows="30"><?php echo $array[0]['medication']?></textarea></td>
+            <td><textarea cols="50" id="surgical" rows="30"><?php echo $array[0]['surgical']?></textarea></td>
         </tr>
         <tr>
             <th>Activity</th>
             <th>Orders</th>
         </tr>
         <tr>
-            <td><textarea cols="50" id="activity" rows="30">&nbsp;</textarea></td>
-            <td><textarea cols="50" id="orders" rows="30">&nbsp;</textarea></td>
+            <td><textarea cols="50" id="activity" rows="30"><?php echo $array[0]['activity']?></textarea></td>
+            <td><textarea cols="50" id="orders" rows="30"><?php echo $array[0]['orders']?></textarea></td>
         </tr>
     </table>
     <div id="allergies">
