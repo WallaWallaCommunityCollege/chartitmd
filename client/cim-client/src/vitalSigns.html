@@ -1,8 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <!--
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">    <!--
     VERY IMPORTANT to include this in all web pages for application security.
 
     * These rules limit stuff to coming from within electron: css, js, etc.
@@ -10,31 +9,188 @@
       etc.
      -->
     <meta
-        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/ https://www.chartitmd.com/; default-src 'self'"
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/ https://www.chartitmd.com/ 'unsafe-inline'; default-src 'self' 'unsafe-inline'"
         http-equiv="Content-Security-Policy"/>
     <title>Vital Signs</title>
     <link href="../assets/css/normalize.css" rel="stylesheet"/>
-    <link href="../assets/css/main.css" rel="stylesheet"/>
-    <!--    <script src="../assets/js/jquery-3.3.1.min.js"></script>-->
-    <!--    <script> window.$ = window.jQuery = require('jquery');</script>-->
-    <!--    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>-->
-    <!--    <link rel="stylesheet" id="themeStyles"-->
-    <!--          href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"/>-->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!--    <link href="../assets/css/main.css" rel="stylesheet"/>-->
+    <style>
+        @font-face {
+            font-family: "Source Code Pro";
+            font-weight: normal;
+            src: url("../assets/font/SourceCodePro-Regular.otf.woff") format("woff");
+        }
+
+        @font-face {
+            font-family: "Source Code Pro";
+            font-weight: normal;
+            font-style: italic;
+            src: url("../assets/font/SourceCodePro-It.otf.woff") format("woff");
+        }
+
+        @font-face {
+            font-family: "Source Code Pro";
+            font-weight: bold;
+            src: url("../assets/font/SourceCodePro-Bold.otf.woff") format("woff");
+        }
+
+        @font-face {
+            font-family: "Source Code Pro";
+            font-weight: 900;
+            src: url("../assets/font/SourceCodePro-Black.otf.woff") format("woff");
+        }
+
+        :root {
+            --cim-fluid-precalc: calc((100vw - 300px) / (1600 - 300));
+            --cim-font-size-precalc: calc((26 - 12) * var(--cim-fluid-precalc));
+            --cim-line-height-precalc: calc((1.5 - 1.2) * var(--cim-fluid-precalc));
+        }
+
+        *, *:after, *:before {
+            box-sizing: border-box;
+        }
+
+        label {
+            border: hsl(0, 0%, 0%) solid 1px;
+            display: inline-block;
+            font-size: .75em;
+            height: calc(1.6em + var(--cim-line-height-precalc));
+            margin: 0 0 calc(.35em + var(--cim-line-height-precalc)) 0;
+        }
+
+        output {
+            display: inline-block;
+            line-height: calc(1.2rem + var(--cim-line-height-precalc));
+            padding: 0 .25em;
+        }
+
+        label span:first-child, label span:last-child {
+            background-color: hsl(214, 41%, 78%);
+            display: inline-block;
+            height: 100%;
+            margin: 0;
+            padding: 0 .25em;
+        }
+
+        /*label span:last-child {*/
+        /*    margin-right: -3.5px;*/
+        /*}*/
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:focus {
+            outline: none;
+        }
+
+        [id$="-card-dont-show"] {
+            display: none;
+        }
+
+        /*span.uom {*/
+        /*    right: -1em;*/
+        /*    padding-right: 0;*/
+        /*}*/
+    </style>
 </head>
 <body>
+<h1>Vital Signs</h1>
 <main>
-    <table id="patient-vitalSigns-table">
-        <thead>
-        <tr>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-        </tr>
-        </tfoot>
-        <tbody>
-        </tbody>
-    </table>
+    -
+    <div class="card accordion" id="patient-vitalSigns-card">
+        <div class="card-body">
+            <button aria-controls="patient-vitalSigns-card-collapse" aria-expanded="true"
+                    aria-pressed="true"
+                    class="active nav-link font-weight-bold btn-outline-primary rounded mb-1"
+                    data-target="#patient-vitalSigns-card-collapse"
+                    data-toggle="collapse" id="patient-vitalSigns-card-must-show" type="button">
+                vitalSigns
+            </button>
+            <div class="collapse show" data-parent="#patient-vitalSigns-card" id="patient-vitalSigns-card-collapse">
+                <div class="card-group" id="patient-vitalSigns-card-may-show">
+                    <div class="card" id="patient-vitalSigns-Systolic-card">
+                        <h5 class="card-title">Systolic</h5>
+                        <div class="card-body dropdown">
+                            <button aria-expanded="false" aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-target="Systolic-card-may-show" data-toggle="dropdown"
+                                    id="patient-vitalSigns-Systolic-card-must-show"
+                                    type="button">
+                                <label>
+                                    <span>Systolic</span>
+                                    <output>120</output>
+                                </label>
+                                <label>
+                                    <span>Created At</span>
+                                    <output>2019-02-20 16:45</output>
+                                </label>
+                            </button>
+                            <section aria-labelledby="patient-vitalSigns-Systolic-card-must-show"
+                                     class="dropdown-menu Systolic-card-may-show"
+                                     id="patient-vitalSigns-Systolic-card-may-show">
+                                <label class="w-100">
+                                    <span>Location</span>
+                                    <output>Right Arm</output>
+                                </label>
+                                <div class="card-footer">
+                                    <small>
+                                        <a href="#">New</a>&nbsp;
+                                        <a href="#">More ...</a>
+                                    </small>
+                                </div>
+                            </section>
+                            <section id="patient-vitalSigns-Systolic-card-dont-show">
+                                <label class="w-50">
+                                    <span>id</span>
+                                    <output>0mp179aixdxX8cEZTP62qt</output>
+                                </label>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="card" id="patient-vitalSigns-Diastolic-card">
+                        <h5 class="card-title">Diastolic</h5>
+                        <div class="card-body dropdown">
+                            <button aria-expanded="false" aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-target="Diastolic-card-may-show" data-toggle="dropdown"
+                                    id="patient-vitalSigns-Diastolic-card-must-show"
+                                    type="button">
+                                <label><span>Diastolic</span>
+                                    <output>80</output>
+                                </label>
+                                <label>
+                                    <span>Created At</span>
+                                    <output>2019-02-20 16:45</output>
+                                </label>
+                            </button>
+                            <section aria-labelledby="patient-vitalSigns-Diastolic-card-must-show"
+                                     class="dropdown-menu Diastolic-card-may-show"
+                                     id="patient-vitalSigns-Diastolic-card-may-show">
+                                <label class="w-100">
+                                    <span>Location</span>
+                                    <output>Right Arm</output>
+                                </label>
+                                <div class="card-footer">
+                                    <small>
+                                        <a href="#">New</a>&nbsp;
+                                        <a href="#">More ...</a>
+                                    </small>
+                                </div>
+                            </section>
+                            <section id="patient-vitalSigns-Diastolic-card-dont-show">
+                                <label class="w-50">
+                                    <span>id</span>
+                                    <output>0mp179aixdxX8cEZTP62qt</output>
+                                </label>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 <script src="vitalSigns.js"></script>
 <!--<script src="loadSettings.js"></script>-->
