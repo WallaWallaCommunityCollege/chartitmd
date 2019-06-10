@@ -1,7 +1,6 @@
 'use strict';
 const JsonDate = require('./JsonDate');
 const {DateTime} = require('luxon');
-const ModelCommon = require('./ModelCommon');
 window.$ = window.jQuery = require('jquery');
 
 /**
@@ -12,13 +11,27 @@ window.$ = window.jQuery = require('jquery');
 /**
  *
  */
-class User extends ModelCommon {
+class User {
     /**
      *
      * @param {string} name
      */
     constructor(name) {
-        super();
+        /**
+         *
+         * @type {?DateTime}
+         */
+        this.createdAt = null;
+        /**
+         *
+         * @type {?User}
+         */
+        this.createdBy = null;
+        /**
+         *
+         * @type {string}
+         */
+        this.id = '';
         /**
          *
          * @type {string}
@@ -77,6 +90,54 @@ class User extends ModelCommon {
                   }
               });
         return result;
+    }
+    /**
+     *
+     * @returns {?DateTime}
+     */
+    getCreatedAt() {
+        return this.createdAt;
+    }
+    /**
+     *
+     * @returns {?User}
+     */
+    getCreatedBy() {
+        return this.createdBy;
+    }
+    /**
+     *
+     * @returns {string}
+     */
+    getId() {
+        return this.id;
+    }
+    /**
+     *
+     * @param {PHPDate} value
+     * @returns {User}
+     */
+    setCreatedAt(value) {
+        this.createdAt = JsonDate.fromJsonPHPDate(value);
+        return this;
+    }
+    /**
+     *
+     * @param {Object} value
+     * @returns {User}
+     */
+    setCreatedBy(value) {
+        this.createdBy = User.fromJson(value);
+        return this;
+    }
+    /**
+     *
+     * @param value
+     * @returns {User}
+     */
+    setId(value) {
+        this.id = value;
+        return this;
     }
     /**
      *
