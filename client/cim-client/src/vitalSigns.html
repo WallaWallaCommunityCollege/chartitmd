@@ -88,109 +88,12 @@
         [id$="-card-dont-show"] {
             display: none;
         }
-
-        /*span.uom {*/
-        /*    right: -1em;*/
-        /*    padding-right: 0;*/
-        /*}*/
     </style>
 </head>
 <body>
 <h1>Vital Signs</h1>
 <main>
-    -
-    <div class="card accordion" id="patient-vitalSigns-card">
-        <div class="card-body">
-            <button aria-controls="patient-vitalSigns-card-collapse" aria-expanded="true"
-                    aria-pressed="true"
-                    class="active nav-link font-weight-bold btn-outline-primary rounded mb-1"
-                    data-target="#patient-vitalSigns-card-collapse"
-                    data-toggle="collapse" id="patient-vitalSigns-card-must-show" type="button">
-                vitalSigns
-            </button>
-            <div class="collapse show" data-parent="#patient-vitalSigns-card" id="patient-vitalSigns-card-collapse">
-                <div class="card-group" id="patient-vitalSigns-card-may-show">
-                    <div class="card" id="patient-vitalSigns-Systolic-card">
-                        <h5 class="card-title">Systolic</h5>
-                        <div class="card-body dropdown">
-                            <button aria-expanded="false" aria-haspopup="true"
-                                    class="nav-link dropdown-toggle"
-                                    data-target="Systolic-card-may-show" data-toggle="dropdown"
-                                    id="patient-vitalSigns-Systolic-card-must-show"
-                                    type="button">
-                                <label>
-                                    <span>Systolic</span>
-                                    <output>120</output>
-                                </label>
-                                <label>
-                                    <span>Created At</span>
-                                    <output>2019-02-20 16:45</output>
-                                </label>
-                            </button>
-                            <section aria-labelledby="patient-vitalSigns-Systolic-card-must-show"
-                                     class="dropdown-menu Systolic-card-may-show"
-                                     id="patient-vitalSigns-Systolic-card-may-show">
-                                <label class="w-100">
-                                    <span>Location</span>
-                                    <output>Right Arm</output>
-                                </label>
-                                <div class="card-footer">
-                                    <small>
-                                        <a href="#">New</a>&nbsp;
-                                        <a href="#">More ...</a>
-                                    </small>
-                                </div>
-                            </section>
-                            <section id="patient-vitalSigns-Systolic-card-dont-show">
-                                <label class="w-50">
-                                    <span>id</span>
-                                    <output>0mp179aixdxX8cEZTP62qt</output>
-                                </label>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="card" id="patient-vitalSigns-Diastolic-card">
-                        <h5 class="card-title">Diastolic</h5>
-                        <div class="card-body dropdown">
-                            <button aria-expanded="false" aria-haspopup="true"
-                                    class="nav-link dropdown-toggle"
-                                    data-target="Diastolic-card-may-show" data-toggle="dropdown"
-                                    id="patient-vitalSigns-Diastolic-card-must-show"
-                                    type="button">
-                                <label><span>Diastolic</span>
-                                    <output>80</output>
-                                </label>
-                                <label>
-                                    <span>Created At</span>
-                                    <output>2019-02-20 16:45</output>
-                                </label>
-                            </button>
-                            <section aria-labelledby="patient-vitalSigns-Diastolic-card-must-show"
-                                     class="dropdown-menu Diastolic-card-may-show"
-                                     id="patient-vitalSigns-Diastolic-card-may-show">
-                                <label class="w-100">
-                                    <span>Location</span>
-                                    <output>Right Arm</output>
-                                </label>
-                                <div class="card-footer">
-                                    <small>
-                                        <a href="#">New</a>&nbsp;
-                                        <a href="#">More ...</a>
-                                    </small>
-                                </div>
-                            </section>
-                            <section id="patient-vitalSigns-Diastolic-card-dont-show">
-                                <label class="w-50">
-                                    <span>id</span>
-                                    <output>0mp179aixdxX8cEZTP62qt</output>
-                                </label>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="card accordion" id="patient-vitalSigns-card"></div>
 </main>
 <script src="vitalSigns.js"></script>
 <!--<script src="loadSettings.js"></script>-->

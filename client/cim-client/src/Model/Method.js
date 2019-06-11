@@ -49,6 +49,9 @@ class Method extends ModelCommon {
               });
         return result;
     }
+    getMainValue() {
+        return;
+    }
 }
 
 module.exports = Method;

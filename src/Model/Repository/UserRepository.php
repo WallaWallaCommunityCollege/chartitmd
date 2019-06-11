@@ -25,27 +25,10 @@ use Doctrine\ORM\EntityRepository;
 class UserRepository extends EntityRepository {
     use ArrayExceptionCommon;
     /**
-     * @param string $name
-     *
-     * @return string|null
-     * @throws \InvalidArgumentException
-     * @throws \RuntimeException
+     * @param User $user
      */
-    public function getUserIdByName(string $name): ?string {
-        $qb = $this->createQueryBuilder('user');
-        $result = $qb->select('user.id')
-                     ->where(
-                         $qb->expr()
-                            ->eq(
-                                'user.name',
-                                $qb->expr()
-                                   ->literal($name)
-                            )
-                     )
-                     ->setMaxResults(1)
-                     ->getQuery()
-                     ->getArrayResult();
-        return 0 < \count($result) ? $result[0]['id'] : null;
+    public function addUser(User $user) {
+        // TODO
     }
     /**
      * @return array
@@ -60,6 +43,8 @@ class UserRepository extends EntityRepository {
     }
     /**
      * @param string $id
+     *
+     * @return User|array|null
      */
     public function getUserById(string $id) {
         $result = null;
@@ -70,7 +55,34 @@ class UserRepository extends EntityRepository {
                       ->where('u.id = :id')
                       ->setParameter('id', $id)
                       ->getQuery();
+        try {
+            $user = $query->getSingleResult();
+        } catch (\Throwable $thrown) {
+            return $this->exceptionAsArray($thrown);
+        }
+        return $user;
     }
+    /**
+     * @param string $name
+     *
+     * @return array|null
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     */
+    public function getUserIdByName(string $name): ?array {
+        $query = $this->createQueryBuilder('u')
+                      ->select('u.id')
+                      ->where('u.name = :name')
+                      ->setParameter('name', $name)
+                      ->getQuery();
+        try {
+            $user = $query->getSingleResult();
+        } catch (\Throwable $thrown) {
+            return $this->exceptionAsArray($thrown);
+        }
+        return $user;
+    }
+    /** @noinspection MultipleReturnStatementsInspection */
     /**
      * @param array $data
      *
@@ -101,18 +113,12 @@ class UserRepository extends EntityRepository {
                     $this->getEntityManager()
                          ->persist($user);
                 } catch (\Throwable $thrown) {
-                    $result = $this->exceptionAsArray($thrown);
+                    return $this->exceptionAsArray($thrown);
                 }
             }
             $result = $user;
         }
         return $result;
-    }
-    /**
-     * @param User $user
-     */
-    public function addUser(User $user) {
-        // TODO
     }
     /**
      * Per hash algorithm options.
