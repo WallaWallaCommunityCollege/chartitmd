@@ -3,7 +3,9 @@ Array.prototype.scaleBetween = function (scaledMin, scaledMax) {
     const max = Math.max.apply(Math, this);
     const min = Math.min.apply(Math, this);
     if (0 === max - min) {
-        return this.map(num => (scaledMin + scaledMax) / 2);
+        return this.map(() => (
+                                  scaledMin + scaledMax
+                              ) / 2);
     }
     let scaleDiff = scaledMax - scaledMin;
     let bottom = (max - min) + scaledMin;
