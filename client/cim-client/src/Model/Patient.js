@@ -1,6 +1,5 @@
 'use strict';
 const JsonDate = require('./JsonDate.js');
-const DisplayTable = require('./DisplayTable');
 const Gender = require('./Gender');
 const ModelCommon = require('./ModelCommon');
 window.$ = window.jQuery = require('jquery');
@@ -115,7 +114,6 @@ class Patient extends ModelCommon {
     }
     displayDetails() {
         console.log(this);
-        // (new DisplayTable(this.data['patient'], 'patient-')).displayTable();
         this.displayGeneralDetails();
     }
     /**
@@ -123,7 +121,6 @@ class Patient extends ModelCommon {
      */
     displayGeneralDetails() {
         let dob = this.dateOfBirth;
-        // let dob = DateTime.fromSQL(patient['dateOfBirth']['date']);
         let age = Math.floor(Math.abs(dob.diffNow('year')
                                          .as('year')));
         $('#patient-age')

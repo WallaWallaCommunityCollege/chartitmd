@@ -70,7 +70,7 @@ trait EntityCommon {
         unset($result['password']);
         // Filter out redundant patient.
         /** @noinspection UnsetConstructsCanBeMergedInspection */
-        unset($result['patient']);
+        //unset($result['patient']);
         return $result;
     }
     /**
