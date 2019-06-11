@@ -11,6 +11,97 @@ Auto-generated from Git log.
  * [0.0.1](#0.0.1)
 
 ## [master](../../tree/master)
+ * [9a752866fd](../../commit/9a752866fd3dfd54ee6fdd3b4878cea62e1c1125) 2019-06-11T16:17:55+00:00 (Michael Cummings) - For final code.
+ * [eb4520423e](../../commit/eb4520423e99118908fe94194b299f761ea67307) 2019-06-10T20:37:19+00:00 (Michael Cummings) - Updates to vitalSigns page for Alec to add to manual.
+ * [97abe8c2fb](../../commit/97abe8c2fb9d876ab623d592e63a9a04fec33166) 2019-06-10T19:36:16+00:00 (Michael Cummings) - Merge remote-tracking branch 'origin/master'
+ * [35eca19217](../../commit/35eca19217e0fddd12d5891c8ef242ed68ee1407) 2019-06-10T02:33:54+00:00 (Michael Cummings) - Fixed issue with indirect User class self reference via ModelCommon to a direct self reference instead?!? Really JS WTF?!? Fixed the warning in console etc.
+ * [3cedee13db](../../commit/3cedee13db14ed38721cb43d9d645951968ff8a4) 2019-06-09T23:40:56+00:00 (Michael Cummings) - Updated throw statements in fromJson() static method for missed UnitOfMeasurement class.
+ * [3a9b6fbe0b](../../commit/3a9b6fbe0bd198aa5ffff09c2187934c2664af31) 2019-06-09T23:38:52+00:00 (Michael Cummings) - Fixed bogus before commit reformat changes to generate proxies.
+ * [864826ad59](../../commit/864826ad59ed1bb5d8f08fd6ef681d788d04277c) 2019-06-09T23:36:47+00:00 (Michael Cummings) - Updated throw statements in fromJson() static method for several classes.
+ * [ab3c8f74f0](../../commit/ab3c8f74f09f262f04ade21473b0abed8de4b511) 2019-06-09T23:32:04+00:00 (Michael Cummings) - Update js and php User class for new createdBy column. Updated js to extend from ModelCommon class and to be more like some of the other Model classes. Fixed several small issues in UserRepository class.
+ * [cd4761a7e0](../../commit/cd4761a7e05d8f66f53713c2a382570d9329868a) 2019-06-09T18:36:13+00:00 (Michael Cummings) - Added GetForPatientTrait to VitalSignsRepository class.
+ * [7c430b9814](../../commit/7c430b9814b5e45d1556ca11e3c42a836e0e350b) 2019-06-09T18:34:41+00:00 (Michael Cummings) - Updated PatientRepository::getById() to return patient without extra array wrapper.
+ * [b4861d67e5](../../commit/b4861d67e584ab0bbc578b04bda76d6bcba27d3c) 2019-06-09T18:31:05+00:00 (Michael Cummings) - Updated getForPatientId() method to have orderBy clause for createdAt column.
+ * [d4960739e6](../../commit/d4960739e6b69ca56f7730f3ecc32b69e5741cf9) 2019-06-09T18:28:47+00:00 (Michael Cummings) - Fixed PHP Temperature class to make measurement column required.
+ * [72c9d315ac](../../commit/72c9d315acffdfb24cb337b5c0b44f6d716b7c2a) 2019-06-09T18:24:33+00:00 (Michael Cummings) - Rewrite/Update of PHP VitalSigns class.
+ * [1decc9253b](../../commit/1decc9253be8ae86ec8826729f14c2a627f66f83) 2019-06-09T18:19:48+00:00 (Michael Cummings) - Total re-write of VitalView js class.
+ * [17b6911c1b](../../commit/17b6911c1b00ec37e5b078135a3b96edb4c9c422) 2019-06-09T18:14:56+00:00 (Michael Cummings) - Added new js Model classes for Gender, Location, Measurement, Method, UnitOfMeasurement and parent ModelCommon class.
+ * [7585ebcc37](../../commit/7585ebcc37014e4c5fa97ec50f397d132e1cc59d) 2019-06-09T18:10:37+00:00 (Michael Cummings) - Updated electron View menu to include Home(index.html) item.
+ * [1d9fcd01a0](../../commit/1d9fcd01a04c22381b67e52968bbdbc000864aa8) 2019-06-09T17:47:25+00:00 (Michael Cummings) - Removing no longer needed blood pressure html, js, entity, proxy, and repository.
+ * [d9967c9371](../../commit/d9967c9371f1c325a82196e6e237b63f054d5ba7) 2019-06-09T17:40:16+00:00 (Michael Cummings) - Updated exception handling for patient route in src/routes.php file. Removed no longer valid bloodPressures route.
+ * [ae5289fc5b](../../commit/ae5289fc5ba5013019713ab36ac4ad14f2766c0b) 2019-06-09T17:34:57+00:00 (Michael Cummings) - Added root declare to .editorconfig file.
+ * [c15465699c](../../commit/c15465699cd62a152f6b81d19a9af044d092c51f) 2019-06-09T17:33:39+00:00 (Michael Cummings) - Added some global namespace optimizations to Uuid4Trait.
+ * [060be831e8](../../commit/060be831e838d8bb897ff02eeb4811cf49749760) 2019-06-09T17:30:08+00:00 (Michael Cummings) - Updated patientContact.js for changes to js Patient class.
+ * [32fb79db8e](../../commit/32fb79db8ed8e0b62c6c099f0cd93336ed9d5db6) 2019-06-09T17:28:01+00:00 (Michael Cummings) - Updated summary.html to use common stylesheets. Remove unneeded script tag for jquery.
+ * [484f19bbcc](../../commit/484f19bbccede576d517d19044c08ba936053804) 2019-06-09T17:25:15+00:00 (Michael Cummings) - In main.css dropped text-shadow on th tag.
+ * [44fc4d41e0](../../commit/44fc4d41e0de2ed6332e0ccfbdcae8d265657da4) 2019-06-09T17:23:29+00:00 (Michael Cummings) - Switched patient buttons click events to use jquery. Updated Patient to use fromJson() builder method. Updated patient.html to remove unused table and move buttons to better location.
+ * [3b32c15974](../../commit/3b32c15974787aa1b4281394c869b11d78a4bcbc) 2019-06-09T16:21:45+00:00 (Michael Cummings) - Revert "Removed dup client/patient-summary/ directory."
+ * [39ddb286b4](../../commit/39ddb286b43a69f95e404aef1f57e30895a0e5b3) 2019-06-09T16:01:42+00:00 (Michael Cummings) - Removed dup client/patient-summary/ directory.
+ * [86a4a6deca](../../commit/86a4a6decaff6fc5c9ace08b606cd53b3cde9998) 2019-06-09T15:57:24+00:00 (Michael Cummings) - Updated client Model/Patient class to use fromJson() method like other models. Also switched back to details/summary display system for now.
+ * [cb78f9efbc](../../commit/cb78f9efbcf186d128a6d4a0b344c397f06dec81) 2019-06-09T05:47:20+00:00 (Michael Cummings) - Fixed /user/login route in routes.php file. Fixed UserRepository::userLogin() method to return correct result types. Updated confirm and login html and js in client for fixes in PHP.
+ * [31c73be0da](../../commit/31c73be0da65d2b43ccb92323d32ef61f9959949) 2019-06-07T20:28:15+00:00 (Alec Aichele) - Updated user manual
+ * [9c9610c7a5](../../commit/9c9610c7a542ae454062cb6db0c1d862b9ba3d65) 2019-06-01T21:57:36+00:00 (Michael Cummings) - Merge remote-tracking branch 'origin/master'
+ * [366f83deea](../../commit/366f83deeaa830ab707cdbcbf18615831ed0adbd) 2019-06-01T21:46:06+00:00 (Michael Cummings) - Updated Doctrine proxies for entity changes.
+ * [3acfb2ecfa](../../commit/3acfb2ecfa5d5c57ff910a117afff9479bb0e3fa) 2019-06-01T21:44:32+00:00 (Michael Cummings) - Added interface required getMeasurementsForPatientId() to trait. Updated PatientRepository::getVitalSignsForPatientId() to use new getMeasurementsForPatientId() method.
+ * [829731b331](../../commit/829731b331312038c9bbd01ea70bffdaa027c670) 2019-06-01T21:41:25+00:00 (Michael Cummings) - Added getMeasurementsForPatientId() to GetForPatientInterface.
+ * [7996c417f1](../../commit/7996c417f14d19d94120f3e45ae07a90df7ae143) 2019-06-01T21:38:19+00:00 (Michael Cummings) - Switched Pain to use MeasurementCommon trait so it is no longer outlier in vital signs measurements.
+ * [23360a03c4](../../commit/23360a03c4624380d033fc6f69e8dc62db394f57) 2019-06-01T21:34:42+00:00 (Michael Cummings) - Changed Temperature class to also use measurement that was missed before.
+ * [2e803ef396](../../commit/2e803ef3963e8ab50f27e57b55039b2143a8ba8c) 2019-06-01T21:32:50+00:00 (Michael Cummings) - Added filter to remove redundant 'patient' from serialize JSON results.
+ * [39d906028a](../../commit/39d906028a29f370e4877e4542122d7078a6b608) 2019-06-01T21:30:36+00:00 (Michael Cummings) - Cleaned up BloodPressure leftovers in other classes.
+ * [b91b6aa477](../../commit/b91b6aa47719c674faca83209c286c9dca742a30) 2019-06-01T05:00:29+00:00 (Alec Aichele) - Current work up to date
+ * [1d67f7152e](../../commit/1d67f7152e2c9c854e8244b83d241516e89ddfff) 2019-05-31T22:28:41+00:00 (Michael Cummings) - Fix missing use for ORM in Medication class comment.
+ * [e52c173afe](../../commit/e52c173afe938f967fca3ccdc4da81cb67849d36) 2019-05-31T22:24:10+00:00 (Michael Cummings) - Merge remote-tracking branch 'origin/master'
+ * [bdb621c1f5](../../commit/bdb621c1f5eff6bc1ab365fc0b9b8e7cfc260f7d) 2019-05-31T22:23:50+00:00 (Michael Cummings) - Formatting anf author changes to new Medication classes.
+ * [6f0f585f26](../../commit/6f0f585f267e1efe4a68e8e47cc53680761fff51) 2019-05-31T22:05:45+00:00 (Alec Aichele) - Patient contact improvements
+ * [ffa02f6ec3](../../commit/ffa02f6ec3731f40af11ea533ba09b4bcbdff063) 2019-05-31T22:04:24+00:00 (Alec Aichele) - Merge remote-tracking branch 'origin/master'
+ * [ae508b0d13](../../commit/ae508b0d13bd8e1a3a82805c41e8f8693fd6ad94) 2019-05-31T22:03:43+00:00 (Alec Aichele) - Contact improvements and added user manual
+ * [f342ccf3b3](../../commit/f342ccf3b3c194e7d5cba02013a9e9401e7f118a) 2019-05-31T22:00:06+00:00 (jwood) - Added DBConnection.php a simple page to hold the PDO object.
+ * [48c9b04d7f](../../commit/48c9b04d7fb9bba2b2feadf1f2e8e099fd71467f) 2019-05-31T21:59:41+00:00 (jwood) - Added DBConnection.php a simple page to hold the PDO object.
+ * [a8f59f789c](../../commit/a8f59f789cebbe317458ae1d39b7840455372808) 2019-05-31T20:23:51+00:00 (Michael Cummings) - Merge remote-tracking branch 'origin/master'
+ * [00f0b17197](../../commit/00f0b17197019d365508ff906c2525ee71856845) 2019-05-31T20:23:04+00:00 (Alec Aichele) - Merge remote-tracking branch 'origin/master'
+ * [e35600737f](../../commit/e35600737f75655aa582ef0bcb99ac7e7266d548) 2019-05-31T20:22:48+00:00 (Michael Cummings) - Push for everything so everyone can see it.
+ * [2b15b21a5f](../../commit/2b15b21a5f3869f18c8263e7f29d08a91a400837) 2019-05-31T20:21:34+00:00 (Alec Aichele) - Working on patient contact page
+ * [e604bcb143](../../commit/e604bcb143dad6d19025aa7642f481895af1c89a) 2019-05-27T17:53:49+00:00 (Michael Cummings) - Removed junk files from root directory.
+ * [439befa5c1](../../commit/439befa5c1fe2947bcd44043e101563ed7cc11e6) 2019-05-27T09:34:37+00:00 (Michael Cummings) - Added placeholder DoctrineMigrationVersions class entity.
+ * [55c31da084](../../commit/55c31da084e8969f8ed271ee9ce507335a43b8ec) 2019-05-27T09:33:00+00:00 (Michael Cummings) - Updated trait DAndNCommon to reflect nullable description.
+ * [9ebc1751d7](../../commit/9ebc1751d7c9a9076fd9eefb17ce2a75d9fe5abd) 2019-05-26T17:09:39+00:00 (Michael Cummings) - Updated/Added implementation for \JsonSerializable to all Entity classes.
+ * [4ce9ffacea](../../commit/4ce9ffacea961de1ea1694a5b7b15901590137a5) 2019-05-26T17:03:21+00:00 (Michael Cummings) - Added new src/Model/Entity/DAndNCommon trait for common description and name methods and properties. Updated Location, Method, Permission, Role, and UnitOfMeasurement classes to use new trait.
+ * [56d1790412](../../commit/56d1790412410ed92a43675524c9624d351e940d) 2019-05-26T16:00:11+00:00 (Michael Cummings) - Added new src/Model/Repository/JsonExceptionCommon trait helper to handle exception to JSON conversion.
+ * [1469ba3379](../../commit/1469ba3379044f94f08c745d2bd23b934de50268) 2019-05-26T15:55:27+00:00 (Michael Cummings) - Updated Patient class not to include bloodPressures, heights, and weights collections.
+ * [825691c545](../../commit/825691c54557e055d21f9c9dea276f7b5a360142) 2019-05-26T15:50:27+00:00 (Michael Cummings) - Added all of the Repository classes into doctrine.php config file.
+ * [590801df13](../../commit/590801df1302b95e0b61fcb2e48d138131d67454) 2019-05-26T15:47:48+00:00 (Michael Cummings) - Updated Proxies without reformatting.
+ * [04a9b082ad](../../commit/04a9b082ad9ba487d76b880f7afa67b054ff9f0f) 2019-05-25T03:07:26+00:00 (Michael Cummings) - Added and updated Doctrine proxies.
+ * [84a7dcb20b](../../commit/84a7dcb20b07fb271b93f0094f313e12ef1b0b11) 2019-05-25T03:06:18+00:00 (Michael Cummings) - Added new OxygenSaturation, Pain, Pulse, Respiration, and Temperature Entity class, and Repositories.
+ * [f52aa2ccdd](../../commit/f52aa2ccdd0eaf5076c64ad1469c9ed1d5cd20ad) 2019-05-25T03:01:11+00:00 (Michael Cummings) - Updated PatientRepository for renamed height and weight tables.
+ * [595cd69fd4](../../commit/595cd69fd4a395baa524b4251988dd74f480cc9e) 2019-05-25T02:58:21+00:00 (Michael Cummings) - Updated BloodPressure PHP class to implement JsonSerializable and to use integer pressures. Updated to use MeasurementCommon trait.
+ * [34dd393e43](../../commit/34dd393e433374d625f254e509e4cd7d0a124e18) 2019-05-25T02:54:49+00:00 (Michael Cummings) - Added new MeasurementCommon trait.
+ * [5e21c29618](../../commit/5e21c29618b054fd141d89bf958d645abf04b475) 2019-05-25T02:53:34+00:00 (Michael Cummings) - Updated UnitOfMeasurement to implement JsonSerializable interface.
+ * [5b1b472844](../../commit/5b1b472844b0181f02564ab613124e209ab85e69) 2019-05-25T02:49:14+00:00 (Michael Cummings) - Renamed PatientHeight and PatientWeight classes to just Height and Weight.
+ * [c26638f99d](../../commit/c26638f99d09bb5d7d9b32bd5da287d52fca1e44) 2019-05-25T02:43:24+00:00 (Michael Cummings) - Updated vitalsigns in JS to use tables instead of details etc.
+ * [7c18d0a690](../../commit/7c18d0a69031c9e854e2466ef3c881c41decab68) 2019-05-25T02:39:53+00:00 (Michael Cummings) - Reformatting code in Patient.js class.
+ * [87a6848a3d](../../commit/87a6848a3df6efa764bb55e5ce623f8078bf0ae6) 2019-05-25T02:38:18+00:00 (Michael Cummings) - Updated table stuff in main.css file.
+ * [6d1b7ee3b2](../../commit/6d1b7ee3b26fc9f2fbcf42bcac64ebaf3fad2e1f) 2019-05-22T18:27:42+00:00 (Michael Cummings) - Updated Location.php and Method.php to extend JsonSerializable.
+ * [e001eef9e8](../../commit/e001eef9e8846e4ef37443b8b402bc96363e95f2) 2019-05-22T18:23:08+00:00 (Michael Cummings) - Updated everything for jquery name change.
+ * [6fa421acb6](../../commit/6fa421acb6548a45925c8f2d0f7f56cfaafa6784) 2019-05-22T18:20:02+00:00 (Michael Cummings) - Added cim-client/src/Model/VitalSigns.js class.
+ * [9733d7de10](../../commit/9733d7de10bb39d80600613764f7d7402cef7fd4) 2019-05-22T18:18:43+00:00 (Michael Cummings) - Renamed jquery with version #.
+ * [d5a9ede653](../../commit/d5a9ede65351eb731d420304dd8eb24817ef56e7) 2019-05-22T18:08:16+00:00 (Alec Aichele) - Added patient contact
+ * [a60172d016](../../commit/a60172d016105cfe88d83545059f82085c46d294) 2019-05-22T17:39:45+00:00 (Alec Aichele) - Resolving more conflicts
+ * [3a07b184fc](../../commit/3a07b184fc9322cb8d69f1262c555e0c9ba35639) 2019-05-22T15:34:49+00:00 (jwood) - added blank templates to each page
+ * [aaf6f0507d](../../commit/aaf6f0507dc3718c5c2abd5195a8f3749accf5d6) 2019-05-22T15:08:17+00:00 (Alec Aichele) - Resolving merge conflict
+ * [bfcd6b0939](../../commit/bfcd6b09396619a941d2a12ec4f421b0bd746e53) 2019-05-22T01:48:23+00:00 (jwood) - updated and added some stuff
+ * [f4cd9bfe67](../../commit/f4cd9bfe673762c1542fdb6021ee100b819d02c1) 2019-05-21T22:50:24+00:00 (Michael Cummings) - Misc. updates to PHP Entities. Updatred Doctrine proxy classes.
+ * [464dbfe7c1](../../commit/464dbfe7c175223e0a75fbd14ef8dc1639787902) 2019-05-21T22:47:54+00:00 (Michael Cummings) - Some updates to developer README.md file.
+ * [b128c0cdf7](../../commit/b128c0cdf71b2925170b7f8d9fc662d0a6acbf15) 2019-05-21T22:47:07+00:00 (Michael Cummings) - Some updated to AuthManager class.
+ * [fbc8e691fe](../../commit/fbc8e691fe9e26a5468e98c4185787970cbe95ce) 2019-05-21T22:46:14+00:00 (Michael Cummings) - Some general cleanup in client code.
+ * [1a573de342](../../commit/1a573de3424686d30061d58396e46cdf59142716) 2019-05-21T22:45:24+00:00 (Michael Cummings) - Renamed client vital signs pages and scripts. Updated script to use one of the new endpoints.
+ * [235b99b84f](../../commit/235b99b84f0779634f6767bcbd06f4c79fc680b3) 2019-05-21T22:43:02+00:00 (Michael Cummings) - Added VitalSignsRepository to doctrine.php config file. Updated VitalSigns entity to better match what was in BloodPressure entity. Added to/fixed VitalSignsRepository class for new endpoints. Updated routes.php for new vital signs endpoints.
+ * [65536f9a27](../../commit/65536f9a276aa354249b423a166c0a50d6ca6427) 2019-05-21T15:28:29+00:00 (Alec Aichele) - Minor improvements
+ * [632226c61c](../../commit/632226c61c5464003a561ac445fc78597b2d6367) 2019-05-20T19:59:37+00:00 (Michael Cummings) - Update for vitalsigns from class.
+ * [13de9ff4de](../../commit/13de9ff4de88e7788a938447e6c8b8a016489483) 2019-05-15T19:06:36+00:00 (Alec Aichele) - Merge remote-tracking branch 'origin/master'
+ * [18c2220ea8](../../commit/18c2220ea83a6d4483230d68d52c1df6c83a7231) 2019-05-15T19:05:24+00:00 (Alec Aichele) - Improved vital signs repository
+ * [ce25bbe46d](../../commit/ce25bbe46d7132d1efc77ea1dbd98233ddf656f1) 2019-05-15T19:00:16+00:00 (Alec Aichele) - Adding vital signs repository in routes
+ * [b491a0eb90](../../commit/b491a0eb908a2aedd9584dede43dcb94e0306f83) 2019-05-11T18:29:13+00:00 (Michael Cummings) - Replaced misplaced (array) conversion of $this in User.php and EntityCommon.php that broke jsonSerialize() methods.
+ * [33b7bdac23](../../commit/33b7bdac233aaa480ed9cc64bf35464e9186427c) 2019-05-11T17:56:27+00:00 (Michael Cummings) - Updated changelog with all current work included.
  * [00d158e101](../../commit/00d158e1010d81033b4d1db3d855edb4b5c1014f) 2019-05-11T17:52:35+00:00 (Michael Cummings) - Minor optimization in middleware.php file.
  * [d36d7549d1](../../commit/d36d7549d132a979d4b203cabbd5d2343b2cd8d6) 2019-05-11T17:46:25+00:00 (Michael Cummings) - Updated doctrine proxies for entity changes.
  * [d6c7c99877](../../commit/d6c7c99877eff466d76de35b11eca1ae3ae5910a) 2019-05-11T17:43:43+00:00 (Michael Cummings) - Started Refactoring AuthManager classes.
@@ -32,6 +123,7 @@ Auto-generated from Git log.
  * [1567465726](../../commit/1567465726a18b87d1cbfa92e8bc29bf1d45ad4e) 2019-04-13T20:06:28+00:00 (Michael Cummings) - Updated getUpdatedAt() method to handle null and string values correctly.
  * [f862be76e6](../../commit/f862be76e60f1b84a519d94943241ed53ce1cf9d) 2019-04-13T20:02:25+00:00 (Michael Cummings) - Added missing strict_types declare to some entities.
  * [7bf01b5a06](../../commit/7bf01b5a06d1078ee8d617a1b706935d82b514b1) 2019-04-13T19:14:10+00:00 (Michael Cummings) - Updated error handling in bin/cim-migrations file so actual error message is shown.
+ * [cf8209604f](../../commit/cf8209604fe51046e383199514c7ef42cb3dff63) 2019-03-01T23:57:18+00:00 (jwood) - added changedlog
 ## [0.0.3](../../tree/0.0.3)
  * [3514fd96aa](../../commit/3514fd96aaa05f2abba2edc85ea2813f69f329bb) 2019-04-07T17:41:23+00:00 (Dragonrun1) - Updated patient HTML and js files to work with new Patient class and show example for future user configurable view.
  * [34e9fa51c9](../../commit/34e9fa51c93bf221ad7dd2d2fb312206b8d1b50a) 2019-04-07T17:38:29+00:00 (Dragonrun1) - Did some accessibility (color) updates to main.css file.
