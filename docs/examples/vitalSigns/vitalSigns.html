@@ -1,0 +1,240 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!--
+    VERY IMPORTANT to include this in all web pages for application security.
+
+    * These rules limit stuff to coming from within electron: css, js, etc.
+    * Scripts can connect only to itself, localhost, or our website to get json
+      etc.
+     -->
+    <title>Vital Signs</title>
+    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<h1 class="text-center">Vital Signs</h1>
+<main class="m-2">
+    <div class="card mb-3 shadow" id="patient-card"><h5 class="card-title ml-1">Patient</h5>
+        <div class="card-body dropdown">
+            <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                    data-target="patient-card-may-show" data-toggle="dropdown" id="patient-card-must-show"
+                    type="button"><label class="mr-1"><span>First Name:</span>
+                <output id="patient-firstName">Lillian</output>
+            </label><label class="mr-1"><span>Last Name:</span>
+                <output id="patient-lastName">Wald</output>
+            </label><label class="mr-1"><span>Date Of Birth:</span>
+                <output id="patient-dateOfBirth">1940-05-01</output>
+            </label><label class="mr-1"><span>Assigned Sex:</span>
+                <output id="patient-gender" title="Assigned sex at birth">female</output>
+            </label></button>
+            <section aria-labelledby="patient-card-may-show" class="dropdown-menu patient-card-may-show"
+                     id="patient-card-may-show"><label class="w-100"><span>Created At:</span>
+                <output id="patient-createdAt">2019-03-06 00:10:19</output>
+            </label><label class="w-100"><span>Created By:</span>
+                <output id="patient-createdBy">dragonrun1</output>
+            </label></section>
+            <section id="patient-card-dont-show"><label class="w-50"><span>Id:</span>
+                <output id="patient-id">2Y9ovLbO93RUekOOu75TV5</output>
+            </label><label class="w-50"><span>Updated At:</span>
+                <output id="patient-updatedAt">** Unknown **</output>
+            </label></section>
+        </div>
+    </div>
+    <div class="card accordion shadow" id="patient-vitalSigns-card">
+        <div class="card-body">
+            <div class="card-group" id="patient-vitalSigns-card-must-show">
+                <div class="card" id="patient-vitalSigns-systolic-card">
+                    <div class="card-body dropdown">
+                        <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                data-target="systolic-card-may-show" data-toggle="dropdown"
+                                id="patient-vitalSigns-systolic-card-must-show" type="button">
+                            <label><span>Systolic:</span>
+                                <output class="bg-danger text-white" id="patient-vitalSigns-systolic-measurement"
+                                        title="Very high">130
+                                </output>
+                                <span title="Millimeters of Mercury - This unit is commonly use for blood pressure.">mm Hg</span></label>
+                        </button>
+                        <section aria-labelledby="patient-vitalSigns-systolic-card-must-show"
+                                 class="dropdown-menu systolic-card-may-show"
+                                 id="patient-vitalSigns-systolic-card-may-show"><label
+                            class="w-100"><span>Created At:</span>
+                            <output id="patient-vitalSigns-systolic-createdAt">2019-05-28 22:41:38</output>
+                        </label><label class="w-100"><span>Created By:</span>
+                            <output id="patient-vitalSigns-systolic-createdBy">dragonrun1</output>
+                        </label><label class="w-100"><span>Location:</span>
+                            <output id="patient-vitalSigns-systolic-location">Right Arm</output>
+                        </label><label class="w-100"><span>Method Used:</span>
+                            <output id="patient-vitalSigns-systolic-methodUsed">** Unknown **</output>
+                        </label></section>
+                        <section id="patient-vitalSigns-systolic-card-dont-show"><label class="w-50"><span>Id:</span>
+                            <output id="patient-vitalSigns-systolic-id">1wxoOmhY9bAHyF4cNyHn4a</output>
+                        </label></section>
+                    </div>
+                </div>
+                <div class="card" id="patient-vitalSigns-diastolic-card">
+                    <div class="card-body dropdown">
+                        <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                data-target="diastolic-card-may-show" data-toggle="dropdown"
+                                id="patient-vitalSigns-diastolic-card-must-show" type="button">
+                            <label><span>Diastolic:</span>
+                                <output id="patient-vitalSigns-diastolic-measurement" title="Normal">79</output>
+                                <span title="Millimeters of Mercury - This unit is commonly use for blood pressure.">mm Hg</span></label>
+                        </button>
+                        <section aria-labelledby="patient-vitalSigns-diastolic-card-must-show"
+                                 class="dropdown-menu diastolic-card-may-show"
+                                 id="patient-vitalSigns-diastolic-card-may-show"><label
+                            class="w-100"><span>Created At:</span>
+                            <output id="patient-vitalSigns-diastolic-createdAt">2019-05-27 22:22:20</output>
+                        </label><label class="w-100"><span>Created By:</span>
+                            <output id="patient-vitalSigns-diastolic-createdBy">dragonrun1</output>
+                        </label><label class="w-100"><span>Location:</span>
+                            <output id="patient-vitalSigns-diastolic-location">Right Arm</output>
+                        </label><label class="w-100"><span>Method Used:</span>
+                            <output id="patient-vitalSigns-diastolic-methodUsed">** Unknown **</output>
+                        </label></section>
+                        <section id="patient-vitalSigns-diastolic-card-dont-show"><label class="w-50"><span>Id:</span>
+                            <output id="patient-vitalSigns-diastolic-id">1PjSK2eFRatbEODO9UuXfr</output>
+                        </label></section>
+                    </div>
+                </div>
+                <div class="card" id="patient-vitalSigns-pulse-card">
+                    <div class="card-body dropdown">
+                        <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                data-target="pulse-card-may-show" data-toggle="dropdown"
+                                id="patient-vitalSigns-pulse-card-must-show" type="button"><label><span>Pulse:</span>
+                            <output id="patient-vitalSigns-pulse-measurement">60</output>
+                            <span title="Beats Per Minute">BPM</span></label></button>
+                        <section aria-labelledby="patient-vitalSigns-pulse-card-must-show"
+                                 class="dropdown-menu pulse-card-may-show" id="patient-vitalSigns-pulse-card-may-show">
+                            <label class="w-100"><span>Created At:</span>
+                                <output id="patient-vitalSigns-pulse-createdAt">2019-06-02 14:00:32</output>
+                            </label><label class="w-100"><span>Created By:</span>
+                            <output id="patient-vitalSigns-pulse-createdBy">dragonrun1</output>
+                        </label><label class="w-100"><span>Location:</span>
+                            <output id="patient-vitalSigns-pulse-location">Right Arm</output>
+                        </label><label class="w-100"><span>Method Used:</span>
+                            <output id="patient-vitalSigns-pulse-methodUsed">** Unknown **</output>
+                        </label></section>
+                        <section id="patient-vitalSigns-pulse-card-dont-show"><label class="w-50"><span>Id:</span>
+                            <output id="patient-vitalSigns-pulse-id">1NAYqyc558uGAnwc_ZECab</output>
+                        </label></section>
+                    </div>
+                </div>
+            </div>
+            <button aria-controls="patient-vitalSigns-card-collapse" aria-expanded="false" aria-pressed="false"
+                    class="active nav-link font-weight-bold btn-sm btn-outline-secondary rounded mt-2 mb-2"
+                    data-target="#patient-vitalSigns-card-collapse" data-toggle="collapse"
+                    id="patient-vitalSigns-card-show-more" type="button">...
+            </button>
+            <div class="collapse" data-parent="#patient-vitalSigns-card" id="patient-vitalSigns-card-collapse">
+                <div class="card-group" id="patient-vitalSigns-card-may-show">
+                    <div class="card" id="patient-vitalSigns-respiration-card">
+                        <div class="card-body dropdown">
+                            <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                    data-target="respiration-card-may-show" data-toggle="dropdown"
+                                    id="patient-vitalSigns-respiration-card-must-show" type="button"><label><span>Respiration:</span>
+                                <output id="patient-vitalSigns-respiration-measurement">12</output>
+                                <span title="Breaths Per Minute">BPM</span></label></button>
+                            <section aria-labelledby="patient-vitalSigns-respiration-card-must-show"
+                                     class="dropdown-menu respiration-card-may-show"
+                                     id="patient-vitalSigns-respiration-card-may-show"><label class="w-100"><span>Created At:</span>
+                                <output id="patient-vitalSigns-respiration-createdAt">2019-06-02 14:01:29</output>
+                            </label><label class="w-100"><span>Created By:</span>
+                                <output id="patient-vitalSigns-respiration-createdBy">dragonrun1</output>
+                            </label><label class="w-100"><span>Location:</span>
+                                <output id="patient-vitalSigns-respiration-location">** Unknown **</output>
+                            </label><label class="w-100"><span>Method Used:</span>
+                                <output id="patient-vitalSigns-respiration-methodUsed">** Unknown **</output>
+                            </label></section>
+                            <section id="patient-vitalSigns-respiration-card-dont-show"><label
+                                class="w-50"><span>Id:</span>
+                                <output id="patient-vitalSigns-respiration-id">2uBWQUWVxe3a5f_ur5r#FI</output>
+                            </label></section>
+                        </div>
+                    </div>
+                    <div class="card" id="patient-vitalSigns-oxygenSaturation-card">
+                        <div class="card-body dropdown">
+                            <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                    data-target="oxygenSaturation-card-may-show" data-toggle="dropdown"
+                                    id="patient-vitalSigns-oxygenSaturation-card-must-show" type="button"><label><span>Oxygen Saturation:</span>
+                                <output id="patient-vitalSigns-oxygenSaturation-measurement">98</output>
+                                <span title="Percent">%</span></label></button>
+                            <section aria-labelledby="patient-vitalSigns-oxygenSaturation-card-must-show"
+                                     class="dropdown-menu oxygenSaturation-card-may-show"
+                                     id="patient-vitalSigns-oxygenSaturation-card-may-show"><label class="w-100"><span>Created At:</span>
+                                <output id="patient-vitalSigns-oxygenSaturation-createdAt">2019-05-27 22:23:45</output>
+                            </label><label class="w-100"><span>Created By:</span>
+                                <output id="patient-vitalSigns-oxygenSaturation-createdBy">dragonrun1</output>
+                            </label><label class="w-100"><span>Location:</span>
+                                <output id="patient-vitalSigns-oxygenSaturation-location">Right Arm</output>
+                            </label><label class="w-100"><span>Method Used:</span>
+                                <output id="patient-vitalSigns-oxygenSaturation-methodUsed">** Unknown **</output>
+                            </label></section>
+                            <section id="patient-vitalSigns-oxygenSaturation-card-dont-show"><label class="w-50"><span>Id:</span>
+                                <output id="patient-vitalSigns-oxygenSaturation-id">2d#Wfvst19iHefKo8MWdry</output>
+                            </label></section>
+                        </div>
+                    </div>
+                    <div class="card" id="patient-vitalSigns-temperature-card">
+                        <div class="card-body dropdown">
+                            <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                    data-target="temperature-card-may-show" data-toggle="dropdown"
+                                    id="patient-vitalSigns-temperature-card-must-show" type="button"><label><span>Temperature:</span>
+                                <output id="patient-vitalSigns-temperature-measurement">37.0</output>
+                                <span title="Celsius">°C</span></label></button>
+                            <section aria-labelledby="patient-vitalSigns-temperature-card-must-show"
+                                     class="dropdown-menu temperature-card-may-show"
+                                     id="patient-vitalSigns-temperature-card-may-show"><label class="w-100"><span>Created At:</span>
+                                <output id="patient-vitalSigns-temperature-createdAt">2019-06-02 14:02:41</output>
+                            </label><label class="w-100"><span>Created By:</span>
+                                <output id="patient-vitalSigns-temperature-createdBy">dragonrun1</output>
+                            </label><label class="w-100"><span>Location:</span>
+                                <output id="patient-vitalSigns-temperature-location">** Unknown **</output>
+                            </label><label class="w-100"><span>Method Used:</span>
+                                <output id="patient-vitalSigns-temperature-methodUsed">oral</output>
+                            </label></section>
+                            <section id="patient-vitalSigns-temperature-card-dont-show"><label
+                                class="w-50"><span>Id:</span>
+                                <output id="patient-vitalSigns-temperature-id">1NuJd_DtN3zHEfyANyRpoK</output>
+                            </label></section>
+                        </div>
+                    </div>
+                </div>
+                <section id="patient-vitalSigns-card-dont-show">
+                    <div class="card" id="patient-vitalSigns-pain-card">
+                        <div class="card-body dropdown">
+                            <button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                                    data-target="pain-card-may-show" data-toggle="dropdown"
+                                    id="patient-vitalSigns-pain-card-must-show" type="button"><label><span>Pain:</span>
+                                <output id="patient-vitalSigns-pain-measurement">2</output>
+                            </label></button>
+                            <section aria-labelledby="patient-vitalSigns-pain-card-must-show"
+                                     class="dropdown-menu pain-card-may-show"
+                                     id="patient-vitalSigns-pain-card-may-show"><label
+                                class="w-100"><span>Created At:</span>
+                                <output id="patient-vitalSigns-pain-createdAt">2019-06-02 13:58:47</output>
+                            </label><label class="w-100"><span>Created By:</span>
+                                <output id="patient-vitalSigns-pain-createdBy">dragonrun1</output>
+                            </label><label class="w-100"><span>Location:</span>
+                                <output id="patient-vitalSigns-pain-location">Right Arm</output>
+                            </label><label class="w-100"><span>Method Used:</span>
+                                <output id="patient-vitalSigns-pain-methodUsed">** Unknown **</output>
+                            </label></section>
+                            <section id="patient-vitalSigns-pain-card-dont-show"><label class="w-50"><span>Id:</span>
+                                <output id="patient-vitalSigns-pain-id">3SUrKT#L13RF#j1zJUjAYp</output>
+                            </label></section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/jquery.js"></script>
+<!--<script src="assets/js/popper.min.js"></script>-->
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
