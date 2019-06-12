@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">    <!--
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!--
     VERY IMPORTANT to include this in all web pages for application security.
 
     * These rules limit stuff to coming from within electron: css, js, etc.
@@ -14,88 +15,13 @@
     <title>Vital Signs</title>
     <link href="../assets/css/normalize.css" rel="stylesheet"/>
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <!--    <link href="../assets/css/main.css" rel="stylesheet"/>-->
-    <style>
-        @font-face {
-            font-family: "Source Code Pro";
-            font-weight: normal;
-            src: url("../assets/font/SourceCodePro-Regular.otf.woff") format("woff");
-        }
-
-        @font-face {
-            font-family: "Source Code Pro";
-            font-weight: normal;
-            font-style: italic;
-            src: url("../assets/font/SourceCodePro-It.otf.woff") format("woff");
-        }
-
-        @font-face {
-            font-family: "Source Code Pro";
-            font-weight: bold;
-            src: url("../assets/font/SourceCodePro-Bold.otf.woff") format("woff");
-        }
-
-        @font-face {
-            font-family: "Source Code Pro";
-            font-weight: 900;
-            src: url("../assets/font/SourceCodePro-Black.otf.woff") format("woff");
-        }
-
-        :root {
-            --cim-fluid-precalc: calc((100vw - 300px) / (1600 - 300));
-            --cim-font-size-precalc: calc((26 - 12) * var(--cim-fluid-precalc));
-            --cim-line-height-precalc: calc((1.5 - 1.2) * var(--cim-fluid-precalc));
-        }
-
-        *, *:after, *:before {
-            box-sizing: border-box;
-        }
-
-        label {
-            border: hsl(0, 0%, 0%) solid 1px;
-            display: inline-block;
-            font-size: .75em;
-            height: calc(1.6em + var(--cim-line-height-precalc));
-            margin: 0 0 calc(.35em + var(--cim-line-height-precalc)) 0;
-        }
-
-        output {
-            display: inline-block;
-            line-height: calc(1.2rem + var(--cim-line-height-precalc));
-            padding: 0 .25em;
-        }
-
-        label span:first-child, label span:last-child {
-            background-color: hsl(214, 41%, 78%);
-            display: inline-block;
-            height: 100%;
-            margin: 0;
-            padding: 0 .25em;
-        }
-
-        /*label span:last-child {*/
-        /*    margin-right: -3.5px;*/
-        /*}*/
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        summary:focus {
-            outline: none;
-        }
-
-        [id$="-card-dont-show"] {
-            display: none;
-        }
-    </style>
+    <link href="../assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>Vital Signs</h1>
-<main>
-    <div class="card accordion" id="patient-vitalSigns-card"></div>
+<h1 class="text-center">Vital Signs</h1>
+<main class="m-2">
+    <div class="card accordion shadow" id="patient-vitalSigns-card"></div>
 </main>
 <script src="vitalSigns.js"></script>
-<!--<script src="loadSettings.js"></script>-->
 </body>
 </html>

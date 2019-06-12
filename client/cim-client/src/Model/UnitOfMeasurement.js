@@ -1,9 +1,35 @@
 'use strict';
 const ModelCommon = require('./ModelCommon');
+const MeasurementRange = require('./MeasurementRange');
 
 class UnitOfMeasurement extends ModelCommon {
     constructor() {
         super();
+        /**
+         *
+         * @type {?string}
+         */
+        this.description = null;
+        /**
+         *
+         * @type {?MeasurementRange}
+         */
+        this.measurementRange = null;
+        /**
+         *
+         * @type {?string}
+         */
+        this.name = null;
+        /**
+         *
+         * @type {?string}
+         */
+        this.symbol = null;
+        /**
+         *
+         * @type {?string}
+         */
+        this.unitOf = null;
     }
     /**
      *
@@ -37,17 +63,13 @@ class UnitOfMeasurement extends ModelCommon {
                           result.setId(data[key]);
                           break;
                       case 'description':
-                          result.description = data[key];
-                          break;
                       case 'name':
-                          result.name = data[key];
+                      case 'symbol':
+                      case 'unitOf':
+                          result[key] = data[key];
                           break;
                       case 'measurementRange':
-                          break;
-                      case 'symbol':
-                          result.symbol = data[key];
-                          break;
-                      case 'unitOf':
+                          result[key] = MeasurementRange.fromJson(data[key]);
                           break;
                       default:
                           throw new Error(`Unknown Json property ${key} given`);

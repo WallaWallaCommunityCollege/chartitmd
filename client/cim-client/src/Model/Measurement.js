@@ -4,6 +4,7 @@ const Location = require('./Location');
 const Method = require('./Method');
 const Patient = require('./Patient');
 const UnitOfMeasurement = require('./UnitOfMeasurement');
+const MeasurementRange = require('./MeasurementRange');
 window.$ = window.jQuery = require('jquery');
 
 class Measurement extends ModelCommon {
@@ -15,8 +16,7 @@ class Measurement extends ModelCommon {
         super();
         this.showItems = {
             must: ['measurement'],
-            may: ['createdAt', 'createdBy', 'location', 'methodUsed'],
-            dont: ['id', 'patient'],
+            may: ['createdAt', 'createdBy', 'location', 'methodUsed'], dont: ['id'],
         };
         /**
          *
@@ -66,8 +66,7 @@ class Measurement extends ModelCommon {
         let result = new Measurement(patient);
         Object.keys(data)
               .forEach(function (key) {
-                  console.log('Measurement key: ' + key);
-                  if (null === data[key]) {
+                  if (null == data[key]) {
                       return;
                   }
                   switch (key) {
@@ -82,38 +81,26 @@ class Measurement extends ModelCommon {
                           break;
                       case 'patient':
                           if (null === result.patient) {
-                              result.patient = Patient.fromJson(data[key]);
+                              result[key] = Patient.fromJson(data[key]);
                           }
                           break;
                       case 'location':
-                          result.location = Location.fromJson(data[key]);
+                          result[key] = Location.fromJson(data[key]);
                           break;
                       case 'measuredIn':
-                          result.measuredIn = UnitOfMeasurement.fromJson(data[key]);
+                          result[key] = UnitOfMeasurement.fromJson(data[key]);
                           break;
                       case 'measurement':
-                          result.measurement = data[key];
+                          result[key] = data[key];
                           break;
                       case 'methodUsed':
-                          result.methodUsed = Method.fromJson(data[key]);
+                          result[key] = Method.fromJson(data[key]);
                           break;
                       default:
                           throw new Error(`Unknown Json property ${key} given`);
                   }
               });
         return result;
-    }
-    static getTitleCase(name) {
-        return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-                   .toLowerCase()
-                   .split(' ')
-                   .map(function (word) {
-                       return (
-                           word.charAt(0)
-                               .toUpperCase() + word.slice(1)
-                       );
-                   })
-                   .join(' ');
     }
     /**
      *
@@ -164,21 +151,24 @@ class Measurement extends ModelCommon {
             .attr({
                       'class': 'card', 'id': `${idPrefix}-${name}-card`,
                   })
-            .append($('<h5></h5>')
-                        .attr('class', 'card-title')
-                        .text(Measurement.getTitleCase(name)), cardBody);
+            .append(cardBody);
+        // .append($('<h5></h5>')
+        //             .attr('class', 'card-title ml-1')
+        //             .text(Measurement.getTitleCase(name)), cardBody);
         return card;
     }
     buildDontColumnLabel(mode, idPrefix, name, columnName) {
-        let {firstSpan, inner} = this.buildLabelInner(columnName, mode, idPrefix, name);
+        let inside = this.buildLabelInner(columnName, mode, idPrefix, name);
         // noinspection CheckTagEmptyBody
         return $('<label class="w-50"></label>')
-            .append(firstSpan, inner);
+            .append(...inside);
     }
     buildLabelInner(columnName, mode, idPrefix, name) {
+        let result = [];
         // noinspection CheckTagEmptyBody
         let firstSpan = $('<span></span>')
-            .text(Measurement.getTitleCase(columnName));
+            .text(Measurement.getTitleCase(columnName) + ':');
+        result.push(firstSpan);
         let inner;
         if ('read' === mode) {
             // noinspection CheckTagEmptyBody
@@ -193,12 +183,38 @@ class Measurement extends ModelCommon {
                     case 'number':
                     case 'string':
                         inner.text(this[columnName]);
+                        if ('measurement' === columnName) {
+                            firstSpan.text(Measurement.getTitleCase(name) + ':');
+                        }
+                        if ('measurement' === columnName && null != this.measuredIn && null
+                            != this.measuredIn.measurementRange) {
+                            /**
+                             *
+                             * @type {?MeasurementRange} mr
+                             */
+                            let mr = this.measuredIn.measurementRange;
+                            if (this[columnName] < mr.sigmaMinus2) {
+                                inner.addClass('bg-danger text-white');
+                                inner.attr('title', 'Very low');
+                            } else if (this[columnName] < mr.sigmaMinus1) {
+                                inner.addClass('bg-warning text-white');
+                                inner.attr('title', 'Low');
+                            } else if (this[columnName] > mr.sigmaPlus2) {
+                                inner.addClass('bg-danger text-white');
+                                inner.attr('title', 'Very high');
+                            } else if (this[columnName] > mr.sigmaPlus1) {
+                                inner.addClass('bg-warning text-white');
+                                inner.attr('title', 'High');
+                            } else {
+                                inner.attr('title', 'Normal');
+                            }
+                        }
                         break;
                     case 'object':
                         // TODO: Should check if object actually has name property etc.
                         // Would be better to do stuff directly in some way in each object.
                         if ('createdAt' === columnName) {
-                            inner.text(this[columnName].toFormat('yyyy-MM-dd'));
+                            inner.text(this[columnName].toFormat('yyyy-MM-dd HH:mm:ss'));
                         } else {
                             inner.text(this[columnName].name);
                         }
@@ -209,22 +225,34 @@ class Measurement extends ModelCommon {
             }
         } else {
             inner = $('<input>');
+            // TODO: Add attributes for type, allowed ranges, etc.
         }
         inner.attr('id', `${idPrefix}-${name}-${columnName}`);
-        // TODO: Should have code here to add unit of measurement span tag if needed.
-        return {firstSpan, inner};
+        result.push(inner);
+        if ('measurement' === columnName && null != this.measuredIn) {
+            // noinspection CheckTagEmptyBody
+            let lastSpan = $('<span></span>')
+                .text(this.measuredIn.symbol);
+            if (null == this.measuredIn.description || '' === this.measuredIn.description) {
+                lastSpan.attr('title', this.measuredIn.name);
+            } else {
+                lastSpan.attr('title', this.measuredIn.description);
+            }
+            result.push(lastSpan);
+        }
+        return result;
     }
     buildMayColumnLabel(mode, idPrefix, name, columnName) {
-        let {firstSpan, inner} = this.buildLabelInner(columnName, mode, idPrefix, name);
+        let inside = this.buildLabelInner(columnName, mode, idPrefix, name);
         // noinspection CheckTagEmptyBody
         return $('<label class="w-100"></label>')
-            .append(firstSpan, inner);
+            .append(...inside);
     }
     buildMustColumnLabel(mode, idPrefix, name, columnName) {
-        let {firstSpan, inner} = this.buildLabelInner(columnName, mode, idPrefix, name);
+        let inside = this.buildLabelInner(columnName, mode, idPrefix, name);
         // noinspection CheckTagEmptyBody
         return $('<label></label>')
-            .append(firstSpan, inner);
+            .append(...inside);
     }
 }
 

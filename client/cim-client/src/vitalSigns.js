@@ -30,6 +30,7 @@ function getVitalSignsAsJson() {
                           } else {
                               console.log('Axios vital signs:');
                               console.log(response2.data[0]);
+                              patient.asBSCard();
                               let vitalSigns = VitalSigns.fromJson(response2.data[0], patient);
                               vitalSigns.displayDetails();
                           }

@@ -68,6 +68,18 @@ class ModelCommon {
         this.id = value;
         return this;
     }
+    static getTitleCase(name) {
+        return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+                   .toLowerCase()
+                   .split(' ')
+                   .map(function (word) {
+                       return (
+                           word.charAt(0)
+                               .toUpperCase() + word.slice(1)
+                       );
+                   })
+                   .join(' ');
+    }
 }
 
 module.exports = ModelCommon;

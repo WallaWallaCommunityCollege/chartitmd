@@ -50,13 +50,9 @@ class Gender extends ModelCommon {
                           result.setId(data[key]);
                           break;
                       case 'assignedSex':
-                          result.assignedSex = data[key];
-                          break;
                       case 'identity':
-                          result.identity = data[key];
-                          break;
                       case 'pronoun':
-                          result.pronoun = data[key];
+                          result[key] = data[key];
                           break;
                       default:
                           throw `Unknown Json property ${key} given`;

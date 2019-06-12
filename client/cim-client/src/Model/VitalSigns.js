@@ -41,7 +41,7 @@ class VitalSigns extends ModelCommon {
         this.showItems = {
             must: ['systolic', 'diastolic', 'pulse'],
             may: ['respiration', 'oxygenSaturation', 'temperature'],
-            dont: ['pain'],
+            dont: ['pain', 'createdBy', 'createdAt', 'id', 'patient'],
         };
         /**
          *
@@ -70,7 +70,6 @@ class VitalSigns extends ModelCommon {
         let result = new VitalSigns(patient);
         Object.keys(data)
               .forEach(function (key) {
-                  console.log('Vital Signs key: ' + key);
                   if (null === data[key]) {
                       return;
                   }
@@ -86,11 +85,10 @@ class VitalSigns extends ModelCommon {
                           break;
                       case 'patient':
                           if (null === result.patient) {
-                              result.patient = Patient.fromJson(data[key]);
+                              result[key] = Patient.fromJson(data[key]);
                           }
                           break;
                       default:
-                          console.log('Vital Signs default key: ' + key);
                           // Only hydrate things that might be displayed.
                           if (0 >= result.showItems['must'].indexOf(key) || 0
                               >= result.showItems['may'].indexOf(key) || 0
