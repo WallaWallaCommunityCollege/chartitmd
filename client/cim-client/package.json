@@ -1,11 +1,10 @@
 {
-    "name": "cim-client",
-    "version": "0.0.1",
+    "name": "cim-client", "version": "0.0.3",
     "description": "ChartItMd client",
     "main": "src/main.js",
     "private": true,
     "scripts": {
-        "package": "electron-packager ./ ChartItMD --out=\"../../cache/\" --app-version=\"0.0.1\" --win32metadata.CompanyName=\"ChartItMD Development Group\" --overwrite --icon=\"C:/repos/chartitmd/chartitmd/client/cim-client/assets/image/chart_it_md.ico\"",
+        "package": "electron-packager ./ ChartItMD --out=\"../../cache/\" --app-version=\"0.0.3\" --win32metadata.CompanyName=\"ChartItMD Development Group\" --overwrite --icon=\"C:/repos/chartitmd/chartitmd/client/cim-client/assets/image/chart_it_md.ico\"",
         "start": "electron .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
