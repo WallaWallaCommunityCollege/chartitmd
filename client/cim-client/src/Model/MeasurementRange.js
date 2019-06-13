@@ -57,6 +57,11 @@ class MeasurementRange extends ModelCommon {
          * @type {number}
          */
         this.sigmaPlus3 = Infinity;
+        /**
+         *
+         * @type {number}
+         */
+        this.stepSize = 1;
     }
     /**
      *
@@ -104,6 +109,7 @@ class MeasurementRange extends ModelCommon {
                       case 'sigmaPlus1':
                       case 'sigmaPlus2':
                       case 'sigmaPlus3':
+                      case 'stepSize':
                           result[key] = data[key];
                           break;
                       default:

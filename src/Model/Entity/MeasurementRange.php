@@ -95,4 +95,10 @@ class MeasurementRange implements \JsonSerializable {
      * @ORM\Column(name="sigma_plus3", type="float", nullable=true)
      */
     private $sigmaPlus3;
+    /**
+     * @var float $step Also known as precision.
+     *
+     * @ORM\Column(name="step_size", type="float", nullable=false)
+     */
+    private $stepSize;
 }
