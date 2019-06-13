@@ -11,8 +11,23 @@
       etc.
      -->
     <meta
-            content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' http://localhost/; default-src 'self'"
-            http-equiv="Content-Security-Policy"/>
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="font-src 'self' http://localhost/ https://www.chartitmd.com/ data:"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="img-src 'self' http://localhost/ https://www.chartitmd.com/ data:"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="script-src 'self' 'unsafe-inline' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="style-src 'self' 'unsafe-inline' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="default-src 'self' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
     <title>Patient</title>
     <link href="../assets/css/normalize.css" rel="stylesheet"/>
     <link href="../assets/css/main.css" rel="stylesheet"/>

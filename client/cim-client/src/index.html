@@ -10,7 +10,22 @@
       etc.
      -->
     <meta
-        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/; script-src 'self' 'unsafe-inline' http://localhost/; default-src 'self'"
+        content="connect-src 'self' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="font-src 'self' http://localhost/ https://www.chartitmd.com/ data:"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="img-src 'self' http://localhost/ https://www.chartitmd.com/ data:"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="script-src 'self' 'unsafe-inline' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="style-src 'self' 'unsafe-inline' http://localhost/ https://www.chartitmd.com/"
+        http-equiv="Content-Security-Policy">
+    <meta
+        content="default-src 'self' http://localhost/ https://www.chartitmd.com/"
         http-equiv="Content-Security-Policy">
     <title>ChartItMD Home</title>
     <link href="../assets/css/normalize.css" rel="stylesheet">
@@ -32,10 +47,10 @@
              srcset="../assets/image/chart_it_md_header_1600.png 1600w,../assets/image/chart_it_md_header_1200.png 1200w,../assets/image/chart_it_md_header_960.png 960w,../assets/image/chart_it_md_header_800.png 800w,../assets/image/chart_it_md_header_600.png 600w">
     </picture>
 </header>
-<main align="center">
+<main>
     <h1>Welcome to Chartitmd</h1>
 </main>
-<div align="center">
+<div>
     <button onclick="window.location.href='login.html';">Login</button>
 </div>
 REMOVE UL LATER
