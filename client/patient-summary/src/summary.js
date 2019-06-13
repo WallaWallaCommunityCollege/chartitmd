@@ -5,6 +5,7 @@ const electron = require('electron');
 //const url = require('url');
 const axios = require('axios');
 const {DateTime} = require('luxon');
+window.$ = window.jQuery = require('jquery');
 //Main program
 //Variables
 let firstName = "Alec";
@@ -16,8 +17,12 @@ let bmi = 65.77 / Math.pow(187 / 100, 2);
 bsa = bsa.toFixed(2);
 bmi = bmi.toFixed(2);
 //Print bsa and bmi
-document.getElementById("bmiResult").innerHTML = fullName + "'s bmi is now " + bmi;
-document.getElementById("bsaResult").innerHTML = fullName + "'s bsa is now " + bsa;
+$('#bmiResult')
+    .text(fullName + "'s bmi is now " + bmi);
+$('#bsaResult')
+    .text(fullName + "'s bsa is now " + bsa);
+// document.getElementById("bmiResult").innerHTML = fullName + "'s bmi is now " + bmi;
+// document.getElementById("bsaResult").innerHTML = fullName + "'s bsa is now " + bsa;
 //Call functions
 getWeightDifference();
 getHeightDifference();
@@ -26,35 +31,54 @@ weightStatus(bmi, fullName);
 //Functions for Appointment comparisons
 function getHeightDifference() {
     let result = 187 - 187;
+    let output = '';
     if (result > 0) {
-        document.getElementById("heightResult").innerHTML = fullName + " gained " + result + " centimeters.";
+        output = fullName + " gained " + result + " centimeters.";
+        // document.getElementById("heightResult").innerHTML = fullName + " gained " + result + " centimeters.";
     } else if (result < 0) {
-        document.getElementById("heightResult").innerHTML = fullName + " lost " + result + " centimeters.";
+        output = fullName + " lost " + result + " centimeters.";
+        // document.getElementById("heightResult").innerHTML = fullName + " lost " + result + " centimeters.";
     } else {
-        document.getElementById("heightResult").innerHTML = fullName + " has not lost/gained centimeters.";
+        output = fullName + " has not lost/gained centimeters.";
+        // document.getElementById("heightResult").innerHTML = fullName + " has not lost/gained centimeters.";
     }
+    $('#heightResult')
+        .text(output);
 }
 function getWeightDifference() {
     //let current = document.getElementById("currentWeight").innerHTML;
     //let previous = document.getElementById("weight").innerHTML;
     let result = 65.77 - 65.77;
+    let output = '';
     if (result > 0) {
-        document.getElementById("weightResult").innerHTML = fullName + " gained " + result + " kilograms.";
+        output = fullName + " gained " + result + " kilograms.";
+        // document.getElementById("weightResult").innerHTML = fullName + " gained " + result + " kilograms.";
     } else if (result < 0) {
-        document.getElementById("weightResult").innerHTML = fullName + " lost " + result + " kilograms.";
+        output = fullName + " lost " + result + " kilograms.";
+        // document.getElementById("weightResult").innerHTML = fullName + " lost " + result + " kilograms.";
     } else {
-        document.getElementById("weightResult").innerHTML = fullName + " has not lost/gained kilograms.";
+        output = fullName + " has not lost/gained kilograms.";
+        // document.getElementById("weightResult").innerHTML = fullName + " has not lost/gained kilograms.";
     }
+    $('#weightResult')
+        .text(output);
 }
 function weightStatus(bmi, fullName) {
+    let output = '';
     if (bmi < 18.5) {
-        document.getElementById("bmiStatus").innerHTML = fullName + " is underweight.";
+        output = fullName + " is underweight.";
+        // document.getElementById("bmiStatus").innerHTML = fullName + " is underweight.";
     } else if (bmi >= 18.5 && bmi < 25) {
-        document.getElementById("bmiStatus").innerHTML = fullName + " is normal.";
+        output = fullName + " is normal.";
+        // document.getElementById("bmiStatus").innerHTML = fullName + " is normal.";
     } else if (bmi >= 25 && bmi < 30) {
-        document.getElementById("bmiStatus").innerHTML = fullName + " is overweight.";
+        output = fullName + " is overweight.";
+        // document.getElementById("bmiStatus").innerHTML = fullName + " is overweight.";
     } else {
-        document.getElementById("bmiStatus").innerHTML = fullName + " is obese.";
+        output = fullName + " is obese.";
+        // document.getElementById("bmiStatus").innerHTML = fullName + " is obese.";
     }
+    $('#bmiStatus')
+        .text(output);
 }
 //Functions for other stuff
