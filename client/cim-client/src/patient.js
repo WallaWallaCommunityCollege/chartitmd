@@ -32,8 +32,8 @@ function getPatientAsJson() {
                              .on('click', function () {
                                  window.location.href = "settings.html";
                              });
+                         console.log(response.data);
                          let patient = Patient.fromJson(response.data);
-                         console.log(patient);
                          patient.displayDetails();
                      });
              }

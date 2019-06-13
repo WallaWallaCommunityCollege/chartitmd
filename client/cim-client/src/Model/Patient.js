@@ -131,7 +131,6 @@ class Patient extends ModelCommon {
      * @param {?string} mode One of add or read.
      */
     asBSCard(mode = 'read') {
-        let idPrefix = this.idPrefix;
         let name = this.idPrefix;
         // noinspection CheckTagEmptyBody
         let mustShow = $('<button></button>')
@@ -247,7 +246,6 @@ class Patient extends ModelCommon {
             .append(...inside);
     }
     displayDetails() {
-        console.log(this);
         this.displayGeneralDetails();
     }
     /**
