@@ -30,10 +30,12 @@ function createWindow() {
     win = new BrowserWindow(winOptions);
     // and load the index.html of the app.
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+                               pathname: path.join(__dirname, 'index.html'),
+                               protocol: 'file:',
+                               slashes: true
+                           }))
+       .then(r => {
+       });
 
     // Emitted when the window is closed.
     win.on('closed', () => {
