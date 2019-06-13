@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Contains class MeasurementRangeRepository.
+ * Contains class MeasurementLimitsRepository.
  *
  * PHP version 7.2+
  *
@@ -19,7 +19,7 @@ namespace ChartItMD\Model\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class MeasurementRangeRepository.
+ * Class MeasurementLimitsRepository.
  */
-class MeasurementRangeRepository extends EntityRepository {
+class MeasurementLimitsRepository extends EntityRepository {
 }

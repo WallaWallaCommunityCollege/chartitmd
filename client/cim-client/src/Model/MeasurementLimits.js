@@ -4,7 +4,7 @@ const ModelCommon = require('./ModelCommon');
 /**
  *
  */
-class MeasurementRange extends ModelCommon {
+class MeasurementLimits extends ModelCommon {
     constructor() {
         super();
         /**
@@ -61,7 +61,7 @@ class MeasurementRange extends ModelCommon {
          *
          * @type {number}
          */
-        this.stepSize = 1;
+        this.stepSize = 1.0;
     }
     /**
      *
@@ -80,10 +80,10 @@ class MeasurementRange extends ModelCommon {
      * @property {?string} sigmaPlus2
      * @property {?string} sigmaPlus3
      *
-     * @return MeasurementRange
+     * @return MeasurementLimits
      */
     static fromJson(data) {
-        let result = new MeasurementRange();
+        let result = new MeasurementLimits();
         Object.keys(data)
               .forEach(function (key) {
                   if (null === data[key]) {
@@ -120,4 +120,4 @@ class MeasurementRange extends ModelCommon {
     }
 }
 
-module.exports = MeasurementRange;
+module.exports = MeasurementLimits;

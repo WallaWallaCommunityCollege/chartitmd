@@ -4,7 +4,7 @@ const Location = require('./Location');
 const Method = require('./Method');
 const Patient = require('./Patient');
 const UnitOfMeasurement = require('./UnitOfMeasurement');
-const MeasurementRange = require('./MeasurementRange');
+const MeasurementLimits = require('./MeasurementLimits');
 window.$ = window.jQuery = require('jquery');
 
 class Measurement extends ModelCommon {
@@ -188,12 +188,12 @@ class Measurement extends ModelCommon {
                             firstSpan.text(Measurement.getTitleCase(name) + ':');
                         }
                         if ('measurement' === columnName && null != this.measuredIn && null
-                            != this.measuredIn.measurementRange) {
+                            != this.measuredIn.measurementLimits) {
                             /**
                              *
-                             * @type {?MeasurementRange} mr
+                             * @type {?MeasurementLimits} mr
                              */
-                            let mr = this.measuredIn.measurementRange;
+                            let mr = this.measuredIn.measurementLimits;
                             if (this[columnName] < mr.sigmaMinus2) {
                                 inner.addClass('bg-danger text-white');
                                 inner.attr('title', 'Very low');

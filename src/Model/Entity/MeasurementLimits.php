@@ -20,21 +20,21 @@ use ChartItMD\Utils\Uuid4Trait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class MeasurementRange.
+ * Class MeasurementLimits.
  *
- * @ORM\Table(name="measurement_range",
+ * @ORM\Table(name="measurement_limits",
  *     indexes={
  *         @ORM\Index(name="idx_created_at", columns={"created_at"})
  *     }
  * )
- * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\MeasurementRangeRepository")
+ * @ORM\Entity(repositoryClass="ChartItMD\Model\Repository\MeasurementLimitsRepository")
  */
-class MeasurementRange implements \JsonSerializable {
+class MeasurementLimits implements \JsonSerializable {
     use DAndNCommon;
     use EntityCommon;
     use Uuid4Trait;
     /**
-     * MeasurementRange constructor.
+     * MeasurementLimits constructor.
      *
      * @param User   $createdBy
      * @param string $name
@@ -100,5 +100,5 @@ class MeasurementRange implements \JsonSerializable {
      *
      * @ORM\Column(name="step_size", type="float", nullable=false)
      */
-    private $stepSize;
+    private $stepSize = 1.0;
 }
