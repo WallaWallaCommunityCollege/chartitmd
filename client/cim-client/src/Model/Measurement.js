@@ -14,6 +14,11 @@ class Measurement extends ModelCommon {
      */
     constructor(patient = null) {
         super();
+        this.showItems = {
+            must: ['measurement'],
+            may: ['createdAt', 'createdBy', 'location', 'methodUsed'],
+            dont: ['id', 'patient'],
+        };
         /**
          *
          * @type {?Location}
