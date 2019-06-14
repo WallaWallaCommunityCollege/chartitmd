@@ -54,12 +54,17 @@ class UnitOfMeasurement implements \JsonSerializable {
         $this->unitOf = $unitOf;
     }
     /**
-     * @var MeasurementLimits
-     *
-     * @ORM\ManyToOne(targetEntity="MeasurementLimits")
-     * @ORM\JoinColumn(name="measurement_limits", referencedColumnName="id", nullable=true)
+     * @return string
      */
-    private $measurementLimits;
+    public function getSymbol(): string {
+        return $this->symbol;
+    }
+    /**
+     * @return string
+     */
+    public function getUnitOf(): string {
+        return $this->unitOf;
+    }
     /**
      * @var string
      *
