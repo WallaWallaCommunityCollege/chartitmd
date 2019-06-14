@@ -151,7 +151,7 @@ input[name=patient-assignedSex] {
     width: 5em;
 }
 
-label span:first-child, label span:last-child {
+label span:first-child, label > abbr {
     background-color: hsl(214, 41%, 78%);
     display: inline-block;
     height: 100%;
