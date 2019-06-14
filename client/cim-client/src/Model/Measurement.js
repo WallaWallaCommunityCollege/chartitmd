@@ -5,7 +5,9 @@ const Method = require('./Method');
 const Patient = require('./Patient');
 const UnitOfMeasurement = require('./UnitOfMeasurement');
 const MeasurementLimits = require('./MeasurementLimits');
-window.$ = window.jQuery = require('jquery');
+if (!window.$) {
+    window.$ = window.jQuery = require('jquery');
+}
 
 class Measurement extends ModelCommon {
     /**
@@ -33,15 +35,21 @@ class Measurement extends ModelCommon {
         this.measuredIn = null;
         /**
          *
+         * @type {string|number}
+         */
+        this.measurement = '';
+        /**
+         *
+         * @type {?MeasurementLimits}
+         * @public
+         */
+        this.measurementLimits = null;
+        /**
+         *
          * @type {?Method}
          * @public
          */
         this.methodUsed = null;
-        /**
-         *
-         * @type {string|number}
-         */
-        this.measurement = '';
         /**
          *
          * @type {?Patient}
@@ -93,6 +101,9 @@ class Measurement extends ModelCommon {
                           break;
                       case 'measurement':
                           result[key] = data[key];
+                          break;
+                      case 'measurementLimits':
+                          result[key] = MeasurementLimits.fromJson(data[key]);
                           break;
                       case 'methodUsed':
                           result[key] = Method.fromJson(data[key]);
@@ -187,13 +198,12 @@ class Measurement extends ModelCommon {
                         if ('measurement' === columnName) {
                             firstSpan.text(Measurement.getTitleCase(name) + ':');
                         }
-                        if ('measurement' === columnName && null != this.measuredIn && null
-                            != this.measuredIn.measurementLimits) {
+                        if ('measurement' === columnName && null != this.measurementLimits) {
                             /**
                              *
                              * @type {?MeasurementLimits} mr
                              */
-                            let mr = this.measuredIn.measurementLimits;
+                            let mr = this.measurementLimits;
                             if (this[columnName] < mr.sigmaMinus2) {
                                 inner.addClass('bg-danger text-white');
                                 inner.attr('title', 'Very low');
@@ -231,14 +241,7 @@ class Measurement extends ModelCommon {
         inner.attr('id', `${idPrefix}-${name}-${columnName}`);
         result.push(inner);
         if ('measurement' === columnName && null != this.measuredIn) {
-            // noinspection CheckTagEmptyBody
-            let lastSpan = $('<span></span>')
-                .text(this.measuredIn.symbol);
-            if (null == this.measuredIn.description || '' === this.measuredIn.description) {
-                lastSpan.attr('title', this.measuredIn.name);
-            } else {
-                lastSpan.attr('title', this.measuredIn.description);
-            }
+            let lastSpan = this.measuredIn.asAbbrTag();
             result.push(lastSpan);
         }
         return result;
