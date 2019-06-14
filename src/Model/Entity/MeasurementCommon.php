@@ -33,6 +33,12 @@ trait MeasurementCommon {
         return $this->measuredIn;
     }
     /**
+     * @return MeasurementLimits|null
+     */
+    public function getMeasurementLimits(): ?MeasurementLimits {
+        return $this->measurementLimits;
+    }
+    /**
      * @return Method|null
      */
     public function getMethodUsed(): ?Method {
@@ -63,6 +69,15 @@ trait MeasurementCommon {
         return $this;
     }
     /**
+     * @param MeasurementLimits|null $value
+     *
+     * @return self Fluent interface
+     */
+    public function setMeasurementLimits(?MeasurementLimits $value): self {
+        $this->measurementLimits = $value;
+        return $this;
+    }
+    /**
      * @param Method|null $value
      *
      * @return self Fluent interface
@@ -85,6 +100,13 @@ trait MeasurementCommon {
      * @ORM\JoinColumn(name="measured_in", referencedColumnName="id", nullable=true)
      */
     private $measuredIn;
+    /**
+     * @var MeasurementLimits|null
+     *
+     * @ORM\ManyToOne(targetEntity="MeasurementLimits")
+     * @ORM\JoinColumn(name="measurement_limits", referencedColumnName="id", nullable=true)
+     */
+    private $measurementLimits;
     /**
      * @var Method|null $methodUsed
      *
