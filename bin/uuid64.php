@@ -1,11 +1,20 @@
 <?php
 declare(strict_types=1);
-$data = random_bytes(16);
+try {
+    $data = \random_bytes(16);
+} catch (Exception $e) {
+    print $e . PHP_EOL;
+}
 $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0100
 $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
 $base64 = toBase64($data);
 print 'uuid64:' . PHP_EOL;
 print $base64 . PHP_EOL;
+/**
+ * @param string $data
+ *
+ * @return string
+ */
 function toBinaryString(string $data) {
     $result = '';
     foreach (str_split($data) as $byte) {
@@ -13,6 +22,11 @@ function toBinaryString(string $data) {
     }
     return $result;
 }
+/**
+ * @param string $data
+ *
+ * @return string
+ */
 function toBase64(string $data): string {
     $base64 = [
         '000000' => '0',
