@@ -64,10 +64,10 @@ class Temperature extends \ChartItMD\Model\Entity\Temperature implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'patient'];
+            return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measurementLimits', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'patient'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'patient'];
+        return ['__isInitialized__', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measurement', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdAt', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'createdBy', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'id', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'location', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measuredIn', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'measurementLimits', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'methodUsed', '' . "\0" . 'ChartItMD\\Model\\Entity\\Temperature' . "\0" . 'patient'];
     }
 
     /**
@@ -253,6 +253,17 @@ class Temperature extends \ChartItMD\Model\Entity\Temperature implements \Doctri
     /**
      * {@inheritDoc}
      */
+    public function getMeasurementLimits(): ?\ChartItMD\Model\Entity\MeasurementLimits
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeasurementLimits', []);
+
+        return parent::getMeasurementLimits();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getMethodUsed(): ?\ChartItMD\Model\Entity\Method
     {
 
@@ -292,6 +303,17 @@ class Temperature extends \ChartItMD\Model\Entity\Temperature implements \Doctri
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeasuredIn', [$value]);
 
         return parent::setMeasuredIn($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMeasurementLimits(?\ChartItMD\Model\Entity\MeasurementLimits $value): \ChartItMD\Model\Entity\Temperature
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeasurementLimits', [$value]);
+
+        return parent::setMeasurementLimits($value);
     }
 
     /**
