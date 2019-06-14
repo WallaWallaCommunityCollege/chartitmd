@@ -1,6 +1,8 @@
 'use strict';
 const ModelCommon = require('./ModelCommon');
-const MeasurementLimits = require('./MeasurementLimits');
+if (!window.$) {
+    window.$ = window.jQuery = require('jquery');
+}
 
 class UnitOfMeasurement extends ModelCommon {
     constructor() {
@@ -10,11 +12,6 @@ class UnitOfMeasurement extends ModelCommon {
          * @type {?string}
          */
         this.description = null;
-        /**
-         *
-         * @type {?MeasurementLimits}
-         */
-        this.measurementLimits = null;
         /**
          *
          * @type {?string}
@@ -68,13 +65,23 @@ class UnitOfMeasurement extends ModelCommon {
                       case 'unitOf':
                           result[key] = data[key];
                           break;
-                      case 'measurementLimits':
-                          result[key] = MeasurementLimits.fromJson(data[key]);
-                          break;
                       default:
                           throw new Error(`Unknown Json property ${key} given`);
                   }
               });
+        return result;
+    }
+    /**
+     *
+     * @param {boolean} preferDescTitle
+     * @returns {*|jQuery}
+     */
+    asAbbrTag(preferDescTitle = false) {
+        // noinspection CheckTagEmptyBody
+        let result = $('<abbr></abbr>')
+            .text(this.symbol);
+        let title = preferDescTitle ? this.description : this.name;
+        result.attr('title', title);
         return result;
     }
 }
